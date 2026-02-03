@@ -236,10 +236,11 @@ var RankerMaster = (function () {
 				console.log(category+"/rankings-"+league+".json");
 
 				// Write to a file
+				var writeUrl = (typeof webRoot !== 'undefined') ? (webRoot + "data/write.php") : "data/write.php";
 
 				$.ajax({
 
-					url : 'data/write.php',
+					url : writeUrl,
 					type : 'POST',
 					data : {
 						'data' : json,
@@ -281,7 +282,7 @@ var RankerMaster = (function () {
 
 					$.ajax({
 
-						url : 'data/write.php',
+						url : writeUrl,
 						type : 'POST',
 						data : {
 							'data' : json,
@@ -323,14 +324,14 @@ var RankerMaster = (function () {
 
 				// Write to a file
 
-				$.ajax({
+					$.ajax({
 
-					url : 'data/write.php',
-					type : 'POST',
-					data : {
-						'data' : json,
-						'league' : league,
-						'category' : category,
+						url : writeUrl,
+						type : 'POST',
+						data : {
+							'data' : json,
+							'league' : league,
+							'category' : category,
 						'cup' : cup
 					},
 					dataType:'json',

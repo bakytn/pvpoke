@@ -15,6 +15,7 @@ function interfaceObject(){
 	var useDefaultMovesets = true;
 	var rankingsRunning = false;
 	var loadingDataFromCup = false; // Flag for whether we want to import new data into the moveset overrides
+	var savingLeague = false;
 	var self = this;
 
 	// Store selected filter for later manipulation
@@ -25,6 +26,7 @@ function interfaceObject(){
 	var archivedCups = []; // Array of archived cup formats
 
 	var pokemonListMode = "name";
+	var overallWindow = null;
 
 	var cup = {
 		name: "custom",
@@ -68,6 +70,10 @@ function interfaceObject(){
 		$("body").on("click", ".field-section.type .select-all, .field-section.type .deselect-all", typeSelectAll);
 		$("body").on("click", ".filter .remove", deleteFilterConfirm);
 		$("body").on("click", ".import-custom-group", importIdsFromCustomGroup);
+		$(".save-league").on("click", saveLeague);
+		$(".save-title").on("input", handleSaveTitleInput);
+		$(".save-slug").on("input", handleSaveSlugInput);
+		$(".save-slug").data("auto", 1);
 
 		battle = new Battle();
 
@@ -749,6 +755,227 @@ function interfaceObject(){
 			closeModalWindow();
 
 			self.updateFilterValues($el);
+		});
+	}
+
+	function handleSaveTitleInput(e){
+		var $slug = $(".save-slug");
+
+		if($slug.data("auto") == 1 || $slug.val().trim() == ""){
+			$slug.val(generateSlug($(e.target).val()));
+		}
+	}
+
+	function handleSaveSlugInput(e){
+		var val = $(e.target).val().trim();
+		$(e.target).data("auto", val == "" ? 1 : 0);
+	}
+
+	function generateSlug(str){
+		return str.toLowerCase()
+			.replace(/[^a-z0-9]+/g, "_")
+			.replace(/_+/g, "_")
+			.replace(/^_+|_+$/g, "");
+	}
+
+	function setSaveStatus(message, isError){
+		var $status = $(".custom-rankings-save .save-status");
+		$status.removeClass("error");
+
+		if(isError){
+			$status.addClass("error");
+		}
+
+		$status.html(message);
+	}
+
+	function buildSaveCup(slug, title){
+		var saveCup = JSON.parse(JSON.stringify(cup));
+
+		var cp = cup.league || parseInt($(".league-select option:selected").val());
+		var levelCap = cup.levelCap || parseInt($(".league-select option:selected").attr("level-cap"));
+
+		saveCup.name = slug;
+		saveCup.title = title;
+		saveCup.league = cp;
+		saveCup.levelCap = levelCap;
+		saveCup.overrides = collateOverrides(false);
+
+		return saveCup;
+	}
+
+	function upsertCupInGamemaster(saveCup){
+		var found = false;
+
+		for(var i = 0; i < gm.data.cups.length; i++){
+			if(gm.data.cups[i].name == saveCup.name){
+				gm.data.cups[i] = saveCup;
+				found = true;
+				break;
+			}
+		}
+
+		if(! found){
+			gm.data.cups.push(saveCup);
+		}
+	}
+
+	function getDefaultScenarios(){
+		var scenarios = [];
+
+		for(var i = 0; i < gm.data.rankingScenarios.length; i++){
+			var s = gm.data.rankingScenarios[i];
+			scenarios.push({
+				slug: s.slug,
+				shields: s.shields.slice(),
+				energy: s.energy.slice()
+			});
+		}
+
+		return scenarios;
+	}
+
+	function generateLeagueRankings(saveCup){
+		var cp = saveCup.league;
+
+		setSaveStatus("Generating movesets...");
+
+		ranker.setScenarioOverrides(getDefaultScenarios());
+		ranker.setMoveSelectMode("auto");
+		ranker.rankLoop(cp, saveCup, function(autoResults){
+			var overrides = collateOverrides(autoResults[0]);
+			ranker.setMoveOverrides(cp, saveCup.name, overrides);
+
+			setSaveStatus("Generating category rankings...");
+
+			ranker.setScenarioOverrides(getDefaultScenarios());
+			ranker.setMoveSelectMode("force");
+			ranker.rankLoop(cp, saveCup, function(){
+				setSaveStatus("Category rankings complete. Generating overall rankings...");
+				startOverallGeneration(saveCup);
+			}, autoResults[0]);
+		});
+	}
+
+	function startOverallGeneration(saveCup){
+		var cp = saveCup.league;
+		var overallUrl = webRoot + "rankersandbox.php?cup=" + saveCup.name + "&cp=" + cp + "&autorun=1&headless=1";
+
+		if(overallWindow && ! overallWindow.closed){
+			overallWindow.location = overallUrl;
+		} else{
+			var $iframe = $("#overall-generator");
+
+			if($iframe.length == 0){
+				$iframe = $("<iframe></iframe>");
+				$iframe.attr("id", "overall-generator");
+				$iframe.attr("style", "display:none;");
+				$("body").append($iframe);
+			}
+
+			$iframe.attr("src", overallUrl);
+		}
+
+		pollOverallFile(saveCup);
+	}
+
+	function pollOverallFile(saveCup){
+		var cp = saveCup.league;
+		var fileUrl = webRoot + "data/rankings/" + saveCup.name + "/overall/rankings-" + cp + ".json?v=" + Date.now();
+		var attempts = 0;
+		var maxAttempts = 120; // ~20 minutes at 10s interval
+
+		var interval = setInterval(function(){
+			attempts++;
+
+			$.ajax({
+				url: fileUrl,
+				type: "HEAD",
+				success: function(){
+					clearInterval(interval);
+					setSaveStatus("All rankings generated.");
+					savingLeague = false;
+					$(".save-league").prop("disabled", false);
+				},
+				error: function(){
+					if(attempts >= maxAttempts){
+						clearInterval(interval);
+						setSaveStatus("Overall rankings are still running. You can check the Rankings page in a few minutes.", false);
+						savingLeague = false;
+						$(".save-league").prop("disabled", false);
+					}
+				}
+			});
+		}, 10000);
+	}
+
+	function saveLeague(e){
+		e.preventDefault();
+
+		if(savingLeague){
+			return;
+		}
+
+		var title = $(".save-title").val().trim();
+		var slug = $(".save-slug").val().trim().toLowerCase();
+
+		if(! title){
+			setSaveStatus("Enter a league title.", true);
+			return;
+		}
+
+		if(! slug){
+			setSaveStatus("Enter a league slug.", true);
+			return;
+		}
+
+		if(! /^[a-z0-9_]+$/.test(slug)){
+			setSaveStatus("Slug must be lowercase letters, numbers, and underscores only.", true);
+			return;
+		}
+
+		savingLeague = true;
+		$(".save-league").prop("disabled", true);
+		setSaveStatus("Saving league...");
+
+		// Open a placeholder window immediately to avoid popup blockers
+		if(! overallWindow || overallWindow.closed){
+			overallWindow = window.open("about:blank", "_blank");
+		}
+
+		var saveCup = buildSaveCup(slug, title);
+
+		$.ajax({
+			url: webRoot + "data/custom-cup-save.php",
+			type: "POST",
+			dataType: "json",
+			data: {
+				name: slug,
+				title: title,
+				cp: saveCup.league,
+				levelCap: saveCup.levelCap,
+				cup: JSON.stringify(saveCup)
+			},
+			success: function(){
+				upsertCupInGamemaster(saveCup);
+				generateLeagueRankings(saveCup);
+			},
+			error: function(request, error){
+				console.log("Request: " + JSON.stringify(request));
+				console.log(error);
+
+				var message = "Save failed. Check console for details.";
+				try{
+					var response = JSON.parse(request.responseText);
+					if(response.message){
+						message = response.message;
+					}
+				} catch(e){}
+
+				setSaveStatus(message, true);
+				savingLeague = false;
+				$(".save-league").prop("disabled", false);
+			}
 		});
 	}
 

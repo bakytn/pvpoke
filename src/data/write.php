@@ -5,6 +5,9 @@
 * This really, really, really doesn't belong in production. So watch out.
 */
 
+require_once '../modules/admin-auth.php';
+require_admin_auth();
+
 // Validate that data exists and falls within the allowed parameters
 
 if( (! isset($_POST['data'])) || (! isset($_POST['league'])) || (! isset($_POST['category'])) || (! isset($_POST['cup']))){
@@ -21,6 +24,10 @@ if( (! in_array($_POST['league'], $leagues)) || (! in_array($_POST['category'], 
 	exit("League or category is not valid");
 }
 
+if(! preg_match('/^[a-z0-9_]+$/', $_POST['cup'])){
+	exit("Cup is not valid");
+}
+
 $json = json_decode($_POST['data']);
 
 if($json === null){
@@ -28,6 +35,14 @@ if($json === null){
 }
 
 $filepath = 'rankings/' . $_POST['cup'] . '/' . $_POST['category'] . '/rankings-' . $_POST['league'] . '.json';
+
+// Ensure the target directory exists
+$dir = dirname($filepath);
+if(! is_dir($dir)){
+	if(! mkdir($dir, 0755, true) && ! is_dir($dir)){
+		exit("Could not create directory");
+	}
+}
 
 if(file_put_contents($filepath, $_POST['data']) !== false){
 	echo '{ "status": "Success" }';

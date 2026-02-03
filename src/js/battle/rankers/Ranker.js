@@ -630,9 +630,11 @@ var RankerMaster = (function () {
 
 					console.log("/"+cup.name+"/"+category+"/rankings-"+league+".json");
 
+					var writeUrl = (typeof webRoot !== 'undefined') ? (webRoot + "data/write.php") : "data/write.php";
+
 					$.ajax({
 
-						url : 'data/write.php',
+						url : writeUrl,
 						type : 'POST',
 						data : {
 							'data' : json,

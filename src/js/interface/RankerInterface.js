@@ -44,6 +44,12 @@ var InterfaceMaster = (function () {
 
 				self.loadGetData();
 
+				if(get && get.autorun){
+					setTimeout(function(){
+						startRanker();
+					}, 750);
+				}
+
 			};
 
 			// Given JSON of get parameters, load these settings
@@ -96,7 +102,54 @@ var InterfaceMaster = (function () {
 			// Run simulation
 
 			function startRanker(){
-				ranker.rankLoop(battle.getCP(), battle.getCup());
+				var cp = battle.getCP();
+				var cup = battle.getCup();
+				if(! ranker.setMoveSelectMode){
+					ranker.rankLoop(cp, cup);
+					return;
+				}
+
+				var overallFile = webRoot+"data/rankings/"+cup.name+"/overall/rankings-"+cp+".json?v="+siteVersion;
+
+				function runForce(data){
+					if(ranker.setScenarioOverrides){
+						ranker.setScenarioOverrides(GameMaster.getInstance().data.rankingScenarios.slice());
+					}
+					if(ranker.setMoveSelectMode){
+						ranker.setMoveSelectMode("force");
+					}
+
+					ranker.rankLoop(cp, cup, null, data);
+				}
+
+				function runAutoThenForce(){
+					if(ranker.setScenarioOverrides){
+						ranker.setScenarioOverrides(GameMaster.getInstance().data.rankingScenarios.slice());
+					}
+					if(ranker.setMoveSelectMode){
+						ranker.setMoveSelectMode("auto");
+					}
+
+					ranker.rankLoop(cp, cup, function(autoResults){
+						if(autoResults && autoResults.length > 0){
+							runForce(autoResults[0]);
+						} else{
+							runForce();
+						}
+					});
+				}
+
+				// If no overall rankings exist yet, generate movesets first then run full categories
+				$.ajax({
+					url: overallFile,
+					type: "HEAD",
+					success: function(){
+						runForce();
+					},
+					error: function(){
+						runAutoThenForce();
+					}
+				});
 			}
 		};
 

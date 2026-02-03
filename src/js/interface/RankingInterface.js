@@ -67,6 +67,7 @@ var InterfaceMaster = (function () {
 				$("body").on("click", ".detail-section.similar-pokemon a", jumpToSimilarPokemon);
 				$("body").on("click", ".moveset.fast .move-detail-template", recalculateMoveCounts);
 				$("body").on("click", "button.ranking-compare", addPokemonToCompare);
+				$("body").on("click", ".delete-cup", deleteCup);
 
 				pokeSearch.setBattle(battle);
 
@@ -134,6 +135,8 @@ var InterfaceMaster = (function () {
 				} else{
 					$(".description.link").hide();
 				}
+
+				updateDeleteCupFields();
 
 				// Check ranking details settings to show ranking details in one page or tabs
 
@@ -262,6 +265,65 @@ var InterfaceMaster = (function () {
 						self.completeRankingDisplay();
 					}
 				}, i);
+			}
+
+			function updateDeleteCupFields(){
+				var cupName = battle.getCup().name;
+				$(".delete-cup-slug").val(cupName);
+			}
+
+			function setDeleteStatus(message, isError){
+				var $status = $(".admin-delete-cup .delete-status");
+				$status.removeClass("error");
+
+				if(isError){
+					$status.addClass("error");
+				}
+
+				$status.html(message);
+			}
+
+			function deleteCup(e){
+				e.preventDefault();
+
+				var cupName = battle.getCup().name;
+
+				if(! cupName || cupName == "all"){
+					setDeleteStatus("Select a valid league to delete.", true);
+					return;
+				}
+
+				var confirmDelete = confirm("Delete league '" + cupName + "' and all rankings? This cannot be undone.");
+				if(! confirmDelete){
+					return;
+				}
+
+				setDeleteStatus("Deleting...");
+
+				$.ajax({
+					url: webRoot + "data/custom-cup-delete.php",
+					type: "POST",
+					dataType: "json",
+					data: { name: cupName },
+					success: function(){
+						setDeleteStatus("League deleted.");
+						window.location.href = webRoot + "rankings/";
+					},
+					error: function(request, error){
+						console.log("Request: " + JSON.stringify(request));
+						console.log(error);
+
+						var message = "Delete failed. Check console for details.";
+						try{
+							var response = JSON.parse(request.responseText);
+							if(response.message){
+								message = response.message;
+							}
+						} catch(e){}
+
+						setDeleteStatus(message, true);
+					}
+				});
 			}
 
 			this.displayRankingEntry = function(r, index){

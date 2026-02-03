@@ -176,6 +176,17 @@ require_once 'header.php';
 	<div class="rankings-container clear"></div>
 </div>
 
+<div class="section white admin-delete-cup">
+	<h3>Delete League (Admin)</h3>
+	<p>Deletes this league and all of its rankings. Requires admin authentication.</p>
+	<div class="field-container">
+		<label>League Slug</label>
+		<input class="delete-cup-slug" readonly />
+	</div>
+	<button class="button delete-cup">Delete League</button>
+	<div class="delete-status"></div>
+</div>
+
 <a href="#" class="button download-csv">Export to CSV</a>
 
 <?php require 'modules/ads/body-728.php'; ?>
