@@ -1,5 +1,21 @@
 <?php
-$WEB_ROOT = '/pvpoke/src/';
+$WEB_ROOT = getenv('PVPOKE_WEB_ROOT');
+if(($WEB_ROOT === false) || ($WEB_ROOT === '')){
+	$scriptName = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
+	$base = str_replace('\\', '/', dirname($scriptName));
+	$base = rtrim($base, '/');
+	if(($base === '') || ($base === '.')){
+		$WEB_ROOT = '/';
+	} else{
+		$WEB_ROOT = $base . '/';
+	}
+} else{
+	$WEB_ROOT = '/' . ltrim($WEB_ROOT, '/');
+	$WEB_ROOT = rtrim($WEB_ROOT, '/') . '/';
+	if($WEB_ROOT === '//'){
+		$WEB_ROOT = '/';
+	}
+}
 $WEB_HOST = 'http://' . $_SERVER['HTTP_HOST'] . $WEB_ROOT;
 $UA = '';
 $GOOGLE_AD_CLIENT = '';

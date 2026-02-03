@@ -2,8 +2,6 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /pvpoke/src/
-
 	# Serve existing files/directories as-is
 	RewriteCond %{REQUEST_FILENAME} -f [OR]
 	RewriteCond %{REQUEST_FILENAME} -d
@@ -24,6 +22,10 @@ Options -Indexes
 	RewriteRule ^battle/?$ battle.php [L,QSA]
 	RewriteRule ^battle/(multi|matrix)/?$ battle.php?mode=$1 [L,QSA]
 	RewriteRule ^battle/multi/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)(/.*)?$ battle.php?mode=multi&cp=$1&cup=$2&p1=$3&s=$4&m1=$5&cms=$6 [L,QSA]
+	RewriteRule ^battle/sandbox/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ battle.php?cp=$1&p1=$2&p2=$3&s=$4&m1=$5&m2=$6&h=$7&e=$8&a=$9&sandbox=1 [L,QSA]
+	RewriteRule ^battle/sandbox/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ battle.php?cp=$1&p1=$2&p2=$3&s=$4&m1=$5&m2=$6&a=$7&sandbox=1 [L,QSA]
+	RewriteRule ^battle/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ battle.php?cp=$1&p1=$2&p2=$3&s=$4&m1=$5&m2=$6&h=$7&e=$8 [L,QSA]
+	RewriteRule ^battle/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ battle.php?cp=$1&p1=$2&p2=$3&s=$4&m1=$5&m2=$6 [L,QSA]
 
 	# Team Builder
 	RewriteRule ^team-builder/?$ team-builder.php [L,QSA]
