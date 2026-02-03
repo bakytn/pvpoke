@@ -1,6 +1,4 @@
 <?php
-require_once '../modules/admin-auth.php';
-require_admin_auth();
 
 header('Content-Type: application/json');
 

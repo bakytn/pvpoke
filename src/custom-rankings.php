@@ -266,8 +266,8 @@ require_once 'header.php'; ?>
 </div>
 
 <div class="section white custom-rankings-save">
-	<h3>Save as League (Admin)</h3>
-	<p>Save this custom cup as a persistent league and generate rankings. Requires admin authentication.</p>
+	<h3>Save as League</h3>
+	<p>Save this custom cup as a persistent league and generate rankings.</p>
 
 	<div class="field-container">
 		<label>League Title</label>

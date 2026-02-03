@@ -177,8 +177,8 @@ require_once 'header.php';
 </div>
 
 <div class="section white admin-delete-cup">
-	<h3>Delete League (Admin)</h3>
-	<p>Deletes this league and all of its rankings. Requires admin authentication.</p>
+	<h3>Delete League</h3>
+	<p>Deletes this league and all of its rankings.</p>
 	<div class="field-container">
 		<label>League Slug</label>
 		<input class="delete-cup-slug" readonly />

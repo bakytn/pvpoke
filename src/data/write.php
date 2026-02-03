@@ -2,11 +2,7 @@
 
 /*
 * Given JSON data, write to a file.
-* This really, really, really doesn't belong in production. So watch out.
 */
-
-require_once '../modules/admin-auth.php';
-require_admin_auth();
 
 // Validate that data exists and falls within the allowed parameters
 
