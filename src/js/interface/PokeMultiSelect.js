@@ -356,6 +356,37 @@ function PokeMultiSelect(element){
 	this.updateListDisplay = function(){
 
 		var context = interface.context;
+		var megaLimitNoticeShown = false;
+
+		if((context == "team") && battle.getCup() && battle.getCup().megaLimit){
+			var megaLimit = battle.getCup().megaLimit;
+			var megaCount = 0;
+			var removedMegas = 0;
+			var filteredList = [];
+
+			for(var i = 0; i < pokemonList.length; i++){
+				if(pokemonList[i].hasTag && pokemonList[i].hasTag("mega")){
+					if(megaCount < megaLimit){
+						megaCount++;
+						filteredList.push(pokemonList[i]);
+					} else{
+						removedMegas++;
+					}
+				} else{
+					filteredList.push(pokemonList[i]);
+				}
+			}
+
+			if(removedMegas > 0){
+				pokemonList = filteredList;
+
+				if(! megaLimitNoticeShown){
+					var limitLabel = (megaLimit == 1) ? "1 Mega Pokemon" : (megaLimit + " Mega Pokemon");
+					modalWindow("Mega Limit", $("<p>This cup allows only "+limitLabel+". Extra Mega Pokemon were removed.</p>"));
+					megaLimitNoticeShown = true;
+				}
+			}
+		}
 
 		$el.find(".rankings-container").html('');
 
