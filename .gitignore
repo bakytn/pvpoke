@@ -1,2 +1,15 @@
+.DS_Store
+.DS_Store?
+rankings/.DS_Store
+rankings/attackers/.DS_Store
+rankings/chargers/.DS_Store
+rankings/closers/.DS_Store
+rankings/consistency/.DS_Store
+rankings/leads/.DS_Store
+rankings/overall/.DS_Store
+rankings/switches/.DS_Store
+cup/.DS_Store
+format/.DS_Store
+groups/.DS_Store
 src/modules/config.php
 src/articles/article-assets
