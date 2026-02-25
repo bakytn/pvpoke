@@ -1463,7 +1463,7 @@
         "name": "Heat Wave",
         "type": "fire",
         "power": 75,
-        "energy": 45,
+        "energy": 50,
         "energyGain": 0,
         "cooldown": 500,
         "archetype": "High Energy",
