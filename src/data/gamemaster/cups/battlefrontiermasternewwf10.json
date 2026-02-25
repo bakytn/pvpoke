@@ -13,19 +13,19 @@
         "floor": 0,
         "tiers": [{
             "points": 5,
-            "pokemon": ["dragonite_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","zacian_crowned_sword","zamazenta_crowned_shield"]
+            "pokemon": ["charizard_mega_y","dragonite_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","swampert_mega","zacian_crowned_sword","zamazenta_crowned_shield"]
         }, {
             "points": 4,
-            "pokemon":["aggron_mega","charizard_mega_y","gardevoir_mega","scizor_mega","swampert_mega","zygarde_complete"]
+            "pokemon":["aggron_mega","gallade_mega","gardevoir_mega","heracross_mega","scizor_mega","zygarde_complete"]
         }, {
             "points": 3,
-            "pokemon": ["blastoise_mega","blaziken_mega","dialga_origin","gallade_mega","gengar_mega","heracross_mega","landorus_therian","lucario_mega","lugia","lunala","meloetta_aria","metagross","palkia","reshiram","solgaleo","steelix_mega","xerneas","yveltal"]
+            "pokemon": ["blastoise_mega","blaziken_mega","dialga_origin","gengar_mega","groudon","keldeo_ordinary","keldeo_resolute","kyogre","landorus_therian","lucario_mega","lugia","lunala","marshadow","meloetta_aria","metagross","reshiram","solgaleo","steelix_mega","xerneas","yveltal"]
         }, {
             "points": 2,
-            "pokemon": ["dialga","florges","giratina_origin","groudon","ho_oh","keldeo_ordinary","keldeo_resolute","kyogre","kyurem","mewtwo","necrozma_dawn_wings","necrozma_dusk_mane","primarina","rhyperior","urshifu_rapid_strike","urshifu_single_strike","zacian_hero","zekrom"]
+            "pokemon": ["dialga","florges","giratina_origin","ho_oh","kyurem","mewtwo","necrozma_dawn_wings","necrozma_dusk_mane","palkia","primarina","rhyperior","urshifu_rapid_strike","urshifu_single_strike","zacian_hero","zekrom"]
         }, {
             "points": 1,
-            "pokemon": ["charizard_mega_x","genesect","genesect_burn","genesect_chill","genesect_douse","genesect_shock","giratina_altered","heatran","kangaskhan_mega","latias","latios","marshadow","melmetal","moltres_galarian","slowbro_mega","tapu_lele","tyranitar","zamazenta_hero","zarude"]
+            "pokemon": ["charizard_mega_x","garchomp","genesect","genesect_burn","genesect_chill","genesect_douse","genesect_shock","giratina_altered","gyarados","heatran","kangaskhan_mega","latias","latios","melmetal","moltres","moltres_galarian","slowbro_mega","tapu_lele","tyranitar","volcanion","zamazenta_hero","zarude"]
         }]
     }
 }
