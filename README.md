@@ -1,6 +1,15 @@
 # !!! DISCLAIMER !!!
 This repository is derived from https://github.com/pvpoke/pvpoke. It is intentionally published as an independent repository (not a GitHub fork) to avoid GitHub’s fork attribution badge on the repo page.
 
+## Commands
+```
+jq -r '.moves[] | select(.moveId=="LOW_KICK" or .moveId=="NIGHT_SLASH") | [.moveId,.power,.energy,.energyGain,.buffs] | @json' /Users/<path>/pvpoke/src/data/gamemaster.min.json
+```
+
+```
+docker run --rm -v "$PWD":/app -w /app/src/data php:8.3-cli php compile.php
+```
+
 # PvPoke
 
 [PvPoke.com](https://pvpoke.com) is a resource for Pokemon GO PvP that includes a battle simulator, rankings, and team building. The project’s goal is to provide tools and insights to help players build their teams, and foster the game’s community spirit by making all of the underlying code public. I hope this project can inspire new tools or benefit the existing ones that continue to enhance our enjoyment of the game.
