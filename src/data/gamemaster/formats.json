@@ -70,6 +70,24 @@
         "showMeta": true
     },
     {
+        "title": "Battle Frontier (Master) (Waterfall 11/9)",
+        "cup": "battlefrontiermasternewwf9",
+        "cp": 10000,
+        "meta": "battlefrontiermasternewwf9",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+    {
+        "title": "Battle Frontier (Master) (Waterfall 11/10)",
+        "cup": "battlefrontiermasternewwf10",
+        "cp": 10000,
+        "meta": "battlefrontiermasternewwf10",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+    {
         "title": "Devon Amor Cup",
         "cup": "amor",
         "cp": 1500,

@@ -1,0 +1,31 @@
+{
+    "name": "battlefrontiermasternewwf10",
+    "title": "Battle Frontier (Master League) (New) (Waterfall 11/10)",
+    "include": [],
+    "exclude": [{
+        "filterType": "id",
+        "values": ["garchomp_mega","groudon_primal","gyarados_mega","kyogre_primal","latias_mega","latios_mega","metagross_mega","salamence_mega","tyranitar_mega"]
+    }],
+    "restrictedPicks": 1,
+    "restrictedPokemon": ["dragonite_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","zacian_crowned_sword","zamazenta_crowned_shield"],
+    "tierRules": {
+        "max": 11,
+        "floor": 0,
+        "tiers": [{
+            "points": 5,
+            "pokemon": ["dragonite_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","zacian_crowned_sword","zamazenta_crowned_shield"]
+        }, {
+            "points": 4,
+            "pokemon":["aggron_mega","charizard_mega_y","gardevoir_mega","scizor_mega","swampert_mega","zygarde_complete"]
+        }, {
+            "points": 3,
+            "pokemon": ["blastoise_mega","blaziken_mega","dialga_origin","gallade_mega","gengar_mega","heracross_mega","landorus_therian","lucario_mega","lugia","lunala","meloetta_aria","metagross","palkia","reshiram","solgaleo","steelix_mega","xerneas","yveltal"]
+        }, {
+            "points": 2,
+            "pokemon": ["dialga","florges","giratina_origin","groudon","ho_oh","keldeo_ordinary","keldeo_resolute","kyogre","kyurem","mewtwo","necrozma_dawn_wings","necrozma_dusk_mane","primarina","rhyperior","urshifu_rapid_strike","urshifu_single_strike","zacian_hero","zekrom"]
+        }, {
+            "points": 1,
+            "pokemon": ["charizard_mega_x","genesect","genesect_burn","genesect_chill","genesect_douse","genesect_shock","giratina_altered","heatran","kangaskhan_mega","latias","latios","marshadow","melmetal","moltres_galarian","slowbro_mega","tapu_lele","tyranitar","zamazenta_hero","zarude"]
+        }]
+    }
+}
