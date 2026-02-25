@@ -13,3 +13,4 @@ format/.DS_Store
 groups/.DS_Store
 src/modules/config.php
 src/articles/article-assets
+src/modules/config.php
