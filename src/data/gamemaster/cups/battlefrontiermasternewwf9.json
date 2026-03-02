@@ -13,10 +13,10 @@
         "floor": 0,
         "tiers": [{
             "points": 5,
-            "pokemon": ["charizard_mega_y","dragonite_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","swampert_mega","zacian_crowned_sword","zamazenta_crowned_shield"]
+            "pokemon": ["charizard_mega_y","dragonite_mega","heracross_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","swampert_mega","zacian_crowned_sword","zamazenta_crowned_shield"]
         }, {
             "points": 4,
-            "pokemon":["aggron_mega","gallade_mega","gardevoir_mega","heracross_mega","scizor_mega","zygarde_complete"]
+            "pokemon":["aggron_mega","gallade_mega","gardevoir_mega","scizor_mega","zygarde_complete"]
         }, {
             "points": 3,
             "pokemon": ["blastoise_mega","blaziken_mega","dialga_origin","gengar_mega","groudon","keldeo_ordinary","keldeo_resolute","kyogre","landorus_therian","lucario_mega","lugia","lunala","marshadow","meloetta_aria","metagross","reshiram","solgaleo","steelix_mega","xerneas","yveltal"]

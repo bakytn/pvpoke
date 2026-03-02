@@ -23,6 +23,7 @@
             "points": 5,
             "pokemon": [
                 "rayquaza_mega",
+                "heracross_mega",
                 "zacian_crowned_sword",
                 "zamazenta_crowned_shield",
                 "palkia_origin",
@@ -45,7 +46,6 @@
             "pokemon": [
                 "blastoise_mega",
                 "gengar_mega",
-                "heracross_mega",
                 "steelix_mega",
                 "lugia",
                 "blaziken_mega",
