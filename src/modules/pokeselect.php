@@ -107,6 +107,7 @@
 						<div class="check" value="41"><span></span>41</div>
 						<div class="check" value="50"><span></span>50</div>
 						<div class="check" value="51"><span></span>51</div>
+						<div class="check" value="52"><span></span>52</div>
 					</div>
 					<div class="check auto-level on"><span></span>Auto level</div>
 					<button class="maximize-stats">Maximize</button>

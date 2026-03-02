@@ -78,6 +78,7 @@
 				<option value="41">Buddy Level Cap (41)</option>
 				<option value="50">New Level Cap (50)</option>
 				<option value="51">New Buddy Level Cap (51)</option>
+				<option value="52">Mega Level Cap (52)</option>
 			</select>
 			<div class="check show-ivs"><span></span>Show level &amp; IV's</div>
 

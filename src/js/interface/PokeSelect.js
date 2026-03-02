@@ -509,6 +509,9 @@ function PokeSelect(element, i){
 	this.generateIVTableResult = function(poke){
 		var leagues = [1500, 2500];
 		var levelCaps = [50, 51];
+		if(selectedPokemon && selectedPokemon.baseLevelCap >= 52){
+			levelCaps.push(52);
+		}
 		var statProductMin = [1500, 3500];
 
 		var $result = $(".modal .iv-rank-result.template").first().clone().removeClass("template hide");

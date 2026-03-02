@@ -220,6 +220,11 @@
         "chargedMoves": ["CRUNCH", "EARTHQUAKE"]
     },
     {
+        "speciesId": "dragonite_mega",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": ["THUNDER_PUNCH", "DRAGON_CLAW"]
+    },
+    {
         "speciesId": "metagross_mega",
         "fastMove": "SHADOW_CLAW",
         "chargedMoves": ["METEOR_MASH", "EARTHQUAKE"]
