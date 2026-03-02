@@ -3,9 +3,6 @@
 <!--<div class="banner-link">Take the <a href="https://forms.gle/jUVrKMjGRkYSzui59" target="_blank">PvPoke.com feedback survey</a> and help improve the website!</div>-->
 
 <div class="section home white">
-
-	<p class="small">Welcome to PvPoke.com, an open-source tool for Pokemon GO PvP and GO Battle League!</p>
-
 	<a href="<?php echo $WEB_ROOT; ?>battle/" class="button">
 		<span class="btn-content-wrap">
 			<span class="btn-icon btn-icon-battle"></span>
@@ -35,69 +32,6 @@
 			</span>
 		</span>
 	</a>
-
-	<a href="<?php echo $WEB_ROOT; ?>train/" class="button">
-		<span class="btn-content-wrap">
-			<span class="btn-icon btn-icon-train"></span>
-			<span class="btn-label">
-				<h2>Train</h2>
-				<p>Play real-time battle simulations against a CPU opponent.</p>
-			</span>
-		</span>
-	</a>
-
-
-	<a href="<?php echo $WEB_ROOT; ?>contact/" class="button">
-		<span class="btn-content-wrap">
-			<span class="btn-icon btn-icon-heart"></span>
-			<span class="btn-label">
-				<h2>Contact</h2>
-				<p>Get in touch, report a technical issue, or lend your support through Patreon.</p>
-			</span>
-		</span>
-	</a>
-
-	<h3>Pokemon Scarlet &amp; Violet</h3>
-
-	<a name="news"></a>
-
-	<a href="<?php echo $WEB_ROOT; ?>tera/" class="button tera-button">
-		<span class="btn-content-wrap">
-			<span class="btn-icon btn-icon-tera"></span>
-			<span class="btn-label">
-				<h2>Tera Raid Counter Calculator</h2>
-				<p>Take on Tera Raid bosses with this tool to look up Pokemon with the best type matchups.</p>
-			</span>
-		</span>
-	</a>
-
-	<?php require 'modules/ads/body-728.php'; ?>
-
-	<!--Update section for updates-->
-	<div class="flex new-header">
-		<h3>What's New</h3>
-		<a href="<?php echo $WEB_ROOT; ?>rss/" target="_blank" class="feed-subscribe">RSS Feed</a>
-	</div>
-
-	<div class="feed-container expanded">
-		<div class="feed"></div>
-
-		<div class="news-item template hide">
-			<h4></h4>
-			<div class="news-content"></div>
-			<div class="news-info">
-				<div class="news-date"></div>
-				<a href="#"><div class="link-text">pvpoke.com</div><div>&rarr;</div></a>
-			</div>
-		</div>
-
-		<button class="feed-expand"></button>
-	</div>
-
-	<?php if($_SETTINGS->ads == 1) : ?>
-		<span data-ccpa-link="1"></span>
-	<?php endif; ?>
-
 </div>
 
 <?php
