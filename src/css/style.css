@@ -96,9 +96,6 @@ header .menu a {
 header .menu a.twitter {
   color: #01bbff !important;
 }
-header .menu a.tera {
-  color: #d250a3 !important;
-}
 header .menu > a.selected, header .menu .parent-menu > a.selected {
   background-color: #c4def5;
   -webkit-transition: background-color 0s ease-out 0s;
@@ -370,9 +367,6 @@ b {
 .home a.button .btn-icon.btn-icon-heart {
   background-image: url("../img/themes/sunflower/nav-heart-white.png");
 }
-.home a.button .btn-icon.btn-icon-tera {
-  background-image: url("../img/themes/sunflower/nav-tera-white.png");
-}
 .home a.button h2 {
   margin: 0;
   font-size: 24px;
@@ -384,15 +378,6 @@ b {
 .home a.button p {
   margin: 0;
   font-size: 14px;
-}
-.home a.button.tera-button {
-  background-image: url("../img/tera-button-bg.jpg") !important;
-  background-size: cover !important;
-  background-repeat: no-repeat;
-  color: #f9fdff;
-}
-.home a.button.tera-button h2 {
-  font-size: 24px;
 }
 .home a.button.discord {
   background: #5567e3 !important;
@@ -484,14 +469,6 @@ b {
   min-height: 18px;
 }
 .icon-unite span {
-  display: none;
-}
-
-.icon-tera {
-  background-image: url("../img/favicon_tera.png");
-  min-height: 18px;
-}
-.icon-tera span {
   display: none;
 }
 

@@ -192,12 +192,11 @@ header{
 			font-weight:bold;
 			border-radius: 20px;
 
-			@include transition(background-color, 0.2s, ease-out, 0s);
+				@include transition(background-color, 0.2s, ease-out, 0s);
 
 
-			&.twitter{ color: #01bbff !important; }
-			&.tera{ color: #d250a3 !important; }
-		}
+				&.twitter{ color: #01bbff !important; }
+			}
 
 		& > a.selected, .parent-menu > a.selected{
 			background-color: $color-sky-blue;
@@ -499,14 +498,10 @@ b{
 				background-image: url('../img/themes/sunflower/nav-train-white.png');
 			}
 
-			&.btn-icon-heart{
-				background-image: url('../img/themes/sunflower/nav-heart-white.png');
+				&.btn-icon-heart{
+					background-image: url('../img/themes/sunflower/nav-heart-white.png');
+				}
 			}
-
-			&.btn-icon-tera{
-				background-image: url('../img/themes/sunflower/nav-tera-white.png');
-			}
-		}
 
 		h2{
 			margin:0;
@@ -523,20 +518,9 @@ b{
 			font-size:14px;
 		}
 
-		&.tera-button{
-			background-image: url('../img/tera-button-bg.jpg') !important;
-			background-size: cover !important;
-			background-repeat: no-repeat;
-			color: $color-off-white;
-
-			h2{
-				font-size: 24px;
-			}
-		}
-
-		&.discord{
-			background: #5567e3 !important;
-			color: #fff;
+			&.discord{
+				background: #5567e3 !important;
+				color: #fff;
 
 			h2{
 				color: #fff;
@@ -632,13 +616,6 @@ b{
 
 .icon-unite{
 	background-image:url('../img/favicon-unite.png');
-	min-height:18px;
-
-	span{ display:none; }
-}
-
-.icon-tera{
-	background-image:url('../img/favicon_tera.png');
 	min-height:18px;
 
 	span{ display:none; }

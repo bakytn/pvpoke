@@ -43,6 +43,9 @@ Options -Indexes
 	# Home
 	RewriteRule ^$ index.php [L,QSA]
 
+	# Legacy Tera pages
+	RewriteRule ^tera(?:/.*)?$ index.php [R=301,L]
+
 	# Rankings
 	RewriteRule ^rankings/?$ rankings.php [L,QSA]
 	RewriteRule ^rankings/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ rankings.php?cup=$1&cp=$2&cat=$3&p=$4 [L,QSA]
