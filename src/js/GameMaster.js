@@ -18,26 +18,301 @@ var GameMaster = (function () {
 		object.pokeSelectList = [];
 		object.moveMap = {};
 
-		object.originalData = {};
+			object.originalData = {};
+			object.gmCacheSchemaVersion = 1;
+			object.gmCacheHardMaxMs = 30 * 24 * 60 * 60 * 1000; // 30 days hard max
+			object.gmCachePrefix = "pvpoke-gm-cache-v" + object.gmCacheSchemaVersion + "-";
+			object.gmForceRefreshSessionKey = "pvpoke-gm-force-refresh";
+			object.gmVersionCheckIntervalMs = 12 * 60 * 60 * 1000; // Check at most every 12h
+			object.gmVersionCheckKey = "pvpoke-gm-version-check";
+			object.gmUpdateNoticeDismissKey = "pvpoke-gm-update-dismiss";
+			object.gmVersionEndpoint = webRoot+"data/version.php";
+			object.gmUpdateBannerId = "gm-update-banner";
 
-		var gmVersion = "gamemaster";
+			var gmVersion = "gamemaster";
+			var forceRefresh = false;
 
-		// By default, load the minified version
-		if((gmVersion == "gamemaster")&&(host.indexOf("localhost") == -1)){
-			gmVersion = "gamemaster.min";
-		}
+			// Local dev uses randomized siteVersion; keep cache key stable there.
+			object.useVersionedCacheKey = ! ((host.indexOf("localhost") > -1) || (webRoot.indexOf("src") > -1));
 
-		console.log("loading gamemaster");
+			// By default, load the minified version
+			if((gmVersion == "gamemaster")&&(host.indexOf("localhost") == -1)){
+				gmVersion = "gamemaster.min";
+			}
 
-		$.ajax({
-			dataType: "json",
-			url: webRoot+"data/"+gmVersion+".json?v="+siteVersion,
-			mimeType: "application/json",
-			error: function(request, error) {
-				console.log("Request: " + JSON.stringify(request));
-				console.log(error);
-			},
-			success: function( data ) {
+			console.log("loading gamemaster");
+
+			if(get && (String(get.refreshData) === "1" || String(get.refreshData).toLowerCase() === "true")){
+				forceRefresh = true;
+			}
+
+			if(window.sessionStorage){
+				try{
+					forceRefresh = forceRefresh || (window.sessionStorage.getItem(object.gmForceRefreshSessionKey) == "1");
+					window.sessionStorage.removeItem(object.gmForceRefreshSessionKey);
+				} catch(e){
+					console.warn("Could not read refresh session key", e);
+				}
+			}
+
+			// Remove expired or malformed gamemaster cache entries
+			object.pruneGameMasterCache = function(){
+				if(! window.localStorage){
+					return;
+				}
+
+				var now = Date.now();
+				var keysToDelete = [];
+				var i = 0;
+
+				while(window.localStorage.key(i) !== null){
+					var key = window.localStorage.key(i);
+
+					if(key && key.indexOf(object.gmCachePrefix) === 0){
+						// Clean up legacy version-suffixed keys in local/dev.
+						if((! object.useVersionedCacheKey) && /-\d+\.\d+\.\d+$/.test(key)){
+							keysToDelete.push(key);
+							i++;
+							continue;
+						}
+
+						try{
+							var content = window.localStorage.getItem(key);
+							var cacheObj = JSON.parse(content);
+
+							var savedAt = parseInt(cacheObj.savedAt);
+
+							if((! cacheObj) || (! cacheObj.savedAt) || (! cacheObj.data) || isNaN(savedAt)){
+								keysToDelete.push(key);
+							} else if(now - savedAt > object.gmCacheHardMaxMs){
+								keysToDelete.push(key);
+							}
+						} catch(e){
+							keysToDelete.push(key);
+						}
+					}
+
+					i++;
+				}
+
+				for(i = 0; i < keysToDelete.length; i++){
+					window.localStorage.removeItem(keysToDelete[i]);
+				}
+			}
+
+			object.getGameMasterCacheKey = function(id){
+				if(object.useVersionedCacheKey){
+					return object.gmCachePrefix + id + "-" + siteVersion;
+				}
+
+				return object.gmCachePrefix + id;
+			}
+
+			object.getCachedGameMasterData = function(id, bypassCache){
+				if(bypassCache || (! window.localStorage)){
+					return null;
+				}
+
+				var cacheKey = object.getGameMasterCacheKey(id);
+				var content = window.localStorage.getItem(cacheKey);
+
+				if(! content){
+					return null;
+				}
+
+				try{
+					var cacheObj = JSON.parse(content);
+					var savedAt = parseInt(cacheObj.savedAt);
+
+					if(isNaN(savedAt)){
+						window.localStorage.removeItem(cacheKey);
+						return null;
+					}
+
+					var age = Date.now() - savedAt;
+
+					if(age > object.gmCacheHardMaxMs){
+						window.localStorage.removeItem(cacheKey);
+						return null;
+					}
+
+					return cacheObj.data || null;
+				} catch(e){
+					window.localStorage.removeItem(cacheKey);
+					return null;
+				}
+			}
+
+			object.saveGameMasterCache = function(id, data){
+				if(! window.localStorage){
+					return;
+				}
+
+				var cacheKey = object.getGameMasterCacheKey(id);
+
+				try{
+					var payload = {
+						id: id,
+						savedAt: Date.now(),
+						data: data
+					};
+
+					window.localStorage.setItem(cacheKey, JSON.stringify(payload));
+				} catch(e){
+					console.warn("Could not save gamemaster cache", e);
+				}
+			}
+
+				object.loadGameMasterData = function(id, callback, bypassCache){
+					var data = object.getCachedGameMasterData(id, bypassCache);
+
+					if(data){
+						console.log("gamemaster loaded from localStorage");
+						// Defer callback so singleton assignment can complete before interface init.
+						setTimeout(function(){
+							callback(data);
+						}, 0);
+						return;
+					}
+
+				var requestUrl = webRoot+"data/"+id+".json?v="+siteVersion;
+
+				if(bypassCache){
+					requestUrl += "&refresh=" + Date.now();
+				}
+
+				$.ajax({
+					dataType: "json",
+					url: requestUrl,
+					cache: ! bypassCache,
+					mimeType: "application/json",
+					error: function(request, error) {
+						console.log("Request: " + JSON.stringify(request));
+						console.log(error);
+					},
+					success: function(data){
+						object.saveGameMasterCache(id, data);
+						callback(data);
+					}
+				});
+			}
+
+			object.getVersionCheckKey = function(){
+				return object.gmVersionCheckKey + "-" + settings.gamemaster;
+			}
+
+			object.getUpdateDismissKey = function(){
+				return object.gmUpdateNoticeDismissKey + "-" + settings.gamemaster;
+			}
+
+			object.shouldRunVersionCheck = function(force){
+				if(force){
+					return true;
+				}
+
+				try{
+					var lastCheck = parseInt(window.localStorage.getItem(object.getVersionCheckKey()));
+
+					if(isNaN(lastCheck)){
+						return true;
+					}
+
+					return (Date.now() - lastCheck) > object.gmVersionCheckIntervalMs;
+				} catch(e){
+					return true;
+				}
+			}
+
+			object.markVersionCheckTime = function(){
+				try{
+					window.localStorage.setItem(object.getVersionCheckKey(), String(Date.now()));
+				} catch(e){
+					console.warn("Could not store version check timestamp", e);
+				}
+			}
+
+			object.forceRefreshGameMasterData = function(){
+				if(typeof window.refreshGameMasterData === "function"){
+					window.refreshGameMasterData();
+					return;
+				}
+
+				if(window.sessionStorage){
+					try{
+						window.sessionStorage.setItem(object.gmForceRefreshSessionKey, "1");
+					} catch(e){}
+				}
+
+				window.location.reload();
+			}
+
+			object.showGameMasterUpdateBanner = function(remoteTimestamp){
+				var dismissKey = object.getUpdateDismissKey();
+
+				try{
+					var dismissedVersion = window.localStorage.getItem(dismissKey);
+
+					if(dismissedVersion && dismissedVersion == String(remoteTimestamp)){
+						return;
+					}
+				} catch(e){}
+
+				if($("#"+object.gmUpdateBannerId).length > 0){
+					return;
+				}
+
+				var $banner = $("<div id=\""+object.gmUpdateBannerId+"\" class=\"game-data-update-banner\">New game data is available. <a href=\"#\" class=\"refresh-now\">Refresh now</a> or <a href=\"#\" class=\"dismiss\">dismiss</a>.</div>");
+				$("#main").prepend($banner);
+
+				$banner.find("a.refresh-now").click(function(e){
+					e.preventDefault();
+					object.forceRefreshGameMasterData();
+				});
+
+				$banner.find("a.dismiss").click(function(e){
+					e.preventDefault();
+
+					try{
+						window.localStorage.setItem(dismissKey, String(remoteTimestamp));
+					} catch(err){}
+
+					$banner.remove();
+				});
+			}
+
+			object.checkForGameMasterUpdate = function(force){
+				if(settings.gamemaster != "gamemaster"){
+					return;
+				}
+
+				if(! object.shouldRunVersionCheck(force)){
+					return;
+				}
+
+				object.markVersionCheckTime();
+
+				$.ajax({
+					dataType: "json",
+					url: object.gmVersionEndpoint + "?v=" + siteVersion + "&t=" + Date.now(),
+					cache: false,
+					mimeType: "application/json",
+					success: function(meta){
+						var remoteTimestamp = meta?.gamemasterTimestamp;
+						var localTimestamp = object.data?.timestamp;
+
+						if(remoteTimestamp && localTimestamp && (remoteTimestamp != localTimestamp)){
+							object.showGameMasterUpdateBanner(remoteTimestamp);
+						}
+					},
+					error: function(request, error){
+						console.warn("Could not check for gamemaster updates", error);
+					}
+				});
+			}
+
+			object.pruneGameMasterCache();
+
+			var onGameMasterLoaded = function(data){
 				object.data = data;
 				object.originalData = {...object.data}; // Soft copy original data for custom gamemaster comparison
 
@@ -76,6 +351,18 @@ var GameMaster = (function () {
 
 					if(typeof customRankingInterface !== 'undefined'){
 						customRankingInterface.init(object);
+					}
+
+					setTimeout(function(){
+						object.checkForGameMasterUpdate(false);
+					}, 1000);
+
+					if(typeof document !== "undefined"){
+						document.addEventListener("visibilitychange", function(){
+							if(document.visibilityState === "visible"){
+								object.checkForGameMasterUpdate(false);
+							}
+						});
 					}
 				} else{
 					// Load custom gamemaster from local storage
@@ -121,7 +408,8 @@ var GameMaster = (function () {
 
 				}
 			}
-		});
+
+			object.loadGameMasterData(gmVersion, onGameMasterLoaded, forceRefresh);
 
 		// Load the JSON of a specific gamemaster file into the object, default or custom
 		object.loadCustomGameMaster = function(id, callback){
@@ -130,18 +418,10 @@ var GameMaster = (function () {
 			let customData = {};
 
 			// By default, load the minified version
-			if(id == "gamemaster"){
-				// Load default gamemaster
+				if(id == "gamemaster"){
+					// Load default gamemaster
 
-				$.ajax({
-					dataType: "json",
-					url: webRoot+"data/gamemaster.min.json?v="+siteVersion,
-					mimeType: "application/json",
-					error: function(request, error) {
-						console.log("Request: " + JSON.stringify(request));
-						console.log(error);
-					},
-					success: function( data ) {
+					object.loadGameMasterData("gamemaster.min", function(data){
 						customData = {
 							id: "custom_gamemaster",
 							title: "Custom Gamemaster",
@@ -151,9 +431,8 @@ var GameMaster = (function () {
 						};
 
 						callback(customData);
-					}
-				});
-			} else{
+					}, false);
+				} else{
 				// Load custom gamemaster from local storage
 				let content = window.localStorage.getItem(id);
 

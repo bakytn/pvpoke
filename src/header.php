@@ -300,7 +300,7 @@ if(! isset($OG_IMAGE)){
 								<a href="<?php echo $WEB_ROOT; ?>articles/">Articles</a>
 								<a href="<?php echo $WEB_ROOT; ?>settings/">Settings</a>
 								<a class="icon-heart" href="<?php echo $WEB_ROOT; ?>contact/">Contact</a>
-								<a class="tera" href="<?php echo $WEB_ROOT; ?>tera/">Tera Raid Counters</a>
+								<a class="refresh-game-data" href="#">Refresh game data</a>
 								<div class="latest-section mobile">
 									<h4>Latest <a href="<?php echo $WEB_ROOT; ?>#news"></a></h4>
 									<a class="latest-link" href="#"></a>

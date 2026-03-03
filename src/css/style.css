@@ -212,6 +212,22 @@ header .hamburger .meat {
   color: #f9fdff;
 }
 
+.game-data-update-banner {
+  background: #2c6a8f;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #f9fdff;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  text-align: center;
+  position: relative;
+  top: -5px;
+}
+.game-data-update-banner a {
+  color: #f9fdff;
+  text-decoration: underline;
+}
+
 footer {
   max-width: 800px;
   position: relative;

@@ -82,6 +82,46 @@
 			$("header .menu").slideToggle(125);
 		});
 
+		window.refreshGameMasterData = function(){
+			var cachePrefix = "pvpoke-gm-";
+			var sessionRefreshKey = "pvpoke-gm-force-refresh";
+			var keysToDelete = [];
+			var i = 0;
+
+			try{
+				while(window.localStorage.key(i) !== null){
+					var key = window.localStorage.key(i);
+
+					if(key && key.indexOf(cachePrefix) === 0){
+						keysToDelete.push(key);
+					}
+
+					i++;
+				}
+
+				for(i = 0; i < keysToDelete.length; i++){
+					window.localStorage.removeItem(keysToDelete[i]);
+				}
+			} catch(err){
+				console.warn("Could not clear gamemaster cache", err);
+			}
+
+			try{
+				if(window.sessionStorage){
+					window.sessionStorage.setItem(sessionRefreshKey, "1");
+				}
+			} catch(err){
+				console.warn("Could not set refresh session key", err);
+			}
+
+			window.location.reload();
+		};
+
+		$("a.refresh-game-data").click(function(e){
+			e.preventDefault();
+			window.refreshGameMasterData();
+		});
+
 		// Auto select link
 
 		$(".share-link input").click(function(e){
