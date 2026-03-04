@@ -109,12 +109,12 @@
     "speciesId": "kyogre",
     "variants": [
       {
-        "id": "wf_av_th",
-        "label": "Waterfall / Avalanche / Thunder",
+        "id": "wf_av_op",
+        "label": "Waterfall / Avalanche / Origin Pulse",
         "fastMove": "WATERFALL",
         "chargedMoves": [
           "AVALANCHE",
-          "THUNDER"
+          "ORIGIN_PULSE"
         ]
       },
       {
