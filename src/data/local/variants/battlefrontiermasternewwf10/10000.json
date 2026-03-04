@@ -132,12 +132,12 @@
     "speciesId": "kyogre_shadow",
     "variants": [
       {
-        "id": "wf_av_th",
-        "label": "Waterfall / Avalanche / Thunder",
+        "id": "wf_av_srf",
+        "label": "Waterfall / Avalanche / Surf",
         "fastMove": "WATERFALL",
         "chargedMoves": [
           "AVALANCHE",
-          "THUNDER"
+          "SURF"
         ]
       }
     ]
