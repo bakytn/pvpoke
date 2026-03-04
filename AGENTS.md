@@ -92,3 +92,13 @@ This document gives coding agents a fast, accurate map of how this site is struc
 - Do not remove `siteVersion` querying on assets/data.
 - If changing gamemaster schema or cache format, bump cache schema/version logic in `GameMaster.js`.
 - If changing routes, update `.htaccess` and verify legacy links still behave correctly.
+- Do **not** run `src/data/compile.php` automatically after edits.
+
+## Recompile Instructions (Manual Only)
+- Only recompile when explicitly requested.
+- From repo root, run:
+  - `cd src/data && php compile.php`
+- This regenerates:
+  - `src/data/gamemaster.json`
+  - `src/data/gamemaster.min.json`
+  - `src/data/formats.php`
