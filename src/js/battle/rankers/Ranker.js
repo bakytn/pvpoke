@@ -451,7 +451,25 @@ var RankerMaster = (function () {
 
 				for(var n = 0; n < iterations; n++){
 
-					var bestScore = Math.max.apply(Math, rankings.map(function(o) { return o.scores[n]; }))
+					var bestScore = Math.max.apply(Math, rankings.map(function(o) { return o.scores[n]; }));
+					var opponentScoreMap = {};
+					var opponentScores = [];
+
+					// Build opponent score references by species so weighting still works
+					// when pokemonList includes variants and targets are canonical.
+					for(var s = 0; s < rankings.length; s++){
+						var speciesId = rankings[s].speciesId;
+						var speciesScore = rankings[s].scores[n];
+
+						if((typeof speciesScore === "number") && ((! opponentScoreMap[speciesId]) || (speciesScore > opponentScoreMap[speciesId]))){
+							opponentScoreMap[speciesId] = speciesScore;
+						}
+					}
+
+					for(var t = 0; t < targets.length; t++){
+						var opponentSpeciesId = targets[t].speciesId;
+						opponentScores.push(opponentScoreMap[opponentSpeciesId] || 0);
+					}
 
 					for(var i = 0; i < rankCount; i++){
 						var score = 0;
@@ -461,10 +479,11 @@ var RankerMaster = (function () {
 
 						for(var j = 0; j < matches.length; j++){
 
-							var weight = 1;
+							var weight = 0;
+							var opponentScore = opponentScores[j];
 
-							if(pokemonList.length == targets.length){
-								weight = Math.pow( Math.max((rankings[j].scores[n] / bestScore) - (.1 + (rankCutoffIncrease * n)), 0), rankWeightExponent);
+							if((bestScore > 0) && (opponentScore > 0)){
+								weight = Math.pow( Math.max((opponentScore / bestScore) - (.1 + (rankCutoffIncrease * n)), 0), rankWeightExponent);
 							}
 
 							// Don't score Pokemon in the mirror match
@@ -498,11 +517,7 @@ var RankerMaster = (function () {
 							}
 
 							var sc = matches[j].adjRating * weight;
-							var opScore = matches[j].adjOpRating * Math.pow(4, weight);
-
-							if(rankings[j].scores[n] / bestScore < .1 + (rankCutoffIncrease * n)){
-								weight = 0;
-							}
+							var opScore = (weight > 0) ? (matches[j].adjOpRating * Math.pow(4, weight)) : 0;
 
 							weights += weight;
 							matches[j].score = sc;
@@ -510,7 +525,7 @@ var RankerMaster = (function () {
 							score += sc;
 						}
 
-						var avgScore = Math.floor(score / weights);
+						var avgScore = (weights > 0) ? Math.floor(score / weights) : 0;
 
 						rankings[i].scores.push(avgScore);
 					}
