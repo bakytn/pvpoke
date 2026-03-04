@@ -25,16 +25,22 @@
     "speciesId": "zacian_hero",
     "variants": [
       {
-        "id": "qa_cc_pr",
-        "label": "Quick Attack / Close Combat / Play Rough",
+        "id": "qa_wc_cc",
+        "label": "Quick Attack / Wild Charge / Close Combat",
         "fastMove": "QUICK_ATTACK",
-        "chargedMoves": ["CLOSE_COMBAT", "PLAY_ROUGH"]
+        "chargedMoves": ["WILD_CHARGE", "CLOSE_COMBAT"]
       },
       {
-        "id": "qa_cc_wc",
-        "label": "Quick Attack / Close Combat / Wild Charge",
-        "fastMove": "QUICK_ATTACK",
-        "chargedMoves": ["CLOSE_COMBAT", "WILD_CHARGE"]
+        "id": "ff_wc_cc",
+        "label": "Fire Fang / Wild Charge / Close Combat",
+        "fastMove": "FIRE_FANG",
+        "chargedMoves": ["WILD_CHARGE", "CLOSE_COMBAT"]
+      },
+      {
+        "id": "ff_wc_pr",
+        "label": "Fire Fang / Wild Charge / Play Rough",
+        "fastMove": "FIRE_FANG",
+        "chargedMoves": ["WILD_CHARGE", "PLAY_ROUGH"]
       }
     ]
   },
