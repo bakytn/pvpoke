@@ -98,6 +98,26 @@ function Pokemon(id, i, b, d){
 
 	this.dps = 10; // Used later to calculate TDO
 
+	// Return this species' hard level cap. Pokemon with levelCap 52 don't get an extra buddy level.
+	function getMaxLevelCap(){
+		if(self.baseLevelCap >= 52){
+			return self.baseLevelCap;
+		}
+
+		return self.baseLevelCap + 1;
+	}
+
+	// Return this Pokemon's allowed level cap in the current battle context.
+	function getEffectiveLevelCap(){
+		var battleLevelCap = self.levelCap;
+
+		if((battle) && (battle.getLevelCap)){
+			battleLevelCap = battle.getLevelCap() + 1;
+		}
+
+		return Math.min(battleLevelCap, getMaxLevelCap());
+	}
+
 	// Battle properties
 
 	this.energy = 0;
@@ -153,12 +173,13 @@ function Pokemon(id, i, b, d){
 
 	if(data.levelCap){
 		this.baseLevelCap = data.levelCap;
-		this.levelCap = data.levelCap;
 	}
 
 	if(data.levelFloor){
 		this.baseLevelFloor = data.levelFloor;
 	}
+
+	this.levelCap = Math.min(this.levelCap, getMaxLevelCap());
 
 	// Set battle moves
 
@@ -253,9 +274,7 @@ function Pokemon(id, i, b, d){
 
 		this.cp = self.calculateCP();
 
-		if((b.getLevelCap() <= self.baseLevelCap)&&(self.levelCap - b.getLevelCap() > 1)){
-			self.levelCap = b.getLevelCap();
-		}
+		self.levelCap = Math.min(self.levelCap, getEffectiveLevelCap());
 
 		var maxCP = 10000;
 
@@ -1901,6 +1920,7 @@ function Pokemon(id, i, b, d){
 
 	this.setLevel = function(amount, initialize){
 		initialize = typeof initialize !== 'undefined' ? initialize : true;
+		amount = Math.min(amount, getEffectiveLevelCap());
 
 		self.level = amount;
 		self.cpm = self.getCPMByLevel(amount);
@@ -1928,9 +1948,17 @@ function Pokemon(id, i, b, d){
 		return cpms[index];
 	}
 
+	this.getMaxLevelCap = function(){
+		return getMaxLevelCap();
+	}
+
+	this.getEffectiveLevelCap = function(){
+		return getEffectiveLevelCap();
+	}
+
 	// Set this Pokemon's level cap
 	this.setLevelCap = function(levelCap){
-		self.levelCap = Math.min(levelCap, self.baseLevelCap);
+		self.levelCap = Math.min(levelCap, getEffectiveLevelCap());
 	}
 
 	this.setIV = function(iv, amount){

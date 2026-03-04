@@ -29,6 +29,25 @@ function PokeSelect(element, i){
 
 	var ivCombinationCount = 4096;
 
+	function updateLevelCapOptions(){
+		var $level52Check = $el.find(".maximize-section .level-cap-group .check[value=\"52\"]");
+
+		if(! selectedPokemon){
+			$level52Check.hide();
+			return;
+		}
+
+		if(selectedPokemon.getEffectiveLevelCap){
+			selectedPokemon.levelCap = Math.min(selectedPokemon.levelCap, selectedPokemon.getEffectiveLevelCap());
+		}
+
+		if(selectedPokemon.baseLevelCap >= 52){
+			$level52Check.show();
+		} else{
+			$level52Check.hide();
+		}
+	}
+
 	this.init = function(pokes, b, filterData){
 		pokemon = pokes;
 		battle = b;
@@ -69,6 +88,7 @@ function PokeSelect(element, i){
 		if(selectedPokemon){
 
 			selectedPokemon.reset();
+			updateLevelCapOptions();
 
 			$el.find(".poke-stats").show();
 
@@ -694,6 +714,7 @@ function PokeSelect(element, i){
 		$el.find(".pokebox").show();
 		$pokeSelect.find("option").first().prop("selected", "selected");
 		self.updateOptions();
+		updateLevelCapOptions();
 
 		isCustom = false;
 	}
@@ -1209,6 +1230,10 @@ function PokeSelect(element, i){
 		var sortStat = $el.find(".maximize-section .check-group .check.on").first().attr("value");
 		var levelCap = parseInt($el.find(".maximize-section .level-cap-group .check.on").first().attr("value"));
 
+		if(selectedPokemon.getEffectiveLevelCap){
+			levelCap = Math.min(levelCap, selectedPokemon.getEffectiveLevelCap());
+		}
+
 		selectedPokemon.levelCap = levelCap;
         selectedPokemon.maximizeStat(sortStat);
 
@@ -1234,7 +1259,18 @@ function PokeSelect(element, i){
     $el.find(".level-cap-group .check").on("click", function(e){
 		// This is really dumb, but needs to be set on a delay because this processes before the checks actually change
 		setTimeout(function(){
+			if(! selectedPokemon){
+				return;
+			}
+
 			var levelCap = parseInt($el.find(".maximize-section .level-cap-group .check.on").first().attr("value"));
+
+			if(selectedPokemon.getEffectiveLevelCap){
+				levelCap = Math.min(levelCap, selectedPokemon.getEffectiveLevelCap());
+				$el.find(".level-cap-group .check").removeClass("on");
+				$el.find(".level-cap-group .check[value=\""+levelCap+"\"]").addClass("on");
+			}
+
 			selectedPokemon.levelCap = levelCap;
 		}, 25);
     });
