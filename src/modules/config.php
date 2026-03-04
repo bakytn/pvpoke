@@ -1,9 +1,31 @@
 <?php
 $WEB_ROOT = getenv('PVPOKE_WEB_ROOT');
 if(($WEB_ROOT === false) || ($WEB_ROOT === '')){
-	$scriptName = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
-	$base = str_replace('\\', '/', dirname($scriptName));
+	$scriptName = isset($_SERVER['SCRIPT_NAME']) ? str_replace('\\', '/', $_SERVER['SCRIPT_NAME']) : '';
+	$scriptFilename = isset($_SERVER['SCRIPT_FILENAME']) ? str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME']) : '';
+	$appRoot = realpath(__DIR__ . '/..');
+	$base = '';
+
+	if($appRoot !== false){
+		$appRoot = rtrim(str_replace('\\', '/', $appRoot), '/');
+	}
+
+	// Derive the web root from the app root + script filename so nested scripts
+	// (for example /data/* and /gm-editor/*) still resolve assets from site root.
+	if(($appRoot !== false) && ($scriptName !== '') && ($scriptFilename !== '') && (strpos($scriptFilename, $appRoot . '/') === 0)){
+		$relativeScript = ltrim(substr($scriptFilename, strlen($appRoot)), '/');
+
+		if(($relativeScript !== '') && (substr($scriptName, -strlen($relativeScript)) === $relativeScript)){
+			$base = substr($scriptName, 0, -strlen($relativeScript));
+		}
+	}
+
+	if($base === ''){
+		$base = str_replace('\\', '/', dirname($scriptName));
+	}
+
 	$base = rtrim($base, '/');
+
 	if(($base === '') || ($base === '.')){
 		$WEB_ROOT = '/';
 	} else{
