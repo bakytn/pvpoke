@@ -1,5 +1,6 @@
 .DS_Store
 .DS_Store?
+node_modules/
 rankings/.DS_Store
 rankings/attackers/.DS_Store
 rankings/chargers/.DS_Store

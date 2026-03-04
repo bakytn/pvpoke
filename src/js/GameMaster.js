@@ -11,6 +11,9 @@ var GameMaster = (function () {
 		object.trainRankings = [];
 		object.groups = [];
 		object.teamPools = [];
+		object.rankingVariantOverlays = {};
+		object.rankingVariantOverlayLoading = {};
+		object.rankingVariantOverlayCallbacks = {};
 		object.loadedData = 0;
 		// maps battle cp to list all pokemon objects for that cp
 		object.allPokemon = {}
@@ -1282,6 +1285,189 @@ var GameMaster = (function () {
 			}
 		}
 
+		object.getRankingVariantOverlayKey = function(cup, league){
+			return cup + "|" + league;
+		}
+
+		object.normalizeRankingVariantOverlay = function(data){
+			var overlayMap = {};
+
+			if(! Array.isArray(data)){
+				return overlayMap;
+			}
+
+			for(var i = 0; i < data.length; i++){
+				var speciesEntry = data[i];
+
+				if((! speciesEntry) || (! speciesEntry.speciesId) || (! Array.isArray(speciesEntry.variants))){
+					continue;
+				}
+
+				var speciesId = speciesEntry.speciesId;
+				var variants = [];
+				var usedRankKeys = {};
+
+				for(var n = 0; n < speciesEntry.variants.length; n++){
+					var variant = speciesEntry.variants[n];
+
+					if(! variant){
+						continue;
+					}
+
+					var baseId = variant.id || variant.label || (speciesId + "_variant_" + (n + 1));
+					baseId = String(baseId).toLowerCase().replace(/[^a-z0-9_]+/g, "_").replace(/_+/g, "_").replace(/^_+|_+$/g, "");
+
+					if(! baseId){
+						baseId = "variant_" + (n + 1);
+					}
+
+					var rankKey = speciesId + "~" + baseId;
+					var dedupeIndex = 2;
+
+					while(usedRankKeys[rankKey]){
+						rankKey = speciesId + "~" + baseId + "_" + dedupeIndex;
+						dedupeIndex++;
+					}
+
+					usedRankKeys[rankKey] = true;
+
+					var normalized = {
+						id: baseId,
+						rankKey: rankKey
+					};
+
+					if(variant.label){
+						normalized.label = variant.label;
+					}
+
+					if(variant.fastMove){
+						normalized.fastMove = variant.fastMove;
+					}
+
+					if(Array.isArray(variant.chargedMoves)){
+						normalized.chargedMoves = variant.chargedMoves.slice();
+					}
+
+					if(typeof variant.weight !== 'undefined'){
+						normalized.weight = variant.weight;
+					}
+
+					variants.push(normalized);
+				}
+
+				if(variants.length > 0){
+					overlayMap[speciesId] = variants;
+				}
+			}
+
+			return overlayMap;
+		}
+
+		object.loadRankingVariantOverlay = function(cup, league, callback){
+			var key = object.getRankingVariantOverlayKey(cup, league);
+
+			if(object.rankingVariantOverlays.hasOwnProperty(key)){
+				callback(object.rankingVariantOverlays[key]);
+				return;
+			}
+
+			if(object.rankingVariantOverlayLoading[key]){
+				object.rankingVariantOverlayCallbacks[key].push(callback);
+				return;
+			}
+
+			object.rankingVariantOverlayLoading[key] = true;
+			object.rankingVariantOverlayCallbacks[key] = [callback];
+
+			var file = webRoot + "data/local/variants/" + cup + "/" + league + ".json?v=" + siteVersion;
+
+			$.ajax({
+				dataType: "json",
+				url: file,
+				mimeType: "application/json",
+				success: function(data){
+					var overlay = object.normalizeRankingVariantOverlay(data);
+					finalizeOverlayLoad(overlay);
+				},
+				error: function(){
+					// Local overlay is optional and expected to 404 in most environments.
+					finalizeOverlayLoad({});
+				}
+			});
+
+			function finalizeOverlayLoad(overlay){
+				object.rankingVariantOverlays[key] = overlay;
+				object.rankingVariantOverlayLoading[key] = false;
+
+				var callbacks = object.rankingVariantOverlayCallbacks[key] || [];
+				delete object.rankingVariantOverlayCallbacks[key];
+
+				for(var i = 0; i < callbacks.length; i++){
+					callbacks[i](overlay);
+				}
+			}
+		}
+
+		object.mergeRankingOverridesWithLocalVariants = function(league, cup, baseOverrides, callback){
+			baseOverrides = Array.isArray(baseOverrides) ? baseOverrides : [];
+
+			object.loadRankingVariantOverlay(cup, league, function(overlayMap){
+				var mergedOverrides = baseOverrides.slice();
+				var speciesIds = Object.keys(overlayMap);
+
+				for(var i = 0; i < speciesIds.length; i++){
+					var speciesId = speciesIds[i];
+					var variants = overlayMap[speciesId];
+
+					for(var n = 0; n < variants.length; n++){
+						var variant = variants[n];
+						var mergedVariant = {
+							speciesId: speciesId,
+							rankKey: variant.rankKey,
+							variantLabel: variant.label || null
+						};
+
+						if(variant.fastMove){
+							mergedVariant.fastMove = variant.fastMove;
+						}
+
+						if(Array.isArray(variant.chargedMoves)){
+							mergedVariant.chargedMoves = variant.chargedMoves.slice();
+						}
+
+						if(typeof variant.weight !== 'undefined'){
+							mergedVariant.weight = variant.weight;
+						}
+
+						mergedOverrides.push(mergedVariant);
+					}
+				}
+
+				callback(mergedOverrides);
+			});
+		}
+
+		object.loadRankingOverrides = function(cup, league, callback){
+			var file = webRoot + "data/overrides/" + cup + "/" + league + ".json?v=" + siteVersion;
+
+			$.ajax({
+				dataType: "json",
+				url: file,
+				mimeType: "application/json",
+				success: function(data){
+					object.mergeRankingOverridesWithLocalVariants(league, cup, data, callback);
+				},
+				error: function(request){
+					if(request.status && request.status != 404){
+						console.log("Request: " + JSON.stringify(request));
+					}
+
+					// Continue with local variants even if base overrides are unavailable.
+					object.mergeRankingOverridesWithLocalVariants(league, cup, [], callback);
+				}
+			});
+		}
+
 		// Load and return ranking data JSON
 
 		object.loadTrainData = function(caller, league, cup){
@@ -1392,8 +1578,9 @@ var GameMaster = (function () {
 
 		// Return a list of eligible Pokemon given a Battle object, and include and exclude filters
 
-		object.generateFilteredPokemonList = function(battle, include, exclude, rankingData, overrides, excludeByStatProduct){
+		object.generateFilteredPokemonList = function(battle, include, exclude, rankingData, overrides, excludeByStatProduct, variantMode){
 			excludeByStatProduct = typeof excludeByStatProduct !== 'undefined' ? excludeByStatProduct : true;
+			variantMode = typeof variantMode !== 'undefined' ? variantMode : "single";
 
 			// Gather all eligible Pokemon
 
@@ -1421,6 +1608,41 @@ var GameMaster = (function () {
 			];
 
 			var pokemonList = [];
+			var cupOverrides = object.getCupMoveOverrides(battle.getCP(), battle.getCup().name, overrides);
+			var variantOverridesBySpecies = {};
+
+			for(var o = 0; o < cupOverrides.length; o++){
+				if(cupOverrides[o].rankKey){
+					if(! variantOverridesBySpecies[cupOverrides[o].speciesId]){
+						variantOverridesBySpecies[cupOverrides[o].speciesId] = [];
+					}
+
+					variantOverridesBySpecies[cupOverrides[o].speciesId].push(cupOverrides[o]);
+				}
+			}
+
+			var applyRankingMoveset = function(pokemon){
+				if(! rankingData){
+					return;
+				}
+
+				let r = rankingData.find(ranking => ranking.speciesId == pokemon.speciesId);
+
+				if((! r) || (! r.moves) || (! r.moves.fastMoves) || (! r.moves.chargedMoves) || (r.moves.fastMoves.length == 0) || (r.moves.chargedMoves.length == 0)){
+					return;
+				}
+
+				// Sort by uses
+				var fastMoves = r.moves.fastMoves.slice().sort((a,b) => (a.uses > b.uses) ? -1 : ((b.uses > a.uses) ? 1 : 0));
+				var chargedMoves = r.moves.chargedMoves.slice().sort((a,b) => (a.uses > b.uses) ? -1 : ((b.uses > a.uses) ? 1 : 0));
+
+				pokemon.selectMove("fast", fastMoves[0].moveId);
+				pokemon.selectMove("charged", chargedMoves[0].moveId, 0);
+
+				if(chargedMoves.length > 1){
+					pokemon.selectMove("charged", chargedMoves[1].moveId, 1);
+				}
+			};
 
 			for(var i = 0; i < object.data.pokemon.length; i++){
 
@@ -1431,8 +1653,8 @@ var GameMaster = (function () {
 
 				if(stats >= minStats || battle.getCup().includeLowStatProduct ||
 				 ( battle.getCP() == 1500 && pokemon.hasTag("include1500"))
-				 	|| ( battle.getCP() == 2500 && pokemon.hasTag("include2500")) 
-					|| ( battle.getCP() == 10000 && pokemon.hasTag("include10000")) 
+				 	|| ( battle.getCP() == 2500 && pokemon.hasTag("include2500"))
+					|| ( battle.getCP() == 10000 && pokemon.hasTag("include10000"))
 					|| pokemon.hasTag("mega") ){
 					// Today is the day
 					if(! pokemon.released){
@@ -1569,29 +1791,11 @@ var GameMaster = (function () {
 
 						// If data is available, force "best" moveset
 						pokemon.weightModifier = 1;
+						pokemon.rankKey = pokemon.speciesId;
+						pokemon.variantLabel = null;
 
 						// Set Pokemon moveset from existing rankings
-						if(rankingData){
-							let r = rankingData.find(ranking => rankingData.speciesId == pokemon.speciesId);
-
-							if(r){
-								// Sort by uses
-								var fastMoves = r.moves.fastMoves;
-								var chargedMoves = r.moves.chargedMoves;
-
-								fastMoves.sort((a,b) => (a.uses > b.uses) ? -1 : ((b.uses > a.uses) ? 1 : 0));
-								chargedMoves.sort((a,b) => (a.uses > b.uses) ? -1 : ((b.uses > a.uses) ? 1 : 0));
-
-								pokemon.selectMove("fast", fastMoves[0].moveId);
-								pokemon.selectMove("charged", chargedMoves[0].moveId, 0);
-
-								
-
-								if(chargedMoves.length > 1){
-									pokemon.selectMove("charged", chargedMoves[1].moveId, 1);
-								}
-							}
-						}
+						applyRankingMoveset(pokemon);
 
 						// Set Pokemon moveset from overrides
 						if(overrides){
@@ -1599,6 +1803,28 @@ var GameMaster = (function () {
 						}
 
 						pokemonList.push(pokemon);
+
+						if((variantMode == "allVariants") && variantOverridesBySpecies[pokemon.speciesId]){
+							var variantOverrides = variantOverridesBySpecies[pokemon.speciesId];
+
+							for(var v = 0; v < variantOverrides.length; v++){
+								var variant = new Pokemon(object.data.pokemon[i].speciesId, 0, battle);
+								variant.initialize(battle.getCP());
+								variant.weightModifier = 1;
+								variant.rankKey = variantOverrides[v].rankKey || variant.speciesId;
+								variant.variantLabel = variantOverrides[v].variantLabel || null;
+
+								applyRankingMoveset(variant);
+
+								if(overrides){
+									// Apply canonical override data first, then variant-specific fields.
+									object.overrideMoveset(variant, battle.getCP(), battle.getCup().name, overrides);
+									object.overrideMoveset(variant, battle.getCP(), battle.getCup().name, overrides, variant.rankKey);
+								}
+
+								pokemonList.push(variant);
+							}
+						}
 					}
 				}
 			}
@@ -2007,50 +2233,87 @@ var GameMaster = (function () {
 			return results;
 		}
 
-		// Override a Pokemon's moveset to be used in the rankings
+		object.getCupMoveOverrides = function(league, cup, overrides){
+			var pokemonOverrides = [];
 
-		object.overrideMoveset = function(pokemon, league, cup, overrides){
-
-			// Search eligible leagues and cups
+			if(! overrides){
+				return pokemonOverrides;
+			}
 
 			for(var i = 0; i < overrides.length; i++){
-
-				if((overrides[i].league == league)&&(overrides[i].cup == cup)){
-
-					// Iterate through Pokemon
-
-					var pokemonList = overrides[i].pokemon;
-
-					for(var n = 0; n < pokemonList.length; n++){
-						if(pokemonList[n].speciesId == pokemon.speciesId){
-							// Set Fast Move
-
-							if(pokemonList[n].fastMove){
-								pokemon.selectMove("fast", pokemonList[n].fastMove);
-							}
-
-							// Set Charged Moves
-
-							if(pokemonList[n].chargedMoves){
-								for(var j = 0; j < pokemonList[n].chargedMoves.length; j++){
-									pokemon.selectMove("charged", pokemonList[n].chargedMoves[j], j);
-								}
-
-								if(pokemonList[n].chargedMoves.length < 2){
-									pokemon.selectMove("charged", "none", 1);
-								}
-							}
-
-							// Set weight modifier
-							if (typeof pokemonList[n].weight !== 'undefined') {
-								pokemon.weightModifier = pokemonList[n].weight;
-							}
-							break;
-						}
-					}
-
+				if((overrides[i].league == league) && (overrides[i].cup == cup)){
+					pokemonOverrides = overrides[i].pokemon || [];
 					break;
 				}
+			}
+
+			return pokemonOverrides;
+		}
+
+		object.applyMovesetOverride = function(pokemon, override){
+			if(! override){
+				return;
+			}
+
+			// Set Fast Move
+			if(override.fastMove){
+				pokemon.selectMove("fast", override.fastMove);
+			}
+
+			// Set Charged Moves
+			if(override.chargedMoves){
+				for(var j = 0; j < override.chargedMoves.length; j++){
+					pokemon.selectMove("charged", override.chargedMoves[j], j);
+				}
+
+				if(override.chargedMoves.length < 2){
+					pokemon.selectMove("charged", "none", 1);
+				}
+			}
+
+			// Set weight modifier
+			if(typeof override.weight !== 'undefined'){
+				pokemon.weightModifier = override.weight;
+			}
+
+			// Preserve ranking identity metadata
+			if(override.rankKey){
+				pokemon.rankKey = override.rankKey;
+			}
+
+			if(override.variantLabel){
+				pokemon.variantLabel = override.variantLabel;
+			}
+		}
+
+		// Override a Pokemon's moveset to be used in the rankings
+
+		object.overrideMoveset = function(pokemon, league, cup, overrides, rankKey){
+			rankKey = typeof rankKey !== 'undefined' ? rankKey : null;
+
+			// Search eligible leagues and cups
+			var pokemonList = object.getCupMoveOverrides(league, cup, overrides);
+
+			// Iterate through Pokemon
+			for(var n = 0; n < pokemonList.length; n++){
+				var override = pokemonList[n];
+
+				if(override.speciesId != pokemon.speciesId){
+					continue;
+				}
+
+				// If a rank key is specified, apply that exact variant.
+				if(rankKey){
+					if(override.rankKey != rankKey){
+						continue;
+					}
+				} else if(override.rankKey){
+					// Without a rank key, only apply canonical (non-variant) overrides.
+					continue;
+				}
+
+				object.applyMovesetOverride(pokemon, override);
+				break;
 			}
 		}
 

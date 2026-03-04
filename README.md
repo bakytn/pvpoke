@@ -15,6 +15,18 @@ docker run --rm -v "$PWD":/app -w /app/src/data php:8.3-cli php compile.php
 docker run -d  --rm --name pvpoke   -p 80:80  -v ~/pvpoke/src:/var/www/html/pvpoke/src pvpoke
 ```
 
+### Regenerate Rankings from CLI (Master League default)
+```
+./src/scripts/regenerate-rankings-cli.sh
+```
+
+Optional flags:
+```
+./src/scripts/regenerate-rankings-cli.sh --cup all --cp 10000
+./src/scripts/regenerate-rankings-cli.sh --all
+./src/scripts/regenerate-rankings-cli.sh --base-url http://127.0.0.1:8080/pvpoke/src --no-server
+```
+
 # PvPoke
 
 [PvPoke.com](https://pvpoke.com) is a resource for Pokemon GO PvP that includes a battle simulator, rankings, and team building. The project’s goal is to provide tools and insights to help players build their teams, and foster the game’s community spirit by making all of the underlying code public. I hope this project can inspire new tools or benefit the existing ones that continue to enhance our enjoyment of the game.

@@ -80,18 +80,15 @@ var RankerMaster = (function () {
 					pokemonList = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude);
 					targets = pokemonList;
 				} else if(moveSelectMode == "force"){
-					pokemonList = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude, rankingData, overrides);
+					pokemonList = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude, rankingData, overrides, true, "allVariants");
+					targets = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude, rankingData, overrides, true, "canonical");
 
 					// Filter targets from pokemonList
-					targets = [];
-
-					for(var i = 0; i < pokemonList.length; i++){
+					for(var i = targets.length - 1; i >= 0; i--){
 						if(cup.filterTargets){
-							if(pokemonList[i].weightModifier > 1){
-								targets.push(pokemonList[i]);
+							if(targets[i].weightModifier <= 1){
+								targets.splice(i, 1);
 							}
-						} else{
-							targets.push(pokemonList[i]);
 						}
 					}
 				}
@@ -99,16 +96,30 @@ var RankerMaster = (function () {
 				// For custom rankings, exclude Pokemon with a low league overall score
 				if(cup.excludeLowPokemon && gm.rankings["alloverall"+cp]){
 					console.log(pokemonList.length);
-					var lowPokemon = gm.rankings["alloverall"+cp].filter(ranking => ranking.score < 70);
+					var bestSpeciesScores = {};
+					var overallRankings = gm.rankings["alloverall"+cp];
 
-					for(var i = 0; i < lowPokemon.length; i++){
-						if((pokemonList.findIndex(r => r.speciesId == lowPokemon[i].speciesId) > -1)){
-							pokemonList.splice(pokemonList.findIndex(r => r.speciesId == lowPokemon[i].speciesId), 1);
-						}
-						if((targets.findIndex(r => r.speciesId == lowPokemon[i].speciesId) > -1)){
-							targets.splice(targets.findIndex(r => r.speciesId == lowPokemon[i].speciesId), 1);
+					for(var r = 0; r < overallRankings.length; r++){
+						var speciesId = overallRankings[r].speciesId;
+						var score = overallRankings[r].score;
+
+						if((! bestSpeciesScores[speciesId]) || (score > bestSpeciesScores[speciesId])){
+							bestSpeciesScores[speciesId] = score;
 						}
 					}
+
+					var lowSpeciesIds = Object.keys(bestSpeciesScores).filter(function(speciesId){
+						return bestSpeciesScores[speciesId] < 70;
+					});
+
+					pokemonList = pokemonList.filter(function(pokemon){
+						return lowSpeciesIds.indexOf(pokemon.speciesId) == -1;
+					});
+
+					targets = targets.filter(function(pokemon){
+						return lowSpeciesIds.indexOf(pokemon.speciesId) == -1;
+					});
+
 					console.log(pokemonList.length);
 				}
 
@@ -217,6 +228,8 @@ var RankerMaster = (function () {
 
 					var rankObj = {
 						speciesId: pokemon.speciesId,
+						rankKey: pokemon.rankKey || pokemon.speciesId,
+						variantLabel: pokemon.variantLabel || null,
 						speciesName: pokemon.speciesName,
 						rating: 0,
 						matches: [], // Contains results of every individual battle
@@ -370,7 +383,7 @@ var RankerMaster = (function () {
 						avg += adjRating;
 					}
 
-					avg = Math.floor(avg / rankCount);
+					avg = Math.floor(avg / targets.length);
 
 					rankObj.rating = avg;
 					rankObj.scores = [avg];

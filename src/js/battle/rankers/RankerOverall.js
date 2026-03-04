@@ -86,6 +86,8 @@ var RankerMaster = (function () {
 				gm.loadedData = 0;
 
 				rankings = [];
+				var rankingMap = {};
+				var rankingOrder = [];
 
 				for(var i = 0; i < categories.length; i++){
 
@@ -93,35 +95,31 @@ var RankerMaster = (function () {
 
 					var arr = gm.rankings[key];
 
-					// Sort by species name
-
-					arr.sort((a,b) => (a.speciesName > b.speciesName) ? 1 : ((b.speciesName > a.speciesName) ? -1 : 0));
-
 					for(var n = 0; n < arr.length; n++){
 						var rankObj = arr[n];
+						var rankKey = rankObj.rankKey || rankObj.speciesId;
 
-						if(! rankings[n]){
-
-							rankObj.scores = [rankObj.score];
-							rankObj.score = rankObj.score;
-
-							rankObj.score = Math.pow(rankObj.scores[0] * rankObj.scores[1])
-
+						if(! rankingMap[rankKey]){
+							var rankCopy = JSON.parse(JSON.stringify(rankObj));
+							rankCopy.rankKey = rankKey;
+							rankCopy.scores = [rankObj.score];
+							rankCopy.score = rankObj.score;
 
 							// Sort moves by id
-
-							if(! rankObj.moves.chargedMoves){
-								console.log(rankObj);
+							if(rankCopy.moves?.fastMoves){
+								rankCopy.moves.fastMoves.sort((a,b) => (a.moveId > b.moveId) ? -1 : ((b.moveId > a.moveId) ? 1 : 0));
 							}
 
-							rankObj.moves.fastMoves.sort((a,b) => (a.moveId > b.moveId) ? -1 : ((b.moveId > a.moveId) ? 1 : 0));
-							rankObj.moves.chargedMoves.sort((a,b) => (a.moveId > b.moveId) ? -1 : ((b.moveId > a.moveId) ? 1 : 0));
+							if(rankCopy.moves?.chargedMoves){
+								rankCopy.moves.chargedMoves.sort((a,b) => (a.moveId > b.moveId) ? -1 : ((b.moveId > a.moveId) ? 1 : 0));
+							}
 
-							rankings.push(rankObj);
+							rankingMap[rankKey] = rankCopy;
+							rankingOrder.push(rankKey);
 
 						} else{
-							rankings[n].score *= rankObj.score;
-							rankings[n].scores.push(rankObj.score);
+							rankingMap[rankKey].score *= rankObj.score;
+							rankingMap[rankKey].scores.push(rankObj.score);
 
 							if(moveUsageMode == "aggregate"){
 								// Add move usage for all moves
@@ -129,17 +127,36 @@ var RankerMaster = (function () {
 								rankObj.moves.fastMoves.sort((a,b) => (a.moveId > b.moveId) ? -1 : ((b.moveId > a.moveId) ? 1 : 0));
 								rankObj.moves.chargedMoves.sort((a,b) => (a.moveId > b.moveId) ? -1 : ((b.moveId > a.moveId) ? 1 : 0));
 
+								var fastMoveMap = new Map(rankingMap[rankKey].moves.fastMoves.map(function(move) { return [move.moveId, move]; }));
+								var chargedMoveMap = new Map(rankingMap[rankKey].moves.chargedMoves.map(function(move) { return [move.moveId, move]; }));
+
 								for(var j = 0; j < rankObj.moves.fastMoves.length; j++){
-									rankings[n].moves.fastMoves[j].uses += rankObj.moves.fastMoves[j].uses;
+									var sourceFastMove = rankObj.moves.fastMoves[j];
+									var targetFastMove = fastMoveMap.get(sourceFastMove.moveId);
+
+									if(targetFastMove){
+										targetFastMove.uses += sourceFastMove.uses;
+									}
 								}
 
 								for(var j = 0; j < rankObj.moves.chargedMoves.length; j++){
-									rankings[n].moves.chargedMoves[j].uses += rankObj.moves.chargedMoves[j].uses;
+									var sourceChargedMove = rankObj.moves.chargedMoves[j];
+									var targetChargedMove = chargedMoveMap.get(sourceChargedMove.moveId);
+
+									if(targetChargedMove){
+										targetChargedMove.uses += sourceChargedMove.uses;
+									}
 								}
 							}
 						}
 					}
 				}
+
+				rankings = rankingOrder.map(function(rankKey){
+					return rankingMap[rankKey];
+				}).filter(function(rankObj){
+					return rankObj.scores.length == categories.length;
+				});
 
 				// Produce final rankings
 
@@ -195,7 +212,11 @@ var RankerMaster = (function () {
 					let cupOverrides = overrides.find(o => o.league == battle.getCP() && o.cup == battle.getCup().name);
 
 					if(cupOverrides){
-						let override = cupOverrides.pokemon.find(r => r.speciesId == pokemon.speciesId);
+						let override = cupOverrides.pokemon.find(r => r.rankKey && r.rankKey == (rankings[i].rankKey || rankings[i].speciesId));
+
+						if(! override){
+							override = cupOverrides.pokemon.find(r => r.speciesId == pokemon.speciesId && (! r.rankKey));
+						}
 
 						if(override){
 							if(override.editorScore){

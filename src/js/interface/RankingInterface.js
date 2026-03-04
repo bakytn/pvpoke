@@ -14,12 +14,14 @@ var InterfaceMaster = (function () {
 			var data;
 			var gm = GameMaster.getInstance();
 			var jumpToPoke = false;
+			var jumpToRankKey = false;
 			var limitedPokemon = [];
 			var context = "rankings"; // Used for internal reference
 			var battle = new Battle();
 			var customRankingInterface;
 			var metaGroup = [];
 			var metaGroupData = [];
+			var metaGroupMap = {};
 			var csv = '';
 			var showMoveCounts = false;
 			var rankingDisplayInterval;
@@ -76,6 +78,24 @@ var InterfaceMaster = (function () {
 					self.loadGetData();
 				});
 			};
+
+			function getRankKey(rankObj){
+				return rankObj.rankKey || rankObj.speciesId;
+			}
+
+			function getRankingByKey(rankKey, speciesId){
+				var ranking;
+
+				if(rankKey){
+					ranking = data.find(r => getRankKey(r) == rankKey);
+				}
+
+				if((! ranking) && speciesId){
+					ranking = data.find(r => r.speciesId == speciesId);
+				}
+
+				return ranking;
+			}
 
 			// Grabs ranking data from the Game Master
 
@@ -237,6 +257,7 @@ var InterfaceMaster = (function () {
 				// Create an element for each ranked Pokemon
 
 				metaGroup = [];
+				metaGroupMap = {};
 
 
 				$(".loading").hide();
@@ -328,6 +349,8 @@ var InterfaceMaster = (function () {
 
 			this.displayRankingEntry = function(r, index){
 				var pokemon = new Pokemon(r.speciesId, 0, battle);
+				var rankKey = getRankKey(r);
+				var variantLabel = r.variantLabel || null;
 
 				pokemon.initialize(true);
 				pokemon.selectMove("fast", r.moveset[0]);
@@ -344,15 +367,17 @@ var InterfaceMaster = (function () {
 				}
 
 				// Construct meta group from ranked Pokemon
-				if((index < 100)&&(context == "custom")){
+				if((index < 100)&&(context == "custom")&&(! metaGroupMap[pokemon.speciesId])){
 					metaGroup.push(pokemon);
+					metaGroupMap[pokemon.speciesId] = true;
 				}
 
-				if(context != "custom"){
+				if((context != "custom")&&(! metaGroupMap[pokemon.speciesId])){
 					for(var n = 0; n < metaGroupData.length; n++){
 						if(metaGroupData[n].speciesId == pokemon.speciesId){
 							pokemon.score = r.score;
 							metaGroup.push(pokemon);
+							metaGroupMap[pokemon.speciesId] = true;
 							break;
 						}
 					}
@@ -400,13 +425,19 @@ var InterfaceMaster = (function () {
 					}
 				}
 
+				var displaySpeciesName = pokemon.speciesName;
+
+				if(variantLabel){
+					displaySpeciesName += " (" + variantLabel + ")";
+				}
+
 				// Is this the best way to add HTML content? I'm gonna go with no here. But does it work? Yes!
-				var $el = $("<div class=\"rank typed-ranking " + pokemon.types[0] + "\" type-1=\""+pokemon.types[0]+"\" type-2=\""+pokemon.types[1]+"\" data=\""+pokemon.speciesId+"\">" +
+				var $el = $("<div class=\"rank typed-ranking " + pokemon.types[0] + "\" type-1=\""+pokemon.types[0]+"\" type-2=\""+pokemon.types[1]+"\" data=\""+pokemon.speciesId+"\" data-rank-key=\""+rankKey+"\">" +
 					"<div class=\"expand-label\"></div>" +
 					"<div class=\"pokemon-info\">" +
 						"<div class=\"name-container\">" +
 							"<span class=\"number\">#"+(index+1)+"</span>" +
-							"<span class=\"name\">"+pokemon.speciesName+"</span>" +
+							"<span class=\"name\">"+displaySpeciesName+"</span>" +
 							"<div class=\"moves\">"+moveNameStr+"</div>" +
 						"</div>" +
 						"<div class=\"type-container\"></div>" +
@@ -530,14 +561,23 @@ var InterfaceMaster = (function () {
 
 				$el.on("click", selectPokemon);
 
-				csv += pokemon.speciesName+','+r.score+','+pokemon.dex+','+pokemon.types[0]+','+pokemon.types[1]+','+(Math.round(pokemon.stats.atk*10)/10)+','+(Math.round(pokemon.stats.def*10)/10)+','+Math.round(pokemon.stats.hp)+','+Math.round(pokemon.stats.atk*pokemon.stats.def*pokemon.stats.hp)+','+pokemon.level+','+pokemon.cp+','+pokemon.fastMove.displayName+','+pokemon.chargedMoves[0].displayName+','+chargedMove2Name+','+chargedMove1Count+','+chargedMove2Count+','+pokemon.buddyDistance+','+pokemon.thirdMoveCost+'\n';
+				csv += displaySpeciesName+','+r.score+','+pokemon.dex+','+pokemon.types[0]+','+pokemon.types[1]+','+(Math.round(pokemon.stats.atk*10)/10)+','+(Math.round(pokemon.stats.def*10)/10)+','+Math.round(pokemon.stats.hp)+','+Math.round(pokemon.stats.atk*pokemon.stats.def*pokemon.stats.hp)+','+pokemon.level+','+pokemon.cp+','+pokemon.fastMove.displayName+','+pokemon.chargedMoves[0].displayName+','+chargedMove2Name+','+chargedMove1Count+','+chargedMove2Count+','+pokemon.buddyDistance+','+pokemon.thirdMoveCost+'\n';
 
 
 				// If a Pokemon has been selected via URL parameters, jump to it
 
-				if(jumpToPoke && jumpToPoke == pokemon.speciesId){
+				if(jumpToRankKey){
+					if(jumpToRankKey == rankKey){
+						setTimeout(function(){
+							self.jumpToPokemon(pokemon.speciesId, rankKey);
+
+							jumpToRankKey = false;
+							jumpToPoke = false;
+						}, 50);
+					}
+				} else if(jumpToPoke && jumpToPoke == pokemon.speciesId){
 					setTimeout(function(){
-						self.jumpToPokemon(jumpToPoke);
+						self.jumpToPokemon(jumpToPoke, null);
 
 						jumpToPoke = false;
 					}, 50);
@@ -577,6 +617,13 @@ var InterfaceMaster = (function () {
 					$(".poke-search[context='ranking-search']").first().trigger("keyup");
 				}
 
+				// Fall back to species-based jump if a variant key no longer exists.
+				if(jumpToRankKey && jumpToPoke){
+					self.jumpToPokemon(jumpToPoke, null);
+					jumpToRankKey = false;
+					jumpToPoke = false;
+				}
+
 				if(context == "custom"){
 					customRankingInterface.setMetaGroup(metaGroup);
 				}
@@ -589,6 +636,9 @@ var InterfaceMaster = (function () {
 				if(! get){
 					return false;
 				}
+
+				jumpToPoke = false;
+				jumpToRankKey = false;
 
 				// Cycle through parameters and set them
 
@@ -637,6 +687,11 @@ var InterfaceMaster = (function () {
 								jumpToPoke = val;
 								break;
 
+							case "v":
+								// Optional ranking entry key for Pokemon move variants
+								jumpToRankKey = val;
+								break;
+
 						}
 					}
 				}
@@ -654,7 +709,7 @@ var InterfaceMaster = (function () {
 
 			// When the view state changes, push to browser history so it can be navigated forward or back
 
-			this.pushHistoryState = function(cup, cp, category, speciesId){
+			this.pushHistoryState = function(cup, cp, category, speciesId, rankKey){
 				if(context == "custom"){
 					return false;
 				}
@@ -676,9 +731,19 @@ var InterfaceMaster = (function () {
 					rankStr += speciesId+"/";
 				}
 
-				var url = webRoot+rankStr;
+				var queryString = "";
+
+				if(rankKey && rankKey != speciesId){
+					queryString = "?v=" + encodeURIComponent(rankKey);
+				}
+
+				var url = webRoot + rankStr + queryString;
 
 				var data = {cup: cup, cp: cp, cat: category, p: speciesId };
+
+				if(rankKey){
+					data.v = rankKey;
+				}
 
 				window.history.pushState(data, "Rankings", url);
 
@@ -690,7 +755,7 @@ var InterfaceMaster = (function () {
 
 				gtag('event', 'page_view', {
 				  page_title: speciesId + ' ' + document.title,
-				  page_location: (host+rankStr),
+				  page_location: (host + rankStr + queryString),
 				  pageview_type: 'virtual'
 				});
 
@@ -734,8 +799,21 @@ var InterfaceMaster = (function () {
 
 			// Open and scroll to a specified Pokemon
 
-			this.jumpToPokemon = function(id){
-				var $el = $(".rank[data=\""+id+"\"]")
+			this.jumpToPokemon = function(id, rankKey){
+				var $el = $();
+
+				if(rankKey){
+					$el = $(".rank[data-rank-key=\""+rankKey+"\"]").first();
+				}
+
+				if($el.length == 0){
+					$el = $(".rank[data=\""+id+"\"]").first();
+				}
+
+				if($el.length == 0){
+					return;
+				}
+
 				$el.show();
 
 				// Close all ranking details
@@ -854,13 +932,15 @@ var InterfaceMaster = (function () {
 				$rank.find(".details").toggleClass("active");
 
 				var speciesId = $rank.attr("data");
+				var rankKey = $rank.attr("data-rank-key") || speciesId;
 
 				// Only execute if this was a direct action and not loaded from URL parameters, otherwise pushes infinite states when the user navigates back
 				if($rank.hasClass("selected")){
-					if(get && get.p == speciesId){
+					if(get && get.p == speciesId && ((! get.v) || (get.v == rankKey))){
 						get.p = false; // Unset this so URL properly sets if reselected
+						get.v = false;
 					} else{
-						self.pushHistoryState(cup, battle.getCP(), category, speciesId);
+						self.pushHistoryState(cup, battle.getCP(), category, speciesId, rankKey);
 					}
 				}
 
@@ -870,7 +950,11 @@ var InterfaceMaster = (function () {
 					return;
 				}
 
-				var r = data.find(r => r.speciesId == speciesId)
+				var r = getRankingByKey(rankKey, speciesId);
+
+				if(! r){
+					return;
+				}
 				var pokemon = new Pokemon(r.speciesId, 0, battle);
 				pokemon.initialize(battle.getCP(), "gamemaster");
 				pokemon.selectMove("fast", r.moveset[0]);
@@ -1286,6 +1370,10 @@ var InterfaceMaster = (function () {
 
 				var link = host + "rankings/"+cup+"/"+cp+"/"+category+"/"+pokemon.aliasId+"/";
 
+				if(rankKey && rankKey != pokemon.speciesId){
+					link += "?v=" + encodeURIComponent(rankKey);
+				}
+
 				$details.find(".share-link input").val(link);
 
 				// Add multi-battle link
@@ -1328,7 +1416,7 @@ var InterfaceMaster = (function () {
 
 					if(gm.rankings[key]){
 						for(var i = 0; i < gm.rankings[key].length; i++){
-							if(gm.rankings[key][i].speciesId == pokemon.speciesId){
+							if(getRankKey(gm.rankings[key][i]) == rankKey || gm.rankings[key][i].speciesId == pokemon.speciesId){
 								scores = gm.rankings[key][i].scores;
 								break;
 							}
@@ -1739,7 +1827,8 @@ var InterfaceMaster = (function () {
 						return false;
 					}
 
-					var originalData = data.filter(r => r.speciesId == $rank.attr("data"))[0];
+					var originalRankKey = $rank.attr("data-rank-key") || $rank.attr("data");
+					var originalData = data.filter(r => getRankKey(r) == originalRankKey)[0];
 					var compareData = data.filter(r => r.speciesId == pokemon.speciesId)[0];
 
 					drawRatingHexagon($rank, originalData, compareData);

@@ -1,0 +1,21 @@
+[
+  {
+    "speciesId": "gyarados",
+    "variants": [
+      {
+        "id": "db_aq_tw",
+        "label": "Dragon Breath / Aqua Tail / Twister",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": ["AQUA_TAIL", "TWISTER"],
+        "weight": 1
+      },
+      {
+        "id": "wf_aq_cr",
+        "label": "Waterfall / Aqua Tail / Crunch",
+        "fastMove": "WATERFALL",
+        "chargedMoves": ["AQUA_TAIL", "CRUNCH"],
+        "weight": 2
+      }
+    ]
+  }
+]

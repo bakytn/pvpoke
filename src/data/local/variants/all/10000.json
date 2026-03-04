@@ -1,0 +1,40 @@
+[
+  {
+    "speciesId": "groudon",
+    "variants": [
+      {
+        "id": "mud_shot_fp_pb",
+        "label": "Mud Shot / Fire Punch / Precipice Blades",
+        "fastMove": "MUD_SHOT",
+        "chargedMoves": ["FIRE_PUNCH", "PRECIPICE_BLADES"],
+        "weight": 6
+      },
+      {
+        "id": "mud_shot_fp_sb",
+        "label": "Mud Shot / Fire Punch / Solar Beam",
+        "fastMove": "MUD_SHOT",
+        "chargedMoves": ["FIRE_PUNCH", "SOLAR_BEAM"],
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "speciesId": "gyarados",
+    "variants": [
+      {
+        "id": "db_aq_tw",
+        "label": "Dragon Breath / Aqua Tail / Twister",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": ["AQUA_TAIL", "TWISTER"],
+        "weight": 1
+      },
+      {
+        "id": "wf_aq_cr",
+        "label": "Waterfall / Aqua Tail / Crunch",
+        "fastMove": "WATERFALL",
+        "chargedMoves": ["AQUA_TAIL", "CRUNCH"],
+        "weight": 2
+      }
+    ]
+  }
+]

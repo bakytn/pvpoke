@@ -12,13 +12,12 @@ var InterfaceMaster = (function () {
 
 			var battle;
 			var ranker = RankerMaster.getInstance();
+			var gm = GameMaster.getInstance();
 			var pokeSelectors = [];
 			var animating = false;
 			var self = this;
 
 			this.init = function(){
-
-				var data = GameMaster.getInstance().data;
 
 				$(".format-select").on("change", selectFormat);
 				$(".simulate").on("click", startRanker);
@@ -26,19 +25,10 @@ var InterfaceMaster = (function () {
 				battle = new Battle();
 
 				// Load initial overrides
-				$.ajax({
-					dataType: "json",
-					url: webRoot + "data/overrides/all/1500.json?v=" + siteVersion,
-					mimeType: "application/json",
-					success: function(data) {
-						if (ranker.setMoveOverrides) {
-							ranker.setMoveOverrides(1500, "all", data);
-							console.log("Ranking overrides loaded [" + data.length + "]");
-						}
-					},
-					error: function(request, error) {
-						console.log("Request: " + JSON.stringify(request));
-						console.log(error);
+				gm.loadRankingOverrides("all", 1500, function(data){
+					if(ranker.setMoveOverrides){
+						ranker.setMoveOverrides(1500, "all", data);
+						console.log("Ranking overrides loaded [" + data.length + "]");
 					}
 				});
 
@@ -88,15 +78,12 @@ var InterfaceMaster = (function () {
 
 			function loadOverrides(){
 
-				var file = webRoot+"data/overrides/"+battle.getCup().name+"/"+battle.getCP()+".json?v="+siteVersion;
-
-				$.getJSON( file, function( data ){
+				gm.loadRankingOverrides(battle.getCup().name, battle.getCP(), function(data){
 					if(ranker.setMoveOverrides){
 						ranker.setMoveOverrides(battle.getCP(), battle.getCup().name, data);
 						console.log("Ranking overrides loaded [" + data.length + "]");
 					}
 				});
-
 			}
 
 			// Run simulation
