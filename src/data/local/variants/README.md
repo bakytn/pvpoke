@@ -11,6 +11,7 @@ Examples:
 
 - `src/data/local/variants/all/10000.json`
 - `src/data/local/variants/all/2500.json`
+- `src/data/local/variants/battlefrontiermasternewwf10/10000.json`
 
 ## JSON shape
 

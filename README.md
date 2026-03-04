@@ -23,6 +23,9 @@ docker run -d  --rm --name pvpoke   -p 80:80  -v ~/pvpoke/src:/var/www/html/pvpo
 Optional flags:
 ```
 ./src/scripts/regenerate-rankings-cli.sh --cup all --cp 10000
+./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermasternewwf10 --cp 10000
+./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermasternewwf10 --cp 10000 --no-server
+./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermasternewwf10 --cp 10000 --timeout-min 8
 ./src/scripts/regenerate-rankings-cli.sh --all
 ./src/scripts/regenerate-rankings-cli.sh --base-url http://127.0.0.1:8080/pvpoke/src --no-server
 ```
