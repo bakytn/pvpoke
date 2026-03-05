@@ -470,6 +470,10 @@
   {
     "speciesId": "marshadow",
     "fastMove": "SHADOW_CLAW",
+    "chargedMoves": [
+      "CLOSE_COMBAT",
+      "ICE_PUNCH"
+    ],
     "weight": 1
   },
   {
