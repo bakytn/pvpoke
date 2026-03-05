@@ -1370,35 +1370,24 @@ var GameMaster = (function () {
 			}
 		}
 
-		// Load article metadata json and return it to the interface
+			// Modify a Pokemon data entry
 
-		object.loadArticleData = function(callback){
-			var file = webRoot+"articles/articles.json?v="+siteVersion;
+			object.modifyPokemonEntry = function(id, type, props){
+				$.each(object.data.pokemon, function(index, poke){
 
-			$.getJSON( file, function( data ){
-				console.log("article metadata loaded [" + data.length + "]");
-				callback(data);
-			});
-		}
+					if(poke.speciesId == id){
 
-		// Modify a Pokemon data entry
+						switch(type){
+							case "movepool":
 
-		object.modifyPokemonEntry = function(id, type, props){
-			$.each(object.data.pokemon, function(index, poke){
+								var movepool = (props.moveType == "fast") ? poke.fastMoves : poke.chargedMoves;
+								movepool.push(props.moveId);
 
-				if(poke.speciesId == id){
-
-					switch(type){
-						case "movepool":
-
-							var movepool = (props.moveType == "fast") ? poke.fastMoves : poke.chargedMoves;
-							movepool.push(props.moveId);
-
-							break;
+								break;
+						}
 					}
-				}
-			});
-		}
+				});
+			}
 
 		// Return a list of eligible Pokemon given a Battle object, and include and exclude filters
 

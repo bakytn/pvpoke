@@ -1447,7 +1447,7 @@ select.large {
   width: 20px;
   height: 20px;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 60%;
   margin-right: 8px;
 }
 .button span.btn-icon.btn-icon-battle {
@@ -6461,7 +6461,7 @@ a.feed-subscribe {
 #dev-panel a.wrench {
   width: 50px;
   height: 50px;
-  background: url("../articles/article-assets/developer-notes-1-27-0/thumb.jpg");
+  background: #01475f url("../img/icon_settings.png") center center no-repeat;
   background-size: 100%;
   display: block;
   position: absolute;

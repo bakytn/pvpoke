@@ -84,13 +84,13 @@ require_once 'header.php';
 					<option value="fit" selected>Scale to fit</option>
 					<option value="zoom">Zoom in</option>
 				</select>
+				</div>
+				<div class="disclaimer">* Results may differ from actual gameplay depending on connectivity, device, player decisions, or other factors.</div>
 			</div>
-			<div class="disclaimer">* Results may differ from actual gameplay depending on connectivity, device, player decisions, or other factors.</div>
+			<div class="summary section white"></div>
+			<div class="tip automated">Hover over or tap the timeline for details.</div>
+			<div class="tip sandbox">Click the circles to edit actions.</div>
 		</div>
-		<div class="summary section white"></div>
-		<div class="tip automated">Hover over or tap the timeline for details. <a href="<?php echo $WEB_ROOT; ?>articles/strategy/guide-to-fast-move-registration/">Read more</a> about the timeline.</div>
-		<div class="tip sandbox">Click the circles to edit actions.</div>
-	</div>
 
 	<?php require 'modules/ads/body-728.php'; ?>
 

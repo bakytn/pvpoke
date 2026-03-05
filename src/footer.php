@@ -78,10 +78,6 @@
 			}
 		});
 
-		$("header .latest-section a").click(function(e){
-			$("header .menu").slideToggle(125);
-		});
-
 		window.refreshGameMasterData = function(){
 			var cachePrefix = "pvpoke-gm-";
 			var sessionRefreshKey = "pvpoke-gm-force-refresh";

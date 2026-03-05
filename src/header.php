@@ -149,16 +149,11 @@ if(! isset($OG_IMAGE)){
 	<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/train.css?v=21">
 <?php endif; ?>
 
-<?php if(strpos($_SERVER['REQUEST_URI'], 'articles') !== false): ?>
-	<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/article-extras.css?v=23">
-<?php endif; ?>
-
 <?php if((isset($_SETTINGS->theme))&&($_SETTINGS->theme != "default")): ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/themes/<?php echo $_SETTINGS->theme; ?>.css?v=30">
 <?php endif; ?>
 
 <script src="<?php echo $WEB_ROOT; ?>js/libs/jquery-3.3.1.min.js"></script>
-<script src="<?php echo $WEB_ROOT; ?>js/interface/RSSReader.js?v=<?php echo $SITE_VERSION; ?>"></script>
 
 <?php require_once('modules/analytics.php'); ?>
 
@@ -298,21 +293,15 @@ if(! isset($OG_IMAGE)){
 								<div class="meat"></div>
 							</div>
 						</a>
-						<div class="submenu">
-							<div class="submenu-wrap">
-								<a href="<?php echo $WEB_ROOT; ?>attack-cmp-chart/">CMP Chart</a>
-								<a href="<?php echo $WEB_ROOT; ?>moves/">Moves</a>
-								<a href="<?php echo $WEB_ROOT; ?>articles/">Articles</a>
-								<a href="<?php echo $WEB_ROOT; ?>settings/">Settings</a>
-								<a class="icon-heart" href="<?php echo $WEB_ROOT; ?>contact/">Contact</a>
-								<a class="refresh-game-data" href="#">Refresh game data</a>
-								<div class="latest-section mobile">
-									<h4>Latest <a href="<?php echo $WEB_ROOT; ?>#news"></a></h4>
-									<a class="latest-link" href="#"></a>
-									<div class="date"></div>
+							<div class="submenu">
+								<div class="submenu-wrap">
+									<a href="<?php echo $WEB_ROOT; ?>attack-cmp-chart/">CMP Chart</a>
+									<a href="<?php echo $WEB_ROOT; ?>moves/">Moves</a>
+									<a href="<?php echo $WEB_ROOT; ?>settings/">Settings</a>
+									<a class="icon-heart" href="<?php echo $WEB_ROOT; ?>contact/">Contact</a>
+									<a class="refresh-game-data" href="#">Refresh game data</a>
 								</div>
 							</div>
-						</div>
 						<div class="safe-mouse-space"></div>
 					</div>
 				</div>

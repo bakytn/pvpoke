@@ -35,6 +35,11 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
+
+	# Legacy RSS and article pages
+	RewriteRule ^articles(?:/.*)?$ index.php [R=301,L]
+	RewriteRule ^rss(?:/.*)?$ index.php [R=301,L]
+
 	# Serve existing files/directories as-is
 	RewriteCond %{REQUEST_FILENAME} -f [OR]
 	RewriteCond %{REQUEST_FILENAME} -d

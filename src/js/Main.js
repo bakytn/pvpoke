@@ -3,7 +3,6 @@
 function Main(){
 	var interface;
 	var gm;
-	var rss
 
 	init();
 
@@ -12,7 +11,6 @@ function Main(){
 			interface = InterfaceMaster.getInstance();
 		}
 		gm = GameMaster.getInstance();
-		rss = RSS.getInstance();
 	}
 
 	this.getGM = function(){
