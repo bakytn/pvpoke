@@ -93,6 +93,7 @@ This document gives coding agents a fast, accurate map of how this site is struc
 - If changing gamemaster schema or cache format, bump cache schema/version logic in `GameMaster.js`.
 - If changing routes, update `.htaccess` and verify legacy links still behave correctly.
 - Do **not** run `src/data/compile.php` automatically after edits.
+- If you find originalpvpoke in the root folder, you should completely ignore it unless explicitly asked
 
 ## Recompile Instructions (Manual Only)
 - Only recompile when explicitly requested.

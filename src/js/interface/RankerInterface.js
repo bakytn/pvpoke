@@ -12,12 +12,17 @@ var InterfaceMaster = (function () {
 
 			var battle;
 			var ranker = RankerMaster.getInstance();
-			var gm = GameMaster.getInstance();
 			var pokeSelectors = [];
 			var animating = false;
 			var self = this;
+			var overridesLoaded = false;
+			var overridesLoading = false;
+			var overridesKey = "";
+			var pendingRun = false;
 
 			this.init = function(){
+
+				var data = GameMaster.getInstance().data;
 
 				$(".format-select").on("change", selectFormat);
 				$(".simulate").on("click", startRanker);
@@ -25,10 +30,19 @@ var InterfaceMaster = (function () {
 				battle = new Battle();
 
 				// Load initial overrides
-				gm.loadRankingOverrides("all", 1500, function(data){
-					if(ranker.setMoveOverrides){
-						ranker.setMoveOverrides(1500, "all", data);
-						console.log("Ranking overrides loaded [" + data.length + "]");
+				$.ajax({
+					dataType: "json",
+					url: webRoot + "data/overrides/all/1500.json?v=" + siteVersion,
+					mimeType: "application/json",
+					success: function(data) {
+						if (ranker.setMoveOverrides) {
+							ranker.setMoveOverrides(1500, "all", data);
+							console.log("Ranking overrides loaded [" + data.length + "]");
+						}
+					},
+					error: function(request, error) {
+						console.log("Request: " + JSON.stringify(request));
+						console.log(error);
 					}
 				});
 
@@ -77,18 +91,64 @@ var InterfaceMaster = (function () {
 			// Load overrides for the currently selected league and cup
 
 			function loadOverrides(){
+				var cp = battle.getCP();
+				var cupName = battle.getCup().name;
+				var loadKey = cupName + "-" + cp;
+				var file = webRoot+"data/overrides/"+cupName+"/"+cp+".json?v="+siteVersion;
 
-				gm.loadRankingOverrides(battle.getCup().name, battle.getCP(), function(data){
+				overridesLoaded = false;
+				overridesLoading = true;
+				overridesKey = loadKey;
+
+				$.getJSON(file, function(data){
+					if(overridesKey != loadKey){
+						return;
+					}
+
 					if(ranker.setMoveOverrides){
-						ranker.setMoveOverrides(battle.getCP(), battle.getCup().name, data);
+						ranker.setMoveOverrides(cp, cupName, data);
 						console.log("Ranking overrides loaded [" + data.length + "]");
 					}
+				}).fail(function(){
+					if(overridesKey != loadKey){
+						return;
+					}
+
+					if(ranker.setMoveOverrides){
+						ranker.setMoveOverrides(cp, cupName, []);
+						console.log("Ranking overrides missing [0]");
+					}
+				}).always(function(){
+					if(overridesKey != loadKey){
+						return;
+					}
+
+					overridesLoaded = true;
+					overridesLoading = false;
+
+					if(pendingRun){
+						pendingRun = false;
+						startRanker();
+					}
 				});
+
 			}
 
 			// Run simulation
 
 			function startRanker(){
+				var runKey = battle.getCup().name + "-" + battle.getCP();
+
+				if((! overridesLoaded) || (overridesKey != runKey)){
+					pendingRun = true;
+
+					if((! overridesLoading) || (overridesKey != runKey)){
+						loadOverrides();
+					}
+
+					return;
+				}
+
 				var cp = battle.getCP();
 				var cup = battle.getCup();
 				if(! ranker.setMoveSelectMode){

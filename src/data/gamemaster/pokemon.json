@@ -44392,5 +44392,1152 @@
         "released": false,
         "tags": ["mythical"],
         "levelFloor": 15
+    },
+    {
+        "dex": 383,
+        "speciesName": "Groudon",
+        "speciesId": "groudon_dt_fp_pb",
+        "baseStats": {
+            "atk": 270,
+            "def": 228,
+            "hp": 205
+        },
+        "types": [
+            "ground",
+            "none"
+        ],
+        "fastMoves": [
+            "DRAGON_TAIL",
+            "MUD_SHOT"
+        ],
+        "chargedMoves": [
+            "EARTHQUAKE",
+            "FIRE_BLAST",
+            "SOLAR_BEAM",
+            "FIRE_PUNCH",
+            "PRECIPICE_BLADES"
+        ],
+        "eliteMoves": [
+            "PRECIPICE_BLADES",
+            "FIRE_PUNCH"
+        ],
+        "tags": [
+            "legendary",
+            "shadoweligible",
+            "duplicate"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                15,
+                14,
+                12
+            ],
+            "cp1500": [
+                13.5,
+                6,
+                14,
+                5
+            ],
+            "cp2500": [
+                22.5,
+                4,
+                9,
+                12
+            ]
+        },
+        "searchPriority": 4,
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "level25CP": 2604,
+        "aliasId": "groudon"
+    },
+    {
+        "dex": 383,
+        "speciesName": "Groudon (Shadow)",
+        "speciesId": "groudon_shadow_dt_fp_pb",
+        "baseStats": {
+            "atk": 270,
+            "def": 228,
+            "hp": 205
+        },
+        "types": [
+            "ground",
+            "none"
+        ],
+        "fastMoves": [
+            "DRAGON_TAIL",
+            "MUD_SHOT"
+        ],
+        "chargedMoves": [
+            "EARTHQUAKE",
+            "FIRE_BLAST",
+            "SOLAR_BEAM",
+            "FIRE_PUNCH",
+            "PRECIPICE_BLADES"
+        ],
+        "eliteMoves": [
+            "PRECIPICE_BLADES",
+            "FIRE_PUNCH"
+        ],
+        "tags": [
+            "legendary",
+            "shadow",
+            "duplicate"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                8,
+                14,
+                11
+            ],
+            "cp1500": [
+                13,
+                8,
+                14,
+                12
+            ],
+            "cp2500": [
+                22,
+                8,
+                7,
+                15
+            ]
+        },
+        "searchPriority": 1,
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "aliasId": "groudon_shadow"
+    },
+    {
+        "dex": 888,
+        "speciesName": "Zacian (Hero)",
+        "speciesId": "zacian_hero_qa_wc_cc",
+        "baseStats": {
+            "atk": 254,
+            "def": 236,
+            "hp": 192
+        },
+        "types": [
+            "fairy",
+            "none"
+        ],
+        "fastMoves": [
+            "METAL_CLAW",
+            "SNARL",
+            "QUICK_ATTACK",
+            "FIRE_FANG"
+        ],
+        "chargedMoves": [
+            "PLAY_ROUGH",
+            "IRON_HEAD",
+            "WILD_CHARGE",
+            "CLOSE_COMBAT"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                9,
+                13,
+                12
+            ],
+            "cp1500": [
+                14.5,
+                5,
+                7,
+                14
+            ],
+            "cp2500": [
+                24,
+                5,
+                10,
+                13
+            ]
+        },
+        "tags": [
+            "legendary",
+            "duplicate"
+        ],
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "aliasId": "zacian_hero"
+    },
+    {
+        "dex": 888,
+        "speciesName": "Zacian (Hero)",
+        "speciesId": "zacian_hero_ff_wc_cc",
+        "baseStats": {
+            "atk": 254,
+            "def": 236,
+            "hp": 192
+        },
+        "types": [
+            "fairy",
+            "none"
+        ],
+        "fastMoves": [
+            "METAL_CLAW",
+            "SNARL",
+            "QUICK_ATTACK",
+            "FIRE_FANG"
+        ],
+        "chargedMoves": [
+            "PLAY_ROUGH",
+            "IRON_HEAD",
+            "WILD_CHARGE",
+            "CLOSE_COMBAT"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                9,
+                13,
+                12
+            ],
+            "cp1500": [
+                14.5,
+                5,
+                7,
+                14
+            ],
+            "cp2500": [
+                24,
+                5,
+                10,
+                13
+            ]
+        },
+        "tags": [
+            "legendary",
+            "duplicate"
+        ],
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "aliasId": "zacian_hero"
+    },
+    {
+        "dex": 888,
+        "speciesName": "Zacian (Hero)",
+        "speciesId": "zacian_hero_ff_wc_pr",
+        "baseStats": {
+            "atk": 254,
+            "def": 236,
+            "hp": 192
+        },
+        "types": [
+            "fairy",
+            "none"
+        ],
+        "fastMoves": [
+            "METAL_CLAW",
+            "SNARL",
+            "QUICK_ATTACK",
+            "FIRE_FANG"
+        ],
+        "chargedMoves": [
+            "PLAY_ROUGH",
+            "IRON_HEAD",
+            "WILD_CHARGE",
+            "CLOSE_COMBAT"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                9,
+                13,
+                12
+            ],
+            "cp1500": [
+                14.5,
+                5,
+                7,
+                14
+            ],
+            "cp2500": [
+                24,
+                5,
+                10,
+                13
+            ]
+        },
+        "tags": [
+            "legendary",
+            "duplicate"
+        ],
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "aliasId": "zacian_hero"
+    },
+    {
+        "dex": 6,
+        "speciesName": "Charizard (Mega X)",
+        "speciesId": "charizard_mega_x_ember_ac_bb",
+        "baseStats": {
+            "atk": 273,
+            "def": 213,
+            "hp": 186
+        },
+        "types": [
+            "fire",
+            "dragon"
+        ],
+        "fastMoves": [
+            "AIR_SLASH",
+            "EMBER",
+            "FIRE_SPIN",
+            "WING_ATTACK",
+            "DRAGON_BREATH"
+        ],
+        "chargedMoves": [
+            "BLAST_BURN",
+            "DRAGON_CLAW",
+            "FIRE_BLAST",
+            "FLAMETHROWER",
+            "OVERHEAT",
+            "AIR_CUTTER"
+        ],
+        "tags": [
+            "starter",
+            "shadoweligible",
+            "mega",
+            "duplicate"
+        ],
+        "level25CP": 2424,
+        "defaultIVs": {
+            "cp500": [
+                5,
+                6,
+                14,
+                14
+            ],
+            "cp1500": [
+                14.5,
+                4,
+                14,
+                7
+            ],
+            "cp2500": [
+                23.5,
+                6,
+                14,
+                15
+            ]
+        },
+        "eliteMoves": [
+            "EMBER",
+            "WING_ATTACK",
+            "BLAST_BURN",
+            "FLAMETHROWER",
+            "DRAGON_BREATH"
+        ],
+        "buddyDistance": 3,
+        "thirdMoveCost": 10000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_CHARMANDER",
+            "parent": "charmeleon"
+        },
+        "nicknames": [
+            "zardx"
+        ],
+        "aliasId": "charizard_mega_x"
+    },
+    {
+        "dex": 6,
+        "speciesName": "Charizard (Mega Y)",
+        "speciesId": "charizard_mega_y_ember_ac_bb",
+        "baseStats": {
+            "atk": 319,
+            "def": 212,
+            "hp": 186
+        },
+        "types": [
+            "fire",
+            "flying"
+        ],
+        "fastMoves": [
+            "AIR_SLASH",
+            "EMBER",
+            "FIRE_SPIN",
+            "WING_ATTACK",
+            "DRAGON_BREATH"
+        ],
+        "chargedMoves": [
+            "BLAST_BURN",
+            "DRAGON_CLAW",
+            "FIRE_BLAST",
+            "FLAMETHROWER",
+            "OVERHEAT",
+            "AIR_CUTTER"
+        ],
+        "tags": [
+            "starter",
+            "shadoweligible",
+            "mega",
+            "duplicate"
+        ],
+        "level25CP": 2826,
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                4,
+                9,
+                8
+            ],
+            "cp1500": [
+                12,
+                8,
+                15,
+                15
+            ],
+            "cp2500": [
+                20.5,
+                4,
+                13,
+                13
+            ]
+        },
+        "eliteMoves": [
+            "EMBER",
+            "WING_ATTACK",
+            "BLAST_BURN",
+            "FLAMETHROWER",
+            "DRAGON_BREATH"
+        ],
+        "buddyDistance": 3,
+        "thirdMoveCost": 10000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_CHARMANDER",
+            "parent": "charmeleon"
+        },
+        "nicknames": [
+            "zardy"
+        ],
+        "aliasId": "charizard_mega_y"
+    },
+    {
+        "dex": 6,
+        "speciesName": "Charizard (Mega Y)",
+        "speciesId": "charizard_mega_y_db_ac_bb",
+        "baseStats": {
+            "atk": 319,
+            "def": 212,
+            "hp": 186
+        },
+        "types": [
+            "fire",
+            "flying"
+        ],
+        "fastMoves": [
+            "AIR_SLASH",
+            "EMBER",
+            "FIRE_SPIN",
+            "WING_ATTACK",
+            "DRAGON_BREATH"
+        ],
+        "chargedMoves": [
+            "BLAST_BURN",
+            "DRAGON_CLAW",
+            "FIRE_BLAST",
+            "FLAMETHROWER",
+            "OVERHEAT",
+            "AIR_CUTTER"
+        ],
+        "tags": [
+            "starter",
+            "shadoweligible",
+            "mega",
+            "duplicate"
+        ],
+        "level25CP": 2826,
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                4,
+                9,
+                8
+            ],
+            "cp1500": [
+                12,
+                8,
+                15,
+                15
+            ],
+            "cp2500": [
+                20.5,
+                4,
+                13,
+                13
+            ]
+        },
+        "eliteMoves": [
+            "EMBER",
+            "WING_ATTACK",
+            "BLAST_BURN",
+            "FLAMETHROWER",
+            "DRAGON_BREATH"
+        ],
+        "buddyDistance": 3,
+        "thirdMoveCost": 10000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_CHARMANDER",
+            "parent": "charmeleon"
+        },
+        "nicknames": [
+            "zardy"
+        ],
+        "aliasId": "charizard_mega_y"
+    },
+    {
+        "dex": 6,
+        "speciesName": "Charizard (Mega Y)",
+        "speciesId": "charizard_mega_y_db_ac_dc",
+        "baseStats": {
+            "atk": 319,
+            "def": 212,
+            "hp": 186
+        },
+        "types": [
+            "fire",
+            "flying"
+        ],
+        "fastMoves": [
+            "AIR_SLASH",
+            "EMBER",
+            "FIRE_SPIN",
+            "WING_ATTACK",
+            "DRAGON_BREATH"
+        ],
+        "chargedMoves": [
+            "BLAST_BURN",
+            "DRAGON_CLAW",
+            "FIRE_BLAST",
+            "FLAMETHROWER",
+            "OVERHEAT",
+            "AIR_CUTTER"
+        ],
+        "tags": [
+            "starter",
+            "shadoweligible",
+            "mega",
+            "duplicate"
+        ],
+        "level25CP": 2826,
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                4,
+                9,
+                8
+            ],
+            "cp1500": [
+                12,
+                8,
+                15,
+                15
+            ],
+            "cp2500": [
+                20.5,
+                4,
+                13,
+                13
+            ]
+        },
+        "eliteMoves": [
+            "EMBER",
+            "WING_ATTACK",
+            "BLAST_BURN",
+            "FLAMETHROWER",
+            "DRAGON_BREATH"
+        ],
+        "buddyDistance": 3,
+        "thirdMoveCost": 10000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_CHARMANDER",
+            "parent": "charmeleon"
+        },
+        "nicknames": [
+            "zardy"
+        ],
+        "aliasId": "charizard_mega_y"
+    },
+    {
+        "dex": 382,
+        "speciesName": "Kyogre",
+        "speciesId": "kyogre_wf_av_op",
+        "baseStats": {
+            "atk": 270,
+            "def": 228,
+            "hp": 205
+        },
+        "types": [
+            "water",
+            "none"
+        ],
+        "fastMoves": [
+            "WATERFALL"
+        ],
+        "chargedMoves": [
+            "BLIZZARD",
+            "HYDRO_PUMP",
+            "THUNDER",
+            "SURF",
+            "ORIGIN_PULSE",
+            "AVALANCHE"
+        ],
+        "eliteMoves": [
+            "ORIGIN_PULSE"
+        ],
+        "tags": [
+            "legendary",
+            "shadoweligible",
+            "duplicate"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                15,
+                14,
+                12
+            ],
+            "cp1500": [
+                13.5,
+                6,
+                14,
+                5
+            ],
+            "cp2500": [
+                22.5,
+                4,
+                9,
+                12
+            ]
+        },
+        "searchPriority": 4,
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "level25CP": 2604,
+        "aliasId": "kyogre"
+    },
+    {
+        "dex": 382,
+        "speciesName": "Kyogre",
+        "speciesId": "kyogre_wf_av_sr",
+        "baseStats": {
+            "atk": 270,
+            "def": 228,
+            "hp": 205
+        },
+        "types": [
+            "water",
+            "none"
+        ],
+        "fastMoves": [
+            "WATERFALL"
+        ],
+        "chargedMoves": [
+            "BLIZZARD",
+            "HYDRO_PUMP",
+            "THUNDER",
+            "SURF",
+            "ORIGIN_PULSE",
+            "AVALANCHE"
+        ],
+        "eliteMoves": [
+            "ORIGIN_PULSE"
+        ],
+        "tags": [
+            "legendary",
+            "shadoweligible",
+            "duplicate"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                15,
+                14,
+                12
+            ],
+            "cp1500": [
+                13.5,
+                6,
+                14,
+                5
+            ],
+            "cp2500": [
+                22.5,
+                4,
+                9,
+                12
+            ]
+        },
+        "searchPriority": 4,
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "level25CP": 2604,
+        "aliasId": "kyogre"
+    },
+    {
+        "dex": 382,
+        "speciesName": "Kyogre (Shadow)",
+        "speciesId": "kyogre_shadow_wf_av_srf",
+        "baseStats": {
+            "atk": 270,
+            "def": 228,
+            "hp": 205
+        },
+        "types": [
+            "water",
+            "none"
+        ],
+        "fastMoves": [
+            "WATERFALL"
+        ],
+        "chargedMoves": [
+            "BLIZZARD",
+            "HYDRO_PUMP",
+            "THUNDER",
+            "SURF",
+            "ORIGIN_PULSE",
+            "AVALANCHE"
+        ],
+        "eliteMoves": [
+            "ORIGIN_PULSE"
+        ],
+        "tags": [
+            "legendary",
+            "shadow",
+            "duplicate"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                4.5,
+                8,
+                14,
+                11
+            ],
+            "cp1500": [
+                13,
+                8,
+                14,
+                12
+            ],
+            "cp2500": [
+                22,
+                8,
+                7,
+                15
+            ]
+        },
+        "buddyDistance": 20,
+        "thirdMoveCost": 100000,
+        "released": true,
+        "aliasId": "kyogre_shadow"
+    },
+    {
+        "dex": 149,
+        "speciesName": "Dragonite",
+        "speciesId": "dragonite_db_tp_dc",
+        "baseStats": {
+            "atk": 263,
+            "def": 198,
+            "hp": 209
+        },
+        "types": [
+            "dragon",
+            "flying"
+        ],
+        "fastMoves": [
+            "DRAGON_BREATH",
+            "DRAGON_TAIL",
+            "STEEL_WING"
+        ],
+        "chargedMoves": [
+            "DRACO_METEOR",
+            "DRAGON_CLAW",
+            "DRAGON_PULSE",
+            "HURRICANE",
+            "HYPER_BEAM",
+            "OUTRAGE",
+            "SUPER_POWER",
+            "THUNDER_PUNCH"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                8,
+                15,
+                15
+            ],
+            "cp1500": [
+                14.5,
+                4,
+                13,
+                14
+            ],
+            "cp2500": [
+                24,
+                5,
+                15,
+                13
+            ]
+        },
+        "level25CP": 2386,
+        "tags": [
+            "shadoweligible",
+            "duplicate"
+        ],
+        "eliteMoves": [
+            "DRACO_METEOR",
+            "DRAGON_PULSE"
+        ],
+        "searchPriority": 3,
+        "buddyDistance": 5,
+        "thirdMoveCost": 75000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_DRATINI",
+            "parent": "dragonair"
+        },
+        "nicknames": [
+            "dnite"
+        ],
+        "aliasId": "dragonite"
+    },
+    {
+        "dex": 149,
+        "speciesName": "Dragonite (Mega)",
+        "speciesId": "dragonite_mega_db_tp_dc",
+        "baseStats": {
+            "atk": 299,
+            "def": 255,
+            "hp": 209
+        },
+        "types": [
+            "dragon",
+            "flying"
+        ],
+        "fastMoves": [
+            "DRAGON_BREATH",
+            "DRAGON_TAIL",
+            "STEEL_WING"
+        ],
+        "chargedMoves": [
+            "DRACO_METEOR",
+            "DRAGON_CLAW",
+            "DRAGON_PULSE",
+            "HURRICANE",
+            "HYPER_BEAM",
+            "OUTRAGE",
+            "SUPER_POWER",
+            "THUNDER_PUNCH"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                4,
+                12,
+                15,
+                15
+            ],
+            "cp1500": [
+                11.5,
+                4,
+                8,
+                12
+            ],
+            "cp2500": [
+                19,
+                4,
+                9,
+                15
+            ]
+        },
+        "level25CP": 2386,
+        "levelCap": 52,
+        "tags": [
+            "shadoweligible",
+            "mega",
+            "duplicate"
+        ],
+        "eliteMoves": [
+            "DRACO_METEOR",
+            "DRAGON_PULSE"
+        ],
+        "searchPriority": 3,
+        "buddyDistance": 5,
+        "thirdMoveCost": 75000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_DRATINI",
+            "parent": "dragonair"
+        },
+        "nicknames": [
+            "dnite"
+        ],
+        "aliasId": "dragonite_mega"
+    },
+    {
+        "dex": 149,
+        "speciesName": "Dragonite (Shadow)",
+        "speciesId": "dragonite_shadow_db_tp_dc",
+        "baseStats": {
+            "atk": 263,
+            "def": 198,
+            "hp": 209
+        },
+        "types": [
+            "dragon",
+            "flying"
+        ],
+        "fastMoves": [
+            "DRAGON_BREATH",
+            "DRAGON_TAIL",
+            "STEEL_WING"
+        ],
+        "chargedMoves": [
+            "DRACO_METEOR",
+            "DRAGON_CLAW",
+            "DRAGON_PULSE",
+            "HURRICANE",
+            "HYPER_BEAM",
+            "OUTRAGE",
+            "SUPER_POWER",
+            "THUNDER_PUNCH"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                8,
+                15,
+                15
+            ],
+            "cp1500": [
+                14.5,
+                4,
+                13,
+                14
+            ],
+            "cp2500": [
+                24,
+                5,
+                15,
+                13
+            ]
+        },
+        "tags": [
+            "shadow",
+            "duplicate"
+        ],
+        "eliteMoves": [
+            "DRACO_METEOR",
+            "DRAGON_PULSE"
+        ],
+        "searchPriority": 4,
+        "buddyDistance": 5,
+        "thirdMoveCost": 75000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_DRATINI",
+            "parent": "dragonair_shadow"
+        },
+        "nicknames": [
+            "dnite"
+        ],
+        "aliasId": "dragonite_shadow"
+    },
+    {
+        "dex": 208,
+        "speciesName": "Steelix (Mega)",
+        "speciesId": "steelix_mega_tf_pf_cr",
+        "baseStats": {
+            "atk": 212,
+            "def": 327,
+            "hp": 181
+        },
+        "types": [
+            "steel",
+            "ground"
+        ],
+        "fastMoves": [
+            "DRAGON_TAIL",
+            "IRON_TAIL",
+            "THUNDER_FANG"
+        ],
+        "chargedMoves": [
+            "CRUNCH",
+            "EARTHQUAKE",
+            "HEAVY_SLAM",
+            "PSYCHIC_FANGS",
+            "BREAKING_SWIPE"
+        ],
+        "tags": [
+            "mega",
+            "shadoweligible",
+            "duplicate"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                15,
+                15,
+                15
+            ],
+            "cp1500": [
+                15,
+                5,
+                13,
+                15
+            ],
+            "cp2500": [
+                25,
+                5,
+                14,
+                14
+            ]
+        },
+        "buddyDistance": 5,
+        "thirdMoveCost": 75000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_ONIX",
+            "parent": "onix"
+        },
+        "aliasId": "steelix_mega"
+    },
+    {
+        "dex": 448,
+        "speciesName": "Lucario (Mega)",
+        "speciesId": "lucario_mega_bp_mm_as",
+        "baseStats": {
+            "atk": 310,
+            "def": 175,
+            "hp": 172
+        },
+        "types": [
+            "fighting",
+            "steel"
+        ],
+        "fastMoves": [
+            "BULLET_PUNCH",
+            "COUNTER",
+            "FORCE_PALM"
+        ],
+        "chargedMoves": [
+            "CLOSE_COMBAT",
+            "FLASH_CANNON",
+            "SHADOW_BALL",
+            "POWER_UP_PUNCH",
+            "AURA_SPHERE",
+            "BLAZE_KICK",
+            "THUNDER_PUNCH",
+            "METEOR_MASH"
+        ],
+        "eliteMoves": [
+            "FORCE_PALM"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                5,
+                6,
+                14,
+                15
+            ],
+            "cp1500": [
+                14.5,
+                4,
+                9,
+                13
+            ],
+            "cp2500": [
+                24,
+                4,
+                15,
+                10
+            ]
+        },
+        "tags": [
+            "mega",
+            "duplicate"
+        ],
+        "buddyDistance": 5,
+        "thirdMoveCost": 75000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_LUCARIO",
+            "parent": "riolu"
+        },
+        "aliasId": "lucario_mega"
+    },
+    {
+        "dex": 730,
+        "speciesName": "Primarina",
+        "speciesId": "primarina_wf_hc_mb",
+        "baseStats": {
+            "atk": 232,
+            "def": 195,
+            "hp": 190
+        },
+        "tags": [
+            "starter",
+            "duplicate"
+        ],
+        "types": [
+            "water",
+            "fairy"
+        ],
+        "fastMoves": [
+            "CHARM",
+            "WATERFALL"
+        ],
+        "chargedMoves": [
+            "PSYCHIC",
+            "HYDRO_PUMP",
+            "MOONBLAST",
+            "DISARMING_VOICE",
+            "HYDRO_CANNON",
+            "SPARKLING_ARIA"
+        ],
+        "eliteMoves": [
+            "HYDRO_CANNON"
+        ],
+        "defaultIVs": {
+            "cp500": [
+                6,
+                5,
+                12,
+                13
+            ],
+            "cp1500": [
+                17,
+                7,
+                15,
+                14
+            ],
+            "cp2500": [
+                28.5,
+                5,
+                14,
+                15
+            ]
+        },
+        "buddyDistance": 3,
+        "thirdMoveCost": 10000,
+        "released": true,
+        "family": {
+            "id": "FAMILY_POPPLIO",
+            "parent": "brionne"
+        },
+        "aliasId": "primarina"
     }
 ]

@@ -85,15 +85,21 @@ var RankerMaster = (function () {
 					}
 				}
 
-				// Remove any Pokemon that are in the exclusion list
-				if(exclusionList){
-					for(var i = 0; i < pokemonList.length; i++){
-						if(exclusionList.indexOf(pokemonList[i].speciesId) > -1){
-							pokemonList.splice(i, 1);
-							i--;
+					// Remove any Pokemon that are in the exclusion list
+					if(exclusionList){
+						for(var i = 0; i < pokemonList.length; i++){
+							var candidateId = pokemonList[i].speciesId;
+							var canonicalId = pokemonList[i].aliasId ? pokemonList[i].aliasId : candidateId;
+							var canonicalNoShadow = canonicalId.replace("_shadow", "");
+
+							if((exclusionList.indexOf(candidateId) > -1)
+								|| (exclusionList.indexOf(canonicalId) > -1)
+								|| (exclusionList.indexOf(canonicalNoShadow) > -1)){
+								pokemonList.splice(i, 1);
+								i--;
+							}
 						}
 					}
-				}
 
 				// For all eligible Pokemon, simulate battles and gather rating data
 

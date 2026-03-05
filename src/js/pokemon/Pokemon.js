@@ -2324,13 +2324,19 @@ function Pokemon(id, i, b, d){
 			return includedSlots;
 		}
 
-		for(let i = 0; i < cup.slots.length; i++){
-			if(cup.slots[i].pokemon.includes(self.speciesId) || cup.slots[i].pokemon.includes(self.speciesId.replace("_shadow","") )){
-				if(forDisplay){
-					includedSlots.push(i+1);
-				} else{
-					includedSlots.push(i);
-				}
+			for(let i = 0; i < cup.slots.length; i++){
+				let canonicalId = self.aliasId ? self.aliasId : self.speciesId;
+				let canonicalNoShadow = canonicalId.replace("_shadow", "");
+
+				if(cup.slots[i].pokemon.includes(self.speciesId)
+					|| cup.slots[i].pokemon.includes(self.speciesId.replace("_shadow",""))
+					|| cup.slots[i].pokemon.includes(canonicalId)
+					|| cup.slots[i].pokemon.includes(canonicalNoShadow)){
+					if(forDisplay){
+						includedSlots.push(i+1);
+					} else{
+						includedSlots.push(i);
+					}
 				
 			}
 		}

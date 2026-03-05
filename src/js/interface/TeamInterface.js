@@ -700,14 +700,18 @@ var InterfaceMaster = (function () {
 
 				// If using a restricted Pokemon, exclude restricted list
 
-				if(battle.getCup().restrictedPokemon){
-					var restrictedPicks = 0;
+					if(battle.getCup().restrictedPokemon){
+						var restrictedPicks = 0;
 
-					for(var i = 0; i < team.length; i++){
-						if(battle.getCup().restrictedPokemon.indexOf(team[i].speciesId.replace("shadow","")) > -1){
-							restrictedPicks++;
+						for(var i = 0; i < team.length; i++){
+							var restrictedId = team[i].aliasId ? team[i].aliasId : team[i].speciesId;
+							restrictedId = restrictedId.replace("_shadow", "");
+							restrictedId = restrictedId.replace("_xl", "");
+
+							if(battle.getCup().restrictedPokemon.indexOf(restrictedId) > -1){
+								restrictedPicks++;
+							}
 						}
-					}
 
 					if(restrictedPicks >= battle.getCup().restrictedPicks){
 						for(var n = 0; n < battle.getCup().restrictedPokemon.length; n++){

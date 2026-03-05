@@ -80,15 +80,18 @@ var RankerMaster = (function () {
 					pokemonList = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude);
 					targets = pokemonList;
 				} else if(moveSelectMode == "force"){
-					pokemonList = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude, rankingData, overrides, true, "allVariants");
-					targets = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude, rankingData, overrides, true, "canonical");
+					pokemonList = gm.generateFilteredPokemonList(battle, cup.include, cup.exclude, rankingData, overrides);
 
 					// Filter targets from pokemonList
-					for(var i = targets.length - 1; i >= 0; i--){
+					targets = [];
+
+					for(var i = 0; i < pokemonList.length; i++){
 						if(cup.filterTargets){
-							if(targets[i].weightModifier <= 1){
-								targets.splice(i, 1);
+							if(pokemonList[i].weightModifier > 1){
+								targets.push(pokemonList[i]);
 							}
+						} else{
+							targets.push(pokemonList[i]);
 						}
 					}
 				}
@@ -96,30 +99,16 @@ var RankerMaster = (function () {
 				// For custom rankings, exclude Pokemon with a low league overall score
 				if(cup.excludeLowPokemon && gm.rankings["alloverall"+cp]){
 					console.log(pokemonList.length);
-					var bestSpeciesScores = {};
-					var overallRankings = gm.rankings["alloverall"+cp];
+					var lowPokemon = gm.rankings["alloverall"+cp].filter(ranking => ranking.score < 70);
 
-					for(var r = 0; r < overallRankings.length; r++){
-						var speciesId = overallRankings[r].speciesId;
-						var score = overallRankings[r].score;
-
-						if((! bestSpeciesScores[speciesId]) || (score > bestSpeciesScores[speciesId])){
-							bestSpeciesScores[speciesId] = score;
+					for(var i = 0; i < lowPokemon.length; i++){
+						if((pokemonList.findIndex(r => r.speciesId == lowPokemon[i].speciesId) > -1)){
+							pokemonList.splice(pokemonList.findIndex(r => r.speciesId == lowPokemon[i].speciesId), 1);
+						}
+						if((targets.findIndex(r => r.speciesId == lowPokemon[i].speciesId) > -1)){
+							targets.splice(targets.findIndex(r => r.speciesId == lowPokemon[i].speciesId), 1);
 						}
 					}
-
-					var lowSpeciesIds = Object.keys(bestSpeciesScores).filter(function(speciesId){
-						return bestSpeciesScores[speciesId] < 70;
-					});
-
-					pokemonList = pokemonList.filter(function(pokemon){
-						return lowSpeciesIds.indexOf(pokemon.speciesId) == -1;
-					});
-
-					targets = targets.filter(function(pokemon){
-						return lowSpeciesIds.indexOf(pokemon.speciesId) == -1;
-					});
-
 					console.log(pokemonList.length);
 				}
 
@@ -228,8 +217,6 @@ var RankerMaster = (function () {
 
 					var rankObj = {
 						speciesId: pokemon.speciesId,
-						rankKey: pokemon.rankKey || pokemon.speciesId,
-						variantLabel: pokemon.variantLabel || null,
 						speciesName: pokemon.speciesName,
 						rating: 0,
 						matches: [], // Contains results of every individual battle
@@ -383,7 +370,7 @@ var RankerMaster = (function () {
 						avg += adjRating;
 					}
 
-					avg = Math.floor(avg / targets.length);
+					avg = Math.floor(avg / rankCount);
 
 					rankObj.rating = avg;
 					rankObj.scores = [avg];
@@ -451,25 +438,7 @@ var RankerMaster = (function () {
 
 				for(var n = 0; n < iterations; n++){
 
-					var bestScore = Math.max.apply(Math, rankings.map(function(o) { return o.scores[n]; }));
-					var opponentScoreMap = {};
-					var opponentScores = [];
-
-					// Build opponent score references by species so weighting still works
-					// when pokemonList includes variants and targets are canonical.
-					for(var s = 0; s < rankings.length; s++){
-						var speciesId = rankings[s].speciesId;
-						var speciesScore = rankings[s].scores[n];
-
-						if((typeof speciesScore === "number") && ((! opponentScoreMap[speciesId]) || (speciesScore > opponentScoreMap[speciesId]))){
-							opponentScoreMap[speciesId] = speciesScore;
-						}
-					}
-
-					for(var t = 0; t < targets.length; t++){
-						var opponentSpeciesId = targets[t].speciesId;
-						opponentScores.push(opponentScoreMap[opponentSpeciesId] || 0);
-					}
+					var bestScore = Math.max.apply(Math, rankings.map(function(o) { return o.scores[n]; }))
 
 					for(var i = 0; i < rankCount; i++){
 						var score = 0;
@@ -479,11 +448,10 @@ var RankerMaster = (function () {
 
 						for(var j = 0; j < matches.length; j++){
 
-							var weight = 0;
-							var opponentScore = opponentScores[j];
+							var weight = 1;
 
-							if((bestScore > 0) && (opponentScore > 0)){
-								weight = Math.pow( Math.max((opponentScore / bestScore) - (.1 + (rankCutoffIncrease * n)), 0), rankWeightExponent);
+							if(pokemonList.length == targets.length){
+								weight = Math.pow( Math.max((rankings[j].scores[n] / bestScore) - (.1 + (rankCutoffIncrease * n)), 0), rankWeightExponent);
 							}
 
 							// Don't score Pokemon in the mirror match
@@ -517,7 +485,11 @@ var RankerMaster = (function () {
 							}
 
 							var sc = matches[j].adjRating * weight;
-							var opScore = (weight > 0) ? (matches[j].adjOpRating * Math.pow(4, weight)) : 0;
+							var opScore = matches[j].adjOpRating * Math.pow(4, weight);
+
+							if(rankings[j].scores[n] / bestScore < .1 + (rankCutoffIncrease * n)){
+								weight = 0;
+							}
 
 							weights += weight;
 							matches[j].score = sc;
@@ -525,7 +497,7 @@ var RankerMaster = (function () {
 							score += sc;
 						}
 
-						var avgScore = (weights > 0) ? Math.floor(score / weights) : 0;
+						var avgScore = Math.floor(score / weights);
 
 						rankings[i].scores.push(avgScore);
 					}
