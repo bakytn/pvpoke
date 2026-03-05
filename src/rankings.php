@@ -176,6 +176,7 @@ require_once 'header.php';
 	<div class="rankings-container clear"></div>
 </div>
 
+<?php if(isset($IS_LOCALHOST) && $IS_LOCALHOST): ?>
 <div class="section white admin-delete-cup">
 	<h3>Delete League</h3>
 	<p>Deletes this league and all of its rankings.</p>
@@ -186,6 +187,7 @@ require_once 'header.php';
 	<button class="button delete-cup">Delete League</button>
 	<div class="delete-status"></div>
 </div>
+<?php endif; ?>
 
 <a href="#" class="button download-csv">Export to CSV</a>
 

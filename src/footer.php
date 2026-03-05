@@ -10,7 +10,7 @@
 
 	<?php
 	// Localhost developer panel
-	if (strpos($WEB_ROOT, 'src') !== false) {
+	if (isset($IS_LOCALHOST) && $IS_LOCALHOST) {
 	    require 'modules/developer-panel.php';
 	}
 	?>

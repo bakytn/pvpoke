@@ -1,6 +1,11 @@
 <?php require_once 'modules/config.php';
 $SITE_VERSION = '1.36.26';
 
+$hostHeader = isset($_SERVER['HTTP_HOST']) ? strtolower(trim($_SERVER['HTTP_HOST'])) : '';
+$hostOnly = preg_replace('/:\d+$/', '', $hostHeader);
+$hostOnly = trim($hostOnly, '[]');
+$IS_LOCALHOST = in_array($hostOnly, array('localhost', '127.0.0.1', '::1'), true);
+
 // This prevents caching on local testing
 if (strpos($WEB_ROOT, 'src') !== false) {
     $SITE_VERSION = rand(1,1000) . '.' . rand(1,1000) . '.' . rand(1,1000);
