@@ -146,6 +146,12 @@
     "weight": 1
   },
   {
+    "speciesId": "dragonite_mega",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": ["THUNDER_PUNCH","SUPER_POWER"],
+    "weight": 1
+  },
+  {
     "speciesId": "dragonite_shadow",
     "fastMove": "DRAGON_BREATH",
     "chargedMoves": ["THUNDER_PUNCH","SUPER_POWER"],
