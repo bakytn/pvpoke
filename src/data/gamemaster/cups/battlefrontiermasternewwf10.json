@@ -7,7 +7,7 @@
         "values": ["garchomp_mega","groudon_primal","gyarados_mega","heracross_mega","kyogre_primal","latias_mega","latios_mega","metagross_mega","salamence_mega","tyranitar_mega"]
     }],
     "restrictedPicks": 1,
-    "restrictedPokemon": ["dragonite_mega","eternatus","kyurem_black","kyurem_white","palkia_origin","rayquaza_mega","zacian_crowned_sword","zamazenta_crowned_shield"],
+    "restrictedPokemon": ["dragonite_mega","eternatus","palkia_origin","rayquaza_mega","swampert_mega","zacian_crowned_sword","zamazenta_crowned_shield"],
     "tierRules": {
         "max": 11,
         "floor": 0,
