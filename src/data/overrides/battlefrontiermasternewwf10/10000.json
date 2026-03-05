@@ -1,7 +1,7 @@
 [
   {
     "speciesId": "abomasnow_mega",
-    "chargedMoves": ["ICY_WIND", "ENERGY_BALL"],
+    "chargedMoves": ["ICY_WIND","ENERGY_BALL"],
     "weight": 1
   },
   {
@@ -33,12 +33,12 @@
   },
   {
     "speciesId": "annihilape",
-    "chargedMoves": ["RAGE_FIST", "CLOSE_COMBAT"],
+    "chargedMoves": ["RAGE_FIST","CLOSE_COMBAT"],
     "weight": 1
   },
   {
     "speciesId": "annihilape_shadow",
-    "chargedMoves": ["RAGE_FIST", "CLOSE_COMBAT"],
+    "chargedMoves": ["RAGE_FIST","CLOSE_COMBAT"],
     "weight": 1
   },
   {
@@ -236,7 +236,7 @@
   {
     "speciesId": "gholdengo",
     "fastMove": "ASTONISH",
-    "chargedMoves": ["SHADOW_BALL", "DAZZLING_GLEAM"],
+    "chargedMoves": ["SHADOW_BALL","DAZZLING_GLEAM"],
     "weight": 1
   },
   {
@@ -337,7 +337,7 @@
   },
   {
     "speciesId": "kangaskhan_mega",
-    "chargedMoves": ["BRICK_BREAK", "OUTRAGE"],
+    "chargedMoves": ["BRICK_BREAK","OUTRAGE"],
     "weight": 1
   },
   {
@@ -364,7 +364,7 @@
   },
   {
     "speciesId": "kommo_o",
-    "chargedMoves": ["CLOSE_COMBAT", "CLANGING_SCALES"],
+    "chargedMoves": ["CLOSE_COMBAT","CLANGING_SCALES"],
     "weight": 1
   },
   {
@@ -395,9 +395,9 @@
     "weight": 1
   },
   {
-  	"speciesId": "lopunny_mega",
-  	"chargedMoves": ["TRIPLE_AXEL","FOCUS_BLAST"],
-  	"weight": 1
+    "speciesId": "lopunny_mega",
+    "chargedMoves": ["TRIPLE_AXEL","FOCUS_BLAST"],
+    "weight": 1
   },
   {
     "speciesId": "lucario",
@@ -470,10 +470,7 @@
   {
     "speciesId": "marshadow",
     "fastMove": "SHADOW_CLAW",
-    "chargedMoves": [
-      "CLOSE_COMBAT",
-      "ICE_PUNCH"
-    ],
+    "chargedMoves": ["CLOSE_COMBAT","ICE_PUNCH"],
     "weight": 1
   },
   {
@@ -532,13 +529,13 @@
     "weight": 1
   },
   {
-  	"speciesId": "necrozma",
-  	"chargedMoves": ["DARK_PULSE","OUTRAGE"],
-  	"weight": 1
+    "speciesId": "necrozma",
+    "chargedMoves": ["DARK_PULSE","OUTRAGE"],
+    "weight": 1
   },
   {
     "speciesId": "nihilego",
-    "chargedMoves": ["SLUDGE_BOMB", "POWER_GEM"],
+    "chargedMoves": ["SLUDGE_BOMB","POWER_GEM"],
     "weight": 1
   },
   {
@@ -753,12 +750,12 @@
   },
   {
     "speciesId": "urshifu_rapid_strike",
-    "chargedMoves": ["CLOSE_COMBAT", "AQUA_JET"],
+    "chargedMoves": ["CLOSE_COMBAT","AQUA_JET"],
     "weight": 1
   },
   {
     "speciesId": "urshifu_single_strike",
-    "chargedMoves": ["DYNAMIC_PUNCH", "PAYBACK"],
+    "chargedMoves": ["DYNAMIC_PUNCH","PAYBACK"],
     "weight": 1
   },
   {
@@ -835,165 +832,111 @@
     "weight": 1
   },
   {
-      "speciesId": "groudon_dt_fp_pb",
-      "weight": 1,
-      "fastMove": "DRAGON_TAIL",
-      "chargedMoves": [
-          "FIRE_PUNCH",
-          "PRECIPICE_BLADES"
-      ]
+    "speciesId": "groudon_dt_fp_pb",
+    "weight": 0,
+    "fastMove": "DRAGON_TAIL",
+    "chargedMoves": ["FIRE_PUNCH","PRECIPICE_BLADES"]
   },
   {
-      "speciesId": "groudon_shadow_dt_fp_pb",
-      "weight": 1,
-      "fastMove": "DRAGON_TAIL",
-      "chargedMoves": [
-          "FIRE_PUNCH",
-          "PRECIPICE_BLADES"
-      ]
+    "speciesId": "groudon_shadow_dt_fp_pb",
+    "weight": 0,
+    "fastMove": "DRAGON_TAIL",
+    "chargedMoves": ["FIRE_PUNCH","PRECIPICE_BLADES"]
   },
   {
-      "speciesId": "zacian_hero_qa_wc_cc",
-      "weight": 1,
-      "fastMove": "QUICK_ATTACK",
-      "chargedMoves": [
-          "WILD_CHARGE",
-          "CLOSE_COMBAT"
-      ]
+    "speciesId": "zacian_hero_qa_wc_cc",
+    "weight": 0,
+    "fastMove": "QUICK_ATTACK",
+    "chargedMoves": ["WILD_CHARGE","CLOSE_COMBAT"]
   },
   {
-      "speciesId": "zacian_hero_ff_wc_cc",
-      "weight": 1,
-      "fastMove": "FIRE_FANG",
-      "chargedMoves": [
-          "WILD_CHARGE",
-          "CLOSE_COMBAT"
-      ]
+    "speciesId": "zacian_hero_ff_wc_cc",
+    "weight": 0,
+    "fastMove": "FIRE_FANG",
+    "chargedMoves": ["WILD_CHARGE","CLOSE_COMBAT"]
   },
   {
-      "speciesId": "zacian_hero_ff_wc_pr",
-      "weight": 1,
-      "fastMove": "FIRE_FANG",
-      "chargedMoves": [
-          "WILD_CHARGE",
-          "PLAY_ROUGH"
-      ]
+    "speciesId": "zacian_hero_ff_wc_pr",
+    "weight": 0,
+    "fastMove": "FIRE_FANG",
+    "chargedMoves": ["WILD_CHARGE","PLAY_ROUGH"]
   },
   {
-      "speciesId": "charizard_mega_x_ember_ac_bb",
-      "weight": 1,
-      "fastMove": "EMBER",
-      "chargedMoves": [
-          "AIR_CUTTER",
-          "BLAST_BURN"
-      ]
+    "speciesId": "charizard_mega_x_ember_ac_bb",
+    "weight": 0,
+    "fastMove": "EMBER",
+    "chargedMoves": ["AIR_CUTTER","BLAST_BURN"]
   },
   {
-      "speciesId": "charizard_mega_y_ember_ac_bb",
-      "weight": 1,
-      "fastMove": "EMBER",
-      "chargedMoves": [
-          "AIR_CUTTER",
-          "BLAST_BURN"
-      ]
+    "speciesId": "charizard_mega_y_ember_ac_bb",
+    "weight": 0,
+    "fastMove": "EMBER",
+    "chargedMoves": ["AIR_CUTTER","BLAST_BURN"]
   },
   {
-      "speciesId": "charizard_mega_y_db_ac_bb",
-      "weight": 1,
-      "fastMove": "DRAGON_BREATH",
-      "chargedMoves": [
-          "AIR_CUTTER",
-          "BLAST_BURN"
-      ]
+    "speciesId": "charizard_mega_y_db_ac_bb",
+    "weight": 0,
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": ["AIR_CUTTER","BLAST_BURN"]
   },
   {
-      "speciesId": "charizard_mega_y_db_ac_dc",
-      "weight": 1,
-      "fastMove": "DRAGON_BREATH",
-      "chargedMoves": [
-          "AIR_CUTTER",
-          "DRAGON_CLAW"
-      ]
+    "speciesId": "charizard_mega_y_db_ac_dc",
+    "weight": 0,
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": ["AIR_CUTTER","DRAGON_CLAW"]
   },
   {
-      "speciesId": "kyogre_wf_av_op",
-      "weight": 1,
-      "fastMove": "WATERFALL",
-      "chargedMoves": [
-          "AVALANCHE",
-          "ORIGIN_PULSE"
-      ]
+    "speciesId": "kyogre_wf_av_op",
+    "weight": 0,
+    "fastMove": "WATERFALL",
+    "chargedMoves": ["AVALANCHE","ORIGIN_PULSE"]
   },
   {
-      "speciesId": "kyogre_wf_av_sr",
-      "weight": 1,
-      "fastMove": "WATERFALL",
-      "chargedMoves": [
-          "AVALANCHE",
-          "SURF"
-      ]
+    "speciesId": "kyogre_wf_av_sr",
+    "weight": 0,
+    "fastMove": "WATERFALL",
+    "chargedMoves": ["AVALANCHE","SURF"]
   },
   {
-      "speciesId": "kyogre_shadow_wf_av_srf",
-      "weight": 1,
-      "fastMove": "WATERFALL",
-      "chargedMoves": [
-          "AVALANCHE",
-          "SURF"
-      ]
+    "speciesId": "kyogre_shadow_wf_av_srf",
+    "weight": 0,
+    "fastMove": "WATERFALL",
+    "chargedMoves": ["AVALANCHE","SURF"]
   },
   {
-      "speciesId": "dragonite_db_tp_dc",
-      "weight": 1,
-      "fastMove": "DRAGON_BREATH",
-      "chargedMoves": [
-          "THUNDER_PUNCH",
-          "DRAGON_CLAW"
-      ]
+    "speciesId": "dragonite_db_tp_dc",
+    "weight": 0,
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": ["THUNDER_PUNCH","DRAGON_CLAW"]
   },
   {
-      "speciesId": "dragonite_mega_db_tp_dc",
-      "weight": 1,
-      "fastMove": "DRAGON_BREATH",
-      "chargedMoves": [
-          "THUNDER_PUNCH",
-          "DRAGON_CLAW"
-      ]
+    "speciesId": "dragonite_mega_db_tp_dc",
+    "weight": 0,
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": ["THUNDER_PUNCH","DRAGON_CLAW"]
   },
   {
-      "speciesId": "dragonite_shadow_db_tp_dc",
-      "weight": 1,
-      "fastMove": "DRAGON_BREATH",
-      "chargedMoves": [
-          "THUNDER_PUNCH",
-          "DRAGON_CLAW"
-      ]
+    "speciesId": "dragonite_shadow_db_tp_dc",
+    "weight": 0,
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": ["THUNDER_PUNCH","DRAGON_CLAW"]
   },
   {
-      "speciesId": "steelix_mega_tf_pf_cr",
-      "weight": 1,
-      "fastMove": "THUNDER_FANG",
-      "chargedMoves": [
-          "PSYCHIC_FANGS",
-          "CRUNCH"
-      ]
+    "speciesId": "steelix_mega_tf_pf_cr",
+    "weight": 0,
+    "fastMove": "THUNDER_FANG",
+    "chargedMoves": ["PSYCHIC_FANGS","CRUNCH"]
   },
   {
-      "speciesId": "lucario_mega_bp_mm_as",
-      "weight": 1,
-      "fastMove": "BULLET_PUNCH",
-      "chargedMoves": [
-          "METEOR_MASH",
-          "AURA_SPHERE"
-      ]
+    "speciesId": "lucario_mega_bp_mm_as",
+    "weight": 0,
+    "fastMove": "BULLET_PUNCH",
+    "chargedMoves": ["METEOR_MASH","AURA_SPHERE"]
   },
   {
-      "speciesId": "primarina_wf_hc_mb",
-      "weight": 1,
-      "fastMove": "WATERFALL",
-      "chargedMoves": [
-          "HYDRO_CANNON",
-          "MOONBLAST"
-      ]
+    "speciesId": "primarina_wf_hc_mb",
+    "weight": 0,
+    "fastMove": "WATERFALL",
+    "chargedMoves": ["HYDRO_CANNON","MOONBLAST"]
   }
 ]
