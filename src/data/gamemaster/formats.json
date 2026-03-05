@@ -1,9 +1,9 @@
 [
     {
         "title": "Battle Frontier (Master)",
-        "cup": "battlefrontiermasternewwf10",
+        "cup": "battlefrontiermasternew",
         "cp": 10000,
-        "meta": "battlefrontiermasternewwf10",
+        "meta": "battlefrontiermasternew",
         "showCup": true,
         "showFormat": true,
         "showMeta": true
