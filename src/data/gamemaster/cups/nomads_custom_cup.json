@@ -1,0 +1,39 @@
+{
+    "name": "nomads_custom_cup",
+    "title": "Ignore this",
+    "include": [
+        {
+            "filterType": "tag",
+            "name": "Tag",
+            "values": [
+                "legendary",
+                "mythical",
+                "ultrabeast",
+                "alolan",
+                "galarian",
+                "hisuian",
+                "regional",
+                "starter",
+                "shadow",
+                "shadoweligible",
+                "mega"
+            ]
+        }
+    ],
+    "exclude": [
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "zygarde_complete",
+                "eternatus"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 10000,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}

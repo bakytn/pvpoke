@@ -11,5 +11,15 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
+  1 => 
+  array (
+    'title' => 'Ignore this',
+    'cup' => 'nomads_custom_cup',
+    'cp' => 10000,
+    'meta' => 'master',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
 );
 ?>
