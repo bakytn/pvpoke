@@ -3386,9 +3386,16 @@ a.download-csv {
 
 .ranking-checks {
   font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
 }
 .ranking-checks .check.xl {
-  margin-right: 10px;
+  margin-right: 0;
+}
+.ranking-checks .check {
+  margin-top: 0;
 }
 
 .traits,

@@ -3839,9 +3839,17 @@ a.download-csv{
 
 .ranking-checks{
 	font-size:14px;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	gap:10px 18px;
 
 	.check.xl{
-		margin-right:10px;
+		margin-right:0;
+	}
+
+	.check{
+		margin-top:0;
 	}
 }
 
