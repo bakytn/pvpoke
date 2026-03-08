@@ -4,7 +4,7 @@
     "include": [],
     "exclude": [{
         "filterType": "id",
-        "values": ["dragonite_mega","garchomp_mega","groudon_primal","gyarados_mega","heracross_mega","kyogre_primal","latias_mega","latios_mega","metagross_mega","rayquaza_mega","salamence_mega","tyranitar_mega"]
+        "values": ["dragonite_mega","dragonite_mega_db_tp_dc","garchomp_mega","groudon_primal","gyarados_mega","heracross_mega","kyogre_primal","latias_mega","latios_mega","metagross_mega","rayquaza_mega","salamence_mega","tyranitar_mega"]
     }],
     "restrictedPicks": 1,
     "restrictedPokemon": ["eternatus","palkia_origin","swampert_mega","zacian_crowned_sword","zamazenta_crowned_shield"],
