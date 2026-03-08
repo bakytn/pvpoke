@@ -95,6 +95,12 @@ This document gives coding agents a fast, accurate map of how this site is struc
 - Do **not** run `src/data/compile.php` automatically after edits.
 - If you find originalpvpoke in the root folder, you should completely ignore it unless explicitly asked
 
+### Cup Point/Ban Updates (Data-Only Rule)
+- For requests that only change cup point tiers and/or ban lists, edit only the cup source JSON in `src/data/gamemaster/cups/<cup>.json`.
+- Do not change PHP or JS files for these requests (including `src/js/GameMaster.js`, `src/js/interface/*`, `src/header.php`, etc.).
+- Do not hand-edit generated outputs (`src/data/gamemaster.json`, `src/data/gamemaster.min.json`, rankings JSON) as part of the point/ban edit itself.
+- Regeneration is manual and only when explicitly requested: run compile/ranking commands after the data-only edit.
+
 ## Recompile Instructions (Manual Only)
 - Only recompile when explicitly requested.
 - From repo root, run:
