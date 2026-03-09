@@ -22,10 +22,10 @@
             "pokemon": ["blastoise_mega","blaziken_mega","dialga_origin","gengar_mega","groudon","kyogre","landorus_therian","lucario_mega","lunala","marshadow","meloetta_aria","metagross","steelix_mega","xerneas","yveltal"]
         }, {
             "points": 2,
-            "pokemon": ["dialga","florges","giratina_origin","ho_oh","keldeo_ordinary","keldeo_resolute","lugia","mewtwo","necrozma_dawn_wings","necrozma_dusk_mane","palkia","reshiram","rhyperior","solgaleo","tyranitar","zekrom"]
+            "pokemon": ["dialga","florges","giratina_origin","ho_oh","keldeo_ordinary","keldeo_resolute","lugia","mewtwo","necrozma_dawn_wings","necrozma_dusk_mane","palkia","primarina","reshiram","rhyperior","solgaleo","tyranitar","zekrom"]
         }, {
             "points": 1,
-            "pokemon": ["charizard_mega_x","garchomp","giratina_altered","gyarados","heatran","kangaskhan_mega","kyurem","melmetal","moltres","moltres_galarian","primarina","slowbro_mega","tapu_lele","urshifu_rapid_strike","urshifu_single_strike","volcanion","zacian_hero","zarude"]
+            "pokemon": ["charizard_mega_x","garchomp","giratina_altered","gyarados","heatran","kangaskhan_mega","kyurem","melmetal","moltres","moltres_galarian","slowbro_mega","tapu_lele","urshifu_rapid_strike","urshifu_single_strike","volcanion","zacian_hero","zarude"]
         }]
     }
 }
