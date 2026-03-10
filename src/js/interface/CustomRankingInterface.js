@@ -912,6 +912,11 @@ function interfaceObject(){
 	function saveLeague(e){
 		e.preventDefault();
 
+		if(! isLocalhost){
+			setSaveStatus("Save as League is only available on localhost.", true);
+			return;
+		}
+
 		if(savingLeague){
 			return;
 		}

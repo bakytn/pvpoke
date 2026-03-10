@@ -265,23 +265,25 @@ require_once 'header.php'; ?>
 	<a href="#" class="button download-csv">Export to CSV</a>
 </div>
 
-<div class="section white custom-rankings-save">
-	<h3>Save as League</h3>
-	<p>Save this custom cup as a persistent league and generate rankings.</p>
+<?php if($IS_LOCALHOST): ?>
+	<div class="section white custom-rankings-save">
+		<h3>Save as League</h3>
+		<p>Save this custom cup as a persistent league and generate rankings.</p>
 
-	<div class="field-container">
-		<label>League Title</label>
-		<input class="save-title" placeholder="My Custom Cup" />
-	</div>
-	<div class="field-container">
-		<label>League Slug</label>
-		<input class="save-slug" placeholder="my_custom_cup" />
-		<p class="small">Lowercase letters, numbers, and underscores only.</p>
-	</div>
+		<div class="field-container">
+			<label>League Title</label>
+			<input class="save-title" placeholder="My Custom Cup" />
+		</div>
+		<div class="field-container">
+			<label>League Slug</label>
+			<input class="save-slug" placeholder="my_custom_cup" />
+			<p class="small">Lowercase letters, numbers, and underscores only.</p>
+		</div>
 
-	<button class="button save-league">Save &amp; Generate Rankings</button>
-	<div class="save-status"></div>
-</div>
+		<button class="button save-league">Save &amp; Generate Rankings</button>
+		<div class="save-status"></div>
+	</div>
+<?php endif; ?>
 
 <div class="section white custom-rankings-import">
 	<h3>Import/Export Settings</h3>

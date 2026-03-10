@@ -8,6 +8,15 @@ function respond_json($status, $payload){
 	exit;
 }
 
+$hostHeader = isset($_SERVER['HTTP_HOST']) ? strtolower(trim($_SERVER['HTTP_HOST'])) : '';
+$hostOnly = preg_replace('/:\d+$/', '', $hostHeader);
+$hostOnly = trim($hostOnly, '[]');
+$isLocalhost = in_array($hostOnly, array('localhost', '127.0.0.1', '::1'), true);
+
+if(! $isLocalhost){
+	respond_json(403, ['status' => 'error', 'message' => 'Save as League is only available on localhost.']);
+}
+
 $rawCup = $_POST['cup'] ?? '';
 $name = strtolower(trim($_POST['name'] ?? ''));
 $title = trim($_POST['title'] ?? '');
