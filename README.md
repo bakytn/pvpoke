@@ -30,6 +30,33 @@ Optional flags:
 ./src/scripts/regenerate-rankings-cli.sh --base-url http://127.0.0.1:8080/pvpoke/src --no-server
 ```
 
+### Generate Best Teams from CLI
+```
+./src/scripts/generate-team-cli.sh --cup all --cp 1500
+```
+
+Common options:
+```
+./src/scripts/generate-team-cli.sh --cup all --size 6 --top 3 --search-depth deep
+./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy type-diverse
+./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy strict
+./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy any
+./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --top 3
+./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --build-around meloetta_aria,heatran
+./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --exclude-species zygarde_complete
+./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --likely-threats meloetta_aria --likely-threat-weight 2.0
+./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --build-around meloetta_aria --exclude-species zygarde_complete --likely-threats meloetta_aria
+./src/scripts/generate-team-cli.sh --cup all --cp 1500 --json
+./src/scripts/generate-team-cli.sh --cup all --cp 1500 --no-server --base-url http://127.0.0.1:8080/pvpoke/src
+```
+
+Duplicate policy notes:
+```
+type-diverse (default): same dex is allowed only when typing differs
+strict: disallow all same-dex combinations
+any: allow same-dex combinations, including same typing
+```
+
 # PvPoke
 
 [PvPoke.com](https://pvpoke.com) is a resource for Pokemon GO PvP that includes a battle simulator, rankings, and team building. The project’s goal is to provide tools and insights to help players build their teams, and foster the game’s community spirit by making all of the underlying code public. I hope this project can inspire new tools or benefit the existing ones that continue to enhance our enjoyment of the game.
