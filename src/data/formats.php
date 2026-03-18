@@ -13,6 +13,36 @@ $formats = array (
   ),
   1 => 
   array (
+    'title' => 'Battle Frontier (Bayou Cup)',
+    'cup' => 'bayou',
+    'cp' => 1500,
+    'meta' => 'bayou',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  2 => 
+  array (
+    'title' => 'Battle Frontier (Brujería Cup)',
+    'cup' => 'brujeria',
+    'cp' => 1500,
+    'meta' => 'brujeria',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  3 => 
+  array (
+    'title' => 'Battle Frontier (UL Retro)',
+    'cup' => 'bfretro',
+    'cp' => 2500,
+    'meta' => 'bfretro',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  4 => 
+  array (
     'title' => 'Ignore this',
     'cup' => 'nomads_custom_cup',
     'cp' => 10000,

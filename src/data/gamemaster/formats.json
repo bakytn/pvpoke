@@ -9,6 +9,33 @@
         "showMeta": true
     },
     {
+        "title": "Battle Frontier (Bayou Cup)",
+        "cup": "bayou",
+        "cp": 1500,
+        "meta": "bayou",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+    {
+        "title": "Battle Frontier (Brujería Cup)",
+        "cup": "brujeria",
+        "cp": 1500,
+        "meta": "brujeria",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+    {
+        "title": "Battle Frontier (UL Retro)",
+        "cup": "bfretro",
+        "cp": 2500,
+        "meta": "bfretro",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+    {
         "title": "Ignore this",
         "cup": "nomads_custom_cup",
         "cp": 10000,
