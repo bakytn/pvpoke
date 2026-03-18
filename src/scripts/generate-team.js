@@ -132,6 +132,7 @@ function parseConfigFromEnv() {
 	const buildAround = parseSpeciesIdCsv(process.env.BUILD_AROUND);
 	const excludeSpecies = parseSpeciesIdCsv(process.env.EXCLUDE_SPECIES);
 	const jsonOutput = process.env.JSON_OUTPUT === "1";
+	const verboseOutput = process.env.VERBOSE_OUTPUT === "1";
 	const allowShadows = process.env.ALLOW_SHADOWS !== "0";
 	const allowXL = process.env.ALLOW_XL !== "0";
 	const baseUrl = normalizeBaseUrl(process.env.BASE_URL);
@@ -183,6 +184,7 @@ function parseConfigFromEnv() {
 		allowXL,
 		baseUrl,
 		jsonOutput,
+		verboseOutput,
 	};
 }
 
@@ -209,6 +211,40 @@ function printHumanReadable(result) {
 		const likelyThreatScoreStr = team.raw.likelyAvgThreatScore === null ? "n/a" : team.raw.likelyAvgThreatScore.toFixed(2);
 		console.log(`  raw: coverageMetric=${team.raw.coverageMetric.toFixed(2)} avgThreatScore=${team.raw.avgThreatScore.toFixed(2)} metaAvgThreatScore=${team.raw.metaAvgThreatScore.toFixed(2)} likelyAvgThreatScore=${likelyThreatScoreStr} blendedAvgThreatScore=${team.raw.blendedAvgThreatScore.toFixed(2)} bulk=${team.raw.averageBulk.toFixed(2)} safety=${team.raw.averageSafety.toFixed(2)} consistency=${team.raw.averageConsistency.toFixed(2)}`);
 		console.log(`  speciesIds: ${team.members.map((member) => member.speciesId).join(",")}`);
+	});
+}
+
+const OFFICIAL_TEAM_BUILDER_BASE_URL = "https://pvpoke.com";
+
+function buildTeamBuilderUrl(result, team) {
+	const cup = result?.resolved?.cup;
+	const cp = result?.resolved?.cp;
+	const token = team.members
+		.map((member) => member.teamBuilderToken || member.speciesId)
+		.join("%2C");
+
+	return `${OFFICIAL_TEAM_BUILDER_BASE_URL}/team-builder/${cup}/${cp}/${token}`;
+}
+
+function printSimple(result) {
+	if (!Array.isArray(result.teams) || result.teams.length === 0) {
+		console.log("No teams found.");
+		return;
+	}
+
+	result.teams.forEach((team, teamIndex) => {
+		console.log(`Team ${teamIndex + 1}:`);
+
+		team.members.forEach((member, memberIndex) => {
+			console.log(`${memberIndex + 1}. ${member.speciesName}`);
+		});
+
+		console.log("");
+		console.log(buildTeamBuilderUrl(result, team));
+
+		if (teamIndex < result.teams.length - 1) {
+			console.log("");
+		}
 	});
 }
 
@@ -917,6 +953,7 @@ async function runGeneration(config) {
 					speciesName: pokemon.speciesName,
 					dex: pokemon.dex,
 					types: [pokemon.types[0], pokemon.types[1]],
+					teamBuilderToken: `${pokemon.aliasId}-m-${pokemon.generateURLMoveStr()}`,
 				}));
 			}
 
@@ -1109,6 +1146,7 @@ async function runGeneration(config) {
 				allowShadows: config.allowShadows,
 				allowXL: config.allowXL,
 				timeoutMinutes: config.timeoutMinutes,
+				verboseOutput: config.verboseOutput,
 			},
 			resolved: payload.resolved,
 			teams: payload.teams,
@@ -1129,7 +1167,12 @@ async function run() {
 		return;
 	}
 
-	printHumanReadable(result);
+	if (config.verboseOutput) {
+		printHumanReadable(result);
+		return;
+	}
+
+	printSimple(result);
 }
 
 run().catch((error) => {

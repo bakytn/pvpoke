@@ -28,6 +28,7 @@ LIKELY_THREAT_WEIGHT="${DEFAULT_LIKELY_THREAT_WEIGHT}"
 BUILD_AROUND=""
 EXCLUDE_SPECIES=""
 JSON_OUTPUT=0
+VERBOSE_OUTPUT=0
 START_SERVER=1
 USER_SET_CUP=0
 USER_SET_CP=0
@@ -59,6 +60,7 @@ Options:
   --build-around <species_id_csv> Mandatory core species to include on every team
   --exclude-species <species_id_csv>
                                   Exclude species from generated team picks
+  --verbose                       Detailed output (config, scores, grades, metrics)
   --json                          Output JSON
   --base-url <url>                Base URL where pvpoke/src is served (default: ${DEFAULT_BASE_URL})
   --timeout-min <min>             Timeout in minutes (default: ${DEFAULT_TIMEOUT_MINUTES})
@@ -72,6 +74,7 @@ Examples:
   $(basename "$0") --format battlefrontiermasternewwf10 --build-around meloetta_aria,heatran
   $(basename "$0") --format battlefrontiermasternewwf10 --exclude-species zygarde_complete
   $(basename "$0") --format battlefrontiermasternewwf10 --likely-threats meloetta_aria --likely-threat-weight 2.5
+  $(basename "$0") --cup brujeria --cp 1500 --top 3 --verbose
   $(basename "$0") --cup all --cp 10000 --duplicate-policy any --json
 EOF2
 }
@@ -131,6 +134,10 @@ while [[ $# -gt 0 ]]; do
 			;;
 		--json)
 			JSON_OUTPUT=1
+			shift
+			;;
+		--verbose)
+			VERBOSE_OUTPUT=1
 			shift
 			;;
 		--base-url)
@@ -293,6 +300,7 @@ LIKELY_THREAT_WEIGHT="${LIKELY_THREAT_WEIGHT}" \
 BUILD_AROUND="${BUILD_AROUND}" \
 EXCLUDE_SPECIES="${EXCLUDE_SPECIES}" \
 JSON_OUTPUT="${JSON_OUTPUT}" \
+VERBOSE_OUTPUT="${VERBOSE_OUTPUT}" \
 BASE_URL="${BASE_URL}" \
 TIMEOUT_MINUTES="${TIMEOUT_MINUTES}" \
 node "${SCRIPT_DIR}/generate-team.js"

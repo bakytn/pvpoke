@@ -35,9 +35,13 @@ Optional flags:
 ./src/scripts/generate-team-cli.sh --cup all --cp 1500
 ```
 
+Default output is a simple numbered list of team members with a Team Builder URL under each team.
+Use `--verbose` for detailed metrics.
+
 Common options:
 ```
 ./src/scripts/generate-team-cli.sh --cup all --size 6 --top 3 --search-depth deep
+./src/scripts/generate-team-cli.sh --cup all --cp 1500 --top 3 --verbose
 ./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy type-diverse
 ./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy strict
 ./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy any
