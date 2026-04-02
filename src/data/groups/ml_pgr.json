@@ -1,0 +1,162 @@
+[
+  {
+    "speciesId": "ampharos_mega",
+    "fastMove": "VOLT_SWITCH",
+    "chargedMoves": [
+      "BRUTAL_SWING",
+      "FOCUS_BLAST"
+    ]
+  },
+  {
+    "speciesId": "dragonite",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "THUNDER_PUNCH",
+      "SUPER_POWER"
+    ]
+  },
+  {
+    "speciesId": "giratina_altered",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "DRAGON_CLAW",
+      "SHADOW_SNEAK"
+    ]
+  },
+  {
+    "speciesId": "giratina_origin",
+    "fastMove": "SHADOW_CLAW",
+    "chargedMoves": [
+      "DRAGON_PULSE",
+      "SHADOW_BALL"
+    ]
+  },
+  {
+    "speciesId": "goodra",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "AQUA_TAIL",
+      "THUNDER_PUNCH"
+    ]
+  },
+  {
+    "speciesId": "gyarados",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "AQUA_TAIL",
+      "CRUNCH"
+    ]
+  },
+  {
+    "speciesId": "heatran",
+    "fastMove": "FIRE_SPIN",
+    "chargedMoves": [
+      "MAGMA_STORM",
+      "STONE_EDGE"
+    ]
+  },
+  {
+    "speciesId": "hydreigon",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "BRUTAL_SWING",
+      "DRAGON_PULSE"
+    ]
+  },
+  {
+    "speciesId": "kyurem",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "GLACIATE",
+      "DRAGON_CLAW"
+    ]
+  },
+  {
+    "speciesId": "latios",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "AURA_SPHERE",
+      "LUSTER_PURGE"
+    ]
+  },
+  {
+    "speciesId": "melmetal",
+    "fastMove": "THUNDER_SHOCK",
+    "chargedMoves": [
+      "SUPER_POWER",
+      "DOUBLE_IRON_BASH"
+    ]
+  },
+  {
+    "speciesId": "primarina",
+    "fastMove": "CHARM",
+    "chargedMoves": [
+      "HYDRO_CANNON",
+      "DISARMING_VOICE"
+    ]
+  },
+  {
+    "speciesId": "slowbro_mega",
+    "fastMove": "CONFUSION",
+    "chargedMoves": [
+      "SURF",
+      "ICE_BEAM"
+    ]
+  },
+  {
+    "speciesId": "tapu_lele",
+    "fastMove": "ASTONISH",
+    "chargedMoves": [
+      "NATURES_MADNESS",
+      "PSYSHOCK"
+    ]
+  },
+  {
+    "speciesId": "togekiss",
+    "fastMove": "PECK",
+    "chargedMoves": [
+      "DAZZLING_GLEAM",
+      "AURA_SPHERE"
+    ]
+  },
+  {
+    "speciesId": "tyranitar",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "BRUTAL_SWING",
+      "STONE_EDGE"
+    ]
+  },
+  {
+    "speciesId": "tyranitar_shadow",
+    "fastMove": "DRAGON_BREATH",
+    "chargedMoves": [
+      "BRUTAL_SWING",
+      "STONE_EDGE"
+    ]
+  },
+  {
+    "speciesId": "ursaluna",
+    "fastMove": "TACKLE",
+    "chargedMoves": [
+      "SWIFT",
+      "HIGH_HORSEPOWER"
+    ]
+  },
+  {
+    "speciesId": "urshifu_single_strike",
+    "fastMove": "SUCKER_PUNCH",
+    "chargedMoves": [
+      "DYNAMIC_PUNCH",
+      "PAYBACK"
+    ]
+  },
+  {
+    "speciesId": "zamazenta_hero",
+    "fastMove": "ICE_FANG",
+    "chargedMoves": [
+      "CLOSE_COMBAT",
+      "CRUNCH"
+    ]
+  }
+]

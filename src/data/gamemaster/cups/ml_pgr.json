@@ -1,0 +1,50 @@
+{
+    "name": "ml_pgr",
+    "title": "Master League PGR",
+    "include": [],
+    "exclude": [
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "keldeo_ordinary",
+                "keldeo_resolute",
+                "kyogre",
+                "eternatus",
+                "yveltal",
+                "zygarde_complete",
+                "dialga",
+                "gholdengo",
+                "reshiram",
+                "meloetta_aria",
+                "xerneas",
+                "ho_oh",
+                "solgaleo",
+                "metagross",
+                "charizard_mega_x",
+                "blaziken_mega",
+                "palkia",
+                "zacian_hero",
+                "zekrom",
+                "marshadow",
+                "lunala",
+                "necrozma_dawn_wings",
+                "landorus_therian",
+                "rhyperior",
+                "blastoise_mega",
+                "steelix_mega",
+                "lucario_mega",
+                "florges",
+                "groudon",
+                "necrozma_dusk_mane",
+                "lugia"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 10000,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}
