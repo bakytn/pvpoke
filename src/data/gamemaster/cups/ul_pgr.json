@@ -1,0 +1,66 @@
+{
+    "name": "ul_pgr",
+    "title": "Ultra League PGR",
+    "include": [],
+    "exclude": [
+        {
+            "filterType": "tag",
+            "name": "Tag",
+            "values": [
+                "mega"
+            ]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "weezing_galarian",
+                "drapion",
+                "clefable",
+                "virizion",
+                "cradily",
+                "zygarde_complete",
+                "moltres_galarian",
+                "tinkaton",
+                "empoleon",
+                "corviknight",
+                "annihilape",
+                "regidrago",
+                "lickilicky",
+                "guzzlord",
+                "jirachi",
+                "jellicent",
+                "florges",
+                "turtonator",
+                "malamar",
+                "lapras",
+                "primeape",
+                "pangoro",
+                "forretress",
+                "feraligatr",
+                "steelix",
+                "giratina_altered",
+                "skeledirge",
+                "dondozo",
+                "oranguru",
+                "kingdra",
+                "togekiss",
+                "typhlosion",
+                "dusknoir",
+                "ninetales_alolan",
+                "tentacruel",
+                "cresselia",
+                "toucannon",
+                "spiritomb",
+                "seaking",
+                "bellibolt"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 2500,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}
