@@ -43,6 +43,16 @@ $formats = array (
   ),
   4 => 
   array (
+    'title' => 'Ultra League PGR',
+    'cup' => 'ul_pgr',
+    'cp' => 2500,
+    'meta' => 'ul_pgr',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  5 => 
+  array (
     'title' => 'Ignore this',
     'cup' => 'nomads_custom_cup',
     'cp' => 10000,
