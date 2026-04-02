@@ -23,9 +23,9 @@ docker run -d  --rm --name pvpoke   -p 80:80  -v ~/pvpoke/src:/var/www/html/pvpo
 Optional flags:
 ```
 ./src/scripts/regenerate-rankings-cli.sh --cup all --cp 10000
-./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermasternewwf10 --cp 10000
-./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermasternewwf10 --cp 10000 --no-server
-./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermasternewwf10 --cp 10000 --timeout-min 8
+./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermaster --cp 10000
+./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermaster --cp 10000 --no-server
+./src/scripts/regenerate-rankings-cli.sh --cup battlefrontiermaster --cp 10000 --timeout-min 8
 ./src/scripts/regenerate-rankings-cli.sh --all
 ./src/scripts/regenerate-rankings-cli.sh --base-url http://127.0.0.1:8080/pvpoke/src --no-server
 ```
@@ -45,11 +45,11 @@ Common options:
 ./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy type-diverse
 ./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy strict
 ./src/scripts/generate-team-cli.sh --cup all --cp 10000 --duplicate-policy any
-./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --top 3
-./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --build-around meloetta_aria,heatran
-./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --exclude-species zygarde_complete
-./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --likely-threats meloetta_aria --likely-threat-weight 2.0
-./src/scripts/generate-team-cli.sh --format battlefrontiermasternewwf10 --build-around meloetta_aria --exclude-species zygarde_complete --likely-threats meloetta_aria
+./src/scripts/generate-team-cli.sh --format battlefrontiermaster --top 3
+./src/scripts/generate-team-cli.sh --format battlefrontiermaster --build-around meloetta_aria,heatran
+./src/scripts/generate-team-cli.sh --format battlefrontiermaster --exclude-species zygarde_complete
+./src/scripts/generate-team-cli.sh --format battlefrontiermaster --likely-threats meloetta_aria --likely-threat-weight 2.0
+./src/scripts/generate-team-cli.sh --format battlefrontiermaster --build-around meloetta_aria --exclude-species zygarde_complete --likely-threats meloetta_aria
 ./src/scripts/generate-team-cli.sh --cup all --cp 1500 --json
 ./src/scripts/generate-team-cli.sh --cup all --cp 1500 --no-server --base-url http://127.0.0.1:8080/pvpoke/src
 ```

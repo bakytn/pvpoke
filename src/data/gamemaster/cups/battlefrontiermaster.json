@@ -1,6 +1,6 @@
 {
-    "name": "battlefrontiermasternewwf10",
-    "title": "Battle Frontier (Master League) (New)",
+    "name": "battlefrontiermaster",
+    "title": "Battle Frontier (Master League)",
     "include": [],
     "exclude": [{
         "filterType": "id",

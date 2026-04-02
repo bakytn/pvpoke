@@ -70,10 +70,10 @@ Options:
 Examples:
   $(basename "$0") --cup all --cp 1500
   $(basename "$0") --cup all --size 6 --top 3 --search-depth deep
-  $(basename "$0") --format battlefrontiermasternewwf10 --duplicate-policy type-diverse
-  $(basename "$0") --format battlefrontiermasternewwf10 --build-around meloetta_aria,heatran
-  $(basename "$0") --format battlefrontiermasternewwf10 --exclude-species zygarde_complete
-  $(basename "$0") --format battlefrontiermasternewwf10 --likely-threats meloetta_aria --likely-threat-weight 2.5
+  $(basename "$0") --format battlefrontiermaster --duplicate-policy type-diverse
+  $(basename "$0") --format battlefrontiermaster --build-around meloetta_aria,heatran
+  $(basename "$0") --format battlefrontiermaster --exclude-species zygarde_complete
+  $(basename "$0") --format battlefrontiermaster --likely-threats meloetta_aria --likely-threat-weight 2.5
   $(basename "$0") --cup brujeria --cp 1500 --top 3 --verbose
   $(basename "$0") --cup all --cp 10000 --duplicate-policy any --json
 EOF2

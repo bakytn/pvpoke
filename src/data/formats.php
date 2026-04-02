@@ -4,9 +4,9 @@ $formats = array (
   0 => 
   array (
     'title' => 'Battle Frontier (Master)',
-    'cup' => 'battlefrontiermasternewwf10',
+    'cup' => 'battlefrontiermaster',
     'cp' => 10000,
-    'meta' => 'battlefrontiermasternewwf10',
+    'meta' => 'battlefrontiermaster',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
