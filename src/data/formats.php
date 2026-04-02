@@ -61,5 +61,15 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
+  6 => 
+  array (
+    'title' => 'Master League PGR',
+    'cup' => 'ml_pgr',
+    'cp' => 10000,
+    'meta' => 'ml_pgr',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
 );
 ?>
