@@ -6,10 +6,11 @@
         "values": ["fairy","flying","ice","normal","psychic","water"]
     }, {
         "filterType": "id",
+        "includeShadows": true,
         "values": ["sceptile_mega","banette_mega","giratina_altered","shaymin_land","goodra","xurkitree"]
     }],
     "exclude": [{
         "filterType": "id",
-        "values": ["charizard_mega_y","gyarados_mega","dragonite_mega","dragonite_mega_db_tp_dc","moltres_galarian","mewtwo_mega_x","mewtwo_mega_y","swampert_mega","gardevoir_mega","salamence_mega","metagross","metagross_mega","latios_mega","latias_mega","kyogre_primal","rayquaza_mega","gallade_mega","palkia_origin","kyurem_black","kyurem_white","meloetta_aria","xerneas","yveltal","lunala","zacian_crowned_sword"]
+        "values": ["charizard_mega_y","gyarados_mega","dragonite_mega","moltres_galarian","mewtwo_mega_x","mewtwo_mega_y","swampert_mega","gardevoir_mega","salamence_mega","metagross","metagross_mega","latios_mega","latias_mega","kyogre_primal","rayquaza_mega","gallade_mega","palkia_origin","kyurem_black","kyurem_white","meloetta_aria","xerneas","yveltal","lunala","zacian_crowned_sword"]
     }]
 }

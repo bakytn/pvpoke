@@ -88,19 +88,6 @@
         "turns": 3
     },
     {
-        "moveId": "AEGISLASH_CHARGE_AIR_SLASH",
-        "name": "Air Slash",
-        "abbreviation": "AS",
-        "type": "flying",
-        "power": 0,
-        "energy": 0,
-        "energyGain": 6,
-        "cooldown": 1500,
-        "archetype": "Low Quality",
-        "turns": 3,
-        "unlisted": true
-    },
-    {
         "moveId": "ANCIENT_POWER",
         "name": "Ancient Power",
         "type": "rock",
@@ -504,7 +491,7 @@
         "energy": 0,
         "energyGain": 7,
         "cooldown": 1000,
-        "archetype": "Multipurpose",
+        "archetype": "General",
         "turns": 2
     },
     {
@@ -534,7 +521,7 @@
         "name": "Charm",
         "abbreviation": "Ch",
         "type": "fairy",
-        "power": 13,
+        "power": 12,
         "energy": 0,
         "energyGain": 8,
         "cooldown": 1500,
@@ -809,14 +796,14 @@
         "name": "Dragon Ascent",
         "abbreviation": "DrA",
         "type": "flying",
-        "power": 150,
-        "energy": 70,
+        "power": 110,
+        "energy": 45,
         "energyGain": 0,
         "cooldown": 500,
         "buffs": [0, -1],
         "buffTarget": "self",
         "buffApplyChance": "1",
-        "archetype": "Self-Debuff Nuke",
+        "archetype": "Self-Debuff",
         "turns": 1
     },
     {
@@ -918,11 +905,11 @@
         "moveId": "DRILL_RUN",
         "name": "Drill Run",
         "type": "ground",
-        "power": 80,
-        "energy": 45,
+        "power": 70,
+        "energy": 40,
         "energyGain": 0,
         "cooldown": 500,
-        "archetype": "General",
+        "archetype": "Spam/Bait",
         "turns": 1
     },
     {
@@ -969,7 +956,7 @@
         "name": "Earthquake",
         "abbreviation": "Eq",
         "type": "ground",
-        "power": 110,
+        "power": 120,
         "energy": 65,
         "energyGain": 0,
         "cooldown": 500,
@@ -981,13 +968,13 @@
         "name": "Earth Power",
         "type": "ground",
         "power": 90,
-        "energy": 55,
+        "energy": 50,
         "energyGain": 0,
         "cooldown": 500,
         "buffs": [0, -1],
         "buffTarget": "opponent",
         "buffApplyChance": ".1",
-        "archetype": "High Energy",
+        "archetype": "Debuff",
         "turns": 1
     },
     {
@@ -1005,14 +992,14 @@
         "moveId": "ENERGY_BALL",
         "name": "Energy Ball",
         "type": "grass",
-        "power": 90,
-        "energy": 55,
+        "power": 80,
+        "energy": 45,
         "energyGain": 0,
         "cooldown": 500,
         "buffs": [0, -1],
         "buffTarget": "opponent",
         "buffApplyChance": ".1",
-        "archetype": "High Energy",
+        "archetype": "Debuff",
         "turns": 1
     },
     {
@@ -1180,7 +1167,7 @@
         "name": "Flash Cannon",
         "type": "steel",
         "power": 110,
-        "energy": 70,
+        "energy": 65,
         "energyGain": 0,
         "cooldown": 500,
         "archetype": "Nuke",
@@ -1367,6 +1354,17 @@
         "turns": 3
     },
     {
+        "moveId": "GIGATON_HAMMER",
+        "name": "Gigaton Hammer",
+        "type": "steel",
+        "power": 130,
+        "energy": 60,
+        "energyGain": 0,
+        "cooldown": 500,
+        "archetype": "Nuke",
+        "turns": 1
+    },
+    {
         "moveId": "GIGA_DRAIN",
         "name": "Giga Drain",
         "type": "grass",
@@ -1430,7 +1428,7 @@
         "type": "flying",
         "power": 16,
         "energy": 0,
-        "energyGain": 12,
+        "energyGain": 14,
         "cooldown": 2000,
         "archetype": "Multipurpose",
         "turns": 4
@@ -1463,10 +1461,10 @@
         "name": "Heat Wave",
         "type": "fire",
         "power": 75,
-        "energy": 50,
+        "energy": 45,
         "energyGain": 0,
         "cooldown": 500,
-        "archetype": "High Energy",
+        "archetype": "General",
         "turns": 1
     },
     {
@@ -1737,7 +1735,7 @@
         "abbreviation": "Hu",
         "type": "flying",
         "power": 110,
-        "energy": 65,
+        "energy": 60,
         "energyGain": 0,
         "cooldown": 500,
         "archetype": "Nuke",
@@ -2047,7 +2045,7 @@
         "energy": 0,
         "energyGain": 8,
         "cooldown": 1000,
-        "archetype": "Low Quality",
+        "archetype": "Fast Charge",
         "turns": 2
     },
     {
@@ -2303,7 +2301,7 @@
         "energy": 45,
         "energyGain": 0,
         "cooldown": 500,
-        "archetype": "Spam/Bait",
+        "archetype": "General",
         "turns": 1
     },
     {
@@ -2326,7 +2324,7 @@
         "energy": 0,
         "energyGain": 10,
         "cooldown": 1500,
-        "archetype": "Multipurpose",
+        "archetype": "Heavy Damage",
         "turns": 3
     },
     {
@@ -2544,6 +2542,17 @@
         "turns": 1
     },
     {
+        "moveId": "PLASMA_FISTS",
+        "name": "Plasma Fists",
+        "type": "electric",
+        "power": 60,
+        "energy": 35,
+        "energyGain": 0,
+        "cooldown": 500,
+        "archetype": "Spam/Bait",
+        "turns": 1
+    },
+    {
         "moveId": "POISON_FANG",
         "name": "Poison Fang",
         "type": "poison",
@@ -2740,19 +2749,6 @@
         "cooldown": 1000,
         "archetype": "Fast Charge",
         "turns": 2
-    },
-    {
-        "moveId": "AEGISLASH_CHARGE_PSYCHO_CUT",
-        "name": "Psycho Cut",
-        "abbreviation": "PC",
-        "type": "psychic",
-        "power": 0,
-        "energy": 0,
-        "energyGain": 6,
-        "cooldown": 1000,
-        "archetype": "Low Quality",
-        "turns": 2,
-        "unlisted": true
     },
     {
         "moveId": "PSYSHOCK",
@@ -3209,7 +3205,7 @@
         "name": "Silver Wind",
         "abbreviation": "SvW",
         "type": "bug",
-        "power": 60,
+        "power": 75,
         "energy": 45,
         "energyGain": 0,
         "cooldown": 500,
@@ -3765,7 +3761,7 @@
         "energy": 40,
         "energyGain": 0,
         "cooldown": 500,
-        "archetype": "General",
+        "archetype": "Spam/Bait",
         "turns": 1
     },
     {
@@ -3820,7 +3816,7 @@
         "name": "Volt Tackle",
         "type": "electric",
         "power": 90,
-        "energy": 45,
+        "energy": 40,
         "energyGain": 0,
         "cooldown": 500,
         "buffs": [0, -1],
@@ -4000,7 +3996,7 @@
         "name": "Wrap",
         "abbreviation": "Wr",
         "type": "normal",
-        "power": 60,
+        "power": 70,
         "energy": 45,
         "energyGain": 0,
         "cooldown": 500,
@@ -4056,5 +4052,31 @@
         "cooldown": 1500,
         "archetype": "Low Quality",
         "turns": 3
+    },
+    {
+        "moveId": "AEGISLASH_CHARGE_AIR_SLASH",
+        "name": "Air Slash",
+        "abbreviation": "AS",
+        "type": "flying",
+        "power": 0,
+        "energy": 0,
+        "energyGain": 6,
+        "cooldown": 1500,
+        "archetype": "Low Quality",
+        "turns": 3,
+        "unlisted": true
+    },
+    {
+        "moveId": "AEGISLASH_CHARGE_PSYCHO_CUT",
+        "name": "Psycho Cut",
+        "abbreviation": "PC",
+        "type": "psychic",
+        "power": 0,
+        "energy": 0,
+        "energyGain": 6,
+        "cooldown": 1000,
+        "archetype": "Low Quality",
+        "turns": 2,
+        "unlisted": true
     }
 ]

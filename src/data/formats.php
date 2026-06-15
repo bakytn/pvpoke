@@ -3,15 +3,80 @@
 $formats = array (
   0 => 
   array (
-    'title' => 'Battle Frontier (Master)',
-    'cup' => 'battlefrontiermaster',
-    'cp' => 10000,
-    'meta' => 'battlefrontiermaster',
+    'title' => 'P!P Championship Series',
+    'cup' => 'championshipseries',
+    'cp' => 1500,
+    'meta' => 'championshipseries',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
+    'hideRankings' => true,
   ),
   1 => 
+  array (
+    'title' => 'Master Premier Cup',
+    'cup' => 'premier',
+    'cp' => 10000,
+    'meta' => 'premiermaster',
+    'showCup' => true,
+    'showFormat' => false,
+    'showMeta' => true,
+    'hideRankings' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+      1 => 'Legendary Pokémon, Mythical Pokémon, and Ultra Beasts are not eligible.',
+    ),
+  ),
+  2 => 
+  array (
+    'title' => 'NAIC 2026 Championship Series Cup',
+    'cup' => 'naic2026',
+    'cp' => 1500,
+    'meta' => 'naic2026',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'Pokémon must be at or below 1,500 CP to enter.',
+      1 => 'Only Fairy-, Normal-, Psychic- and Water-type Pokémon are eligible.',
+      2 => 'The following types are not allowed: Dark, Grass, Steel',
+      3 => 'The following Pokemon are not allowed: Araquanid, Carbink, Chansey, Chinchou, Claydol, Clefable, Cresselia, Dedenne, Diggersby, Farfetch\'d, Gastrodon, Golisopod, Greedent, Jellicent, Lanturn, Lickilicky, Lickitung, Lugia, Medicham, Oranguru, Poliwrath',
+    ),
+  ),
+  3 => 
+  array (
+    'title' => 'Sunshine Cup',
+    'cup' => 'sunshine',
+    'cp' => 1500,
+    'meta' => 'sunshine',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'Pokémon must be at or below 1,500 CP to enter.',
+      1 => 'Only Normal-, Fire-, Grass-, and Ground-type Pokémon are eligible.',
+      2 => 'The following Pokemon are not allowed: Charizard',
+    ),
+  ),
+  4 => 
+  array (
+    'title' => 'Mega Master League',
+    'cup' => 'mega',
+    'cp' => 10000,
+    'meta' => 'mega',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+      1 => 'Mega Evolutions are eligible.',
+    ),
+  ),
+  5 => 
   array (
     'title' => 'Battle Frontier (Bayou Cup)',
     'cup' => 'bayou',
@@ -21,17 +86,17 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  2 => 
+  6 => 
   array (
-    'title' => 'Battle Frontier (Brujería Cup)',
-    'cup' => 'brujeria',
+    'title' => 'Battle Frontier (Spellcraft Cup)',
+    'cup' => 'spellcraft',
     'cp' => 1500,
-    'meta' => 'brujeria',
+    'meta' => 'spellcraft',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
   ),
-  3 => 
+  7 => 
   array (
     'title' => 'Battle Frontier (UL Retro)',
     'cup' => 'bfretro',
@@ -41,35 +106,65 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  4 => 
+  8 => 
   array (
-    'title' => 'Ultra League PGR',
-    'cup' => 'ul_pgr',
-    'cp' => 2500,
-    'meta' => 'ul_pgr',
+    'title' => 'Battle Frontier (Master)',
+    'cup' => 'battlefrontiermaster',
+    'cp' => 10000,
+    'meta' => 'battlefrontiermaster',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
   ),
-  5 => 
+  9 => 
   array (
-    'title' => 'Ignore this',
-    'cup' => 'nomads_custom_cup',
-    'cp' => 10000,
-    'meta' => 'master',
+    'title' => 'Devon Equinox Cup',
+    'cup' => 'equinox',
+    'cp' => 1500,
+    'meta' => 'equinox',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
   ),
-  6 => 
+  10 => 
   array (
-    'title' => 'Master League PGR',
-    'cup' => 'ml_pgr',
-    'cp' => 10000,
-    'meta' => 'ml_pgr',
+    'title' => 'Devon Bastille Cup',
+    'cup' => 'bastille',
+    'cp' => 1500,
+    'meta' => 'bastille',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
+  ),
+  11 => 
+  array (
+    'title' => 'Little Cup',
+    'cup' => 'little',
+    'cp' => 500,
+    'meta' => 'little',
+    'showCup' => false,
+    'showFormat' => false,
+    'showMeta' => false,
+  ),
+  12 => 
+  array (
+    'title' => 'Catch Cup',
+    'cup' => 'catch',
+    'cp' => 1500,
+    'meta' => 'great',
+    'showCup' => false,
+    'showFormat' => false,
+    'showMeta' => false,
+  ),
+  13 => 
+  array (
+    'title' => 'Custom',
+    'cup' => 'custom',
+    'cp' => 1500,
+    'meta' => 'great',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => false,
   ),
 );
 ?>
