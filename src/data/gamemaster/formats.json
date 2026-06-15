@@ -78,25 +78,7 @@
         "title": "Battle Frontier (UL)",
         "cup": "battlefrontierultra",
         "cp": 2500,
-        "meta": "all",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    },
-    {
-        "title": "Devon Equinox Cup",
-        "cup": "equinox",
-        "cp": 1500,
-        "meta": "equinox",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    },
-    {
-        "title": "Devon Bastille Cup",
-        "cup": "bastille",
-        "cp": 1500,
-        "meta": "bastille",
+        "meta": "battlefrontierultra",
         "showCup": true,
         "showFormat": true,
         "showMeta": true
