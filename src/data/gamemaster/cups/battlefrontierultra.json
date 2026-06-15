@@ -1,0 +1,12 @@
+{
+    "name": "battlefrontierultra",
+    "title": "Battle Frontier (Ultra League)",
+    "include": [],
+    "exclude": [{
+        "filterType": "tag",
+        "values": ["mega"]
+    }, {
+        "filterType": "id",
+        "values": ["bellibolt","jellicent","mewtwo_armored","tinkaton","zygarde_complete"]
+    }]
+}

@@ -88,6 +88,16 @@ $formats = array (
   ),
   6 => 
   array (
+    'title' => 'Battle Frontier (UL)',
+    'cup' => 'battlefrontierultra',
+    'cp' => 2500,
+    'meta' => 'all',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  7 => 
+  array (
     'title' => 'Devon Equinox Cup',
     'cup' => 'equinox',
     'cp' => 1500,
@@ -96,7 +106,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  7 => 
+  8 => 
   array (
     'title' => 'Devon Bastille Cup',
     'cup' => 'bastille',
@@ -106,7 +116,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  8 => 
+  9 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -116,7 +126,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  9 => 
+  10 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -126,7 +136,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  10 => 
+  11 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',
