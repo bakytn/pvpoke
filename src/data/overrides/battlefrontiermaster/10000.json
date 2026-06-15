@@ -580,6 +580,14 @@
     "weight": 1
   },
   {
+    "speciesId": "kyurem",
+    "chargedMoves": [
+      "GLACIATE",
+      "DRAGON_CLAW"
+    ],
+    "weight": 1
+  },
+  {
     "speciesId": "landorus_therian",
     "fastMove": "MUD_SHOT",
     "chargedMoves": [
@@ -861,7 +869,7 @@
     "fastMove": "DRAGON_BREATH",
     "chargedMoves": [
       "AQUA_TAIL",
-      "FIRE_BLAST"
+      "DRACO_METEOR"
     ],
     "weight": 1
   },
