@@ -47,6 +47,25 @@ $formats = array (
   ),
   3 => 
   array (
+    'title' => 'Copa Dilúvio',
+    'cup' => 'diluvio',
+    'cp' => 1500,
+    'meta' => 'diluvio',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'hideRankings' => true,
+    'rules' => 
+    array (
+      0 => 'Pokémon must be at or below 1,500 CP to enter.',
+      1 => 'Only Dark-, Dragon-, Steel-, and Water-type Pokémon are eligible.',
+      2 => 'The following types are not allowed: Electric, Fairy, Fighting, Fire, Ghost, Grass, Ground, Bug/Steel',
+      3 => 'Legendary Pokémon, Mythical Pokémon, Ultra Beasts, Mega Evolutions, and Shadow Pokémon are not eligible.',
+      4 => 'The following Pokemon are not allowed: Aegislash, Araquanid, Bastiodon, Corviknight, Doublade, Empoleon, Honedge, Klang, Mandibuzz, Obstagoon, Orthworm, Probopass, Steelix, Toxapex, Umbreon, Vullaby',
+    ),
+  ),
+  4 => 
+  array (
     'title' => 'Sunshine Cup',
     'cup' => 'sunshine',
     'cp' => 1500,
@@ -61,7 +80,7 @@ $formats = array (
       2 => 'The following Pokemon are not allowed: Charizard',
     ),
   ),
-  4 => 
+  5 => 
   array (
     'title' => 'Mega Master League',
     'cup' => 'mega',
@@ -76,7 +95,7 @@ $formats = array (
       1 => 'Mega Evolutions are eligible.',
     ),
   ),
-  5 => 
+  6 => 
   array (
     'title' => 'Battle Frontier (Master)',
     'cup' => 'battlefrontiermaster',
@@ -86,7 +105,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  6 => 
+  7 => 
   array (
     'title' => 'Battle Frontier (UL)',
     'cup' => 'battlefrontierultra',
@@ -96,7 +115,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  7 => 
+  8 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -106,7 +125,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  8 => 
+  9 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -116,7 +135,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  9 => 
+  10 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',

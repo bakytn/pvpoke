@@ -1,0 +1,85 @@
+{
+    "name": "diluvio",
+    "title": "Copa Dilúvio",
+    "cup": "diluvio",
+    "include": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "dark",
+                "dragon",
+                "steel",
+                "water"
+            ]
+        }
+    ],
+    "exclude": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "electric",
+                "fairy",
+                "fighting",
+                "fire",
+                "ghost",
+                "grass",
+                "ground"
+            ]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "aegislash_blade",
+                "aegislash_shield",
+                "araquanid",
+                "bastiodon",
+                "corviknight",
+                "doublade",
+                "durant",
+                "empoleon",
+                "escavalier",
+                "escavalier_shadow",
+                "forretress",
+                "forretress_shadow",
+                "genesect",
+                "genesect_burn",
+                "genesect_chill",
+                "genesect_douse",
+                "genesect_shock",
+                "honedge",
+                "klang",
+                "mandibuzz",
+                "obstagoon",
+                "orthworm",
+                "probopass",
+                "scizor",
+                "scizor_mega",
+                "scizor_shadow",
+                "steelix",
+                "toxapex",
+                "umbreon",
+                "vullaby",
+                "wormadam_trash"
+            ]
+        },
+        {
+            "filterType": "tag",
+            "name": "Tag",
+            "values": [
+                "legendary",
+                "mythical",
+                "ultrabeast",
+                "mega",
+                "shadow"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 1500,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1
+}

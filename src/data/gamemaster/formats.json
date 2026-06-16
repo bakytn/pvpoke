@@ -39,6 +39,23 @@
         ]
     },
     {
+        "title": "Copa Dilúvio",
+        "cup": "diluvio",
+        "cp": 1500,
+        "meta": "diluvio",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true,
+        "hideRankings": true,
+        "rules": [
+            "Pokémon must be at or below 1,500 CP to enter.",
+            "Only Dark-, Dragon-, Steel-, and Water-type Pokémon are eligible.",
+            "The following types are not allowed: Electric, Fairy, Fighting, Fire, Ghost, Grass, Ground, Bug/Steel",
+            "Legendary Pokémon, Mythical Pokémon, Ultra Beasts, Mega Evolutions, and Shadow Pokémon are not eligible.",
+            "The following Pokemon are not allowed: Aegislash, Araquanid, Bastiodon, Corviknight, Doublade, Empoleon, Honedge, Klang, Mandibuzz, Obstagoon, Orthworm, Probopass, Steelix, Toxapex, Umbreon, Vullaby"
+        ]
+    },
+    {
         "title": "Sunshine Cup",
         "cup": "sunshine",
         "cp": 1500,
