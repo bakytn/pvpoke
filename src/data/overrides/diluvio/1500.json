@@ -1,47 +1,5 @@
 [
     {
-        "speciesId": "sliggoo",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "BODY_SLAM",
-            "DRAGON_PULSE"
-        ],
-        "weight": 1,
-        "editorScore": 90,
-        "editorNotes": "From zero to hero, Sliggoo boasts the highest stat product among pure Dragon types. While it's certainly capable, pure Dragon types don't typically see much play over dual-type alternatives like Altaria or Guzzlord. Sliggoo also lacks corebreaking coverage which made Goodra and Shelgon interesting in the past. All in all, it has a few things to prove before it can fully claim hero status."
-    },
-    {
-        "speciesId": "dewott",
-        "fastMove": "FURY_CUTTER",
-        "chargedMoves": [
-            "AQUA_TAIL",
-            "X_SCISSOR"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "goodra",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "AQUA_TAIL",
-            "THUNDER_PUNCH"
-        ],
-        "weight": 2,
-        "editorScore": 85,
-        "editorNotes": "Altaria is the only Dragon to see widespread play in the current meta, and Goodra presents few advantages over it. Its middling stats and non-STAB attacks give it a soft matchup profile that allows it to play as a corebreaker, but it it lacks the strength as a generalist to truly succeed."
-    },
-    {
-        "speciesId": "samurott",
-        "fastMove": "FURY_CUTTER",
-        "chargedMoves": [
-            "HYDRO_CANNON",
-            "MEGAHORN"
-        ],
-        "weight": 1,
-        "editorScore": 88,
-        "editorNotes": "Samurott looks great on paper, and while it's by no means a bad pick, it lacks the competitive success and neutral play of its peers. Its Bug offenses are its main detriment and are widely resisted by the main meta players."
-    },
-    {
         "speciesId": "samurott_hisuian",
         "fastMove": "FURY_CUTTER",
         "chargedMoves": [
@@ -60,22 +18,20 @@
         "weight": 12
     },
     {
-        "speciesId": "dragonair",
+        "speciesId": "mantine",
+        "fastMove": "WING_ATTACK",
+        "chargedMoves": [
+            "TWISTER",
+            "WATER_PULSE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "gyarados",
         "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
             "AQUA_TAIL",
-            "DRAGON_PULSE"
-        ],
-        "weight": 1,
-        "editorScore": 91,
-        "editorNotes": "Dragonair is a fast-paced, aggressive pick. Despite its offensive strengths, it falls short of rival Dragons like Altaria, Guzzlord, and Kingdra in terms of bulk and resistances. Because of this, it hasn't seen widespread play in a while, but watch for it in Dragon-centered metas. The Shadow is almost always preferred."
-    },
-    {
-        "speciesId": "golisopod",
-        "fastMove": "FURY_CUTTER",
-        "chargedMoves": [
-            "AQUA_JET",
-            "X_SCISSOR"
+            "TWISTER"
         ],
         "weight": 1
     },
@@ -89,24 +45,13 @@
         "weight": 1
     },
     {
-        "speciesId": "metang",
-        "fastMove": "FURY_CUTTER",
+        "speciesId": "malamar",
+        "fastMove": "PSYWAVE",
         "chargedMoves": [
-            "PSYSHOCK",
-            "GYRO_BALL"
+            "SUPER_POWER",
+            "FOUL_PLAY"
         ],
-        "weight": 1,
-        "editorScore": 85,
-        "editorNotes": "Metang has good stats and pacing, but has struggled to find competitive success. It struggles significantly against rival Steel types, and its Psychic typing makes it vulnerable to prevalent Ghosts."
-    },
-    {
-        "speciesId": "arctibax",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "AVALANCHE",
-            "DRAGON_CLAW"
-        ],
-        "weight": 1
+        "weight": 10
     },
     {
         "speciesId": "altaria",
@@ -120,11 +65,97 @@
         "editorNotes": "Altaria's flexibility with Flamethrower gives it coverage against Steel types, and its defensive typing remains one of the best to counter Water and Ground types. It's seeing more play this season with the nerf to its nemesis, Wigglytuff."
     },
     {
-        "speciesId": "milotic",
-        "fastMove": "WATERFALL",
+        "speciesId": "lapras",
+        "fastMove": "PSYWAVE",
+        "chargedMoves": [
+            "SPARKLING_ARIA",
+            "ICE_BEAM"
+        ],
+        "weight": 5,
+        "editorScore": 90,
+        "editorNotes": "Lapras has a long competitive history, but is currently on its way out of the metagame. It's a poster child for bulky Water types and neutral play. Recent shifts have left it without a clear role, and it now faces stiff competition among Water/Ice types."
+    },
+    {
+        "speciesId": "golisopod",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "AQUA_JET",
+            "X_SCISSOR"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "sliggoo",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "BODY_SLAM",
+            "DRAGON_PULSE"
+        ],
+        "weight": 1,
+        "editorScore": 90,
+        "editorNotes": "From zero to hero, Sliggoo boasts the highest stat product among pure Dragon types. While it's certainly capable, pure Dragon types don't typically see much play over dual-type alternatives like Altaria or Guzzlord. Sliggoo also lacks corebreaking coverage which made Goodra and Shelgon interesting in the past. All in all, it has a few things to prove before it can fully claim hero status."
+    },
+    {
+        "speciesId": "kingdra",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "SURF",
+            "SWIFT"
+        ],
+        "weight": 7,
+        "editorScore": 91,
+        "editorNotes": "Kingdra is on the outside looking in with its new move, Surf. Its typing gives it a neutral profile. It sits ahead of pure Dragon types like Dragonair, but behind the frontrunner, Altaria, whose bulk and coverage are a big step up. Kingdra's niche is its dominating matchups against Fire types, which it double resists."
+    },
+    {
+        "speciesId": "feraligatr",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "HYDRO_CANNON",
+            "ICE_BEAM"
+        ],
+        "weight": 14,
+        "editorScore": 92,
+        "editorNotes": "Feraligatr is a longtime staple thanks to its powerful moveset. Shadow Claw shreds through ever-present Ghost types, and gives it a more neutral profile into other Waters. Preference for Shadow vs non-Shadow is split, currently leaning toward non-Shadow."
+    },
+    {
+        "speciesId": "blastoise",
+        "fastMove": "ROLLOUT",
+        "chargedMoves": [
+            "HYDRO_CANNON",
+            "SKULL_BASH"
+        ],
+        "weight": 7,
+        "editorScore": 90,
+        "editorNotes": "Blastoise is the bulkiest Hydro Cannon user and can augment this even further with Skull Bash. With an excellent balance of stats, power, and speed, it occupies a small but strong spot in the metagame."
+    },
+    {
+        "speciesId": "dragonair",
+        "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
             "AQUA_TAIL",
-            "WRAP"
+            "DRAGON_PULSE"
+        ],
+        "weight": 1,
+        "editorScore": 91,
+        "editorNotes": "Dragonair is a fast-paced, aggressive pick. Despite its offensive strengths, it falls short of rival Dragons like Altaria, Guzzlord, and Kingdra in terms of bulk and resistances. Because of this, it hasn't seen widespread play in a while, but watch for it in Dragon-centered metas. The Shadow is almost always preferred."
+    },
+    {
+        "speciesId": "dewgong",
+        "fastMove": "ICE_SHARD",
+        "chargedMoves": [
+            "ICY_WIND",
+            "DRILL_RUN"
+        ],
+        "weight": 4,
+        "editorScore": 90,
+        "editorNotes": "Dewgong has a long competitive history thanks to its bulk and Icy Wind debuffs. It typically underperforms in the sims, where its full game effects aren't well represented. A reworked Drill Run further improves its pacing and damage output, making Dewgong a prospect to watch for."
+    },
+    {
+        "speciesId": "dondozo",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "SURF",
+            "OUTRAGE"
         ],
         "weight": 1
     },
@@ -140,29 +171,38 @@
         "editorNotes": "Sealeo has the offenses and pacing to make for a neutral, energy-oriented threat. It struggled to make headway for a while, but has found recent success, being favored over Lapras."
     },
     {
-        "speciesId": "dondozo",
-        "fastMove": "WATERFALL",
+        "speciesId": "wailord",
+        "fastMove": "ROLLOUT",
         "chargedMoves": [
             "SURF",
-            "OUTRAGE"
+            "RETURN"
         ],
         "weight": 1
     },
     {
-        "speciesId": "drampa",
+        "speciesId": "arctibax",
         "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
-            "SWIFT",
-            "DRAGON_PULSE"
+            "AVALANCHE",
+            "DRAGON_CLAW"
         ],
         "weight": 1
     },
     {
-        "speciesId": "dragalge",
-        "fastMove": "ACID",
+        "speciesId": "pelipper",
+        "fastMove": "WING_ATTACK",
+        "chargedMoves": [
+            "WEATHER_BALL_WATER",
+            "HURRICANE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "dewott",
+        "fastMove": "FURY_CUTTER",
         "chargedMoves": [
             "AQUA_TAIL",
-            "OUTRAGE"
+            "X_SCISSOR"
         ],
         "weight": 1
     },
@@ -176,6 +216,153 @@
         "weight": 1
     },
     {
+        "speciesId": "samurott",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "HYDRO_CANNON",
+            "MEGAHORN"
+        ],
+        "weight": 1,
+        "editorScore": 88,
+        "editorNotes": "Samurott looks great on paper, and while it's by no means a bad pick, it lacks the competitive success and neutral play of its peers. Its Bug offenses are its main detriment and are widely resisted by the main meta players."
+    },
+    {
+        "speciesId": "sandslash_alolan",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "ICE_PUNCH",
+            "DRILL_RUN"
+        ],
+        "weight": 3
+    },
+    {
+        "speciesId": "kingambit",
+        "fastMove": "METAL_SOUND",
+        "chargedMoves": [
+            "FOUL_PLAY",
+            "IRON_HEAD"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "hydreigon",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "BRUTAL_SWING",
+            "FLY"
+        ],
+        "weight": 1,
+        "editorScore": 88,
+        "editorNotes": "Hydreigon has the typing to corebreak current meta threats. However, its double weakness to Fairy and glassy stats pose severe challenges. Expert hands may be required to pilot this one over more established picks like Guzzlord."
+    },
+    {
+        "speciesId": "walrein",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "ICICLE_SPEAR",
+            "EARTHQUAKE"
+        ],
+        "weight": 1,
+        "editorScore": 85,
+        "editorNotes": "Walrein has a notable competitive past, but hasn't found a way to crack the current metagame. Its time may come again, but faces too much competition against rival Water types, including its pre-evolution, Sealeo."
+    },
+    {
+        "speciesId": "drapion",
+        "fastMove": "POISON_STING",
+        "chargedMoves": [
+            "CRUNCH",
+            "AQUA_TAIL"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "bronzong",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "WEATHER_BALL_WATER",
+            "PAYBACK"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "zweilous",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "BODY_SLAM",
+            "DARK_PULSE"
+        ],
+        "weight": 1,
+        "editorScore": 85,
+        "editorNotes": "Guzzlord is preferred over Zweilous with its slightly better stats and Poison coverage into Fairy counters."
+    },
+    {
+        "speciesId": "skuntank",
+        "fastMove": "POISON_JAB",
+        "chargedMoves": [
+            "CRUNCH",
+            "TRAILBLAZE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "tentacruel",
+        "fastMove": "ACID",
+        "chargedMoves": [
+            "SCALD",
+            "PAYBACK"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "goodra",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "THUNDER_PUNCH"
+        ],
+        "weight": 2,
+        "editorScore": 85,
+        "editorNotes": "Altaria is the only Dragon to see widespread play in the current meta, and Goodra presents few advantages over it. Its middling stats and non-STAB attacks give it a soft matchup profile that allows it to play as a corebreaker, but it it lacks the strength as a generalist to truly succeed."
+    },
+    {
+        "speciesId": "metang",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "PSYSHOCK",
+            "GYRO_BALL"
+        ],
+        "weight": 1,
+        "editorScore": 85,
+        "editorNotes": "Metang has good stats and pacing, but has struggled to find competitive success. It struggles significantly against rival Steel types, and its Psychic typing makes it vulnerable to prevalent Ghosts."
+    },
+    {
+        "speciesId": "tyranitar",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "BRUTAL_SWING",
+            "STONE_EDGE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "drampa",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "SWIFT",
+            "DRAGON_PULSE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "lokix",
+        "fastMove": "SUCKER_PUNCH",
+        "chargedMoves": [
+            "X_SCISSOR",
+            "TRAILBLAZE"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "perrserker",
         "fastMove": "SHADOW_CLAW",
         "chargedMoves": [
@@ -185,8 +372,88 @@
         "weight": 1
     },
     {
-        "speciesId": "overqwil",
-        "fastMove": "POISON_STING",
+        "speciesId": "dragalge",
+        "fastMove": "ACID",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "OUTRAGE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "lairon",
+        "fastMove": "METAL_SOUND",
+        "chargedMoves": [
+            "ROCK_TOMB",
+            "BODY_SLAM"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "milotic",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "WRAP"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "mightyena",
+        "fastMove": "SUCKER_PUNCH",
+        "chargedMoves": [
+            "CRUNCH",
+            "POISON_FANG"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "politoed",
+        "fastMove": "MUD_SHOT",
+        "chargedMoves": [
+            "WEATHER_BALL_WATER",
+            "ICE_BEAM"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "bombirdier",
+        "fastMove": "SUCKER_PUNCH",
+        "chargedMoves": [
+            "FLY",
+            "ROCK_TOMB"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "swanna",
+        "fastMove": "GUST",
+        "chargedMoves": [
+            "AQUA_JET",
+            "FLY"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "dragonite",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "THUNDER_PUNCH",
+            "SUPER_POWER"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "omastar",
+        "fastMove": "MUD_SHOT",
+        "chargedMoves": [
+            "ROCK_SLIDE",
+            "HYDRO_PUMP"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "qwilfish_hisuian",
         "chargedMoves": [
             "AQUA_TAIL",
             "SHADOW_BALL"
@@ -203,7 +470,44 @@
         "weight": 1
     },
     {
-        "speciesId": "qwilfish_hisuian",
+        "speciesId": "druddigon",
+        "fastMove": "DRAGON_TAIL",
+        "chargedMoves": [
+            "NIGHT_SLASH",
+            "ROCK_TOMB"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "alomomola",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "PSYCHIC",
+            "HYDRO_PUMP"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "skarmory",
+        "fastMove": "AIR_SLASH",
+        "chargedMoves": [
+            "BRAVE_BIRD",
+            "SKY_ATTACK"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "tyrunt",
+        "fastMove": "DRAGON_TAIL",
+        "chargedMoves": [
+            "ROCK_TOMB",
+            "STOMP"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "qwilfish",
+        "fastMove": "POISON_STING",
         "chargedMoves": [
             "AQUA_TAIL",
             "SHADOW_BALL"
@@ -211,22 +515,13 @@
         "weight": 1
     },
     {
-        "speciesId": "dragonite",
-        "fastMove": "DRAGON_BREATH",
+        "speciesId": "murkrow",
+        "fastMove": "PECK",
         "chargedMoves": [
-            "THUNDER_PUNCH",
-            "SUPER_POWER"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "malamar",
-        "fastMove": "PSYWAVE",
-        "chargedMoves": [
-            "SUPER_POWER",
+            "DRILL_PECK",
             "FOUL_PLAY"
         ],
-        "weight": 10
+        "weight": 2
     },
     {
         "speciesId": "brionne",
@@ -243,211 +538,6 @@
         "weight": 1
     },
     {
-        "speciesId": "golduck",
-        "fastMove": "CONFUSION",
-        "chargedMoves": [
-            "CROSS_CHOP",
-            "LIQUIDATION"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "kingambit",
-        "fastMove": "METAL_SOUND",
-        "chargedMoves": [
-            "FOUL_PLAY",
-            "IRON_HEAD"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "qwilfish",
-        "fastMove": "POISON_STING",
-        "chargedMoves": [
-            "AQUA_TAIL",
-            "SHADOW_BALL"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "dewgong",
-        "fastMove": "ICE_SHARD",
-        "chargedMoves": [
-            "ICY_WIND",
-            "DRILL_RUN"
-        ],
-        "weight": 4,
-        "editorScore": 90,
-        "editorNotes": "Dewgong has a long competitive history thanks to its bulk and Icy Wind debuffs. It typically underperforms in the sims, where its full game effects aren't well represented. A reworked Drill Run further improves its pacing and damage output, making Dewgong a prospect to watch for."
-    },
-    {
-        "speciesId": "drapion",
-        "fastMove": "POISON_STING",
-        "chargedMoves": [
-            "CRUNCH",
-            "AQUA_TAIL"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "tyrunt",
-        "fastMove": "DRAGON_TAIL",
-        "chargedMoves": [
-            "ROCK_TOMB",
-            "STOMP"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "tentacruel",
-        "fastMove": "ACID",
-        "chargedMoves": [
-            "SCALD",
-            "PAYBACK"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "blastoise",
-        "fastMove": "ROLLOUT",
-        "chargedMoves": [
-            "HYDRO_CANNON",
-            "SKULL_BASH"
-        ],
-        "weight": 7,
-        "editorScore": 90,
-        "editorNotes": "Blastoise is the bulkiest Hydro Cannon user and can augment this even further with Skull Bash. With an excellent balance of stats, power, and speed, it occupies a small but strong spot in the metagame."
-    },
-    {
-        "speciesId": "bronzong",
-        "fastMove": "CONFUSION",
-        "chargedMoves": [
-            "WEATHER_BALL_WATER",
-            "PAYBACK"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "raticate_alolan",
-        "chargedMoves": [
-            "CRUNCH",
-            "RETURN"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "lokix",
-        "fastMove": "SUCKER_PUNCH",
-        "chargedMoves": [
-            "X_SCISSOR",
-            "TRAILBLAZE"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "skarmory",
-        "fastMove": "AIR_SLASH",
-        "chargedMoves": [
-            "BRAVE_BIRD",
-            "SKY_ATTACK"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "vaporeon",
-        "fastMove": "WATER_GUN",
-        "chargedMoves": [
-            "AQUA_TAIL",
-            "LAST_RESORT"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "zoroark",
-        "chargedMoves": [
-            "FOUL_PLAY",
-            "SLUDGE_BOMB"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "omastar",
-        "fastMove": "MUD_SHOT",
-        "chargedMoves": [
-            "ROCK_SLIDE",
-            "HYDRO_PUMP"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "kingdra",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "SURF",
-            "SWIFT"
-        ],
-        "weight": 7,
-        "editorScore": 91,
-        "editorNotes": "Kingdra is on the outside looking in with its new move, Surf. Its typing gives it a neutral profile. It sits ahead of pure Dragon types like Dragonair, but behind the frontrunner, Altaria, whose bulk and coverage are a big step up. Kingdra's niche is its dominating matchups against Fire types, which it double resists."
-    },
-    {
-        "speciesId": "zweilous",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "BODY_SLAM",
-            "DARK_PULSE"
-        ],
-        "weight": 1,
-        "editorScore": 85,
-        "editorNotes": "Guzzlord is preferred over Zweilous with its slightly better stats and Poison coverage into Fairy counters."
-    },
-    {
-        "speciesId": "persian_alolan",
-        "chargedMoves": [
-            "FOUL_PLAY",
-            "PLAY_ROUGH"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "sandslash_alolan",
-        "fastMove": "POWDER_SNOW",
-        "chargedMoves": [
-            "ICE_PUNCH",
-            "DRILL_RUN"
-        ],
-        "weight": 3
-    },
-    {
-        "speciesId": "hydreigon",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "BRUTAL_SWING",
-            "FLY"
-        ],
-        "weight": 1,
-        "editorScore": 88,
-        "editorNotes": "Hydreigon has the typing to corebreak current meta threats. However, its double weakness to Fairy and glassy stats pose severe challenges. Expert hands may be required to pilot this one over more established picks like Guzzlord."
-    },
-    {
-        "speciesId": "mantine",
-        "fastMove": "WING_ATTACK",
-        "chargedMoves": [
-            "TWISTER",
-            "WATER_PULSE"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "skuntank",
-        "fastMove": "POISON_JAB",
-        "chargedMoves": [
-            "CRUNCH",
-            "TRAILBLAZE"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "greninja",
         "fastMove": "WATER_SHURIKEN",
         "chargedMoves": [
@@ -457,176 +547,11 @@
         "weight": 1
     },
     {
-        "speciesId": "haxorus",
-        "fastMove": "DRAGON_TAIL",
-        "chargedMoves": [
-            "BREAKING_SWIPE",
-            "SURF"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "politoed",
-        "fastMove": "MUD_SHOT",
-        "chargedMoves": [
-            "WEATHER_BALL_WATER",
-            "ICE_BEAM"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "lapras",
-        "fastMove": "PSYWAVE",
-        "chargedMoves": [
-            "SPARKLING_ARIA",
-            "ICE_BEAM"
-        ],
-        "weight": 5,
-        "editorScore": 90,
-        "editorNotes": "Lapras has a long competitive history, but is currently on its way out of the metagame. It's a poster child for bulky Water types and neutral play. Recent shifts have left it without a clear role, and it now faces stiff competition among Water/Ice types."
-    },
-    {
-        "speciesId": "swanna",
-        "fastMove": "GUST",
-        "chargedMoves": [
-            "AQUA_JET",
-            "FLY"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "wailord",
-        "fastMove": "ROLLOUT",
-        "chargedMoves": [
-            "SURF",
-            "RETURN"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "feraligatr",
-        "fastMove": "SHADOW_CLAW",
-        "chargedMoves": [
-            "HYDRO_CANNON",
-            "ICE_BEAM"
-        ],
-        "weight": 14,
-        "editorScore": 92,
-        "editorNotes": "Feraligatr is a longtime staple thanks to its powerful moveset. Shadow Claw shreds through ever-present Ghost types, and gives it a more neutral profile into other Waters. Preference for Shadow vs non-Shadow is split, currently leaning toward non-Shadow."
-    },
-    {
-        "speciesId": "alomomola",
-        "fastMove": "WATERFALL",
-        "chargedMoves": [
-            "PSYCHIC",
-            "HYDRO_PUMP"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "murkrow",
-        "fastMove": "PECK",
-        "chargedMoves": [
-            "DRILL_PECK",
-            "FOUL_PLAY"
-        ],
-        "weight": 2
-    },
-    {
-        "speciesId": "mightyena",
-        "fastMove": "SUCKER_PUNCH",
-        "chargedMoves": [
-            "CRUNCH",
-            "POISON_FANG"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "tyranitar",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "BRUTAL_SWING",
-            "STONE_EDGE"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "bombirdier",
-        "fastMove": "SUCKER_PUNCH",
-        "chargedMoves": [
-            "FLY",
-            "ROCK_TOMB"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "gyarados",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "AQUA_TAIL",
-            "TWISTER"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "cloyster",
-        "fastMove": "ICE_SHARD",
-        "chargedMoves": [
-            "ICY_WIND",
-            "LIQUIDATION"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "crawdaunt",
-        "fastMove": "WATERFALL",
-        "chargedMoves": [
-            "NIGHT_SLASH",
-            "SCALD"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "lairon",
-        "fastMove": "METAL_SOUND",
-        "chargedMoves": [
-            "ROCK_TOMB",
-            "BODY_SLAM"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "liepard",
-        "chargedMoves": [
-            "DARK_PULSE",
-            "PLAY_ROUGH"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "slowking",
+        "speciesId": "golduck",
         "fastMove": "CONFUSION",
         "chargedMoves": [
-            "SURF",
-            "BLIZZARD"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "pelipper",
-        "fastMove": "WING_ATTACK",
-        "chargedMoves": [
-            "WEATHER_BALL_WATER",
-            "HURRICANE"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "metagross",
-        "fastMove": "SHADOW_CLAW",
-        "chargedMoves": [
-            "METEOR_MASH",
-            "EARTHQUAKE"
+            "CROSS_CHOP",
+            "LIQUIDATION"
         ],
         "weight": 1
     },
@@ -640,30 +565,98 @@
         "weight": 1
     },
     {
-        "speciesId": "walrein",
-        "fastMove": "POWDER_SNOW",
-        "chargedMoves": [
-            "ICICLE_SPEAR",
-            "EARTHQUAKE"
-        ],
-        "weight": 1,
-        "editorScore": 85,
-        "editorNotes": "Walrein has a notable competitive past, but hasn't found a way to crack the current metagame. Its time may come again, but faces too much competition against rival Water types, including its pre-evolution, Sealeo."
-    },
-    {
-        "speciesId": "clawitzer",
-        "chargedMoves": [
-            "CRABHAMMER",
-            "ICE_BEAM"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "tyrantrum",
         "fastMove": "DRAGON_TAIL",
         "chargedMoves": [
             "ROCK_TOMB",
             "CRUNCH"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "overqwil",
+        "fastMove": "POISON_STING",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "SHADOW_BALL"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "raticate_alolan",
+        "chargedMoves": [
+            "CRUNCH",
+            "RETURN"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "vaporeon",
+        "fastMove": "WATER_GUN",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "LAST_RESORT"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "metagross",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "METEOR_MASH",
+            "EARTHQUAKE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "slowking",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "SURF",
+            "BLIZZARD"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "zoroark",
+        "chargedMoves": [
+            "FOUL_PLAY",
+            "SLUDGE_BOMB"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "cloyster",
+        "fastMove": "ICE_SHARD",
+        "chargedMoves": [
+            "ICY_WIND",
+            "LIQUIDATION"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "persian_alolan",
+        "chargedMoves": [
+            "FOUL_PLAY",
+            "PLAY_ROUGH"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "crawdaunt",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "NIGHT_SLASH",
+            "SCALD"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "haxorus",
+        "fastMove": "DRAGON_TAIL",
+        "chargedMoves": [
+            "BREAKING_SWIPE",
+            "SURF"
         ],
         "weight": 1
     },
@@ -677,11 +670,10 @@
         "weight": 1
     },
     {
-        "speciesId": "druddigon",
-        "fastMove": "DRAGON_TAIL",
+        "speciesId": "liepard",
         "chargedMoves": [
-            "NIGHT_SLASH",
-            "ROCK_TOMB"
+            "DARK_PULSE",
+            "PLAY_ROUGH"
         ],
         "weight": 1
     },
@@ -700,6 +692,23 @@
         "chargedMoves": [
             "OCTAZOOKA",
             "GUNK_SHOT"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "clawitzer",
+        "chargedMoves": [
+            "CRABHAMMER",
+            "ICE_BEAM"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "starmie",
+        "fastMove": "PSYWAVE",
+        "chargedMoves": [
+            "AQUA_JET",
+            "ICE_BEAM"
         ],
         "weight": 1
     }

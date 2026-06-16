@@ -1031,10 +1031,10 @@
     },
     {
         "speciesId": "starmie",
-        "fastMove": "HIDDEN_POWER_BUG",
+        "fastMove": "PSYWAVE",
         "chargedMoves": [
             "AQUA_JET",
-            "HYDRO_PUMP"
+            "ICE_BEAM"
         ]
     },
     {
