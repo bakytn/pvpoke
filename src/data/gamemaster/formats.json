@@ -46,7 +46,6 @@
         "showCup": true,
         "showFormat": true,
         "showMeta": true,
-        "hideRankings": true,
         "rules": [
             "Pokémon must be at or below 1,500 CP to enter.",
             "Only Dark-, Dragon-, Steel-, and Water-type Pokémon are eligible.",
