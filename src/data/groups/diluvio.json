@@ -1,26 +1,10 @@
 [
     {
-        "speciesId": "samurott_hisuian",
-        "fastMove": "FURY_CUTTER",
-        "chargedMoves": [
-            "SACRED_SWORD",
-            "ICY_WIND"
-        ]
-    },
-    {
         "speciesId": "mantine",
         "fastMove": "WING_ATTACK",
         "chargedMoves": [
             "TWISTER",
             "WATER_PULSE"
-        ]
-    },
-    {
-        "speciesId": "seaking",
-        "fastMove": "PECK",
-        "chargedMoves": [
-            "DRILL_RUN",
-            "ICY_WIND"
         ]
     },
     {
@@ -32,51 +16,19 @@
         ]
     },
     {
-        "speciesId": "shelgon",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "TWISTER",
-            "FLAMETHROWER"
-        ]
-    },
-    {
-        "speciesId": "malamar",
-        "fastMove": "PSYWAVE",
-        "chargedMoves": [
-            "SUPER_POWER",
-            "FOUL_PLAY"
-        ]
-    },
-    {
-        "speciesId": "altaria",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "SKY_ATTACK",
-            "FLAMETHROWER"
-        ]
-    },
-    {
-        "speciesId": "golisopod",
+        "speciesId": "samurott_hisuian",
         "fastMove": "FURY_CUTTER",
         "chargedMoves": [
-            "AQUA_JET",
-            "X_SCISSOR"
+            "SACRED_SWORD",
+            "ICY_WIND"
         ]
     },
     {
-        "speciesId": "lapras",
-        "fastMove": "PSYWAVE",
+        "speciesId": "seaking",
+        "fastMove": "PECK",
         "chargedMoves": [
-            "SPARKLING_ARIA",
-            "ICE_BEAM"
-        ]
-    },
-    {
-        "speciesId": "sliggoo",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "BODY_SLAM",
-            "DRAGON_PULSE"
+            "DRILL_RUN",
+            "ICY_WIND"
         ]
     },
     {
@@ -88,19 +40,35 @@
         ]
     },
     {
-        "speciesId": "kingdra",
-        "fastMove": "DRAGON_BREATH",
+        "speciesId": "golisopod",
+        "fastMove": "FURY_CUTTER",
         "chargedMoves": [
-            "SURF",
-            "SWIFT"
+            "AQUA_JET",
+            "X_SCISSOR"
         ]
     },
     {
-        "speciesId": "feraligatr",
-        "fastMove": "SHADOW_CLAW",
+        "speciesId": "shelgon",
+        "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
-            "HYDRO_CANNON",
-            "ICE_BEAM"
+            "TWISTER",
+            "FLAMETHROWER"
+        ]
+    },
+    {
+        "speciesId": "altaria",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "SKY_ATTACK",
+            "FLAMETHROWER"
+        ]
+    },
+    {
+        "speciesId": "wailord",
+        "fastMove": "ROLLOUT",
+        "chargedMoves": [
+            "SURF",
+            "RETURN"
         ]
     },
     {
@@ -112,11 +80,83 @@
         ]
     },
     {
-        "speciesId": "pawniard",
-        "fastMove": "FURY_CUTTER",
+        "speciesId": "sliggoo",
+        "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
-            "IRON_HEAD",
-            "NIGHT_SLASH"
+            "BODY_SLAM",
+            "DRAGON_PULSE"
+        ]
+    },
+    {
+        "speciesId": "malamar",
+        "fastMove": "PSYWAVE",
+        "chargedMoves": [
+            "SUPER_POWER",
+            "FOUL_PLAY"
+        ]
+    },
+    {
+        "speciesId": "lapras",
+        "fastMove": "PSYWAVE",
+        "chargedMoves": [
+            "SPARKLING_ARIA",
+            "ICE_BEAM"
+        ]
+    },
+    {
+        "speciesId": "kingdra",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "SURF",
+            "SWIFT"
+        ]
+    },
+    {
+        "speciesId": "thievul",
+        "fastMove": "SUCKER_PUNCH",
+        "chargedMoves": [
+            "NIGHT_SLASH",
+            "PLAY_ROUGH"
+        ]
+    },
+    {
+        "speciesId": "pelipper",
+        "fastMove": "WING_ATTACK",
+        "chargedMoves": [
+            "WEATHER_BALL_WATER",
+            "HURRICANE"
+        ]
+    },
+    {
+        "speciesId": "dragonair",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "DRAGON_PULSE"
+        ]
+    },
+    {
+        "speciesId": "dewgong",
+        "fastMove": "ICE_SHARD",
+        "chargedMoves": [
+            "ICY_WIND",
+            "DRILL_RUN"
+        ]
+    },
+    {
+        "speciesId": "feraligatr",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "HYDRO_CANNON",
+            "ICE_BEAM"
+        ]
+    },
+    {
+        "speciesId": "sealeo",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "SURF",
+            "BODY_SLAM"
         ]
     }
 ]
