@@ -60,7 +60,7 @@ $formats = array (
       1 => 'Only Dark-, Dragon-, Steel-, and Water-type Pokémon are eligible.',
       2 => 'The following types are not allowed: Electric, Fairy, Fighting, Fire, Ghost, Grass, Ground, Bug/Steel',
       3 => 'Legendary Pokémon, Mythical Pokémon, Ultra Beasts, Mega Evolutions, and Shadow Pokémon are not eligible.',
-      4 => 'The following Pokemon are not allowed: Aegislash, Araquanid, Bastiodon, Corviknight, Doublade, Empoleon, Honedge, Klang, Mandibuzz, Obstagoon, Orthworm, Probopass, Steelix, Toxapex, Umbreon, Vullaby',
+      4 => 'The following Pokemon are not allowed: Aegislash, Araquanid, Bastiodon, Corviknight, Doublade, Empoleon, Honedge, Klang, Mandibuzz, Obstagoon, Orthworm, Probopass, Steelix, Toxapex, Umbreon, Vullaby, Mantine',
     ),
   ),
   4 => 
