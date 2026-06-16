@@ -1,13 +1,5 @@
 [
     {
-        "speciesId": "mantine",
-        "fastMove": "WING_ATTACK",
-        "chargedMoves": [
-            "TWISTER",
-            "WATER_PULSE"
-        ]
-    },
-    {
         "speciesId": "gyarados",
         "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
