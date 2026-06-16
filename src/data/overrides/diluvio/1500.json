@@ -6,7 +6,16 @@
             "SACRED_SWORD",
             "ICY_WIND"
         ],
-        "weight": 1
+        "weight": 10
+    },
+    {
+        "speciesId": "mantine",
+        "fastMove": "WING_ATTACK",
+        "chargedMoves": [
+            "TWISTER",
+            "WATER_PULSE"
+        ],
+        "weight": 10
     },
     {
         "speciesId": "seaking",
@@ -16,15 +25,6 @@
             "ICY_WIND"
         ],
         "weight": 12
-    },
-    {
-        "speciesId": "mantine",
-        "fastMove": "WING_ATTACK",
-        "chargedMoves": [
-            "TWISTER",
-            "WATER_PULSE"
-        ],
-        "weight": 1
     },
     {
         "speciesId": "gyarados",
@@ -65,6 +65,15 @@
         "editorNotes": "Altaria's flexibility with Flamethrower gives it coverage against Steel types, and its defensive typing remains one of the best to counter Water and Ground types. It's seeing more play this season with the nerf to its nemesis, Wigglytuff."
     },
     {
+        "speciesId": "golisopod",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "AQUA_JET",
+            "X_SCISSOR"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "lapras",
         "fastMove": "PSYWAVE",
         "chargedMoves": [
@@ -74,15 +83,6 @@
         "weight": 5,
         "editorScore": 90,
         "editorNotes": "Lapras has a long competitive history, but is currently on its way out of the metagame. It's a poster child for bulky Water types and neutral play. Recent shifts have left it without a clear role, and it now faces stiff competition among Water/Ice types."
-    },
-    {
-        "speciesId": "golisopod",
-        "fastMove": "FURY_CUTTER",
-        "chargedMoves": [
-            "AQUA_JET",
-            "X_SCISSOR"
-        ],
-        "weight": 1
     },
     {
         "speciesId": "sliggoo",
@@ -222,7 +222,7 @@
             "HYDRO_CANNON",
             "MEGAHORN"
         ],
-        "weight": 1,
+        "weight": 10,
         "editorScore": 88,
         "editorNotes": "Samurott looks great on paper, and while it's by no means a bad pick, it lacks the competitive success and neutral play of its peers. Its Bug offenses are its main detriment and are widely resisted by the main meta players."
     },
@@ -305,15 +305,6 @@
         "weight": 1
     },
     {
-        "speciesId": "tentacruel",
-        "fastMove": "ACID",
-        "chargedMoves": [
-            "SCALD",
-            "PAYBACK"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "goodra",
         "fastMove": "DRAGON_BREATH",
         "chargedMoves": [
@@ -325,6 +316,15 @@
         "editorNotes": "Altaria is the only Dragon to see widespread play in the current meta, and Goodra presents few advantages over it. Its middling stats and non-STAB attacks give it a soft matchup profile that allows it to play as a corebreaker, but it it lacks the strength as a generalist to truly succeed."
     },
     {
+        "speciesId": "tentacruel",
+        "fastMove": "ACID",
+        "chargedMoves": [
+            "SCALD",
+            "PAYBACK"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "metang",
         "fastMove": "FURY_CUTTER",
         "chargedMoves": [
@@ -334,15 +334,6 @@
         "weight": 1,
         "editorScore": 85,
         "editorNotes": "Metang has good stats and pacing, but has struggled to find competitive success. It struggles significantly against rival Steel types, and its Psychic typing makes it vulnerable to prevalent Ghosts."
-    },
-    {
-        "speciesId": "tyranitar",
-        "fastMove": "DRAGON_BREATH",
-        "chargedMoves": [
-            "BRUTAL_SWING",
-            "STONE_EDGE"
-        ],
-        "weight": 1
     },
     {
         "speciesId": "drampa",
@@ -359,6 +350,15 @@
         "chargedMoves": [
             "X_SCISSOR",
             "TRAILBLAZE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "tyranitar",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "BRUTAL_SWING",
+            "STONE_EDGE"
         ],
         "weight": 1
     },
@@ -444,6 +444,14 @@
         "weight": 1
     },
     {
+        "speciesId": "qwilfish_hisuian",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "SHADOW_BALL"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "omastar",
         "fastMove": "MUD_SHOT",
         "chargedMoves": [
@@ -453,10 +461,11 @@
         "weight": 1
     },
     {
-        "speciesId": "qwilfish_hisuian",
+        "speciesId": "starmie",
+        "fastMove": "PSYWAVE",
         "chargedMoves": [
-            "AQUA_TAIL",
-            "SHADOW_BALL"
+            "AQUA_JET",
+            "ICE_BEAM"
         ],
         "weight": 1
     },
@@ -678,15 +687,6 @@
         "weight": 1
     },
     {
-        "speciesId": "varoom",
-        "fastMove": "METAL_SOUND",
-        "chargedMoves": [
-            "GYRO_BALL",
-            "GUNK_SHOT"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "octillery",
         "fastMove": "LOCK_ON",
         "chargedMoves": [
@@ -696,18 +696,18 @@
         "weight": 1
     },
     {
-        "speciesId": "clawitzer",
+        "speciesId": "varoom",
+        "fastMove": "METAL_SOUND",
         "chargedMoves": [
-            "CRABHAMMER",
-            "ICE_BEAM"
+            "GYRO_BALL",
+            "GUNK_SHOT"
         ],
         "weight": 1
     },
     {
-        "speciesId": "starmie",
-        "fastMove": "PSYWAVE",
+        "speciesId": "clawitzer",
         "chargedMoves": [
-            "AQUA_JET",
+            "CRABHAMMER",
             "ICE_BEAM"
         ],
         "weight": 1
