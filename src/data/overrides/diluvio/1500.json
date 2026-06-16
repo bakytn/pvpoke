@@ -408,6 +408,15 @@
         "weight": 1
     },
     {
+        "speciesId": "thievul",
+        "fastMove": "SUCKER_PUNCH",
+        "chargedMoves": [
+            "NIGHT_SLASH",
+            "PLAY_ROUGH"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "politoed",
         "fastMove": "MUD_SHOT",
         "chargedMoves": [
