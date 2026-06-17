@@ -518,6 +518,15 @@
     "weight": 1
   },
   {
+    "speciesId": "jirachi",
+    "fastMove": "CONFUSION",
+    "chargedMoves": [
+      "AURA_SPHERE",
+      "DOOM_DESIRE"
+    ],
+    "weight": 1
+  },
+  {
     "speciesId": "kangaskhan_mega",
     "chargedMoves": [
       "BRICK_BREAK",

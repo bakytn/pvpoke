@@ -125,6 +125,26 @@ $formats = array (
   ),
   8 => 
   array (
+    'title' => 'Elbaph Cup',
+    'cup' => 'elbaph',
+    'cp' => 10000,
+    'meta' => 'elbaph',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'hideRankings' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+      1 => 'Build a team of 6 Pokémon.',
+      2 => 'Slot 1: Choose 1 Pokémon from the permitted Slot 1 species list: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.',
+      3 => 'Slot 2: Choose 1 additional Pokémon with a Steel or Fighting typing. You may not select any Pokémon from Slot 1.',
+      4 => 'Slot 3: Choose 4 additional Pokémon with a Water, Fire, Grass, or Ground typing. You may not select any Pokémon from Slot 1 or Slot 2.',
+      5 => 'The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Mewtwo, Groudon (Primal), Kyogre (Primal), Necrozma (Dawn Wings), Zamazenta (Crowned Shield), Landorus (Therian), Zygarde.',
+    ),
+  ),
+  9 => 
+  array (
     'title' => 'Battle Frontier (UL)',
     'cup' => 'battlefrontierultra',
     'cp' => 2500,
@@ -133,7 +153,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  9 => 
+  10 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -143,7 +163,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  10 => 
+  11 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -153,7 +173,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  11 => 
+  12 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',

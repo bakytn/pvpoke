@@ -1,0 +1,16 @@
+{
+    "name": "elbaph",
+    "title": "Elbaph Cup",
+    "include": [{
+        "filterType": "type",
+        "values": ["steel", "fighting", "water", "fire", "grass", "ground"]
+    }, {
+        "filterType": "id",
+        "includeShadows": true,
+        "values": ["rhyperior", "tyranitar", "metagross", "groudon", "kyogre", "dialga_origin", "palkia", "melmetal", "dialga", "ho_oh", "lugia", "garchomp"]
+    }],
+    "exclude": [{
+        "filterType": "id",
+        "values": ["zygarde_complete", "zacian_crowned_sword", "necrozma_dusk_mane", "solgaleo", "mewtwo", "groudon_primal", "kyogre_primal", "necrozma_dawn_wings", "zamazenta_crowned_shield", "landorus_therian", "zygarde"]
+    }]
+}
