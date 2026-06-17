@@ -118,10 +118,12 @@
         "rules": [
             "No CP limit.",
             "Build a team of 6 Pokémon.",
-            "Slot 1: Choose 1 Pokémon from the permitted Slot 1 species list: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.",
-            "Slot 2: Choose 1 additional Pokémon with a Steel or Fighting typing. You may not select any Pokémon from Slot 1.",
-            "Slot 3: Choose 4 additional Pokémon with a Water, Fire, Grass, or Ground typing. You may not select any Pokémon from Slot 1 or Slot 2.",
-            "The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Palkia (Origin), Landorus (Incarnate), and all Mega Evolutions."
+            "Slot 1: Choose exactly 1 Pokémon from the listed Slot 1 species.",
+            "Slot 2: Choose exactly 1 Steel- or Fighting-type Pokémon. You may not select any Pokémon from Slot 1.",
+            "Slots 3-6: Choose 4 Pokémon from the remaining eligible pool. You may not select any Pokémon from Slots 1 or 2.",
+            "Slot 1 species: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.",
+            "Slot 2 types: Steel, Fighting.",
+            "The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Palkia (Origin), Landorus (Incarnate), Eternatus, Zamazenta, and all Mega Evolutions."
         ]
     },
     {

@@ -136,10 +136,12 @@ $formats = array (
     array (
       0 => 'No CP limit.',
       1 => 'Build a team of 6 Pokémon.',
-      2 => 'Slot 1: Choose 1 Pokémon from the permitted Slot 1 species list: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.',
-      3 => 'Slot 2: Choose 1 additional Pokémon with a Steel or Fighting typing. You may not select any Pokémon from Slot 1.',
-      4 => 'Slot 3: Choose 4 additional Pokémon with a Water, Fire, Grass, or Ground typing. You may not select any Pokémon from Slot 1 or Slot 2.',
-      5 => 'The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Palkia (Origin), Landorus (Incarnate), and all Mega Evolutions.',
+      2 => 'Slot 1: Choose exactly 1 Pokémon from the listed Slot 1 species.',
+      3 => 'Slot 2: Choose exactly 1 Steel- or Fighting-type Pokémon. You may not select any Pokémon from Slot 1.',
+      4 => 'Slots 3-6: Choose 4 Pokémon from the remaining eligible pool. You may not select any Pokémon from Slots 1 or 2.',
+      5 => 'Slot 1 species: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.',
+      6 => 'Slot 2 types: Steel, Fighting.',
+      7 => 'The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Palkia (Origin), Landorus (Incarnate), Eternatus, Zamazenta, and all Mega Evolutions.',
     ),
   ),
   9 => 
