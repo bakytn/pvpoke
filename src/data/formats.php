@@ -132,7 +132,6 @@ $formats = array (
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
-    'hideRankings' => true,
     'rules' => 
     array (
       0 => 'No CP limit.',

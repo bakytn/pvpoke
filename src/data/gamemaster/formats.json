@@ -115,7 +115,6 @@
         "showCup": true,
         "showFormat": true,
         "showMeta": true,
-        "hideRankings": true,
         "rules": [
             "No CP limit.",
             "Build a team of 6 Pokémon.",
