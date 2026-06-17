@@ -55,6 +55,23 @@
         ]
     },
     {
+        "title": "Sin Nombre",
+        "cup": "sin_nombre",
+        "cp": 1500,
+        "meta": "sin_nombre",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true,
+        "rules": [
+            "Pokémon must be at or below 1,500 CP to enter.",
+            "Only Fairy-, Ghost-, Ice-, Normal-, and Rock-type Pokémon are eligible.",
+            "The following types are not allowed: Dark, Fire, Flying, Ground, Steel",
+            "Legendary Pokémon, Mythical Pokémon, Ultra Beasts, and Mega Evolutions are not eligible.",
+            "Shadow Pokémon are eligible.",
+            "The following Pokemon are not allowed: Abomasnow, Amaura, Annihilape, Aurorus, Azumarill, Bewear, Carbink, Cetoddle, Chansey, Clefable, Corsola (Galarian), Cradily, Crustle, Dolliv, Drampa, Dubwool, Dudunsparce, Dunsparce, Dusknoir, Frillish, Furfrou, Furret, Girafarig, Greedent, Jellicent, Kangaskhan, Kecleon, Lapras, Lickilicky, Lickitung, Lileep, Linoone, Miltank, Naclstack, Ninetales (Alolan), Oinkologne, Oranguru, Relicanth, Spinda, Ursaring, Vigoroth, Weezing (Galarian), Wigglytuff, Wyrdeer, Zangoose"
+        ]
+    },
+    {
         "title": "Sunshine Cup",
         "cup": "sunshine",
         "cp": 1500,

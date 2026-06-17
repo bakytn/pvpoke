@@ -1,5 +1,5 @@
 <?php require_once 'modules/config.php';
-$SITE_VERSION = '1.36.30';
+$SITE_VERSION = '1.36.31';
 
 $hostHeader = isset($_SERVER['HTTP_HOST']) ? strtolower(trim($_SERVER['HTTP_HOST'])) : '';
 $hostOnly = preg_replace('/:\d+$/', '', $hostHeader);

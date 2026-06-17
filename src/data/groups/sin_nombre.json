@@ -1,0 +1,163 @@
+[
+    {
+        "speciesId": "cetitan",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "ICICLE_SPEAR",
+            "SUPER_POWER"
+        ]
+    },
+    {
+        "speciesId": "snorlax",
+        "fastMove": "LICK",
+        "chargedMoves": [
+            "BODY_SLAM",
+            "SUPER_POWER"
+        ]
+    },
+    {
+        "speciesId": "sylveon",
+        "fastMove": "FAIRY_WIND",
+        "chargedMoves": [
+            "PSYSHOCK",
+            "SHADOW_BALL"
+        ]
+    },
+    {
+        "speciesId": "lopunny",
+        "fastMove": "LOW_KICK",
+        "chargedMoves": [
+            "THUNDER_PUNCH",
+            "SHADOW_BALL"
+        ]
+    },
+    {
+        "speciesId": "castform",
+        "fastMove": "HEX",
+        "chargedMoves": [
+            "WEATHER_BALL_ROCK",
+            "ENERGY_BALL"
+        ]
+    },
+    {
+        "speciesId": "slurpuff",
+        "fastMove": "FAIRY_WIND",
+        "chargedMoves": [
+            "PLAY_ROUGH",
+            "ENERGY_BALL"
+        ]
+    },
+    {
+        "speciesId": "whimsicott",
+        "fastMove": "FAIRY_WIND",
+        "chargedMoves": [
+            "SEED_BOMB",
+            "MOONBLAST"
+        ]
+    },
+    {
+        "speciesId": "primarina",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "DISARMING_VOICE",
+            "HYDRO_CANNON"
+        ]
+    },
+    {
+        "speciesId": "sealeo",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "SURF",
+            "BODY_SLAM"
+        ]
+    },
+    {
+        "speciesId": "sealeo_shadow",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "SURF",
+            "BODY_SLAM"
+        ],
+        "shadowType": "shadow"
+    },
+    {
+        "speciesId": "florges",
+        "fastMove": "FAIRY_WIND",
+        "chargedMoves": [
+            "CHILLING_WATER",
+            "DISARMING_VOICE"
+        ]
+    },
+    {
+        "speciesId": "dewgong",
+        "fastMove": "ICE_SHARD",
+        "chargedMoves": [
+            "ICY_WIND",
+            "DRILL_RUN"
+        ]
+    },
+    {
+        "speciesId": "munchlax",
+        "fastMove": "LICK",
+        "chargedMoves": [
+            "BODY_SLAM",
+            "BULLDOZE"
+        ]
+    },
+    {
+        "speciesId": "dachsbun",
+        "fastMove": "CHARM",
+        "chargedMoves": [
+            "PSYCHIC_FANGS",
+            "PLAY_ROUGH"
+        ]
+    },
+    {
+        "speciesId": "dedenne",
+        "fastMove": "THUNDER_SHOCK",
+        "chargedMoves": [
+            "DISCHARGE",
+            "PLAY_ROUGH"
+        ]
+    },
+    {
+        "speciesId": "dusclops",
+        "fastMove": "HEX",
+        "chargedMoves": [
+            "ICE_PUNCH",
+            "SHADOW_PUNCH"
+        ]
+    },
+    {
+        "speciesId": "gourgeist_large",
+        "fastMove": "INCINERATE",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "SEED_BOMB"
+        ]
+    },
+    {
+        "speciesId": "gourgeist_super",
+        "fastMove": "INCINERATE",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "SEED_BOMB"
+        ]
+    },
+    {
+        "speciesId": "gourgeist_average",
+        "fastMove": "INCINERATE",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "SEED_BOMB"
+        ]
+    },
+    {
+        "speciesId": "gigalith",
+        "fastMove": "LOCK_ON",
+        "chargedMoves": [
+            "SUPER_POWER",
+            "METEOR_BEAM"
+        ]
+    }
+]

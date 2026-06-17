@@ -1,0 +1,99 @@
+{
+    "name": "sin_nombre",
+    "title": "Sin Nombre",
+    "cup": "sin_nombre",
+    "include": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "fairy",
+                "ghost",
+                "ice",
+                "normal",
+                "rock"
+            ]
+        }
+    ],
+    "exclude": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "dark",
+                "fire",
+                "flying",
+                "ground",
+                "steel"
+            ]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "abomasnow",
+                "amaura",
+                "annihilape",
+                "aurorus",
+                "azumarill",
+                "bewear",
+                "carbink",
+                "cetoddle",
+                "chansey",
+                "clefable",
+                "corsola_galarian",
+                "cradily",
+                "cradily_b",
+                "crustle",
+                "dolliv",
+                "drampa",
+                "dubwool",
+                "dudunsparce",
+                "dunsparce",
+                "dusknoir",
+                "frillish",
+                "furfrou",
+                "furret",
+                "girafarig",
+                "greedent",
+                "jellicent",
+                "kangaskhan",
+                "kecleon",
+                "lapras",
+                "lickilicky",
+                "lickitung",
+                "lileep",
+                "linoone",
+                "miltank",
+                "naclstack",
+                "ninetales_alolan",
+                "oinkologne",
+                "oinkologne_female",
+                "oranguru",
+                "relicanth",
+                "spinda",
+                "ursaring",
+                "vigoroth",
+                "weezing_galarian",
+                "wigglytuff",
+                "wyrdeer",
+                "zangoose"
+            ]
+        },
+        {
+            "filterType": "tag",
+            "name": "Tag",
+            "values": [
+                "legendary",
+                "mythical",
+                "ultrabeast",
+                "mega"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 1500,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1
+}
