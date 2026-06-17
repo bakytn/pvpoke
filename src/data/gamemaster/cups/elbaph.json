@@ -11,6 +11,9 @@
     }],
     "exclude": [{
         "filterType": "id",
-        "values": ["zygarde_complete", "zacian_crowned_sword", "necrozma_dusk_mane", "solgaleo", "mewtwo", "groudon_primal", "kyogre_primal", "necrozma_dawn_wings", "zamazenta_crowned_shield", "landorus_therian", "zygarde"]
+        "values": ["zygarde_complete", "zacian_crowned_sword", "necrozma_dusk_mane", "solgaleo", "palkia_origin", "landorus_incarnate"]
+    }, {
+        "filterType": "tag",
+        "values": ["mega"]
     }]
 }

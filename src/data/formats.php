@@ -139,7 +139,7 @@ $formats = array (
       2 => 'Slot 1: Choose 1 Pokémon from the permitted Slot 1 species list: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.',
       3 => 'Slot 2: Choose 1 additional Pokémon with a Steel or Fighting typing. You may not select any Pokémon from Slot 1.',
       4 => 'Slot 3: Choose 4 additional Pokémon with a Water, Fire, Grass, or Ground typing. You may not select any Pokémon from Slot 1 or Slot 2.',
-      5 => 'The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Mewtwo, Groudon (Primal), Kyogre (Primal), Necrozma (Dawn Wings), Zamazenta (Crowned Shield), Landorus (Therian), Zygarde.',
+      5 => 'The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Palkia (Origin), Landorus (Incarnate), and all Mega Evolutions.',
     ),
   ),
   9 => 
