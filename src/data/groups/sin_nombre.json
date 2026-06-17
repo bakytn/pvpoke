@@ -57,7 +57,7 @@
     },
     {
         "speciesId": "primarina",
-        "fastMove": "WATERFALL",
+        "fastMove": "CHARM",
         "chargedMoves": [
             "DISARMING_VOICE",
             "HYDRO_CANNON"
@@ -84,8 +84,8 @@
         "speciesId": "florges",
         "fastMove": "FAIRY_WIND",
         "chargedMoves": [
-            "CHILLING_WATER",
-            "DISARMING_VOICE"
+            "TRAILBLAZE",
+            "CHILLING_WATER"
         ]
     },
     {

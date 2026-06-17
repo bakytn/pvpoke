@@ -1,5 +1,14 @@
 [
     {
+        "speciesId": "aromatisse",
+        "fastMove": "FAIRY_WIND",
+        "chargedMoves": [
+            "PSYSHOCK",
+            "MOONBLAST"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "cetitan",
         "fastMove": "POWDER_SNOW",
         "chargedMoves": [
@@ -9,10 +18,11 @@
         "weight": 1
     },
     {
-        "speciesId": "snorlax",
+        "speciesId": "lopunny",
+        "fastMove": "LOW_KICK",
         "chargedMoves": [
-            "BODY_SLAM",
-            "SUPER_POWER"
+            "THUNDER_PUNCH",
+            "SHADOW_BALL"
         ],
         "weight": 1
     },
@@ -26,11 +36,10 @@
         "weight": 1
     },
     {
-        "speciesId": "lopunny",
-        "fastMove": "LOW_KICK",
+        "speciesId": "snorlax",
         "chargedMoves": [
-            "THUNDER_PUNCH",
-            "SHADOW_BALL"
+            "BODY_SLAM",
+            "SUPER_POWER"
         ],
         "weight": 1
     },
@@ -61,15 +70,6 @@
         "weight": 1
     },
     {
-        "speciesId": "primarina",
-        "fastMove": "WATERFALL",
-        "chargedMoves": [
-            "DISARMING_VOICE",
-            "HYDRO_CANNON"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "sealeo",
         "fastMove": "POWDER_SNOW",
         "chargedMoves": [
@@ -79,6 +79,15 @@
         "weight": 6,
         "editorScore": 90,
         "editorNotes": "Sealeo has the offenses and pacing to make for a neutral, energy-oriented threat. It struggled to make headway for a while, but has found recent success, being favored over Lapras."
+    },
+    {
+        "speciesId": "primarina",
+        "fastMove": "CHARM",
+        "chargedMoves": [
+            "DISARMING_VOICE",
+            "HYDRO_CANNON"
+        ],
+        "weight": 1
     },
     {
         "speciesId": "sealeo_shadow",
@@ -95,8 +104,8 @@
         "speciesId": "florges",
         "fastMove": "FAIRY_WIND",
         "chargedMoves": [
-            "CHILLING_WATER",
-            "DISARMING_VOICE"
+            "TRAILBLAZE",
+            "CHILLING_WATER"
         ],
         "weight": 10,
         "editorScore": 90,
@@ -112,35 +121,6 @@
         "weight": 4,
         "editorScore": 90,
         "editorNotes": "Dewgong has a long competitive history thanks to its bulk and Icy Wind debuffs. It typically underperforms in the sims, where its full game effects aren't well represented. A reworked Drill Run further improves its pacing and damage output, making Dewgong a prospect to watch for."
-    },
-    {
-        "speciesId": "dachsbun",
-        "fastMove": "CHARM",
-        "chargedMoves": [
-            "PSYCHIC_FANGS",
-            "PLAY_ROUGH"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "dedenne",
-        "fastMove": "THUNDER_SHOCK",
-        "chargedMoves": [
-            "DISCHARGE",
-            "PLAY_ROUGH"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "dusclops",
-        "fastMove": "HEX",
-        "chargedMoves": [
-            "ICE_PUNCH",
-            "SHADOW_PUNCH"
-        ],
-        "weight": 3,
-        "editorScore": 90,
-        "editorNotes": "Dusclops has been largely replaced by Jellicent, who has stronger offenses and the benefits of Water typing. Dusclops is still viable in its own right, but much less common than alternative Ghosts, including its evolution, Dusknoir."
     },
     {
         "speciesId": "gourgeist_large",
@@ -165,6 +145,17 @@
         "editorNotes": "Gourgeist is an alternate Grass option with its truly unique moveset. As a Ghost, it also operates as a solid generalist. However, key Normal types fill the generalist role better and threaten Gourgeist in return. Gourgeist works best as a surprise corebreaker with ample  support against Normal and Flying."
     },
     {
+        "speciesId": "dusclops",
+        "fastMove": "HEX",
+        "chargedMoves": [
+            "ICE_PUNCH",
+            "SHADOW_PUNCH"
+        ],
+        "weight": 3,
+        "editorScore": 90,
+        "editorNotes": "Dusclops has been largely replaced by Jellicent, who has stronger offenses and the benefits of Water typing. Dusclops is still viable in its own right, but much less common than alternative Ghosts, including its evolution, Dusknoir."
+    },
+    {
         "speciesId": "gourgeist_average",
         "fastMove": "INCINERATE",
         "chargedMoves": [
@@ -176,11 +167,20 @@
         "editorNotes": "Gourgeist is an alternate Grass option with its truly unique moveset. As a Ghost, it also operates as a solid generalist. However, key Normal types fill the generalist role better and threaten Gourgeist in return. Gourgeist works best as a surprise corebreaker with ample  support against Normal and Flying."
     },
     {
-        "speciesId": "gigalith",
-        "fastMove": "LOCK_ON",
+        "speciesId": "dachsbun",
+        "fastMove": "CHARM",
         "chargedMoves": [
-            "SUPER_POWER",
-            "METEOR_BEAM"
+            "PSYCHIC_FANGS",
+            "PLAY_ROUGH"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "dedenne",
+        "fastMove": "THUNDER_SHOCK",
+        "chargedMoves": [
+            "DISCHARGE",
+            "PLAY_ROUGH"
         ],
         "weight": 1
     },
@@ -196,15 +196,6 @@
         "editorNotes": "Dusclops has been largely replaced by Jellicent, who has stronger offenses and the benefits of Water typing. Dusclops is still viable in its own right, but much less common than alternative Ghosts, including its evolution, Dusknoir."
     },
     {
-        "speciesId": "gigalith_shadow",
-        "fastMove": "LOCK_ON",
-        "chargedMoves": [
-            "SUPER_POWER",
-            "METEOR_BEAM"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "gourgeist_small",
         "fastMove": "INCINERATE",
         "chargedMoves": [
@@ -214,6 +205,42 @@
         "weight": 0,
         "editorScore": 90,
         "editorNotes": "Gourgeist is an alternate Grass option with its truly unique moveset. As a Ghost, it also operates as a solid generalist. However, key Normal types fill the generalist role better and threaten Gourgeist in return. Gourgeist works best as a surprise corebreaker with ample  support against Normal and Flying."
+    },
+    {
+        "speciesId": "bibarel_shadow",
+        "fastMove": "ROLLOUT",
+        "chargedMoves": [
+            "SURF",
+            "HYPER_FANG"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "grafaiai",
+        "fastMove": "MUD_SLAP",
+        "chargedMoves": [
+            "POISON_FANG",
+            "SLUDGE_BOMB"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "gigalith",
+        "fastMove": "LOCK_ON",
+        "chargedMoves": [
+            "SUPER_POWER",
+            "METEOR_BEAM"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "gigalith_shadow",
+        "fastMove": "LOCK_ON",
+        "chargedMoves": [
+            "SUPER_POWER",
+            "METEOR_BEAM"
+        ],
+        "weight": 1
     },
     {
         "speciesId": "glalie",
@@ -234,20 +261,31 @@
         "weight": 1
     },
     {
-        "speciesId": "grafaiai",
-        "fastMove": "MUD_SLAP",
-        "chargedMoves": [
-            "POISON_FANG",
-            "SLUDGE_BOMB"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "decidueye",
         "fastMove": "LEAFAGE",
         "chargedMoves": [
             "FRENZY_PLANT",
             "SPIRIT_SHACKLE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "walrein",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "ICICLE_SPEAR",
+            "EARTHQUAKE"
+        ],
+        "weight": 1,
+        "editorScore": 85,
+        "editorNotes": "Walrein has a notable competitive past, but hasn't found a way to crack the current metagame. Its time may come again, but faces too much competition against rival Water types, including its pre-evolution, Sealeo."
+    },
+    {
+        "speciesId": "arboliva",
+        "fastMove": "MAGICAL_LEAF",
+        "chargedMoves": [
+            "EARTH_POWER",
+            "TRAILBLAZE"
         ],
         "weight": 1
     },
@@ -270,24 +308,13 @@
         "weight": 1
     },
     {
-        "speciesId": "arboliva",
-        "fastMove": "MAGICAL_LEAF",
+        "speciesId": "shiinotic_shadow",
+        "fastMove": "ASTONISH",
         "chargedMoves": [
-            "EARTH_POWER",
-            "TRAILBLAZE"
+            "SEED_BOMB",
+            "MOONBLAST"
         ],
         "weight": 1
-    },
-    {
-        "speciesId": "walrein",
-        "fastMove": "POWDER_SNOW",
-        "chargedMoves": [
-            "ICICLE_SPEAR",
-            "EARTHQUAKE"
-        ],
-        "weight": 1,
-        "editorScore": 85,
-        "editorNotes": "Walrein has a notable competitive past, but hasn't found a way to crack the current metagame. Its time may come again, but faces too much competition against rival Water types, including its pre-evolution, Sealeo."
     },
     {
         "speciesId": "castform_snowy",
@@ -307,6 +334,15 @@
         "weight": 1,
         "editorScore": 85,
         "editorNotes": "Walrein has a notable competitive past, but hasn't found a way to crack the current metagame. Its time may come again, but faces too much competition against rival Water types, including its pre-evolution, Sealeo."
+    },
+    {
+        "speciesId": "trevenant_shadow",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "SEED_BOMB",
+            "SHADOW_BALL"
+        ],
+        "weight": 1
     },
     {
         "speciesId": "avalugg",
@@ -381,15 +417,6 @@
         "weight": 1
     },
     {
-        "speciesId": "dhelmise",
-        "fastMove": "SHADOW_CLAW",
-        "chargedMoves": [
-            "POWER_WHIP",
-            "BRUTAL_SWING"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "kleavor",
         "fastMove": "FURY_CUTTER",
         "chargedMoves": [
@@ -399,8 +426,35 @@
         "weight": 1
     },
     {
+        "speciesId": "dhelmise",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "POWER_WHIP",
+            "BRUTAL_SWING"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "pumpkaboo_large",
         "weight": 0
+    },
+    {
+        "speciesId": "aipom_shadow",
+        "fastMove": "ASTONISH",
+        "chargedMoves": [
+            "SWIFT",
+            "LOW_SWEEP"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "cofagrigus_shadow",
+        "fastMove": "ASTONISH",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "DARK_PULSE"
+        ],
+        "weight": 1
     },
     {
         "speciesId": "omastar",
@@ -408,15 +462,6 @@
         "chargedMoves": [
             "ROCK_SLIDE",
             "HYDRO_PUMP"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "armaldo",
-        "fastMove": "FURY_CUTTER",
-        "chargedMoves": [
-            "ROCK_BLAST",
-            "LIQUIDATION"
         ],
         "weight": 1
     },
@@ -430,7 +475,38 @@
         "weight": 1
     },
     {
+        "speciesId": "armaldo",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "ROCK_BLAST",
+            "LIQUIDATION"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "bibarel",
+        "weight": 1,
+        "fastMove": "ROLLOUT",
+        "chargedMoves": [
+            "SURF",
+            "HYPER_FANG"
+        ]
+    },
+    {
         "speciesId": "pumpkaboo_average",
+        "weight": 0
+    },
+    {
+        "speciesId": "omastar_shadow",
+        "fastMove": "MUD_SHOT",
+        "chargedMoves": [
+            "ROCK_SLIDE",
+            "HYDRO_PUMP"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "pumpkaboo_small",
         "weight": 0
     },
     {
@@ -439,15 +515,6 @@
         "chargedMoves": [
             "BULLDOZE",
             "ROCK_TOMB"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "omastar_shadow",
-        "fastMove": "MUD_SHOT",
-        "chargedMoves": [
-            "ROCK_SLIDE",
-            "HYDRO_PUMP"
         ],
         "weight": 1
     },
@@ -461,24 +528,11 @@
         "weight": 1
     },
     {
-        "speciesId": "pumpkaboo_small",
-        "weight": 0
-    },
-    {
-        "speciesId": "cofagrigus_shadow",
-        "fastMove": "ASTONISH",
+        "speciesId": "heliolisk",
+        "fastMove": "VOLT_SWITCH",
         "chargedMoves": [
-            "SHADOW_BALL",
-            "DARK_PULSE"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "trevenant_shadow",
-        "fastMove": "SHADOW_CLAW",
-        "chargedMoves": [
-            "SEED_BOMB",
-            "SHADOW_BALL"
+            "BREAKING_SWIPE",
+            "PARABOLIC_CHARGE"
         ],
         "weight": 1
     },
@@ -492,11 +546,11 @@
         "weight": 1
     },
     {
-        "speciesId": "heliolisk",
-        "fastMove": "VOLT_SWITCH",
+        "speciesId": "geodude_alolan_shadow",
+        "fastMove": "ROCK_THROW",
         "chargedMoves": [
-            "BREAKING_SWIPE",
-            "PARABOLIC_CHARGE"
+            "ROCK_TOMB",
+            "ROCK_SLIDE"
         ],
         "weight": 1
     },
@@ -537,11 +591,6 @@
         "weight": 1
     },
     {
-        "speciesId": "delcatty",
-        "fastMove": "CHARM",
-        "weight": 1
-    },
-    {
         "speciesId": "sudowoodo_shadow",
         "fastMove": "COUNTER",
         "chargedMoves": [
@@ -551,12 +600,8 @@
         "weight": 1
     },
     {
-        "speciesId": "stufful_shadow",
-        "fastMove": "TACKLE",
-        "chargedMoves": [
-            "SUPER_POWER",
-            "STOMP"
-        ],
+        "speciesId": "delcatty",
+        "fastMove": "CHARM",
         "weight": 1
     },
     {
@@ -565,15 +610,6 @@
         "chargedMoves": [
             "ICY_WIND",
             "BUG_BUZZ"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "geodude_alolan_shadow",
-        "fastMove": "ROCK_THROW",
-        "chargedMoves": [
-            "ROCK_TOMB",
-            "ROCK_SLIDE"
         ],
         "weight": 1
     },
@@ -587,11 +623,34 @@
         "weight": 1
     },
     {
+        "speciesId": "ambipom_shadow",
+        "fastMove": "ASTONISH",
+        "chargedMoves": [
+            "LOW_SWEEP",
+            "AERIAL_ACE"
+        ],
+        "weight": 1
+    },
+    {
         "speciesId": "cloyster",
         "fastMove": "ICE_SHARD",
         "chargedMoves": [
             "ICY_WIND",
             "LIQUIDATION"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "granbull_shadow",
+        "fastMove": "CHARM",
+        "weight": 1
+    },
+    {
+        "speciesId": "persian_shadow",
+        "fastMove": "FEINT_ATTACK",
+        "chargedMoves": [
+            "NIGHT_SLASH",
+            "POWER_GEM"
         ],
         "weight": 1
     },
@@ -614,8 +673,21 @@
         "weight": 1
     },
     {
-        "speciesId": "granbull_shadow",
-        "fastMove": "CHARM",
+        "speciesId": "boldore_shadow",
+        "fastMove": "MUD_SLAP",
+        "chargedMoves": [
+            "ROCK_SLIDE",
+            "STONE_EDGE"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "misdreavus_shadow",
+        "fastMove": "ASTONISH",
+        "chargedMoves": [
+            "DARK_PULSE",
+            "SHADOW_SNEAK"
+        ],
         "weight": 1
     },
     {
@@ -655,20 +727,6 @@
         "weight": 1
     },
     {
-        "speciesId": "granbull",
-        "fastMove": "CHARM",
-        "weight": 1
-    },
-    {
-        "speciesId": "misdreavus_shadow",
-        "fastMove": "ASTONISH",
-        "chargedMoves": [
-            "DARK_PULSE",
-            "SHADOW_SNEAK"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "haunter_shadow",
         "fastMove": "SHADOW_CLAW",
         "chargedMoves": [
@@ -678,11 +736,16 @@
         "weight": 1
     },
     {
-        "speciesId": "shiinotic_shadow",
-        "fastMove": "ASTONISH",
+        "speciesId": "granbull",
+        "fastMove": "CHARM",
+        "weight": 1
+    },
+    {
+        "speciesId": "heliolisk_shadow",
+        "fastMove": "VOLT_SWITCH",
         "chargedMoves": [
-            "SEED_BOMB",
-            "MOONBLAST"
+            "BREAKING_SWIPE",
+            "PARABOLIC_CHARGE"
         ],
         "weight": 1
     },
@@ -696,20 +759,29 @@
         "weight": 1
     },
     {
-        "speciesId": "heliolisk_shadow",
-        "fastMove": "VOLT_SWITCH",
+        "speciesId": "raticate_shadow",
+        "fastMove": "QUICK_ATTACK",
         "chargedMoves": [
-            "BREAKING_SWIPE",
-            "PARABOLIC_CHARGE"
+            "DIG",
+            "HYPER_FANG"
         ],
         "weight": 1
     },
     {
         "speciesId": "watchog_shadow",
-        "fastMove": "BITE",
+        "fastMove": "LOW_KICK",
         "chargedMoves": [
             "GRASS_KNOT",
             "CRUNCH"
+        ],
+        "weight": 1
+    },
+    {
+        "speciesId": "stufful_shadow",
+        "fastMove": "TACKLE",
+        "chargedMoves": [
+            "SUPER_POWER",
+            "STOMP"
         ],
         "weight": 1
     },
@@ -723,15 +795,6 @@
         "weight": 1
     },
     {
-        "speciesId": "raticate_shadow",
-        "fastMove": "BITE",
-        "chargedMoves": [
-            "DIG",
-            "HYPER_FANG"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "rampardos_shadow",
         "fastMove": "SMACK_DOWN",
         "chargedMoves": [
@@ -741,37 +804,10 @@
         "weight": 1
     },
     {
-        "speciesId": "aipom_shadow",
-        "fastMove": "ASTONISH",
-        "chargedMoves": [
-            "SWIFT",
-            "LOW_SWEEP"
-        ],
-        "weight": 1
-    },
-    {
         "speciesId": "purugly_shadow",
-        "fastMove": "SCRATCH",
+        "fastMove": "SHADOW_CLAW",
         "chargedMoves": [
             "THUNDER",
-            "AERIAL_ACE"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "persian_shadow",
-        "fastMove": "FEINT_ATTACK",
-        "chargedMoves": [
-            "NIGHT_SLASH",
-            "POWER_GEM"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "ambipom_shadow",
-        "fastMove": "ASTONISH",
-        "chargedMoves": [
-            "LOW_SWEEP",
             "AERIAL_ACE"
         ],
         "weight": 1
@@ -786,22 +822,49 @@
         "weight": 1
     },
     {
-        "speciesId": "boldore_shadow",
-        "fastMove": "MUD_SLAP",
+        "speciesId": "roggenrola_shadow",
+        "fastMove": "SMACK_DOWN",
         "chargedMoves": [
-            "ROCK_SLIDE",
-            "STONE_EDGE"
+            "STONE_EDGE",
+            "ROCK_BLAST"
         ],
         "weight": 1
     },
     {
-        "speciesId": "aromatisse",
-        "fastMove": "FAIRY_WIND",
+        "speciesId": "watchog",
+        "weight": 1,
+        "fastMove": "LOW_KICK",
         "chargedMoves": [
-            "PSYSHOCK",
-            "MOONBLAST"
+            "CRUNCH",
+            "GRASS_KNOT"
+        ]
+    },
+    {
+        "speciesId": "raticate",
+        "weight": 1,
+        "fastMove": "QUICK_ATTACK",
+        "chargedMoves": [
+            "DIG",
+            "HYPER_BEAM"
+        ]
+    },
+    {
+        "speciesId": "banette_shadow",
+        "fastMove": "HEX",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "DAZZLING_GLEAM"
         ],
         "weight": 1
+    },
+    {
+        "speciesId": "purugly",
+        "weight": 1,
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "AERIAL_ACE",
+            "PLAY_ROUGH"
+        ]
     },
     {
         "speciesId": "snover_shadow",
@@ -813,11 +876,11 @@
         "weight": 1
     },
     {
-        "speciesId": "roggenrola_shadow",
-        "fastMove": "SMACK_DOWN",
+        "speciesId": "stantler_shadow",
+        "fastMove": "TACKLE",
         "chargedMoves": [
-            "STONE_EDGE",
-            "ROCK_BLAST"
+            "WILD_CHARGE",
+            "MEGAHORN"
         ],
         "weight": 1
     },
@@ -839,29 +902,11 @@
         "weight": 1
     },
     {
-        "speciesId": "stantler_shadow",
-        "fastMove": "TACKLE",
+        "speciesId": "porygon2_shadow",
+        "fastMove": "CHARGE_BEAM",
         "chargedMoves": [
-            "WILD_CHARGE",
-            "MEGAHORN"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "banette_shadow",
-        "fastMove": "HEX",
-        "chargedMoves": [
-            "SHADOW_BALL",
-            "DAZZLING_GLEAM"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "bibarel_shadow",
-        "fastMove": "ROLLOUT",
-        "chargedMoves": [
-            "SURF",
-            "HYPER_FANG"
+            "TRI_ATTACK",
+            "SOLAR_BEAM"
         ],
         "weight": 1
     },
@@ -887,15 +932,6 @@
         "chargedMoves": [
             "TRI_ATTACK",
             "ZAP_CANNON"
-        ],
-        "weight": 1
-    },
-    {
-        "speciesId": "porygon2_shadow",
-        "fastMove": "CHARGE_BEAM",
-        "chargedMoves": [
-            "TRI_ATTACK",
-            "SOLAR_BEAM"
         ],
         "weight": 1
     }
