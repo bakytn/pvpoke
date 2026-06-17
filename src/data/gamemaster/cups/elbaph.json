@@ -1,7 +1,37 @@
 {
     "name": "elbaph",
     "title": "Elbaph Cup",
-    "include": [],
+    "include": [
+        {
+            "filterType": "type",
+            "values": [
+                "steel",
+                "fighting",
+                "water",
+                "fire",
+                "grass",
+                "ground"
+            ]
+        },
+        {
+            "filterType": "id",
+            "includeShadows": true,
+            "values": [
+                "rhyperior",
+                "tyranitar",
+                "metagross",
+                "groudon",
+                "kyogre",
+                "dialga_origin",
+                "palkia",
+                "melmetal",
+                "dialga",
+                "ho_oh",
+                "lugia",
+                "garchomp"
+            ]
+        }
+    ],
     "exclude": [
         {
             "filterType": "id",
@@ -13,7 +43,6 @@
                 "palkia_origin",
                 "landorus_incarnate",
                 "eternatus",
-                "zamazenta_hero",
                 "zamazenta_crowned_shield"
             ]
         },
