@@ -61,7 +61,7 @@ header {
   z-index: 25;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px;
-  top: 37px;
+  top: 0;
 }
 header .header-wrap {
   max-width: 800px;
@@ -163,7 +163,7 @@ header .hamburger .meat {
   display: flex;
   justify-content: center;
   background: #4b8f56;
-  padding: 6px;
+  padding: 3px;
   width: 100%;
   position: fixed;
   z-index: 25;
@@ -249,8 +249,8 @@ footer a.domz-link {
 #main {
   max-width: 800px;
   margin: auto;
+  padding: 60px 10px 10px 10px;
   border-radius: 12px;
-  padding: 100px 10px 10px 10px;
 }
 #main > h1 {
   margin: 0;

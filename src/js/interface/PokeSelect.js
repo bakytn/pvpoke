@@ -201,39 +201,22 @@ function PokeSelect(element, i){
 			// Set move selects
 
 			var $fastSelect = $el.find(".move-select.fast");
+			var $extraChargedSelect = $el.find(".move-select.extra-charged");
 
 			$fastSelect.html('');
+			$extraChargedSelect.html('');
 			$el.find(".move-select.charged").html('');
 
-			if($fastSelect.html() == ''){
-				// Add content to move selects
+			// Add content to move selects
 
-				for(var i = 0; i < selectedPokemon.fastMovePool.length; i++){
-					var move = selectedPokemon.fastMovePool[i];
+			for(var i = 0; i < selectedPokemon.fastMovePool.length; i++){
+				var move = selectedPokemon.fastMovePool[i];
 
-					$fastSelect.append("<option value=\""+move.moveId+"\">"+move.displayName+"</option");
-				}
+				$fastSelect.append("<option value=\""+move.moveId+"\">"+move.displayName+"</option");
+			}
 
-				if(context != "modalcustomrankings"){
-					$fastSelect.append("<option value=\"custom\">Custom ...</option");
-				}
-
-				$el.find(".move-select.charged").each(function(index, value){
-
-					$(this).append("<option value=\"none\">None</option");
-
-					for(var i = 0; i < selectedPokemon.chargedMovePool.length; i++){
-
-						var move = selectedPokemon.chargedMovePool[i];
-
-						$(this).append("<option value=\""+move.moveId+"\">"+move.displayName+"</option");
-					}
-
-					if(context != "modalcustomrankings"){
-						$(this).append("<option value=\"custom\">Other ...</option");
-					}
-
-				});
+			if(context != "modalcustomrankings"){
+				$fastSelect.append("<option value=\"custom\">Custom ...</option");
 			}
 
 			$fastSelect.find("option[value='"+selectedPokemon.fastMove.moveId+"']").prop("selected","selected");
@@ -242,12 +225,58 @@ function PokeSelect(element, i){
 			$el.find(".add-fast-move").html("+ " + selectedPokemon.fastMove.name);
 			$el.find(".add-fast-move").attr("class","add-fast-move " + selectedPokemon.fastMove.type);
 
+			// Add content to Charged Move selects
+
+			$el.find(".move-select.charged").each(function(index, value){
+
+				$(this).append("<option value=\"none\">None</option");
+
+				for(var i = 0; i < selectedPokemon.chargedMovePool.length; i++){
+
+					var move = selectedPokemon.chargedMovePool[i];
+
+					$(this).append("<option value=\""+move.moveId+"\">"+move.displayName+"</option");
+				}
+
+				if(context != "modalcustomrankings"){
+					$(this).append("<option value=\"custom\">Other ...</option");
+				}
+
+			});
+
+			// Add content to extra Charged Move select for eligible Pokemon
+
+			if(selectedPokemon.hasThirdChargedMove()){
+				$extraChargedSelect.css("display", "block");
+
+				$extraChargedSelect.append("<option value=\"none\">None</option");
+
+				for(var i = 0; i < selectedPokemon.extraChargedMovePool.length; i++){
+					var move = selectedPokemon.extraChargedMovePool[i];
+
+					$extraChargedSelect.append("<option value=\""+move.moveId+"\">"+move.displayName+"</option");
+				}
+
+				if(context != "modalcustomrankings"){
+					$extraChargedSelect.append("<option value=\"custom\">Custom ...</option");
+				}
+
+				if(selectedPokemon.chargedMoves[2]){
+					$extraChargedSelect.find("option[value='"+selectedPokemon.chargedMoves[2].moveId+"']").prop("selected","selected");
+					$extraChargedSelect.attr("class", "move-select extra-charged " + selectedPokemon.chargedMoves[2].type);
+				} else{
+					$extraChargedSelect.attr("class", "move-select extra-charged");
+				}
+			} else{
+				$extraChargedSelect.css("display", "none");
+			}
+
 			// Display charged moves
 
 			$el.find(".move-bar").hide();
 
-			for(var i = 0; i < $el.find(".move-select.charged").length; i++){
-				if(i < selectedPokemon.chargedMoves.length){
+			for(var i = 0; i < selectedPokemon.chargedMoves.length; i++){
+				if(selectedPokemon.chargedMoves[i]){
 					var chargedMove = selectedPokemon.chargedMoves[i];
 
 					$el.find(".move-select.charged").eq(i).find("option[value='"+chargedMove.moveId+"']").prop("selected","selected");
@@ -321,7 +350,7 @@ function PokeSelect(element, i){
 			// Hide Pokebox after selection
 			$el.find(".pokebox").hide();
 
-			// Show base Pokemon CP for Mega Evolutions
+			// Show base Pokemon CP for Mega Evolutions and Mega Level
 
 			if(selectedPokemon.hasTag("mega")){
 				// Get the ID of the original form
@@ -333,23 +362,55 @@ function PokeSelect(element, i){
 				baseId = baseId.replace("_primal", "");
 
 				var basePokemon = new Pokemon(baseId, index, battle);
+				var basePokemonLevel = selectedPokemon.level;
+
+				if(selectedPokemon.megaLevel == 4){
+					basePokemonLevel -= 2;
+				}
+
 				basePokemon.initialize(false);
 				basePokemon.setIV("atk", selectedPokemon.ivs.atk);
 				basePokemon.setIV("def", selectedPokemon.ivs.def);
 				basePokemon.setIV("hp", selectedPokemon.ivs.hp);
-				basePokemon.setLevel(selectedPokemon.level);
+				basePokemon.setLevel(basePokemonLevel);
 
 				$el.find(".mega-cp-container .base-name").html("Base " + basePokemon.speciesName);
 				$el.find(".mega-cp-container .mega-cp .stat").html(basePokemon.cp);
 				$el.find(".mega-cp-container").show();
+
+				// Show Mega Level
+				$el.find(".mega-level-select .button.mega-level").each(function(index, value){
+					if(selectedPokemon.megaLevel > index){
+						$(this).addClass("on");
+					} else{
+						$(this).removeClass("on");
+					}
+				});
+
+				$el.find(".mega-level-container").show();
+
+				if(selectedPokemon.megaLevel == 4){
+					$el.find("h3.cp").addClass("color-mega");
+				} else{
+					$el.find("h3.cp").removeClass("color-mega");
+				}
+
+				// Show Mega Evolution Bonus
+				let bonuses = ["1", "1.1", "1.2", "1.3"];
+
+				$el.find(".mega-evolution-bonus span").html(bonuses[selectedPokemon.megaLevel - 1]);
+				$el.find(".mega-evolution-bonus").show();				
 			} else{
 				$el.find(".mega-cp-container").hide();
+				$el.find(".mega-level-container").hide();
+				$el.find(".mega-evolution-bonus").hide();
+				$el.find("h3.cp").removeClass("color-mega");
 			}
 
 			// Show alternate form CP for form changing Pokemon
 			$el.find(".form-cp-container").hide();
 
-			if(selectedPokemon.formChange){
+			if(selectedPokemon.formChange && selectedPokemon.formChange.alternativeFormId != "variable"){
 				let formId = selectedPokemon.formChange.alternativeFormId;
 				let newStats = selectedPokemon.getFormStats(formId);
 
@@ -633,18 +694,22 @@ function PokeSelect(element, i){
 		var energy = selectedPokemon.startEnergy + amount;
 		var $bar = $el.find(".move-bar").eq(index);
 
-		$bar.find(".bar").each(function(i, value){
-			var extraEnergy = energy - (selectedPokemon.chargedMoves[index].energy * i);
+		var move = selectedPokemon.chargedMoves[index];
 
-			$(this).css("height", ((extraEnergy / selectedPokemon.chargedMoves[index].energy)*105)+"%");
-		});
+		if(move){
+			$bar.find(".bar").each(function(i, value){
+				var extraEnergy = energy - (selectedPokemon.chargedMoves[index].energy * i);
 
-		//$bar.find(".bar").css("height", ((energy / selectedPokemon.chargedMoves[index].energy)*100)+"%");
+				$(this).css("height", ((extraEnergy / selectedPokemon.chargedMoves[index].energy)*105)+"%");
+			});
 
-		if(energy >= selectedPokemon.chargedMoves[index].energy){
-			$bar.addClass("active");
-		} else{
-			$bar.removeClass("active");
+			//$bar.find(".bar").css("height", ((energy / selectedPokemon.chargedMoves[index].energy)*100)+"%");
+
+			if(energy >= selectedPokemon.chargedMoves[index].energy){
+				$bar.addClass("active");
+			} else{
+				$bar.removeClass("active");
+			}
 		}
 
 		currentEnergy = energy;
@@ -966,9 +1031,11 @@ function PokeSelect(element, i){
 			// Add existing move
 
 			if($(this).hasClass("fast")){
-				selectedPokemon.selectMove("fast", moveId, 0);
+				selectedPokemon.selectMove("fast", moveId);
 			} else if ($(this).hasClass("charged")){
 				selectedPokemon.selectMove("charged", moveId, moveSlotIndex);
+			} else if($(this).hasClass("extra-charged")){
+				selectedPokemon.selectMove("extra-charged", moveId, 2);
 			}
 
 			self.update();
@@ -979,7 +1046,22 @@ function PokeSelect(element, i){
 
 			$(".modal .custom-move .name").html(selectedPokemon.speciesName);
 
-			var isFastMove = $(e.target).hasClass("fast");
+			var moveType;
+			var pool;
+
+			if($(e.target).hasClass("fast")){
+				moveType = "fast";
+				pool = selectedPokemon.fastMovePool;
+			} else if($(e.target).hasClass("charged")){
+				moveType = "charged";
+				pool = selectedPokemon.chargedMovePool;
+			} else if($(e.target).hasClass("extra-charged")){
+				moveType = "extra-charged";
+				pool = selectedPokemon.extraChargedMovePool;
+				moveSlotIndex = 2;
+			}
+
+			var isFastMove = moveType == "fast";
 
 			// Add moves to select option
 
@@ -1026,10 +1108,7 @@ function PokeSelect(element, i){
 
 			$(".modal").last().find(".add-move").on("click", function(e){
 				var moveId = $(".modal").last().find(".move-select option:selected").val();
-				var moveType = (isFastMove) ? "fast" : "charged";
-
-				var pool = (isFastMove) ? selectedPokemon.fastMovePool : selectedPokemon.chargedMovePool;
-
+				
 				selectedPokemon.addNewMove(moveId, pool, true, moveType, moveSlotIndex);
 
 				$(".modal").last().remove();
@@ -1080,6 +1159,25 @@ function PokeSelect(element, i){
 			return;
 		}
 
+		// Use "sab s", "char mx", etc as shortcuts for shadow and mega pokemon
+
+		let idSuffix = null;
+		let shorthands = [
+			{ string: " m", suffix: "_mega" },
+			{ string: " x", suffix: "_mega_x" },
+			{ string: " y", suffix: "_mega_y" },
+			{ string: " s", suffix: "_shadow" },
+			{ string: " n", suffix: "" },
+		];
+
+		shorthands.forEach(shorthand => {
+			if(searchStr.endsWith(shorthand.string)){
+				idSuffix = shorthand.suffix;
+				searchStr = searchStr.substring(0, searchStr.length - shorthand.string.length);
+				return;
+			}
+		});
+
 		var idToSelect;
 
 		for(var i = 0; i < searchArr.length; i++){
@@ -1117,13 +1215,25 @@ function PokeSelect(element, i){
 
 		}
 
+		// Select mega or shadow form of top result
+		if(typeof idSuffix == "string" && idToSelect){
+			idToSelect = idToSelect.replace('_shadow', '');
+			idToSelect = idToSelect.replace('_mega_x', '');
+			idToSelect = idToSelect.replace('_mega_y', '');
+			idToSelect = idToSelect.replace('_mega', '');
+			idToSelect = idToSelect.replace('_primal', '');
+			idToSelect = idToSelect.replace('_alolan', '');
+			idToSelect = idToSelect.replace('_galarian', '');
+			idToSelect += idSuffix;
+		}
+
 		var idAlreadySelected = false;
 
 		if(selectedPokemon && (idToSelect == selectedPokemon.speciesId)){
 			idAlreadySelected = true;
 		}
 
-		if((idToSelect)&&(! idAlreadySelected)){
+		if(idToSelect && ! idAlreadySelected && searchArr.find(poke => poke.speciesId == idToSelect)){
 			self.setPokemon(idToSelect);
 		}
 	}
@@ -1230,11 +1340,13 @@ function PokeSelect(element, i){
 		var sortStat = $el.find(".maximize-section .check-group .check.on").first().attr("value");
 		var levelCap = parseInt($el.find(".maximize-section .level-cap-group .check.on").first().attr("value"));
 
-		if(selectedPokemon.getEffectiveLevelCap){
-			levelCap = Math.min(levelCap, selectedPokemon.getEffectiveLevelCap());
-		}
+		if(! isNaN(levelCap)){
+			if(selectedPokemon.getEffectiveLevelCap){
+				levelCap = Math.min(levelCap, selectedPokemon.getEffectiveLevelCap());
+			}
 
-		selectedPokemon.levelCap = levelCap;
+			selectedPokemon.levelCap = levelCap;
+		}
         selectedPokemon.maximizeStat(sortStat);
 
         selectedPokemon.isCustom = true;
@@ -1447,8 +1559,8 @@ function PokeSelect(element, i){
 			let index = $el.find(".move-bar").index($target);
 			move = selectedPokemon.chargedMoves[index];
 			moveType = "charged";
-		} else if($target.is(".move-select.charged")){
-			let index = $el.find(".move-select.charged").index($target);
+		} else if($target.is(".move-select.charged, .move-select.extra-charged")){
+			let index = $el.find(".move-select.charged, .move-select.extra-charged").index($target);
 			move = selectedPokemon.chargedMoves[index];
 			moveType = "charged";
 		} else{
@@ -1601,7 +1713,7 @@ function PokeSelect(element, i){
 	$el.find("a.search-info").click(function(e){
 		e.preventDefault();
 
-		modalWindow("Keyboard Commands", $el.find(".pokeselector-search-help"));
+		modalWindow("Search Tips", $el.find(".pokeselector-search-help"));
 	});
 
 	// Open the iv checker modal window
@@ -1652,5 +1764,14 @@ function PokeSelect(element, i){
 
 			self.setSelectedPokemon(newForm);
 		}
+	});
+
+	// Set the Pokemon's Mega Level
+
+	$el.find(".button.mega-level").click(function(e){
+		let megaLevel = $el.find(".button.mega-level").index($(this)) + 1;
+
+		selectedPokemon.setMegaLevel(megaLevel);
+		self.update();
 	});
 }
