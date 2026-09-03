@@ -31,6 +31,8 @@ function PokeMultiSelect(element){
 	var cliffhangerMode = false;
 
 	var showMoveCounts = false;
+
+	var isCustom = true;
 	
 	let updateCallback; // A callback function which is run any time the Pokemon list is updated
 
@@ -182,6 +184,8 @@ function PokeMultiSelect(element){
 			if(scrollToBottom){
 				$el.find(".rankings-container").scrollTop($el.find(".rankings-container").eq(0).prop("scrollHeight"));
 			}
+
+			isCustom = true;
 		});
 
 		// Add this Pokemon and other IV spreads
@@ -251,6 +255,8 @@ function PokeMultiSelect(element){
 
 			self.updateListDisplay();
 
+			isCustom = true;
+
 		});
 
 		// Add a copy of this Pokemon to the multiselector
@@ -299,6 +305,8 @@ function PokeMultiSelect(element){
 
 			self.updateListDisplay();
 
+			isCustom = true;
+
 		});
 
 		// Add Pokemon and all matching Pokemon from Pokebox
@@ -321,6 +329,8 @@ function PokeMultiSelect(element){
 
 			// Add multiple IV spreads of the same Pokemon
 			pokebox.loadPokebox(false, self.addPokemonFromPokebox, pokemon.speciesId);
+
+			isCustom = true;
 
 		});
 
@@ -348,6 +358,8 @@ function PokeMultiSelect(element){
 		$el.find(".check.show-ivs").addClass("on");
 
 		self.updateListDisplay();
+
+		isCustom = true;
 	}
 
 
@@ -405,9 +417,7 @@ function PokeMultiSelect(element){
 
 			var moveList = [pokemon.fastMove];
 
-			for(var n = 0; n < pokemon.chargedMoves.length; n++){
-				moveList.push(pokemon.chargedMoves[n]);
-			}
+			moveList = moveList.concat(pokemon.chargedMoves.filter(m => m !== null));
 
 			for(var n = 0; n < moveList.length; n++){
 				if(n > 0){
@@ -558,12 +568,12 @@ function PokeMultiSelect(element){
 				pokemon.initialize(battle.getCP());
 				pokemon.selectMove("fast", data[i].fastMove);
 
-				for(var n = 0; n < 2; n++){
+				for(var n = 0; n < 3; n++){
 
 					if(n < data[i].chargedMoves.length){
 						pokemon.selectMove("charged", data[i].chargedMoves[n], n);
 					} else{
-						pokemon.selectMove("charged", "none", 0);
+						pokemon.selectMove("charged", "none", n);
 					}
 
 				}
@@ -619,6 +629,9 @@ function PokeMultiSelect(element){
 					pokemon.setShadowType(pokeSettings[1]);
 				}
 
+				let ivStartIndex = 4; // First part of array is of variable length, so we need to identify where the level and iv numbers begin
+				let moveNameRegex = new RegExp("^([a-zA-Z_]*)$");
+
 				if(poke.length > 1){
 					// Set moves
 
@@ -632,6 +645,14 @@ function PokeMultiSelect(element){
 						pokemon.selectMove("charged", poke[3], 0);
 					}
 
+					// Set third charged move, if any
+					if(poke.length > 4 && moveNameRegex.test(poke[4])){
+						ivStartIndex++;
+						pokemon.selectMove("extra-charged", poke[4], 2);
+					}
+
+					
+
 				} else{
 					// Select recommended moves
 					pokemon.selectRecommendedMoveset();
@@ -641,10 +662,10 @@ function PokeMultiSelect(element){
 				if(poke.length > 4){
 					pokemon.isCustom = true;
 
-					const level = parseFloat(poke[4]);
-					const atk = parseFloat(poke[5]);
-					const def = parseFloat(poke[6]);
-					const hp = parseFloat(poke[7]);
+					const level = parseFloat(poke[ivStartIndex]);
+					const atk = parseFloat(poke[ivStartIndex+1]);
+					const def = parseFloat(poke[ivStartIndex+2]);
+					const hp = parseFloat(poke[ivStartIndex+3]);
 
 					// Don't set stats to be NaN
 					if (Number.isNaN(level) || Number.isNaN(atk) || Number.isNaN(def) || Number.isNaN(hp)) {
@@ -665,7 +686,104 @@ function PokeMultiSelect(element){
 		self.updateListDisplay();
 	}
 
-	// After loading from the GameMaster, fill in a preset group
+	// After loading from the GameMaster, fill in the group from the provided URL parameter
+
+	this.quickFillURLParam = function(param){
+		// Add each team member to the multi-selector
+		var list = param.split(",");
+		pokemonList = [];
+
+		if(list.length > 8){
+			list = list.splice(0, 8);
+		}
+
+		for(var i = 0; i < list.length; i++){
+			var arr = list[i].split('-');
+			var pokemon = new Pokemon(arr[0], 0, battle);
+
+			pokemon.initialize(battle.getCP());
+
+			if(arr.length >= 8){
+				pokemon.setIV("atk", arr[2]);
+				pokemon.setIV("def", arr[3]);
+				pokemon.setIV("hp", arr[4]);
+				pokemon.setLevel(arr[1]);
+			}
+
+			// Check string for other parameters
+			for(var n = 0; n < arr.length; n++){
+				switch(arr[n]){
+					case "shadow":
+					case "purified":
+						pokemon.setShadowType(arr[n]);
+						break;
+				}
+			}
+
+			// Split out the move string and select moves
+
+			if(list[i].split("-m-").length > 1){
+				var moveStr = list[i].split("-m-")[1];
+
+				arr = moveStr.split("-");
+
+				// Search string for any custom moves to add
+				var customFastMove = false;
+
+				for(var n = 0; n < arr.length; n++){
+					if(arr[n].match('([A-Z_]+)')){
+						var move = gm.getMoveById(arr[n]);
+						var movePool = (move.energyGain > 0) ? pokemon.fastMovePool : pokemon.chargedMovePool;
+						var moveType = (move.energyGain > 0) ? "fast" : "charged";
+						var moveIndex = n-1;
+
+						if(moveType == "fast"){
+							customFastMove = true;
+						}
+
+						pokemon.addNewMove(arr[n], movePool, true, moveType, moveIndex);
+					}
+				}
+
+				if(! customFastMove){
+					pokemon.selectMove("fast", pokemon.fastMovePool[arr[0]].moveId, 0);
+				}
+
+				for(var n = 1; n < arr.length; n++){
+					// Don't set this move if already set as a custom move
+
+					if(arr[n].match('([A-Z_]+)')){
+						continue;
+					}
+
+					var moveId = "none";
+
+					if(n < 3){
+						moveId = pokemon.chargedMovePool[arr[n]-1].moveId;
+						pokemon.selectMove("charged", moveId, n-1);
+					} else{
+						moveId = pokemon.extraChargedMovePool[arr[n]-1].moveId;
+						pokemon.selectMove("extra-charged", moveId, 2);
+					}
+				}
+
+				// Deselect 3rd charged move if none is supplied
+				if(arr.length < 4 && pokemon.extraChargedMovePool.length > 0 && pokemon.hasThirdChargedMove()){
+					pokemon.selectMove("extra-charged", "none", 2);
+				}
+			} else{
+				// Auto select moves if none are specified
+				pokemon.autoSelectMoves();
+			}
+
+
+			pokemonList.push(pokemon);
+		}
+
+		self.updateListDisplay();
+	}
+
+	// Set the Pokemon list for the selector
 
 	this.setPokemonList = function(list){
 		pokemonList = list.slice(0, maxPokemonCount);
@@ -830,6 +948,23 @@ function PokeMultiSelect(element){
 		self.updateListDisplay();
 	}
 
+	// Return URL string containing the selected group name, or a custom list of all Pokemon in the group
+	this.generateURLMoveStr = function(){
+
+		if(isCustom){
+			let moveStrs = [];
+
+			pokemonList.forEach(pokemon => {
+				moveStrs.push(pokemon.generateURLPokeStr("team-builder"));
+			});
+
+			return moveStrs.join(",");
+		} else{
+			return $el.find(".quick-fill-select option:selected").val();
+		}
+
+	}
+
 	// Calculate a team's cliffhanger points, returns object with current points, maximum allowed, and tiers
 
 	this.calculateCliffhangerPoints = function(){
@@ -928,6 +1063,8 @@ function PokeMultiSelect(element){
 			pokemonList.splice(selectedIndex, 1);
 			self.updateListDisplay();
 			closeModalWindow();
+
+			isCustom = true;
 		});
 	});
 
@@ -960,6 +1097,8 @@ function PokeMultiSelect(element){
 			$el.find(".save-as").show();
 			$el.find(".save-custom").hide();
 			$el.find(".delete-btn").hide();
+
+			isCustom = false;
 		}
 
 		// Create a new group
@@ -974,6 +1113,8 @@ function PokeMultiSelect(element){
 			$el.find(".save-as").hide();
 			$el.find(".save-custom").show();
 			$el.find(".delete-btn").hide();
+
+			isCustom = true;
 		}
 
 		// Populate from a custom group
@@ -987,6 +1128,8 @@ function PokeMultiSelect(element){
 			$el.find(".save-as").hide();
 			$el.find(".save-custom").show();
 			$el.find(".delete-btn").show();
+
+			isCustom = true;
 		}
 
 		// Populate from the rankings
@@ -1012,6 +1155,8 @@ function PokeMultiSelect(element){
 
 				self.quickFillCSV(csv);
 			}
+
+			isCustom = false;
 		}
 
 		selectedGroup = val;
@@ -1095,6 +1240,8 @@ function PokeMultiSelect(element){
 			self.saveCustomList($(".modal input.list-name").val(), true);
 
 			closeModalWindow();
+
+			isCustom = true;
 		}
 	});
 
@@ -1206,6 +1353,8 @@ function PokeMultiSelect(element){
 			showIVs = true;
 			$el.find(".check.show-ivs").addClass("on");
 		}
+
+		isCustom = true;
 
 		self.updateListDisplay();
 	});
@@ -1347,6 +1496,13 @@ function PokeMultiSelect(element){
 		$el.find(".quick-fill-select").trigger("change");
 	}
 
+	// Return whether or not a quick fill select option exists in the default cups dropdown
+	this.groupExists = function(id){
+		let $group = $el.find(".quick-fill-select option[value='"+id+"']:not([type='custom'])");
+
+		return $group.length > 0;
+	}
+
 	// Return the single pokeselector
 	this.getPokeSelector = function(){
 		return pokeSelector;
@@ -1357,6 +1513,11 @@ function PokeMultiSelect(element){
 		if(typeof callback === "function"){
 			updateCallback = callback;
 		}
+	}
+
+	// Returns whether this selector is using a preselected group or custom
+	this.isCustomGroup = function(){
+		return isCustom;
 	}
 
 	// Open the search string generation window

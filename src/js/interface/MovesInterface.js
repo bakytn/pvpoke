@@ -15,6 +15,7 @@ var InterfaceMaster = (function () {
 			var self = this;
 			var data;
 			var jumpToMove = false;
+			var showMegaMoves = false;
 			var mode = "fast";
 			var gm = GameMaster.getInstance();
 			var table;
@@ -75,13 +76,13 @@ var InterfaceMaster = (function () {
 					var dpe = "";
 					var turns = "";
 
-					if(move.energyGain > 0){
+					if(move.category == "fast"){
 						category = "Fast Attack"
 						energy = move.energyGain;
 						turns = move.cooldown / 500;
 						dpt = Math.floor( (move.power / turns) * 100) / 100;
 						ept = Math.floor( (energy / turns) * 100) / 100;
-					} else if(move.energy > 0){
+					} else if(move.category == "charged"){
 						category = "Charged Attack";
 						energy = move.energy;
 						dpe = Math.floor( (damage / energy) * 100) / 100;
@@ -119,9 +120,9 @@ var InterfaceMaster = (function () {
 				for(var i = 0; i < gm.data.moves.length; i++){
 					var move = gm.data.moves[i];
 
-					if((mode == "fast") && (move.energy > 0)){
+					if(mode == "fast" && move?.energy > 0){
 						continue;
-					} else if((mode == "charged") && (move.energyGain > 0)){
+					} else if(mode == "charged" && move?.energyGain > 0){
 						continue;
 					}
 
@@ -159,10 +160,7 @@ var InterfaceMaster = (function () {
 				table.sortAndDisplayData("name", true);
 
 				// Filter table if search string is set
-
-				if($(".poke-search").val() != ''){
-					$(".poke-search").trigger("keyup");
-				}
+				$(".poke-search").first().trigger("keyup");
 
 				$(".loading").hide();
 			}
@@ -219,9 +217,7 @@ var InterfaceMaster = (function () {
 			// Refilter moves after being sorted
 
 			this.tableSortCallback = function(){
-				if($(".poke-search").val() != ''){
-					$(".poke-search").first().trigger("keyup");
-				}
+				$(".poke-search").first().trigger("keyup");
 			}
 
 			// When moves are selected, show the resulting data
@@ -348,6 +344,12 @@ var InterfaceMaster = (function () {
 					$(".loading").hide();
 				}
 
+				if(mode == "charged"){
+					$(".check.mega-move-toggle").removeClass("hide");
+				} else{
+					$(".check.mega-move-toggle").addClass("hide");
+				}
+
 				self.pushHistoryState(mode);
 			}
 
@@ -366,6 +368,8 @@ var InterfaceMaster = (function () {
 					$(".stats-table.moves tr").eq(0).show();
 
 					$(".stats-table.moves tr").each(function(index, value){
+						var show = false;
+						var moveName = $(this).find("td").first().html().toLowerCase();
 
 						for(var i = 0; i < searches.length; i++){
 							// Don't filter out the headers
@@ -379,13 +383,9 @@ var InterfaceMaster = (function () {
 								return;
 							}
 
-							var show = false;
 							var types = ["bug","dark","dragon","electric","fairy","fighting","fire","flying","ghost","grass","ground","ice","normal","poison","psychic","rock","steel","water"];
 
 							if(types.indexOf(searches[i]) == -1){
-								// Name search
-								var moveName = $(this).find("td").first().html().toLowerCase();
-
 								if(moveName.startsWith(searches[i])){
 									show = true;
 								}
@@ -396,10 +396,15 @@ var InterfaceMaster = (function () {
 									show = true;
 								}
 							}
+						}
 
-							if(show){
-								$(this).show();
-							}
+						// Filter Mega Moves with + in name
+						if(mode == 'charged' && ! showMegaMoves && moveName?.includes("+")){
+							show = false;
+						}
+
+						if(show){
+							$(this).show();
 						}
 
 					});
@@ -456,6 +461,11 @@ var InterfaceMaster = (function () {
 
 				if($(this).hasClass("stab")){
 					self.generateExploreResults(false);
+				}
+
+				if($(this).hasClass("mega-move-toggle")){
+					showMegaMoves = $(this).hasClass("on");
+					$(".poke-search").first().trigger("keyup");
 				}
 			}
 

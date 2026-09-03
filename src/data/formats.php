@@ -14,91 +14,35 @@ $formats = array (
   ),
   1 => 
   array (
-    'title' => 'Master Premier Cup',
-    'cup' => 'premier',
-    'cp' => 10000,
-    'meta' => 'premiermaster',
+    'title' => 'Mega Great League',
+    'cup' => 'mega',
+    'cp' => 1500,
+    'meta' => 'megagreat',
     'showCup' => true,
-    'showFormat' => false,
+    'showFormat' => true,
     'showMeta' => true,
-    'hideRankings' => true,
     'rules' => 
     array (
-      0 => 'No CP limit.',
-      1 => 'Legendary Pokémon, Mythical Pokémon, and Ultra Beasts are not eligible.',
+      0 => 'Pokémon must be at or below 1,500 CP to enter.',
+      1 => 'Mega Evolutions are eligible.',
     ),
   ),
   2 => 
   array (
-    'title' => 'NAIC 2026 Championship Series Cup',
-    'cup' => 'naic2026',
-    'cp' => 1500,
-    'meta' => 'naic2026',
+    'title' => 'Mega Ultra League',
+    'cup' => 'mega',
+    'cp' => 2500,
+    'meta' => 'megaultra',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
     'rules' => 
     array (
-      0 => 'Pokémon must be at or below 1,500 CP to enter.',
-      1 => 'Only Fairy-, Normal-, Psychic- and Water-type Pokémon are eligible.',
-      2 => 'The following types are not allowed: Dark, Grass, Steel',
-      3 => 'The following Pokemon are not allowed: Araquanid, Carbink, Chansey, Chinchou, Claydol, Clefable, Cresselia, Dedenne, Diggersby, Farfetch\'d, Gastrodon, Golisopod, Greedent, Jellicent, Lanturn, Lickilicky, Lickitung, Lugia, Medicham, Oranguru, Poliwrath',
+      0 => 'Pokémon must be at or below 2,500 CP to enter.',
+      1 => 'Mega Evolutions are eligible.',
     ),
   ),
   3 => 
-  array (
-    'title' => 'Copa Dilúvio',
-    'cup' => 'diluvio',
-    'cp' => 1500,
-    'meta' => 'diluvio',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-    'rules' => 
-    array (
-      0 => 'Pokémon must be at or below 1,500 CP to enter.',
-      1 => 'Only Dark-, Dragon-, Steel-, and Water-type Pokémon are eligible.',
-      2 => 'The following types are not allowed: Electric, Fairy, Fighting, Fire, Ghost, Grass, Ground, Bug/Steel',
-      3 => 'Legendary Pokémon, Mythical Pokémon, Ultra Beasts, Mega Evolutions, and Shadow Pokémon are not eligible.',
-      4 => 'The following Pokemon are not allowed: Aegislash, Araquanid, Bastiodon, Corviknight, Doublade, Empoleon, Honedge, Klang, Mandibuzz, Obstagoon, Orthworm, Probopass, Steelix, Toxapex, Umbreon, Vullaby',
-    ),
-  ),
-  4 => 
-  array (
-    'title' => 'Sin Nombre',
-    'cup' => 'sin_nombre',
-    'cp' => 1500,
-    'meta' => 'sin_nombre',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-    'rules' => 
-    array (
-      0 => 'Pokémon must be at or below 1,500 CP to enter.',
-      1 => 'Only Fairy-, Ghost-, Ice-, Normal-, and Rock-type Pokémon are eligible.',
-      2 => 'The following types are not allowed: Dark, Fire, Flying, Ground, Steel',
-      3 => 'Legendary Pokémon, Mythical Pokémon, Ultra Beasts, and Mega Evolutions are not eligible.',
-      4 => 'Shadow Pokémon are eligible.',
-      5 => 'The following Pokemon are not allowed: Abomasnow, Amaura, Annihilape, Aurorus, Azumarill, Bewear, Carbink, Cetoddle, Chansey, Clefable, Corsola (Galarian), Cradily, Crustle, Dolliv, Drampa, Dubwool, Dudunsparce, Dunsparce, Dusknoir, Frillish, Furfrou, Furret, Girafarig, Greedent, Jellicent, Kangaskhan, Kecleon, Lapras, Lickilicky, Lickitung, Lileep, Linoone, Miltank, Naclstack, Ninetales (Alolan), Oinkologne, Oranguru, Relicanth, Spinda, Ursaring, Vigoroth, Weezing (Galarian), Wigglytuff, Wyrdeer, Zangoose',
-    ),
-  ),
-  5 => 
-  array (
-    'title' => 'Sunshine Cup',
-    'cup' => 'sunshine',
-    'cp' => 1500,
-    'meta' => 'sunshine',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-    'rules' => 
-    array (
-      0 => 'Pokémon must be at or below 1,500 CP to enter.',
-      1 => 'Only Normal-, Fire-, Grass-, and Ground-type Pokémon are eligible.',
-      2 => 'The following Pokemon are not allowed: Charizard',
-    ),
-  ),
-  6 => 
   array (
     'title' => 'Mega Master League',
     'cup' => 'mega',
@@ -113,47 +57,93 @@ $formats = array (
       1 => 'Mega Evolutions are eligible.',
     ),
   ),
+  4 => 
+  array (
+    'title' => 'Master Premier Cup',
+    'cup' => 'premier',
+    'cp' => 10000,
+    'meta' => 'premiermaster',
+    'showCup' => true,
+    'showFormat' => false,
+    'showMeta' => true,
+    'hideRankings' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+      1 => 'Legendary Pokémon, Mythical Pokémon, and Ultra Beasts are not eligible.',
+    ),
+  ),
+  5 => 
+  array (
+    'title' => 'Battle Frontier (Copa Dilúvio)',
+    'cup' => 'copadiluvio',
+    'cp' => 1500,
+    'meta' => 'copadiluvio',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  6 => 
+  array (
+    'title' => 'Battle Frontier (Tsuki Cup)',
+    'cup' => 'tsuki',
+    'cp' => 1500,
+    'meta' => 'tsuki',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
   7 => 
   array (
-    'title' => 'Battle Frontier (Master)',
-    'cup' => 'battlefrontiermaster',
-    'cp' => 10000,
-    'meta' => 'battlefrontiermaster',
+    'title' => 'Battle Frontier (Liga Ultra)',
+    'cup' => 'ligaultra',
+    'cp' => 2500,
+    'meta' => 'ligaultra',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
   ),
   8 => 
   array (
-    'title' => 'Elbaph Cup',
-    'cup' => 'elbaph',
+    'title' => 'Battle Frontier (Coupe du Sillage)',
+    'cup' => 'coupedusillage',
     'cp' => 10000,
-    'meta' => 'elbaph',
+    'meta' => 'coupedusillage',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
-    'rules' => 
-    array (
-      0 => 'No CP limit.',
-      1 => 'Build a team of 6 Pokémon.',
-      2 => 'Slot 1: Choose exactly 1 Pokémon from the listed Slot 1 species.',
-      3 => 'Slot 2: Choose exactly 1 Steel- or Fighting-type Pokémon. You may not select any Pokémon from Slot 1.',
-      4 => 'Slots 3-6: Choose 4 Water-, Fire-, Grass-, or Ground-type Pokémon. You may not select any Pokémon from Slots 1 or 2.',
-      5 => 'Slot 1 species: Rhyperior, Tyranitar, Metagross, Groudon, Kyogre, Dialga (Origin), Palkia, Melmetal, Dialga, Ho-Oh, Lugia, Garchomp.',
-      6 => 'The following Pokémon are not allowed: Zygarde (Complete), Zacian (Crowned Sword), Necrozma (Dusk Mane), Solgaleo, Palkia (Origin), Landorus (Incarnate), Eternatus, Zamazenta (Crowned Shield), and all Mega Evolutions.',
-    ),
   ),
   9 => 
   array (
-    'title' => 'Battle Frontier (UL)',
-    'cup' => 'battlefrontierultra',
-    'cp' => 2500,
-    'meta' => 'battlefrontierultra',
+    'title' => 'Devon Equinox Cup',
+    'cup' => 'equinox',
+    'cp' => 1500,
+    'meta' => 'equinox',
     'showCup' => true,
     'showFormat' => true,
     'showMeta' => true,
   ),
   10 => 
+  array (
+    'title' => 'Devon Bastille Cup',
+    'cup' => 'bastille',
+    'cp' => 1500,
+    'meta' => 'bastille',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  11 => 
+  array (
+    'title' => 'Devon Chrysalis Cup',
+    'cup' => 'chrysalis',
+    'cp' => 1500,
+    'meta' => 'chrysalis',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+  ),
+  12 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -163,7 +153,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  11 => 
+  13 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -173,7 +163,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  12 => 
+  14 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',

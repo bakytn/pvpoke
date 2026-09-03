@@ -248,8 +248,7 @@ var RankerMaster = (function () {
 						var alternativeScore = 500;
 
 						if(avgPokeRating > 500){
-							alternativeScore = 500 + Math.pow(avgPokeRating - 500, .75);
-							alternativeScore = avgPokeRating;
+							alternativeScore = 500 + Math.pow(avgPokeRating - 500, .85);
 							score = 500 + Math.pow(avgPokeRating - 500, .75);
 						} else{
 							score = avgPokeRating / 2;
@@ -403,7 +402,7 @@ var RankerMaster = (function () {
 				pokemon.startStatBuffs = settings.startStatBuffs;
 
 				if(settings.bait != defaultSettings.bait || settings.startCooldown != defaultSettings.startCooldown ||
-					settings.optimizeMoveTiming != defaultSettings.optimizeMoveTiming || settings.startStatBuffs != defaultSettings.startStatBuffs){
+					settings.optimizeMoveTiming != defaultSettings.optimizeMoveTiming || settings.startStatBuffs[0] != defaultSettings.startStatBuffs[0] || settings.startStatBuffs[1] != defaultSettings.startStatBuffs[1]){
 					pokemon.isCustom = true;
 				}
 			}

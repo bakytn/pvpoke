@@ -139,7 +139,7 @@ function interfaceObject(){
 					var $filter = $(".filter.clone").clone();
 					$filter.removeClass("hide clone");
 					$filter.attr("index", i);
-					$filter.find("a.toggle .name").html(filters[i].name);
+					$filter.find("a.toggle .name").text(filters[i].name);
 					$filter.attr("type", filters[i].filterType);
 
 					$el.append($filter);
@@ -195,7 +195,15 @@ function interfaceObject(){
 				break;
 
 			case "dex":
-				filter.values = [parseInt($el.find("input.start-range").val()), parseInt($el.find("input.end-range").val())];
+				filter.values = [];
+
+				// Add dex values for each range in the filter
+				$el.find(".dex-range-row").each(function(index, value){
+					let dexStart = parseInt($(this).find(".start-range").val());
+					let dexEnd = parseInt($(this).find(".end-range").val());
+
+					filter.values.push(dexStart, dexEnd);
+				});
 				break;
 
 			case "cost":
@@ -353,6 +361,10 @@ function interfaceObject(){
 				pokemon.selectMove("charged", "none", 1);
 			}
 
+			if(r.moveset.length > 3){
+				pokemon.selectMove("extra-charged", r.moveset[3], 2);
+			}
+
 			list.push(pokemon);
 		}
 
@@ -396,8 +408,21 @@ function interfaceObject(){
 				break;
 
 			case "dex":
-				$filter.find("input.start-range").val(data.values[0]);
-				$filter.find("input.end-range").val(data.values[1]);
+				for(let i = 0; i < data.values.length; i+= 2){
+					let dexRangeSetNumber = Math.floor(i / 2) + 1;
+					
+					if(dexRangeSetNumber > 1){
+						let $newRow = $filter.find(".dex-range-row").first().clone();
+						$newRow.find("input").val("");
+						$newRow.find("div").first().html("Range #" + dexRangeSetNumber);
+
+						$filter.find(".dex-range-rows").append($newRow);
+					}
+
+					let $row = $filter.find(".dex-range-row").eq(dexRangeSetNumber-1);
+					$row.find("input.start-range").val(data.values[i]);
+					$row.find("input.end-range").val(data.values[i+1]);
+				}			
 				break;
 		}
 	}
@@ -584,11 +609,11 @@ function interfaceObject(){
 					cup.overrides = collateOverrides(false); // Preserve only the manual overrides for export
 					ranker.setMoveOverrides(battle.getCP(), "custom", overrides);
 				}
-
 			}
 
 			if(! data){
 				// Generate movesets
+				ranker.clearMoveOverrides();
 				ranker.setMoveSelectMode("auto");
 				ranker.setScenarioOverrides([scenario]);
 				ranker.rankLoop(battle.getCP(true), cup, self.receiveRankingData);
@@ -1005,5 +1030,33 @@ function interfaceObject(){
 	$(".custom-rankings-import textarea.import").on("change", function(e){
 		var data = JSON.parse($(this).val());
 		self.importCupSettings(data);
+	});
+
+	// Add a number range to a dex filter
+
+	$("body").on("click", ".filter[type='dex'] .dex-add-range", function(e){
+		var $el = $(e.target).closest(".filter");
+		var listIndex = $el.closest(".filters").attr("list-index");
+		var filter = filterLists[listIndex][parseInt($el.attr("index"))];
+
+		let $newRow = $el.find(".dex-range-row").first().clone();
+		let rangeSetNumber = Math.floor(filter.values.length / 2) + 1;
+		$newRow.find("input").val("");
+		$newRow.find("div").first().html("Range #" + rangeSetNumber);
+
+		$el.find(".dex-range-rows").append($newRow);
+
+		self.updateFilterValues($el);
+	});
+
+	// Remove a number range from a dex filter
+	$("body").on("click", ".filter[type='dex'] .dex-remove-range", function(e){
+		var $el = $(e.target).closest(".filter");
+
+		if($el.find(".dex-range-row").length > 1){
+			$el.find(".dex-range-row").last().remove();
+
+			self.updateFilterValues($el);
+		}
 	});
 };

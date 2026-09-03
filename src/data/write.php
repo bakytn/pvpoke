@@ -30,7 +30,8 @@ if($json === null){
 	exit("JSON cannot be decoded.");
 }
 
-$filepath = 'rankings/' . $_POST['cup'] . '/' . $_POST['category'] . '/rankings-' . $_POST['league'] . '.json';
+$cup = basename($_POST['cup']);
+$filepath = 'rankings/' . $cup . '/' . $_POST['category'] . '/rankings-' . $_POST['league'] . '.json';
 
 // Ensure the target directory exists
 $dir = dirname($filepath);

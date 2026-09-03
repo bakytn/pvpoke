@@ -64,6 +64,7 @@ var InterfaceMaster = (function () {
 				// Initialize selectors and push Pokemon data
 
 				battle = new Battle();
+				battle.setCup("mega");
 
 				pokeSearch.setBattle(battle);
 
@@ -141,7 +142,7 @@ var InterfaceMaster = (function () {
 					}
 				}
 
-				gm.loadRankingData(self, "overall", league, "all");
+				gm.loadRankingData(self, "overall", league, "mega");
 
 				window.addEventListener('popstate', function(e) {
 					get = e.state;
@@ -278,7 +279,7 @@ var InterfaceMaster = (function () {
 
 					// Calculate whether or not can be used on this turn for sandbox mode
 
-					if(event.type.indexOf("fast") > -1){
+					if(event.type.indexOf("fast") > -1 || ! event?.editable){
 						$item.find(".item").addClass("disabled");
 					}
 
@@ -287,7 +288,9 @@ var InterfaceMaster = (function () {
 						var usableChargedMoves = 0;;
 
 						for(var n = 0; n < pokemon[event.actor].chargedMoves.length; n++){
-							if(energy[event.actor] >= pokemon[event.actor].chargedMoves[n].energy){
+							let move = pokemon[event.actor].chargedMoves[n];
+
+							if(move && energy[event.actor] >= move.energy){
 								usableChargedMoves++;
 							}
 						}
@@ -619,7 +622,6 @@ var InterfaceMaster = (function () {
 			// Generate matchup details after main battle has been simulated
 
 			this.generateMatchupDetails = function(battle, bulkResults){
-
 				// Run simulations for every shield matchup
 
 				var pokemon = [];
@@ -732,7 +734,9 @@ var InterfaceMaster = (function () {
 
 					if(((eventType == "fast") || (eventType == "charged"))&&(turnsToChargedMove[event.actor] == 0)){
 						for(var n = 0; n < pokemon[event.actor].chargedMoves.length; n++){
-							if(energy[event.actor] >= pokemon[event.actor].chargedMoves[n].energy){
+							let move = pokemon[event.actor].chargedMoves[n];
+
+							if(move && energy[event.actor] >= pokemon[event.actor].chargedMoves[n].energy){
 								turnsToChargedMove[event.actor] = event.turn + pokemon[event.actor].fastMove.turns;
 							}
 						}
@@ -768,13 +772,17 @@ var InterfaceMaster = (function () {
 				$("select.breakpoint-move").append("<option value=\""+pokemon[0].fastMove.moveId+"\">"+pokemon[0].fastMove.name+"</option>");
 
 				for(var i = 0; i < pokemon[0].chargedMoves.length; i++){
-					$("select.breakpoint-move").append("<option value=\""+pokemon[0].chargedMoves[i].moveId+"\">"+pokemon[0].chargedMoves[i].name+"</option>");
+					if(pokemon[0].chargedMoves[i]){
+						$("select.breakpoint-move").append("<option value=\""+pokemon[0].chargedMoves[i].moveId+"\">"+pokemon[0].chargedMoves[i].name+"</option>");
+					}
 				}
 
 				$("select.bulkpoint-move").append("<option value=\""+pokemon[1].fastMove.moveId+"\">"+pokemon[1].fastMove.name+"</option>");
 
 				for(var i = 0; i < pokemon[1].chargedMoves.length; i++){
-					$("select.bulkpoint-move").append("<option value=\""+pokemon[1].chargedMoves[i].moveId+"\">"+pokemon[1].chargedMoves[i].name+"</option>");
+					if(pokemon[1].chargedMoves[i]){
+						$("select.bulkpoint-move").append("<option value=\""+pokemon[1].chargedMoves[i].moveId+"\">"+pokemon[1].chargedMoves[i].name+"</option>");
+					}
 				}
 
 
@@ -826,7 +834,7 @@ var InterfaceMaster = (function () {
 				}
 
 				// CMP Chart link
-				let cmpChartLink = host+"attack-cmp-chart/"+battle.getCup().name+"/"+battle.getCP()+"/"+pokemon[0].aliasId+"/";
+				let cmpChartLink = host+"attack-cmp-chart/all/"+battle.getCP()+"/"+pokemon[0].aliasId+"/";
 				$(".battle-cmp-link").html(pokemon[0].speciesName + " CMP Chart");
 				$(".battle-cmp-link").attr("href", cmpChartLink);
 
@@ -976,6 +984,9 @@ var InterfaceMaster = (function () {
 				// Output to table
 				var attacker = pokeSelectors[0].getPokemon();
 				var defender = pokeSelectors[1].getPokemon();
+				attacker.reset();
+				defender.reset();
+				
 				var breakpoints = attacker.calculateBreakpoints(defender, move);
 
 				$(".stats-table.breakpoints .output").html('<tr></tr>');
@@ -1332,6 +1343,40 @@ var InterfaceMaster = (function () {
 				gtag('event', 'Lookup', {
 				  'category' : 'Matrix'
 				});
+
+				// Create URL for up to 8v8 matrix battles
+				let url = host + 'battle/matrix/';
+				let urlData = { cp: battle.getCP(), mode: "matrix" };
+
+				let teamCount = multiSelectors[1].isCustomGroup() ? team.length : 0;
+				let targetCount = multiSelectors[0].isCustomGroup() ? targets.length : 0;
+
+				if(teamCount + targetCount <= 16){
+					url += battle.getCP() + "/";
+
+					let matrix1 = encodeURIComponent(multiSelectors[0].generateURLMoveStr());
+					let matrix2 = encodeURIComponent(multiSelectors[1].generateURLMoveStr());
+
+					url += matrix1 + "/" + matrix2;
+
+					urlData["matrix1"] = matrix1;
+					urlData["matrix2"] = matrix2;
+
+					let teamShields = multiSelectors[0].getSettings().shields;
+					let targetShields = multiSelectors[1].getSettings().shields;
+					let urlShieldStr = teamShields + "" + targetShields;
+					urlData["s"] = urlShieldStr;
+					url += "/" + urlShieldStr + "/";
+
+					$(".battle-results.matrix .share-link").show();
+					$(".battle-results.matrix .share-link input").val(url);
+				} else{
+					$(".battle-results.matrix .share-link").hide();
+				}
+
+				window.history.pushState(urlData, "Matrix Battle", url);
+
+
 			}
 
 			// Process both groups of Pokemon through the team ranker
@@ -1937,18 +1982,20 @@ var InterfaceMaster = (function () {
 										continue;
 									}
 
-									var moveId = $(".poke").eq(index).find(".move-select.charged").eq(i-1).find("option").eq(parseInt(arr[i])).val();
+									var moveId;
 
-									if(moveId != "none"){
+									if(i < 3){
+										moveId = $(".poke").eq(index).find(".move-select.charged").eq(i-1).find("option").eq(parseInt(arr[i])).val();
 										poke.selectMove("charged", moveId, i-1);
 									} else{
-										if((arr[1] == "0")&&(arr[2] == "0")){
-											poke.selectMove("charged", moveId, 0); // Always deselect the first move because removing it pops the 2nd move up
-										} else{
-											poke.selectMove("charged", moveId, i-1);
-										}
+										moveId = $(".poke").eq(index).find(".move-select.extra-charged").find("option").eq(parseInt(arr[i])).val();
+										poke.selectMove("extra-charged", moveId, 2);
 									}
+								}
 
+								// Deselect 3rd charged move if none is supplied
+								if(arr.length < 4 && poke.extraChargedMovePool.length > 0 && poke.hasThirdChargedMove()){
+									poke.selectMove("extra-charged", "none", 2);
 								}
 
 								break;
@@ -1956,14 +2003,15 @@ var InterfaceMaster = (function () {
 							case "s":
 								var arr = val.split('');
 
-								for(var i = 0; i < Math.min(arr.length, 2); i++){
-
-									if((i == 0)||((i == 1)&&(self.battleMode == "single"))){
-										pokeSelectors[i].setShields(arr[i]);
-									} else if((i == 1)&&(self.battleMode == "multi")){
-										multiSelectors[0].setShields(arr[i]);
-									}
-
+								if(self.battleMode == "single"){
+									pokeSelectors[0].setShields(arr[0]);
+									pokeSelectors[1].setShields(arr[1]);
+								} else if(self.battleMode == "multi"){
+									pokeSelectors[0].setShields(arr[0]);
+									multiSelectors[0].setShields(arr[1]);
+								} else if(self.battleMode == "matrix"){
+									multiSelectors[0].setShields(arr[0]);
+									multiSelectors[1].setShields(arr[1]);
 								}
 								break;
 
@@ -2116,6 +2164,19 @@ var InterfaceMaster = (function () {
 
 							case "timing":
 								multiBattleSettings.optimizeMoveTiming = parseInt(val) == 1;
+							break;
+
+							case "matrix1":
+							case "matrix2":
+								let targetMultiSelector = (key == "matrix1") ? multiSelectors[0] : multiSelectors[1];
+
+								// Load group by id or load Pokemon by URL parameter list
+								if(targetMultiSelector.groupExists(val)){
+									targetMultiSelector.selectGroup(val);
+								} else{
+									targetMultiSelector.quickFillURLParam(val);
+								}
+								
 							break;
 
 						}
@@ -2284,7 +2345,7 @@ var InterfaceMaster = (function () {
 					}
 				}
 
-				var cupName = "all";
+				var cupName = "mega";
 
 				if((cp == 10000)&&(levelCap == 40)){
 					cupName = "classic";
@@ -2332,7 +2393,10 @@ var InterfaceMaster = (function () {
 				if(self.battleMode == "matrix"){
 					$(".poke.multi .custom-options").show();
 
-					window.history.pushState({mode: "matrix"}, "Battle", webRoot + "battle/matrix/");
+					if(! settingGetParams){
+						window.history.pushState({mode: "matrix"}, "Battle", webRoot + "battle/matrix/");
+					}
+					
 
 					// Update document title and favicon
 					document.title = "Matrix | PvPoke";
@@ -2345,7 +2409,7 @@ var InterfaceMaster = (function () {
 				}
 
 				// Load default meta group when switching to Multi Battle
-				if((self.battleMode == "multi") && (! settingGetParams)){
+				if(self.battleMode == "multi" && ! settingGetParams){
 					updateMultiBattleMetas();
 				}
 
@@ -2363,12 +2427,14 @@ var InterfaceMaster = (function () {
 
 				// Reset all selectors to 1 shield
 
-				for(var i = 0; i < pokeSelectors.length; i++){
-					pokeSelectors[i].setShields(1);
-				}
+				if(! settingGetParams){
+					for(var i = 0; i < pokeSelectors.length; i++){
+						pokeSelectors[i].setShields(1);
+					}
 
-				for(var i = 0; i < multiSelectors.length; i++){
-					multiSelectors[i].setShields(1);
+					for(var i = 0; i < multiSelectors.length; i++){
+						multiSelectors[i].setShields(1);
+					}
 				}
 			}
 
@@ -2405,11 +2471,6 @@ var InterfaceMaster = (function () {
 				var selectorIndex = (pokeIndex == 0) ? 1 : 0;
 				var subject = pokeSelectors[pokeIndex].getPokemon();
 				var target = pokeSelectors[selectorIndex].getPokemon();
-				var moveIndex = 0;
-
-				if(! target){
-					return false;
-				}
 
 				if($(e.target).is(".move-bar")){
 					moveIndex = $(e.target).parent().find(".move-bar").index($(e.target));
@@ -2418,11 +2479,21 @@ var InterfaceMaster = (function () {
 				}
 
 				var move = subject.chargedMoves[moveIndex];
+				var moveIndex = 0;
+
+				if(! target){
+					return false;
+				}
+
+				if(! move){
+					return false;
+				}
+
 				var effectiveness = target.typeEffectiveness[move.type];
 
 				displayDamage = DamageCalculator.damageByStats(subject, target, subject.getEffectiveStat(0, true), target.getEffectiveStat(1, true), effectiveness, move);
 
-				pokeSelectors[selectorIndex].animateDamage(displayDamage)
+				pokeSelectors[selectorIndex].animateDamage(displayDamage);
 			}
 
 			// Run simulation
@@ -2573,7 +2644,7 @@ var InterfaceMaster = (function () {
 					}
 				}
 
-				if($(this).hasClass("shield")){
+				if($(this).hasClass("shield") || $(this).hasClass("shieldSpecial")){
 					let values = $(this).attr("values").split(',');
 
 					$tooltip.find(".details").html(values[0] + " blocked");
@@ -2868,7 +2939,7 @@ var InterfaceMaster = (function () {
 
 				e.preventDefault();
 
-				if(! sandbox){
+				if(! sandbox || $(this).hasClass("disabled")){
 					return;
 				}
 

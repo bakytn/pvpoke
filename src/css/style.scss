@@ -71,6 +71,8 @@ $color-off-black:#111;
 $color-stat-buff:#f1841c;
 $color-stat-debuff:#0158d0;
 
+$color-mega: #eb5281;
+
 
 /* MIXINS */
 
@@ -162,8 +164,8 @@ header{
     z-index: 25;
     width: 100%;
     box-shadow: rgba(0,0,0,0.3) 0px 0px 6px;
-	top: 0;
-	//top:28px;
+	// top: 0;
+	top:37px;
 
 	.header-wrap{
 		max-width:800px;
@@ -276,7 +278,7 @@ header{
 	display: flex;
     justify-content: center;
     background: #4b8f56;
-    padding: 3px;
+    padding: 6px;
 	width: 100%;
 	position: fixed;
 	z-index: 25;
@@ -369,9 +371,9 @@ footer{
 #main{
 	max-width:800px;
 	margin: auto;
-	padding:60px 10px 10px 10px;
+	//padding:60px 10px 10px 10px;
     border-radius: 12px;
-	//padding: 90px 10px 10px 10px;
+	padding: 100px 10px 10px 10px;
 
 	& > h1{
 		margin:0;
@@ -657,10 +659,6 @@ b{
 			}
 		}
 
-		&.charged{
-			font-weight:bold;
-		}
-
 		&.poke-search{
 			background: $color-sky-blue;
 		    border: 1px solid $color-blue-medium;
@@ -903,6 +901,40 @@ b{
 				color:$color-links;
 			}
 		}
+
+		.mega-level-select{
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			margin: 10px 0;
+
+			.mega-level{
+				width: 32px;
+				height: 32px;
+				background-color: #ddd !important;
+				border-radius: 32px;
+				background-image:url('../img/mega-icon.png') !important;
+				background-position: center center !important;
+				background-size: 16px !important;
+				background-repeat: no-repeat !important;
+				border: 1px solid #999;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+
+				&.on{
+					background-color: $color-mega !important;
+				}
+			}
+		}
+
+		.mega-evolution-bonus{
+			display:none;
+			font-size: 12px;
+			margin: -5px 0 8px 0;
+			color: $color-mega;
+			padding: 0 12px;
+		}
 		
 		.advanced-section{
 			margin-top: 15px;
@@ -973,6 +1005,10 @@ b{
 
 		.move-select.fast{
 			margin-top:5px;
+		}
+
+		.move-select.extra-charged{
+			display: none;
 		}
 
 	}
@@ -1209,7 +1245,7 @@ b{
 					float:none;
 					flex: 1;
 					padding: 5px;
-					font-size: 15px;
+					font-size: 14px;
 
 					.number{
 						padding-right: 5px;
@@ -1239,14 +1275,13 @@ b{
 				}
 
 				.remove{
-
-					font-weight: bold;
-					background:rgba(0,0,0,0.5);
-					color:$color-off-white;
+					background: rgba(0, 0, 0, 0.5);
+					color: #f9fdff;
 					border-radius: 4px;
-					padding: 2px 6px;
+					padding: 3px 6px;
 					font-size: 14px;
-					height: 20px;
+					height: 18px;
+					line-height: 16px;
 
 					&:after{
 						content:"x";
@@ -1967,7 +2002,7 @@ select.large{
 			background-color: rgba(255, 240, 200, 0.75);
 			border: 1px solid $color-gold;
 
-			.item.charged:hover,
+			.item.charged:not(.disabled):hover,
 			.item.interaction:hover,
 			.item.fast:not(.disabled):hover{
 				@include gradient($color-gold, $color-gold-dark);
@@ -2655,6 +2690,14 @@ a.download-csv{
 				z-index: 10;
 			}
 
+			&.shieldSpecial{
+				width:25px;
+				height:22px;
+				top:-12px;
+				background:url('../img/shield_special.png');
+				z-index: 10;
+			}
+
 			&.faint{
 				color:$color-faint;
 				font-size:20px;
@@ -2890,6 +2933,10 @@ a.download-csv{
 		background:$color-shield;
 	}
 
+	&.shieldSpecial{
+		background:#fef4b5;
+	}
+
 	&.tap{
 		background:#eee;
 	}
@@ -2916,6 +2963,7 @@ a.download-csv{
 	font-weight: bold;
 	padding:5px 0px;
 	box-sizing:border-box;
+	font-size: 14px;
 
 	&.right{
 		text-align: right;
@@ -2933,7 +2981,7 @@ a.download-csv{
 	}
 
 	& > .rank:hover, > .rank.selected{
-		border-left:20px solid $color-highlight;
+		border-left:16px solid $color-highlight;
 	}
 
 	&.pokebox-list{
@@ -2966,10 +3014,10 @@ a.download-csv{
 }
 
 .rank{
-	padding:5px 10px;
+	padding:3px 8px;
 	border-radius:8px;
-	margin-bottom:5px;
-	border-left: 20px solid rgba(0,0,0,.10);
+	margin-bottom:6px;
+	border-left: 16px solid rgba(0,0,0,.10);
 	position:relative;
 
 	&.hide{
@@ -2983,9 +3031,9 @@ a.download-csv{
 	.expand-label{
 		position: absolute;
 		color: rgba(255,255,255,.75);
-		left: -16px;
-		font-size: 24px;
-		top: 10px;
+		left: -14px;
+		font-size: 18px;
+		top: 8px;
 		width: 14px;
 		text-align: center;
 
@@ -2996,6 +3044,7 @@ a.download-csv{
 
 	.name-container{
 		float: left;
+		font-size: 14px;
 		padding:5px 0;
 	}
 
@@ -3022,8 +3071,7 @@ a.download-csv{
 	}
 
 	.editor-note-icon{
-		width:21px;
-		height:17px;
+		height:14px;
 		background-image: url('../img/notes-icon.png');
 	}
 
@@ -3558,6 +3606,8 @@ a.download-csv{
 
 			.rank{
 				border-left: 10px solid rgba(0, 0, 0, 0.1);
+				border-radius: 0 20px 20px 0;
+				padding: 3px 8px;
 
 				&.selected{
 					border-left: 10px solid rgba(0, 0, 0, 1);
@@ -3566,7 +3616,7 @@ a.download-csv{
 				&.recommended{
 					border-left: 10px solid rgba(0, 0, 0, 1);
 					margin:20px 0 10px 0;
-					font-size:12px;
+					font-size:10px;
 				}
 			}
 
@@ -3630,9 +3680,9 @@ a.download-csv{
 			}
 
 			a.button{
-				font-size:16px;
+				font-size:15px;
 				display:inline-block;
-				margin: 0;
+				margin: 3px 0 0 0;
 			}
 		}
 
@@ -3644,7 +3694,7 @@ a.download-csv{
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	padding: 8px 10px;
+	padding: 7px 8px;
 
 	.pokemon-info{
 		flex: 1;
@@ -3659,6 +3709,7 @@ a.download-csv{
 			margin-top: -3px;
 			margin-bottom: -3px;
 			min-width: 46.5%;
+			font-size: 15px;
 		}
 
 		.type-container{
@@ -3685,7 +3736,7 @@ a.download-csv{
 
 		.moves{
 			width: 100%;
-			margin-top: 3px;
+			margin-top: 5px;
 		}
 	}
 
@@ -3868,6 +3919,7 @@ a.download-csv{
 		border:2px solid rgba(0,0,0,0);
 		text-decoration: none;
 		color:#000;
+		font-size: 14px;
 
 		&.dark,&.dragon,&.ghost{
 			color:#fff;
@@ -5257,7 +5309,10 @@ a.pokebattler{
 .steel{ @include gradient($color-steel-dark, $color-steel-light); }
 .water{ @include gradient($color-water-dark, $color-water-light); }
 
-.dark, .dragon, .ghost {
+
+.color-mega{ color: $color-mega; }
+
+.dark:not(option), .dragon:not(option), .ghost:not(option) {
 	> .name-container{
 		color:$color-off-white;
 	}
@@ -5385,19 +5440,19 @@ a.pokebattler{
 			float:none;
 			clear:both;
 			margin-top:5px;
-			padding:0;
+			//padding:0;
 			flex: 0 0 100%;
 			background: $color-blue-dark;
 			position: fixed;
 		    width: 100%;
 		    margin: 0 -10px;
-		    top: 37px;
+		    //top: 37px;
 			height: calc(100% - 37px);
 			padding: 8px 8px;
     		box-sizing: border-box;
 			box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
 			overflow-y: auto;
-			//top: 65px;
+			top: 74px;
 
 			a{
 				padding: 9px 8px 9px 38px;
@@ -5484,10 +5539,6 @@ a.pokebattler{
 	.header-ticker{
 		position: fixed;
 		z-index: 50;
-
-		a{
-			font-size: 11px;
-		}
 	}
 
 	body{
@@ -5761,6 +5812,13 @@ a.pokebattler{
 			&[type="moveType"] .field-section.move-type{
 				display:block;
 			}
+		}
+
+		.dex-range-rows{
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			margin-bottom: 15px;
 		}
 	}
 
@@ -6616,7 +6674,7 @@ a.feed-subscribe{
 
 	.rank .details .detail-section .weaknesses .type div:nth-of-type(2),
 	.rank .details .detail-section .resistances .type div:nth-of-type(2){
-		font-size:16px;
+		font-size:14px;
 		line-height: 16px;
 	}
 
@@ -7134,7 +7192,7 @@ iframe#bh-div {
 
 	#nitro-body-mobile{
 		display: block;
-		margin-top: 30px;
+		margin: 30px 0;
 	}
 
 	.mobile-ad-container{
@@ -7151,7 +7209,7 @@ iframe#bh-div {
 
 	#nitro-body-desktop{
 		display: block;
-		margin-top: 30px;
+		margin: 40px 0;
 	}
 
 	.desktop-ad-container{
@@ -7166,7 +7224,7 @@ iframe#bh-div {
 	}
 }
 
-@media only screen and (min-width: 1190px) and (max-width:1449px) {
+@media only screen and (min-width: 1190px) and (max-width:1499px) {
 	#nitro-sidebar-left{
 		display: block;
 		position: fixed;
@@ -7182,7 +7240,17 @@ iframe#bh-div {
 	}
 }
 
-@media only screen and (min-width: 1450px) {
+@media only screen and (min-width: 1190px) and (max-width:1219px) {
+	#nitro-sidebar-left{
+		left:10px;
+	}
+
+	#nitro-sidebar-right{
+		right:10px;
+	}
+}
+
+@media only screen and (min-width: 1500px) {
 	#nitro-sidebar-left-300{
 		display: block;
 		position: fixed;
