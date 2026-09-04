@@ -2025,7 +2025,6 @@ function Pokemon(id, i, b, d){
 
 	this.setLevel = function(amount, initialize){
 		initialize = typeof initialize !== 'undefined' ? initialize : true;
-		amount = Math.min(amount, getEffectiveLevelCap());
 
 		self.level = amount;
 		self.cpm = self.getCPMByLevel(amount);
