@@ -126,7 +126,8 @@ This document gives coding agents a fast, accurate map of how this site is struc
 - After adding a cup (and after any pool/ban-list change that should be reflected), run from repo root:
   - `./src/scripts/regenerate-rankings-cli.sh --cup <slug> --cp <cp>`
 - This auto-starts the Docker web server if needed, drives `ranker.php`/`rankersandbox.php` headlessly via Playwright, and writes all categories under `src/data/rankings/<slug>/`. Needs a working `node` on PATH.
-- Verify the output (non-empty, no banned species) and commit the `src/data/rankings/<slug>/` tree with the cup.
+- Trust the runner's exit status: it fails loudly if any category times out or `write.php` errors. Do NOT re-verify the generated output (e.g. re-listing species to check bans) after a successful run — go straight to committing.
+- Commit the `src/data/rankings/<slug>/` tree with the cup.
 - Full ordering: see the shipping checklist in `docs/cup-creation-runbook.md`.
 
 ## Meta Groups (Simulation / Team-Builder Opponent Pools)

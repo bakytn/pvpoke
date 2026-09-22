@@ -75,6 +75,25 @@ $formats = array (
   ),
   5 => 
   array (
+    'title' => 'BF Spectral',
+    'cup' => 'bf_spectral',
+    'cp' => 1500,
+    'meta' => 'great',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'Max CP per Pokémon: 1,500.',
+      1 => 'Only Bug, Ghost, Ice, Poison, and Psychic types are eligible. Dark, Normal, Rock, and Steel types are not eligible.',
+      2 => 'Mega Evolutions are not eligible.',
+      3 => 'Shadow Pokémon are not eligible.',
+      4 => 'Legendary Pokémon, Mythical Pokémon, and Ultra Beasts are not eligible.',
+      5 => 'Banned: Annihilape, Araquanid, Armarouge, Clodsire, Galarian Corsola, Dusclops, Dusknoir, Frillish, Golett, Golurk, Jellicent, Lapras, Alolan Marowak, Mimikyu, Sealeo, Spidops, Toxapex, Toxtricity, Hisuian Typhlosion, Walrein.',
+    ),
+  ),
+  6 => 
+  array (
     'title' => 'BF UL',
     'cup' => 'bf_ul',
     'cp' => 2500,
@@ -85,13 +104,13 @@ $formats = array (
     'rules' => 
     array (
       0 => 'Max CP per Pokémon: 2,500.',
-      1 => 'Only Bug, Dark, Fairy, Ghost, and Poison types are eligible, plus: Charizard, Mega Charizard X, Mega Charizard Y, Sandslash, Ninetales, Rapidash, Seaking, Typhlosion, Blaziken, Mega Blaziken, Camerupt, Mega Camerupt, Samurott, Reshiram, Delphox, Talonflame, Turtonator, Greedent, Ursaluna.',
-      2 => 'Mega Evolutions are eligible. Mega Delphox is not eligible.',
+      1 => 'Only Bug, Dark, Fairy, Ghost, and Poison types are eligible, plus: Charizard, Mega Charizard X, Mega Charizard Y, Sandslash, Ninetales, Rapidash, Seaking, Typhlosion, Blaziken, Mega Blaziken, Camerupt, Samurott, Reshiram, Delphox, Talonflame, Turtonator, Greedent, Ursaluna.',
+      2 => 'Mega Evolutions are eligible (Mega Camerupt is not at 2,500 CP). Mega Delphox is not eligible.',
       3 => 'Shadow Pokémon are eligible.',
       4 => 'Banned: Nidoqueen, Tentacruel, Forretress, Mega Mawile, Crustle, Mega Greninja, Mimikyu, Guzzlord, Tinkaton, Kingambit.',
     ),
   ),
-  6 => 
+  7 => 
   array (
     'title' => 'BF ML',
     'cup' => 'bf_ml',
@@ -106,7 +125,7 @@ $formats = array (
       1 => 'Shadow Pokémon are eligible.',
     ),
   ),
-  7 => 
+  8 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -116,7 +135,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  8 => 
+  9 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -126,7 +145,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  9 => 
+  10 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',

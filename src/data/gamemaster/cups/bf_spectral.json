@@ -1,0 +1,76 @@
+{
+    "name": "bf_spectral",
+    "title": "BF Spectral",
+    "include": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "bug",
+                "ghost",
+                "ice",
+                "poison",
+                "psychic"
+            ]
+        }
+    ],
+    "exclude": [
+        {
+            "filterType": "tag",
+            "name": "Tag",
+            "values": [
+                "mega",
+                "supermega",
+                "shadow",
+                "legendary",
+                "mythical",
+                "ultrabeast"
+            ]
+        },
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "dark",
+                "normal",
+                "rock",
+                "steel"
+            ]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "annihilape",
+                "araquanid",
+                "armarouge",
+                "clodsire",
+                "corsola_galarian",
+                "dusclops",
+                "dusknoir",
+                "frillish",
+                "golett",
+                "golurk",
+                "jellicent",
+                "lapras",
+                "marowak_alolan",
+                "mimikyu",
+                "mimikyu_busted",
+                "sealeo",
+                "spidops",
+                "toxapex",
+                "toxtricity",
+                "toxtricity_amped",
+                "toxtricity_low_key",
+                "typhlosion_hisuian",
+                "walrein"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 1500,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}

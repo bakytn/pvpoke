@@ -63,6 +63,23 @@
 		]
 	},
 	{
+		"title": "BF Spectral",
+		"cup": "bf_spectral",
+		"cp": 1500,
+		"meta": "great",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true,
+		"rules": [
+			"Max CP per Pokémon: 1,500.",
+			"Only Bug, Ghost, Ice, Poison, and Psychic types are eligible. Dark, Normal, Rock, and Steel types are not eligible.",
+			"Mega Evolutions are not eligible.",
+			"Shadow Pokémon are not eligible.",
+			"Legendary Pokémon, Mythical Pokémon, and Ultra Beasts are not eligible.",
+			"Banned: Annihilape, Araquanid, Armarouge, Clodsire, Galarian Corsola, Dusclops, Dusknoir, Frillish, Golett, Golurk, Jellicent, Lapras, Alolan Marowak, Mimikyu, Sealeo, Spidops, Toxapex, Toxtricity, Hisuian Typhlosion, Walrein."
+		]
+	},
+	{
 		"title": "BF UL",
 		"cup": "bf_ul",
 		"cp": 2500,
@@ -72,8 +89,8 @@
 		"showMeta": true,
 		"rules": [
 			"Max CP per Pokémon: 2,500.",
-			"Only Bug, Dark, Fairy, Ghost, and Poison types are eligible, plus: Charizard, Mega Charizard X, Mega Charizard Y, Sandslash, Ninetales, Rapidash, Seaking, Typhlosion, Blaziken, Mega Blaziken, Camerupt, Mega Camerupt, Samurott, Reshiram, Delphox, Talonflame, Turtonator, Greedent, Ursaluna.",
-			"Mega Evolutions are eligible. Mega Delphox is not eligible.",
+			"Only Bug, Dark, Fairy, Ghost, and Poison types are eligible, plus: Charizard, Mega Charizard X, Mega Charizard Y, Sandslash, Ninetales, Rapidash, Seaking, Typhlosion, Blaziken, Mega Blaziken, Camerupt, Samurott, Reshiram, Delphox, Talonflame, Turtonator, Greedent, Ursaluna.",
+			"Mega Evolutions are eligible (Mega Camerupt is not at 2,500 CP). Mega Delphox is not eligible.",
 			"Shadow Pokémon are eligible.",
 			"Banned: Nidoqueen, Tentacruel, Forretress, Mega Mawile, Crustle, Mega Greninja, Mimikyu, Guzzlord, Tinkaton, Kingambit."
 		]
