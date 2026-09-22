@@ -1,0 +1,68 @@
+{
+    "name": "bf_ul",
+    "title": "BF UL",
+    "include": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": [
+                "bug",
+                "dark",
+                "fairy",
+                "ghost",
+                "poison"
+            ]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "includeShadows": true,
+            "values": [
+                "charizard",
+                "charizard_mega_x",
+                "charizard_mega_y",
+                "sandslash",
+                "ninetales",
+                "rapidash",
+                "seaking",
+                "typhlosion",
+                "blaziken",
+                "blaziken_mega",
+                "camerupt",
+                "camerupt_mega",
+                "samurott",
+                "reshiram",
+                "delphox",
+                "talonflame",
+                "turtonator",
+                "greedent",
+                "ursaluna"
+            ]
+        }
+    ],
+    "exclude": [
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "delphox_mega",
+                "nidoqueen",
+                "tentacruel",
+                "forretress",
+                "mawile_mega",
+                "crustle",
+                "greninja_mega",
+                "mimikyu",
+                "guzzlord",
+                "tinkaton",
+                "kingambit"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 2500,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}

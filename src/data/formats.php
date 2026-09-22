@@ -75,6 +75,24 @@ $formats = array (
   ),
   5 => 
   array (
+    'title' => 'BF UL',
+    'cup' => 'bf_ul',
+    'cp' => 2500,
+    'meta' => 'great',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'Max CP per Pokémon: 2,500.',
+      1 => 'Only Bug, Dark, Fairy, Ghost, and Poison types are eligible, plus: Charizard, Mega Charizard X, Mega Charizard Y, Sandslash, Ninetales, Rapidash, Seaking, Typhlosion, Blaziken, Mega Blaziken, Camerupt, Mega Camerupt, Samurott, Reshiram, Delphox, Talonflame, Turtonator, Greedent, Ursaluna.',
+      2 => 'Mega Evolutions are eligible. Mega Delphox is not eligible.',
+      3 => 'Shadow Pokémon are eligible.',
+      4 => 'Banned: Nidoqueen, Tentacruel, Forretress, Mega Mawile, Crustle, Mega Greninja, Mimikyu, Guzzlord, Tinkaton, Kingambit.',
+    ),
+  ),
+  6 => 
+  array (
     'title' => 'BF ML',
     'cup' => 'bf_ml',
     'cp' => 10000,
@@ -88,7 +106,7 @@ $formats = array (
       1 => 'Shadow Pokémon are eligible.',
     ),
   ),
-  6 => 
+  7 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -98,7 +116,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  7 => 
+  8 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -108,7 +126,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  8 => 
+  9 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',
