@@ -101,10 +101,19 @@ This document gives coding agents a fast, accurate map of how this site is struc
 - Do not hand-edit generated outputs (`src/data/gamemaster.json`, `src/data/gamemaster.min.json`, rankings JSON) as part of the point/ban edit itself.
 - Regeneration is manual and only when explicitly requested: run compile/ranking commands after the data-only edit.
 
+## Cup Creation Runbook
+- Full procedure lives in `docs/cup-creation-runbook.md` — load it before adding or editing a cup.
+- A cup is one file: `src/data/gamemaster/cups/<slug>.json` (schema: `name`, `title`, `include`, `exclude`, `overrides`, `league`, `levelCap`, `excludeLowPokemon`, `useDefaultMovesets`, `custom`; optional `tierRules` / `restrictedPicks`).
+- Pure ban-list cup (e.g. "BF ML" Master League 10000 CP, megas + shadows permitted): `include: []` + one `id` exclude filter. Megas and shadow forms are already in the 10000 CP pool by default (megas bypass the stat-product floor).
+- Shadow wildcard gotcha: `id` EXCLUDE filters auto-strip `_shadow`/`_xs` before matching — banning `mewtwo` also bans `mewtwo_shadow`. Add `"includeShadows": true` to opt out. INCLUDE filters never strip.
+- Then wire the cup into `src/data/gamemaster/formats.json` (tab-indented entry: `title`, `cup`, `cp`, `meta`, `showCup`, `showFormat`, `showMeta`, optional `rules`/`hideRankings`).
+- Verify `speciesId` values against `src/data/gamemaster.json` — wrong ids fail silently.
+- Retired cups go to `cups/archive/`, never deleted (compile auto-discovers every `*.json` in `cups/`).
+
 ## Recompile Instructions (Manual Only)
 - Only recompile when explicitly requested.
-- From repo root, run:
-  - `cd src/data && php compile.php`
+- No host PHP on this machine; run via Docker from repo root:
+  - `docker run --rm -v "$(pwd)/src/data:/data" -w /data php:8.1-cli php compile.php`
 - This regenerates:
   - `src/data/gamemaster.json`
   - `src/data/gamemaster.min.json`

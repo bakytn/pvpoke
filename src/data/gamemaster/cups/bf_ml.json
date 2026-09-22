@@ -1,0 +1,34 @@
+{
+    "name": "bf_ml",
+    "title": "BF ML",
+    "include": [],
+    "exclude": [
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "charizard_mega_y",
+                "dragonite_mega",
+                "mewtwo_mega_x",
+                "mewtwo_mega_y",
+                "heracross_mega",
+                "tyranitar_mega",
+                "salamence_mega",
+                "metagross_mega",
+                "groudon_primal",
+                "kyogre_primal",
+                "rayquaza_mega",
+                "garchomp_mega",
+                "chesnaught_mega",
+                "delphox_mega",
+                "greninja_mega"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 10000,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}

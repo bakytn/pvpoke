@@ -115,6 +115,21 @@ $formats = array (
   ),
   9 => 
   array (
+    'title' => 'BF ML',
+    'cup' => 'bf_ml',
+    'cp' => 10000,
+    'meta' => 'master',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'Mega Evolutions are eligible.',
+      1 => 'Shadow Pokémon are eligible.',
+    ),
+  ),
+  10 => 
+  array (
     'title' => 'Devon Equinox Cup',
     'cup' => 'equinox',
     'cp' => 1500,
@@ -123,7 +138,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  10 => 
+  11 => 
   array (
     'title' => 'Devon Bastille Cup',
     'cup' => 'bastille',
@@ -133,7 +148,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  11 => 
+  12 => 
   array (
     'title' => 'Devon Chrysalis Cup',
     'cup' => 'chrysalis',
@@ -143,7 +158,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  12 => 
+  13 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -153,7 +168,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  13 => 
+  14 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -163,7 +178,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  14 => 
+  15 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',

@@ -99,6 +99,19 @@
 		"showMeta": true
 	},
 	{
+		"title": "BF ML",
+		"cup": "bf_ml",
+		"cp": 10000,
+		"meta": "master",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true,
+		"rules": [
+			"Mega Evolutions are eligible.",
+			"Shadow Pokémon are eligible."
+		]
+	},
+	{
 		"title": "Devon Equinox Cup",
 		"cup": "equinox",
 		"cp": 1500,
