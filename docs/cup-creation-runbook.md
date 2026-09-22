@@ -122,3 +122,18 @@ A new cup has no `src/data/rankings/<slug>/` tree, so the rankings page 404s on
 - Don't hand-edit `gamemaster.json` / `gamemaster.min.json` / `formats.php` — they are generated.
 - Shadow forms are separate `pokemon.json` entries tagged `shadow` (474 of them); base forms carry `shadoweligible`. They are NOT auto-excluded from 10000 CP pools.
 - For a one-off ban check, read the cup JSON + species ids only; do not rebuild rankings to test a ban list.
+
+## De-listing an existing cup
+
+"De-list" = remove the cup from the site's cup list **without** deleting its data or rankings. The cup keeps working (battles, team builder, custom-rankings UI) and can be re-listed later. De-listing is a `formats.json`-only change.
+
+Steps (in order):
+1. Remove the cup's entry from `src/data/gamemaster/formats.json` (the one with its `cup` + `cp`). Multiple formats rows can share a `cup` (e.g. `mega` ×3) — only remove the row(s) for the cup you're de-listing.
+   - To hide it from the nav but keep it usable instead, set `"hideRankings": true` on the entry rather than deleting it.
+2. Recompile (Docker, repo root):
+   - `docker run --rm -v "$(pwd)/src/data:/data" -w /data php:8.1-cli php compile.php`
+3. Verify: `python3 -c "import json;[print(f['cup'],f['title']) for f in json.load(open('src/data/gamemaster.json'))['formats']]"` — the cup must be absent from `formats`; its data still lives in the `cups` array.
+4. Commit `src/data/gamemaster/formats.json` + regenerated `gamemaster.json` / `.min.json` / `formats.php` → push.
+5. Bump `SITE_VERSION` in `src/header.php` to bust the 30-day browser gamemaster cache (or `?refreshData=1`).
+
+Do **not** delete the cup JSON, its rankings, or move it to `cups/archive/` unless the user explicitly asks to fully retire it. Re-listing = re-adding the `formats.json` entry + recompile.

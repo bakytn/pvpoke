@@ -109,6 +109,7 @@ This document gives coding agents a fast, accurate map of how this site is struc
 - Then wire the cup into `src/data/gamemaster/formats.json` (tab-indented entry: `title`, `cup`, `cp`, `meta`, `showCup`, `showFormat`, `showMeta`, optional `rules`/`hideRankings`).
 - Verify `speciesId` values against `src/data/gamemaster.json` — wrong ids fail silently.
 - Retired cups go to `cups/archive/`, never deleted (compile auto-discovers every `*.json` in `cups/`).
+- De-listing a cup (remove from site cup list, keep data/rankings): remove its `formats.json` entry + recompile + commit. Full procedure: `docs/cup-creation-runbook.md` → "De-listing an existing cup". Don't delete the cup file or rankings unless told to fully retire it.
 
 ## Recompile Instructions (Manual Only)
 - Only recompile when explicitly requested.

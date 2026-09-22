@@ -75,16 +75,6 @@ $formats = array (
   ),
   5 => 
   array (
-    'title' => 'Battle Frontier (Coupe du Sillage)',
-    'cup' => 'coupedusillage',
-    'cp' => 10000,
-    'meta' => 'coupedusillage',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  6 => 
-  array (
     'title' => 'BF ML',
     'cup' => 'bf_ml',
     'cp' => 10000,
@@ -98,7 +88,7 @@ $formats = array (
       1 => 'Shadow Pokémon are eligible.',
     ),
   ),
-  7 => 
+  6 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -108,7 +98,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  8 => 
+  7 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -118,7 +108,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  9 => 
+  8 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',
