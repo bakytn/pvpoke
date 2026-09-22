@@ -75,36 +75,6 @@ $formats = array (
   ),
   5 => 
   array (
-    'title' => 'Battle Frontier (Copa Dilúvio)',
-    'cup' => 'copadiluvio',
-    'cp' => 1500,
-    'meta' => 'copadiluvio',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  6 => 
-  array (
-    'title' => 'Battle Frontier (Tsuki Cup)',
-    'cup' => 'tsuki',
-    'cp' => 1500,
-    'meta' => 'tsuki',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  7 => 
-  array (
-    'title' => 'Battle Frontier (Liga Ultra)',
-    'cup' => 'ligaultra',
-    'cp' => 2500,
-    'meta' => 'ligaultra',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  8 => 
-  array (
     'title' => 'Battle Frontier (Coupe du Sillage)',
     'cup' => 'coupedusillage',
     'cp' => 10000,
@@ -113,7 +83,7 @@ $formats = array (
     'showFormat' => true,
     'showMeta' => true,
   ),
-  9 => 
+  6 => 
   array (
     'title' => 'BF ML',
     'cup' => 'bf_ml',
@@ -128,37 +98,7 @@ $formats = array (
       1 => 'Shadow Pokémon are eligible.',
     ),
   ),
-  10 => 
-  array (
-    'title' => 'Devon Equinox Cup',
-    'cup' => 'equinox',
-    'cp' => 1500,
-    'meta' => 'equinox',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  11 => 
-  array (
-    'title' => 'Devon Bastille Cup',
-    'cup' => 'bastille',
-    'cp' => 1500,
-    'meta' => 'bastille',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  12 => 
-  array (
-    'title' => 'Devon Chrysalis Cup',
-    'cup' => 'chrysalis',
-    'cp' => 1500,
-    'meta' => 'chrysalis',
-    'showCup' => true,
-    'showFormat' => true,
-    'showMeta' => true,
-  ),
-  13 => 
+  7 => 
   array (
     'title' => 'Little Cup',
     'cup' => 'little',
@@ -168,7 +108,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  14 => 
+  8 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -178,7 +118,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  15 => 
+  9 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',
