@@ -121,7 +121,28 @@ This document gives coding agents a fast, accurate map of how this site is struc
   - `src/data/gamemaster.min.json`
   - `src/data/formats.php`
 
-## Rankings Regeneration (Mandatory for New Cups)
+## Moveset Overrides (Pin Movesets for a Cup)
+Use this whenever asked to change what specific Pokémon should run (fast move, charged moves, or a third move) in a given cup.
+- Canonical file: `src/data/overrides/<cup>/<cp>.json` — a JSON array served **directly** (NOT compiled). Shape per entry:
+  ```json
+  { "speciesId": "mewtwo", "fastMove": "CONFUSION", "chargedMoves": ["PSYCHIC","PSYCHO_CUT"], "extraChargedMoves": ["AURORA_BEAM"], "weight": 1, "editorScore": 90, "editorNotes": "..." }
+  ```
+  - `fastMove` / `chargedMoves` / `extraChargedMoves` are all optional. Omit a field you are not changing (the ranker then keeps its previous picks for the rest).
+  - `chargedMoves` order matters: index 0 = charged slot 0, index 1 = charged slot 1.
+  - `weight` only affects rankings where the cup has `filterTargets` (e.g. `bf_ml`); harmless elsewhere — omit it for a pure moveset pin.
+  - `editorScore` / `editorNotes` are surfaced on the rankings page (75% weight into the overall score); omit for a pure moveset pin.
+- How it's consumed (do NOT edit the rankings JSON directly — a later regeneration clobbers it):
+  - `RankerInterface.loadOverrides` (used by both `ranker.php` and `rankersandbox.php`) `$.getJSON`s `data/overrides/<cup>/<cp>.json` and gates the run on the load. If the file is missing it sets `[]` and proceeds.
+  - `GameMaster.overrideMoveset` + `Ranker`/`RankerOverall` apply the entries to the battle sim and write the resulting `moveset` into the generated rankings.
+- Steps:
+  1. Verify each requested `MOVE_ID` exists in that species' `fastMoves` / `chargedMoves` / `extraChargedMoves` pool in `src/data/gamemaster.json` (move IDs are `UPPER_SNAKE`; names are in `moves`). Wrong ids fail silently.
+  2. Add / update the entries in `src/data/overrides/<cup>/<cp>.json` (create the file/dir if absent; keep 4-space indent to match `diluvio/1500.json`).
+  3. Regenerate the cup's rankings (`./src/scripts/regenerate-rankings-cli.sh --cup <cup> --cp <cp>` — see "Rankings Regeneration"). The pins get baked in; the runner's clean exit is the verification.
+  4. Bump `SITE_VERSION` in `src/header.php` so the browser re-fetches the new `overrides` file and the new rankings (both are `?v=`-cached).
+  5. Commit `src/data/overrides/<cup>/<cp>.json` + the regenerated `src/data/rankings/<cup>/` tree (+ `src/header.php`).
+
+## Rankings Regeneration (Always After New Cups / Pool Changes)
+- Always regenerate rankings after creating a new cup or changing its pool/ban list — do not skip this step.
 - A new cup 404s on `/rankings/<slug>/<category>/rankings-<cp>.json` until rankings exist — `compile.php` does NOT create them.
 - After adding a cup (and after any pool/ban-list change that should be reflected), run from repo root:
   - `./src/scripts/regenerate-rankings-cli.sh --cup <slug> --cp <cp>`

@@ -1,0 +1,38 @@
+[
+    {
+        "speciesId": "cetitan",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "ICICLE_SPEAR",
+            "SUPER_POWER"
+        ]
+    },
+    {
+        "speciesId": "glalie",
+        "fastMove": "ROLLOUT"
+    },
+    {
+        "speciesId": "dewgong",
+        "fastMove": "ICE_SHARD",
+        "chargedMoves": [
+            "ICY_WIND",
+            "DRILL_RUN"
+        ]
+    },
+    {
+        "speciesId": "ninetales_alolan",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "CHILLING_WATER",
+            "WEATHER_BALL_ICE"
+        ]
+    },
+    {
+        "speciesId": "ledian",
+        "fastMove": "BUG_BITE",
+        "chargedMoves": [
+            "DYNAMIC_PUNCH",
+            "ACROBATICS"
+        ]
+    }
+]
