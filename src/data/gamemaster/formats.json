@@ -66,7 +66,7 @@
 		"title": "BF ML",
 		"cup": "bf_ml",
 		"cp": 10000,
-		"meta": "master",
+		"meta": "bf_ml",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true,
