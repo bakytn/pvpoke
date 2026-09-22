@@ -118,3 +118,11 @@ This document gives coding agents a fast, accurate map of how this site is struc
   - `src/data/gamemaster.json`
   - `src/data/gamemaster.min.json`
   - `src/data/formats.php`
+
+## Rankings Regeneration (Mandatory for New Cups)
+- A new cup 404s on `/rankings/<slug>/<category>/rankings-<cp>.json` until rankings exist — `compile.php` does NOT create them.
+- After adding a cup (and after any pool/ban-list change that should be reflected), run from repo root:
+  - `./src/scripts/regenerate-rankings-cli.sh --cup <slug> --cp <cp>`
+- This auto-starts the Docker web server if needed, drives `ranker.php`/`rankersandbox.php` headlessly via Playwright, and writes all categories under `src/data/rankings/<slug>/`. Needs a working `node` on PATH.
+- Verify the output (non-empty, no banned species) and commit the `src/data/rankings/<slug>/` tree with the cup.
+- Full ordering: see the shipping checklist in `docs/cup-creation-runbook.md`.
