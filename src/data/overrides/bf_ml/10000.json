@@ -1,0 +1,10 @@
+[
+    {
+        "speciesId": "gengar_mega_sp",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "SHADOW_PUNCH",
+            "DRAIN_PUNCH"
+        ]
+    }
+]
