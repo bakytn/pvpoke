@@ -141,6 +141,19 @@ Use this whenever asked to change what specific Pokémon should run (fast move, 
   4. Bump `SITE_VERSION` in `src/header.php` so the browser re-fetches the new `overrides` file and the new rankings (both are `?v=`-cached).
   5. Commit `src/data/overrides/<cup>/<cp>.json` + the regenerated `src/data/rankings/<cup>/` tree (+ `src/header.php`).
 
+## Move Variations (a species with an alternative moveset)
+Use this when asked to add a second version of an existing species that differs only by moveset (e.g. "add a Mega Gengar running Shadow Punch / Drain Punch"). A plain moveset pin can't do this — it *replaces* the base form's moveset in that cup, so to keep **both** versions available you need a separate species entry.
+- Mechanism: a `duplicate`-tagged species. It only enters a cup's pool where a matching `overrides` entry (league + cup) lists its `speciesId` — so it never appears anywhere you don't pin it.
+- Steps:
+  1. In `src/data/gamemaster/pokemon.json`, clone the source species entry and change: `speciesId` (append a short suffix, e.g. `gengar_mega` → `gengar_mega_sp`), `speciesName` (add a short descriptor, e.g. "Gengar (Mega) - SP"), `tags` → `["duplicate", <form tag e.g. mega/alolan>]` — **drop `shadoweligible`** (a shadow variant would otherwise get derived into the `shadowPokemon` list). Set `"aliasId"` to the canonical `speciesId` so tier points resolve via `getPokemonTier` (the ranker also resolves it for duplicate stats).
+  2. Pin the moveset in `src/data/overrides/<cup>/<cp>.json` — see "Moveset Overrides" above. Pin only the new speciesId; leave the base form alone.
+  3. **Cup-eligibility gotcha (important):** if the canonical base is banned from the target cup via an `id` EXCLUDE filter, the ranker strips the suffix and the variation gets banned too (see "Shadow wildcard gotcha" in the runbook). The variation only works in cups where the canonical base is *legal*. If the base is banned and you still need the variation, add the variation's exact `speciesId` to the cup's `include` (id-include filters never strip) and re-add the canonical base to `exclude` — then verify the net pool.
+  4. Recompile (Docker) → `gamemaster.json` / `.min.json` pick up the new species.
+  5. Regenerate the cup's rankings (`./src/scripts/regenerate-rankings-cli.sh --cup <cup> --cp <cp>`); the variation lands with its pinned moveset.
+  6. Bump `SITE_VERSION` in `src/header.php`, commit `pokemon.json` + `gamemaster*` + the overrides file + the regenerated `rankings/<cup>/` tree.
+- UI behavior: `duplicate` species are hidden from the pokedex form list and the standard team-builder pick (`GameMaster.getPokemonForms`, `PokeSelect.js`), and only surface via overrides/rankings — the intended, low-noise behavior. Don't "fix" this.
+- Full procedure + reference examples: `docs/cup-creation-runbook.md` → "Move Variations".
+
 ## Rankings Regeneration (Always After New Cups / Pool Changes)
 - Always regenerate rankings after creating a new cup or changing its pool/ban list — do not skip this step.
 - A new cup 404s on `/rankings/<slug>/<category>/rankings-<cp>.json` until rankings exist — `compile.php` does NOT create them.
