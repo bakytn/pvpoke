@@ -34,5 +34,17 @@
             "DYNAMIC_PUNCH",
             "ACROBATICS"
         ]
+    },
+    {
+        "speciesId": "muk",
+        "fastMove": "POISON_JAB"
+    },
+    {
+        "speciesId": "ninetales_alolan_wb",
+        "fastMove": "POWDER_SNOW",
+        "chargedMoves": [
+            "WEATHER_BALL_ICE",
+            "PSYSHOCK"
+        ]
     }
 ]
