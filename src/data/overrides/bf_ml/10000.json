@@ -14,5 +14,12 @@
             "NIGHT_SLASH",
             "TRAILBLAZE"
         ]
+    },
+    {
+        "speciesId": "florges",
+        "chargedMoves": [
+            "MOONBLAST",
+            "CHILLING_WATER"
+        ]
     }
 ]
