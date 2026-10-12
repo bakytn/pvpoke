@@ -28252,6 +28252,63 @@
  },
  {
   "dex": 212,
+  "speciesName": "Scizor (Mega) - BP",
+  "speciesId": "scizor_mega_bp",
+  "baseStats": {
+   "atk": 279,
+   "def": 250,
+   "hp": 172
+  },
+  "types": [
+   "bug",
+   "steel"
+  ],
+  "fastMoves": [
+   "BULLET_PUNCH",
+   "FURY_CUTTER"
+  ],
+  "chargedMoves": [
+   "IRON_HEAD",
+   "NIGHT_SLASH",
+   "X_SCISSOR",
+   "TRAILBLAZE"
+  ],
+  "defaultIVs": {
+   "cp500": [
+    4.5,
+    14,
+    15,
+    15
+   ],
+   "cp1500": [
+    13.5,
+    4,
+    10,
+    14
+   ],
+   "cp2500": [
+    22.5,
+    4,
+    9,
+    15
+   ]
+  },
+  "tags": [
+   "mega",
+   "duplicate"
+  ],
+  "level25CP": 2581,
+  "buddyDistance": 5,
+  "thirdMoveCost": 75000,
+  "released": true,
+  "family": {
+   "id": "FAMILY_SCYTHER",
+   "parent": "scyther"
+  },
+  "aliasId": "scizor_mega"
+ },
+ {
+  "dex": 212,
   "speciesName": "Scizor (Shadow)",
   "speciesId": "scizor_shadow",
   "baseStats": {
