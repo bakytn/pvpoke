@@ -104,6 +104,24 @@ if [[ ! "${TIMEOUT_MINUTES}" =~ ^[0-9]+$ || "${TIMEOUT_MINUTES}" -le 0 ]]; then
 	exit 1
 fi
 
+# An old nvm default can shadow a newer Node later on PATH. Playwright 1.58
+# requires Node 18+, and the runner itself uses modern JavaScript syntax.
+NODE_BIN=""
+while IFS= read -r candidate; do
+	major_version="$(${candidate} -p 'process.versions.node.split(".")[0]' 2>/dev/null || true)"
+	if [[ "${major_version}" =~ ^[0-9]+$ && "${major_version}" -ge 18 ]]; then
+		NODE_BIN="${candidate}"
+		break
+	fi
+done < <(type -aP node 2>/dev/null | awk '!seen[$0]++')
+
+if [[ -z "${NODE_BIN}" ]]; then
+	echo "Node.js 18 or newer is required for Playwright; none was found on PATH." >&2
+	exit 1
+fi
+
+export PATH="$(dirname "${NODE_BIN}"):${PATH}"
+
 check_server() {
 	curl -fsS "${BASE_URL}/data/version.php" >/dev/null 2>&1
 }
@@ -151,6 +169,6 @@ CP="${CP}" \
 BASE_URL="${BASE_URL}" \
 TIMEOUT_MINUTES="${TIMEOUT_MINUTES}" \
 GENERATE_ALL="${GENERATE_ALL}" \
-node "${SCRIPT_DIR}/regenerate-rankings.js"
+"${NODE_BIN}" "${SCRIPT_DIR}/regenerate-rankings.js"
 
 echo "Ranking regeneration completed."
