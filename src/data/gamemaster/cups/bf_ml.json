@@ -8,8 +8,8 @@
             "name": "Species",
             "values": [
                 "charizard_mega_y",
-                "dragonite_mega",
                 "gyarados_mega",
+                "dragonite_mega",
                 "mewtwo_mega_x",
                 "mewtwo_mega_y",
                 "heracross_mega",
@@ -22,7 +22,21 @@
                 "garchomp_mega",
                 "chesnaught_mega",
                 "delphox_mega",
-                "greninja_mega"
+                "greninja_mega",
+                "xerneas",
+                "palkia_origin",
+                "kyogre",
+                "yveltal",
+                "swampert_mega",
+                "latias_mega",
+                "latios_mega",
+                "ursaluna",
+                "lugia",
+                "kyurem_white",
+                "marshadow",
+                "gallade_mega",
+                "gengar_mega",
+                "gengar_mega_sp"
             ]
         }
     ],
