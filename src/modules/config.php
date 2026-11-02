@@ -38,7 +38,8 @@ if(($WEB_ROOT === false) || ($WEB_ROOT === '')){
 		$WEB_ROOT = '/';
 	}
 }
-$WEB_HOST = 'http://' . $_SERVER['HTTP_HOST'] . $WEB_ROOT;
+$isHttps = (!empty($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] !== 'off')) || ((isset($_SERVER['SERVER_PORT'])) && ((string)$_SERVER['SERVER_PORT'] === '443'));
+$WEB_HOST = ($isHttps ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $WEB_ROOT;
 $UA = '';
 $GOOGLE_AD_CLIENT = '';
 

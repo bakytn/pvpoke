@@ -12,8 +12,10 @@ docker run --rm -v "$PWD":/app -w /app/src/data php:8.3-cli php compile.php
 
 ### Run locally without compose
 ```
-docker run -d  --rm --name pvpoke   -p 80:80  -v ~/pvpoke/src:/var/www/html/pvpoke/src pvpoke
+docker run -d --rm --name pvpoke -p 80:80 -p 443:443 -v ~/pvpoke/src:/var/www/html/pvpoke/src pvpoke
 ```
+
+The Docker image serves both HTTP and HTTPS. HTTPS uses a self-signed development certificate for `localhost`, `127.0.0.1`, and `44.203.15.183`; open `https://localhost/pvpoke/src/` or `https://44.203.15.183/` and accept the browser warning. With Compose, override host ports with `PVPOKE_PORT` and `PVPOKE_HTTPS_PORT` if ports 80 or 443 are already in use.
 
 ### Regenerate Rankings from CLI (Master League default)
 ```
