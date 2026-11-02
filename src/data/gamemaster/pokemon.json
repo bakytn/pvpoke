@@ -48447,7 +48447,7 @@
   },
   "buddyDistance": 1,
   "thirdMoveCost": 10000,
-  "released": false,
+  "released": true,
   "level25CP": 1738,
   "tags": [
    "shadoweligible",
