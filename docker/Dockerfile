@@ -1,4 +1,4 @@
-FROM php:apache-buster
+FROM php:8.4.27-apache-bookworm
 RUN a2enmod rewrite deflate headers expires filter ssl && (a2enmod brotli || true)
 COPY docker/apache-pvpoke.conf /etc/apache2/conf-available/pvpoke.conf
 COPY docker/apache-pvpoke-ssl.conf /etc/apache2/conf-available/pvpoke-ssl.conf
