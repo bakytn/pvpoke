@@ -1241,6 +1241,68 @@
  },
  {
   "dex": 9,
+  "speciesName": "Blastoise (Mega) - Bite",
+  "speciesId": "blastoise_mega_bite",
+  "baseStats": {
+   "atk": 264,
+   "def": 237,
+   "hp": 188
+  },
+  "types": [
+   "water",
+   "none"
+  ],
+  "fastMoves": [
+   "BITE",
+   "WATER_GUN",
+   "ROLLOUT"
+  ],
+  "chargedMoves": [
+   "FLASH_CANNON",
+   "HYDRO_CANNON",
+   "HYDRO_PUMP",
+   "ICE_BEAM",
+   "SKULL_BASH"
+  ],
+  "tags": [
+   "mega",
+   "duplicate"
+  ],
+  "level25CP": 1000,
+  "defaultIVs": {
+   "cp500": [
+    5,
+    4,
+    8,
+    12
+   ],
+   "cp1500": [
+    14,
+    4,
+    10,
+    15
+   ],
+   "cp2500": [
+    23,
+    4,
+    15,
+    15
+   ]
+  },
+  "eliteMoves": [
+   "HYDRO_CANNON"
+  ],
+  "buddyDistance": 3,
+  "thirdMoveCost": 10000,
+  "released": true,
+  "family": {
+   "id": "FAMILY_SQUIRTLE",
+   "parent": "wartortle"
+  },
+  "aliasId": "blastoise_mega"
+ },
+ {
+  "dex": 9,
   "speciesName": "Blastoise (Mega)",
   "speciesId": "blastoise_mega",
   "baseStats": {

@@ -16,6 +16,10 @@
         ]
     },
     {
+        "speciesId": "blastoise_mega_bite",
+        "fastMove": "BITE"
+    },
+    {
         "speciesId": "zekrom",
         "chargedMoves": [
             "FUSION_BOLT",
