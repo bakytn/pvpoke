@@ -22,7 +22,7 @@
     {"speciesId":"latios","fastMove":"DRAGON_BREATH","chargedMoves":["AURA_SPHERE","LUSTER_PURGE"]},
     {"speciesId":"malamar_mega","fastMove":"PSYWAVE","chargedMoves":["FOUL_PLAY","SUPER_POWER"]},
     {"speciesId":"meloetta_aria","fastMove":"CONFUSION","chargedMoves":["PSYSHOCK","DAZZLING_GLEAM"]},
-    {"speciesId":"mewtwo_shadow","fastMove":"PSYCHO_CUT","chargedMoves":["PSYSTRIKE","SHADOW_BALL"]},
+    {"speciesId":"mewtwo","fastMove":"PSYCHO_CUT","chargedMoves":["PSYSTRIKE","SHADOW_BALL"]},
     {"speciesId":"necrozma_dusk_mane","fastMove":"PSYCHO_CUT","chargedMoves":["DARK_PULSE","IRON_HEAD"]},
     {"speciesId":"primarina","fastMove":"WATERFALL","chargedMoves":["HYDRO_CANNON","MOONBLAST"]},
     {"speciesId":"salamence_shadow","fastMove":"DRAGON_TAIL","chargedMoves":["FLY","BRUTAL_SWING"]},
@@ -30,7 +30,7 @@
     {"speciesId":"scizor_mega_bp","fastMove":"BULLET_PUNCH","chargedMoves":["NIGHT_SLASH","TRAILBLAZE"]},
     {"speciesId":"skarmory_mega","fastMove":"AIR_SLASH","chargedMoves":["DRILL_RUN","BRAVE_BIRD"]},
     {"speciesId":"solgaleo","fastMove":"FIRE_SPIN","chargedMoves":["PSYCHIC_FANGS","IRON_HEAD"]},
-    {"speciesId":"starmie_mega","fastMove":"PSYWAVE","chargedMoves":["POWER_GEM","AQUA_JET"]},
+    {"speciesId":"staraptor_mega_wa","fastMove":"WING_ATTACK","chargedMoves":["HEAT_WAVE","CLOSE_COMBAT"]},
     {"speciesId":"steelix_mega","fastMove":"DRAGON_TAIL","chargedMoves":["PSYCHIC_FANGS","EARTHQUAKE"]},
     {"speciesId":"zekrom","fastMove":"DRAGON_BREATH","chargedMoves":["FUSION_BOLT","CRUNCH"]},
     {"speciesId":"zekrom_fb_outrage","fastMove":"DRAGON_BREATH","chargedMoves":["FUSION_BOLT","OUTRAGE"]}

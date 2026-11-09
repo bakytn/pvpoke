@@ -20,6 +20,17 @@
         "fastMove": "BITE"
     },
     {
+        "speciesId": "staraptor_mega_wa",
+        "fastMove": "WING_ATTACK",
+        "chargedMoves": [
+            "HEAT_WAVE",
+            "CLOSE_COMBAT"
+        ],
+        "extraChargedMoves": [
+            "BRAVE_BIRD_PLUS"
+        ]
+    },
+    {
         "speciesId": "zekrom",
         "chargedMoves": [
             "FUSION_BOLT",

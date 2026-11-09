@@ -48522,6 +48522,72 @@
   }
  },
  {
+  "dex": 398,
+  "speciesName": "Staraptor (Mega) - WA",
+  "speciesId": "staraptor_mega_wa",
+  "baseStats": {
+   "atk": 278,
+   "def": 207,
+   "hp": 198
+  },
+  "types": [
+   "fighting",
+   "flying"
+  ],
+  "fastMoves": [
+   "QUICK_ATTACK",
+   "WING_ATTACK",
+   "GUST",
+   "SAND_ATTACK"
+  ],
+  "chargedMoves": [
+   "BRAVE_BIRD",
+   "CLOSE_COMBAT",
+   "HEAT_WAVE",
+   "FLY"
+  ],
+  "extraChargedMoves": [
+   "BRAVE_BIRD_PLUS"
+  ],
+  "eliteMoves": [
+   "GUST"
+  ],
+  "defaultIVs": {
+   "cp500": [
+    5,
+    4,
+    7,
+    9
+   ],
+   "cp1500": [
+    13.5,
+    8,
+    15,
+    15
+   ],
+   "cp2500": [
+    23,
+    4,
+    12,
+    15
+   ]
+  },
+  "buddyDistance": 1,
+  "thirdMoveCost": 10000,
+  "released": true,
+  "level25CP": 1738,
+  "tags": [
+   "mega",
+   "supermega",
+   "duplicate"
+  ],
+  "family": {
+   "id": "FAMILY_STARLY",
+   "parent": "staravia"
+  },
+  "aliasId": "staraptor_mega"
+ },
+ {
   "dex": 399,
   "speciesName": "Bidoof",
   "speciesId": "bidoof",
