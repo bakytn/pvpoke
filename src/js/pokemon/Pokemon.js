@@ -101,10 +101,10 @@ function Pokemon(id, i, b, d){
 
 	this.dps = 10; // Used later to calculate TDO
 
-	// Return this species' hard level cap. Pokemon with levelCap 52 don't get an extra buddy level.
+	// Return this species' hard level cap.
 	function getMaxLevelCap(){
 		if(self.megaLevel == 4){
-			return 53; // Mega Level 4: base 52 + buddy level
+			return 50;
 		}
 
 		if(self.baseLevelCap >= 52){
@@ -120,12 +120,6 @@ function Pokemon(id, i, b, d){
 
 		if((battle) && (battle.getLevelCap)){
 			battleLevelCap = battle.getLevelCap() + 1;
-		}
-
-		// Mega Level 4 may exceed the league cap: take the higher of the two so it
-		// reaches 53 instead of being clamped back to the league's 50/51.
-		if(self.megaLevel == 4){
-			return Math.max(battleLevelCap, getMaxLevelCap());
 		}
 
 		return Math.min(battleLevelCap, getMaxLevelCap());
@@ -319,11 +313,6 @@ function Pokemon(id, i, b, d){
 		this.cp = self.calculateCP();
 
 		self.levelCap = Math.min(self.levelCap, getEffectiveLevelCap());
-
-		if(self.megaLevel == 4){
-			self.baseLevelCap = 52;
-			self.levelCap = 52;
-		}
 
 		var maxCP = 10000;
 
@@ -2049,21 +2038,13 @@ function Pokemon(id, i, b, d){
 
 	// Set the Pokemon's Mega Level
 	this.setMegaLevel = function(level){
-		var entering4 = (self.megaLevel != 4) && (level == 4);
-		var leaving4 = (self.megaLevel == 4) && (level < 4);
-
-		// Commit the new mega level first so any level clamping reflects it.
 		self.megaLevel = level;
+		self.baseLevelCap = 50;
+		self.levelCap = Math.min(self.levelCap, getMaxLevelCap());
 
-		if(battle.getCP() == 10000){
-			if(entering4){
-				self.setLevel(52);
-			} else if(leaving4){
-				self.setLevel(50);
-			}
+		if(self.level > self.levelCap){
+			self.setLevel(self.levelCap);
 		}
-
-		self.baseLevelCap = (level == 4) ? 52 : 50;
 	}
 
 	this.getCPMByLevel = function(level){
