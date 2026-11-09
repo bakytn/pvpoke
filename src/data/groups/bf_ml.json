@@ -8,7 +8,7 @@
     {"speciesId":"chandelure_mega_ast","fastMove":"ASTONISH","chargedMoves":["ENERGY_BALL","FLAME_CHARGE"]},
     {"speciesId":"chandelure_mega_hex","fastMove":"HEX","chargedMoves":["ENERGY_BALL","FLAME_CHARGE"]},
     {"speciesId":"charizard_mega_x","fastMove":"DRAGON_BREATH","chargedMoves":["BLAST_BURN","DRAGON_CLAW"]},
-    {"speciesId":"dialga","fastMove":"DRAGON_BREATH","chargedMoves":["IRON_HEAD","THUNDER"]},
+    {"speciesId":"dialga","fastMove":"DRAGON_BREATH","chargedMoves":["IRON_HEAD","DRACO_METEOR"]},
     {"speciesId":"dragonite_shadow","fastMove":"DRAGON_BREATH","chargedMoves":["SUPER_POWER","HURRICANE"]},
     {"speciesId":"garchomp","fastMove":"DRAGON_TAIL","chargedMoves":["TWISTER","EARTH_POWER"]},
     {"speciesId":"gardevoir_mega","fastMove":"CONFUSION","chargedMoves":["TRIPLE_AXEL","SHADOW_BALL"]},
