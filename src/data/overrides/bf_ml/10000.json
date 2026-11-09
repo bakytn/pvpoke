@@ -39,6 +39,28 @@
         ]
     },
     {
+        "speciesId": "chandelure_mega_ast",
+        "fastMove": "ASTONISH",
+        "chargedMoves": [
+            "ENERGY_BALL",
+            "FLAME_CHARGE"
+        ],
+        "extraChargedMoves": [
+            "OMINOUS_WIND_PLUS"
+        ]
+    },
+    {
+        "speciesId": "chandelure_mega_hex",
+        "fastMove": "HEX",
+        "chargedMoves": [
+            "ENERGY_BALL",
+            "FLAME_CHARGE"
+        ],
+        "extraChargedMoves": [
+            "OMINOUS_WIND_PLUS"
+        ]
+    },
+    {
         "speciesId": "zekrom",
         "chargedMoves": [
             "FUSION_BOLT",
