@@ -69,6 +69,14 @@
         ]
     },
     {
+        "speciesId": "tapu_lele_ast",
+        "fastMove": "ASTONISH",
+        "chargedMoves": [
+            "PSYSHOCK",
+            "NATURES_MADNESS"
+        ]
+    },
+    {
         "speciesId": "zekrom_shadow",
         "chargedMoves": [
             "FUSION_BOLT",

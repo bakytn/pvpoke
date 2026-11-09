@@ -85590,6 +85590,66 @@
   "released": true
  },
  {
+  "dex": 786,
+  "speciesName": "Tapu Lele - Astonish",
+  "speciesId": "tapu_lele_ast",
+  "baseStats": {
+   "atk": 259,
+   "def": 208,
+   "hp": 172
+  },
+  "types": [
+   "psychic",
+   "fairy"
+  ],
+  "fastMoves": [
+   "CONFUSION",
+   "ASTONISH"
+  ],
+  "chargedMoves": [
+   "PSYSHOCK",
+   "MOONBLAST",
+   "FOCUS_BLAST",
+   "FUTURE_SIGHT",
+   "NATURES_MADNESS",
+   "DRAINING_KISS"
+  ],
+  "eliteMoves": [
+   "NATURES_MADNESS"
+  ],
+  "defaultIVs": {
+   "cp500": [
+    5.5,
+    6,
+    8,
+    15
+   ],
+   "cp1500": [
+    16,
+    5,
+    9,
+    10
+   ],
+   "cp2500": [
+    26,
+    5,
+    14,
+    13
+   ]
+  },
+  "tags": [
+   "legendary",
+   "duplicate"
+  ],
+  "nicknames": [
+   "lele"
+  ],
+  "buddyDistance": 20,
+  "thirdMoveCost": 100000,
+  "released": true,
+  "aliasId": "tapu_lele"
+ },
+ {
   "dex": 787,
   "speciesName": "Tapu Bulu",
   "speciesId": "tapu_bulu",
