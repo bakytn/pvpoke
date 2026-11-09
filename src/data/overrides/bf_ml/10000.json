@@ -31,6 +31,14 @@
         ]
     },
     {
+        "speciesId": "necrozma_dusk_mane_sc",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "IRON_HEAD",
+            "DARK_PULSE"
+        ]
+    },
+    {
         "speciesId": "zekrom",
         "chargedMoves": [
             "FUSION_BOLT",

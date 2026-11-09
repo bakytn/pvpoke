@@ -86233,6 +86233,66 @@
  },
  {
   "dex": 800,
+  "speciesName": "Necrozma (Dusk Mane) - SC",
+  "speciesId": "necrozma_dusk_mane_sc",
+  "baseStats": {
+   "atk": 277,
+   "def": 220,
+   "hp": 200
+  },
+  "types": [
+   "psychic",
+   "steel"
+  ],
+  "fastMoves": [
+   "METAL_CLAW",
+   "PSYCHO_CUT",
+   "SHADOW_CLAW"
+  ],
+  "chargedMoves": [
+   "DARK_PULSE",
+   "FUTURE_SIGHT",
+   "IRON_HEAD",
+   "OUTRAGE",
+   "SUNSTEEL_STRIKE"
+  ],
+  "defaultIVs": {
+   "cp500": [
+    4.5,
+    15,
+    15,
+    14
+   ],
+   "cp1500": [
+    13.5,
+    4,
+    9,
+    14
+   ],
+   "cp2500": [
+    22.5,
+    4,
+    15,
+    9
+   ]
+  },
+  "tags": [
+   "ultrabeast",
+   "duplicate"
+  ],
+  "nicknames": [
+   "dusk",
+   "dm",
+   "dusk mane"
+  ],
+  "searchPriority": 4,
+  "buddyDistance": 20,
+  "thirdMoveCost": 100000,
+  "released": true,
+  "aliasId": "necrozma_dusk_mane"
+ },
+ {
+  "dex": 800,
   "speciesName": "Necrozma",
   "speciesId": "necrozma",
   "baseStats": {

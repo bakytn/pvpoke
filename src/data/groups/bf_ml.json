@@ -24,7 +24,7 @@
     {"speciesId":"meloetta_aria","fastMove":"CONFUSION","chargedMoves":["PSYSHOCK","DAZZLING_GLEAM"]},
     {"speciesId":"mewtwo","fastMove":"PSYCHO_CUT","chargedMoves":["PSYSTRIKE","SHADOW_BALL"]},
     {"speciesId":"necrozma_dusk_mane","fastMove":"PSYCHO_CUT","chargedMoves":["DARK_PULSE","IRON_HEAD"]},
-    {"speciesId":"primarina","fastMove":"WATERFALL","chargedMoves":["HYDRO_CANNON","MOONBLAST"]},
+    {"speciesId":"necrozma_dusk_mane_sc","fastMove":"SHADOW_CLAW","chargedMoves":["IRON_HEAD","DARK_PULSE"]},
     {"speciesId":"salamence_shadow","fastMove":"DRAGON_TAIL","chargedMoves":["FLY","BRUTAL_SWING"]},
     {"speciesId":"scizor_mega","fastMove":"FURY_CUTTER","chargedMoves":["X_SCISSOR","NIGHT_SLASH"]},
     {"speciesId":"scizor_mega_bp","fastMove":"BULLET_PUNCH","chargedMoves":["NIGHT_SLASH","TRAILBLAZE"]},
