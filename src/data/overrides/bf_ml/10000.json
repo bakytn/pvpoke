@@ -16,6 +16,20 @@
         ]
     },
     {
+        "speciesId": "zekrom",
+        "chargedMoves": [
+            "FUSION_BOLT",
+            "CRUNCH"
+        ]
+    },
+    {
+        "speciesId": "zekrom_fb_outrage",
+        "chargedMoves": [
+            "FUSION_BOLT",
+            "OUTRAGE"
+        ]
+    },
+    {
         "speciesId": "florges",
         "chargedMoves": [
             "MOONBLAST",
