@@ -72771,6 +72771,64 @@
  },
  {
   "dex": 646,
+  "speciesId": "kyurem_black_sc",
+  "speciesName": "Kyurem (Black) - SC",
+  "baseStats": {
+   "atk": 310,
+   "def": 183,
+   "hp": 245
+  },
+  "types": [
+   "dragon",
+   "ice"
+  ],
+  "fastMoves": [
+   "DRAGON_TAIL",
+   "SHADOW_CLAW"
+  ],
+  "chargedMoves": [
+   "IRON_HEAD",
+   "BLIZZARD",
+   "STONE_EDGE",
+   "OUTRAGE",
+   "FUSION_BOLT",
+   "FREEZE_SHOCK"
+  ],
+  "legacyMoves": [
+   "FREEZE_SHOCK"
+  ],
+  "defaultIVs": {
+   "cp500": [
+    4,
+    13,
+    13,
+    14
+   ],
+   "cp1500": [
+    12,
+    7,
+    10,
+    8
+   ],
+   "cp2500": [
+    19.5,
+    9,
+    13,
+    14
+   ]
+  },
+  "tags": [
+   "legendary",
+   "duplicate"
+  ],
+  "buddyDistance": 20,
+  "thirdMoveCost": 100000,
+  "released": true,
+  "searchPriority": 5,
+  "aliasId": "kyurem_black"
+ },
+ {
+  "dex": 646,
   "speciesId": "kyurem_white",
   "speciesName": "Kyurem (White)",
   "baseStats": {

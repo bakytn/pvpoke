@@ -61,6 +61,14 @@
         ]
     },
     {
+        "speciesId": "kyurem_black_sc",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "FREEZE_SHOCK",
+            "FUSION_BOLT"
+        ]
+    },
+    {
         "speciesId": "zekrom",
         "chargedMoves": [
             "FUSION_BOLT",
