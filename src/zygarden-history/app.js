@@ -1,7 +1,17 @@
 const API = 'api.php';
 const state = { history: null, selected: 0, view: 'tournament', refreshing: false };
+let dexById = null;
 const $ = (selector) => document.querySelector(selector);
 const escapeHTML = (value) => String(value == null ? '' : value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+
+async function loadDexMap() {
+    if (dexById) return dexById;
+    try {
+        const response = await fetch('sprites/dex-map.json?v=1');
+        dexById = response.ok ? await response.json() : {};
+    } catch (_) { dexById = {}; }
+    return dexById;
+}
 
 async function api(action, params = {}) {
     const query = new URLSearchParams(Object.assign({ action }, state.refreshing ? { refresh: '1' } : {}, params));
@@ -51,8 +61,10 @@ async function tournaments(trainerId) {
 }
 
 function detail(pokemon = {}) {
-    const dex = Number(pokemon.dexNumber || pokemon.dexEntry || 0);
-    return { id: String(pokemon.id || ''), name: `${pokemon.isShadow ? 'Shadow ' : ''}${pokemon.name || 'Unknown'}`, dex_number: dex, is_shadow: Boolean(pokemon.isShadow) };
+    const id = String(pokemon.id || '');
+    const suppliedDex = Number(pokemon.dexNumber || pokemon.dexEntry || 0);
+    const dex = suppliedDex > 0 ? suppliedDex : Number((dexById || {})[id] || 0);
+    return { id, name: `${pokemon.isShadow ? 'Shadow ' : ''}${pokemon.name || 'Unknown'}`, dex_number: dex, is_shadow: Boolean(pokemon.isShadow) };
 }
 function names(team) { return (team || []).map(detail); }
 function score(one, two) { return Number.isFinite(one) && Number.isFinite(two) ? `${one}-${two}` : ''; }
@@ -73,6 +85,7 @@ function collect(matchup, round, trainerId, parties, battles, seen) {
     (matchup.subMatchups || []).forEach((child) => collect(child, round, trainerId, parties, battles, seen));
 }
 async function historyFor(name) {
+    await loadDexMap();
     const trainer = await exactTrainer(name);
     const entries = await tournaments(trainer.id);
     entries.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
@@ -112,7 +125,7 @@ function render() {
     if (state.view === 'silph') { $('#content').innerHTML = `<div class="tournament-title"><h2>All Battles – Silph Style</h2><span class="date">${all.length} bouts</span></div><div class="silph-feed">${all.map(silphCard).join('')}</div>`; return; }
     const tournament = tournamentsList[state.selected]; $('#content').innerHTML = `<div class="tournament-title"><h2>${escapeHTML(tournament.name)}</h2><span class="date">${escapeHTML(tournament.date)}</span></div><div class="battles">${tournament.battles.length ? tournament.battles.map((battle) => card(battle)).join('') : '<div class="empty">No completed battles were recorded for this tournament.</div>'}</div>`;
 }
-function cacheKey(name) { return `zygarden-history:v2:${name.trim().toLowerCase()}`; }
+function cacheKey(name) { return `zygarden-history:v3:${name.trim().toLowerCase()}`; }
 function cachedHistory(name) { try { return JSON.parse(localStorage.getItem(cacheKey(name)) || 'null'); } catch (_) { return null; } }
 function saveHistory(name, history) { try { localStorage.setItem(cacheKey(name), JSON.stringify(history)); } catch (_) { /* The viewer still works if storage is unavailable. */ } }
 async function loadHistory(forceRefresh) {
