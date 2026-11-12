@@ -1,0 +1,20 @@
+{
+    "name": "ericcsonns_meta",
+    "title": "Ericcsonns Meta",
+    "include": [],
+    "exclude": [
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "necrozma_dusk_mane", "necrozma_dawn_wings", "gyarados_mega", "garchomp_mega", "metagross_mega", "dragonite_mega", "tyranitar_mega", "salamence_mega", "greninja_mega", "chesnaught_mega", "delphox_mega", "swampert_mega", "heracross_mega", "charizard_mega_y"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 10000,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}

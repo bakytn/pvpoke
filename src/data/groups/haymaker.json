@@ -1,0 +1,282 @@
+[
+    {
+        "speciesId": "gallade_mega",
+        "fastMove": "LOW_KICK",
+        "chargedMoves": [
+            "SACRED_SWORD",
+            "CLOSE_COMBAT"
+        ]
+    },
+    {
+        "speciesId": "solgaleo",
+        "fastMove": "FIRE_SPIN",
+        "chargedMoves": [
+            "PSYCHIC_FANGS",
+            "IRON_HEAD"
+        ]
+    },
+    {
+        "speciesId": "annihilape",
+        "fastMove": "LOW_KICK",
+        "chargedMoves": [
+            "CLOSE_COMBAT",
+            "RAGE_FIST"
+        ]
+    },
+    {
+        "speciesId": "necrozma_dusk_mane",
+        "fastMove": "PSYCHO_CUT",
+        "chargedMoves": [
+            "DARK_PULSE",
+            "IRON_HEAD"
+        ]
+    },
+    {
+        "speciesId": "ursaluna",
+        "fastMove": "SCRATCH",
+        "chargedMoves": [
+            "SWIFT",
+            "HIGH_HORSEPOWER"
+        ]
+    },
+    {
+        "speciesId": "blaziken_mega",
+        "fastMove": "EMBER",
+        "chargedMoves": [
+            "AURA_SPHERE",
+            "BLAZE_KICK"
+        ]
+    },
+    {
+        "speciesId": "slowbro_mega",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "SURF",
+            "DRAIN_PUNCH"
+        ]
+    },
+    {
+        "speciesId": "alakazam_mega",
+        "fastMove": "PSYCHO_CUT",
+        "chargedMoves": [
+            "FIRE_PUNCH",
+            "SHADOW_BALL"
+        ]
+    },
+    {
+        "speciesId": "metagross",
+        "fastMove": "SHADOW_CLAW",
+        "chargedMoves": [
+            "METEOR_MASH",
+            "EARTHQUAKE"
+        ]
+    },
+    {
+        "speciesId": "victini",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "V_CREATE",
+            "PSYSHOCK"
+        ]
+    },
+    {
+        "speciesId": "gyarados",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "TWISTER"
+        ]
+    },
+    {
+        "speciesId": "armarouge",
+        "fastMove": "INCINERATE",
+        "chargedMoves": [
+            "PSYSHOCK",
+            "HEAT_WAVE"
+        ]
+    },
+    {
+        "speciesId": "keldeo_resolute",
+        "fastMove": "LOW_KICK",
+        "chargedMoves": [
+            "SECRET_SWORD",
+            "AQUA_JET"
+        ]
+    },
+    {
+        "speciesId": "melmetal",
+        "fastMove": "THUNDER_SHOCK",
+        "chargedMoves": [
+            "DOUBLE_IRON_BASH",
+            "DYNAMIC_PUNCH"
+        ]
+    },
+    {
+        "speciesId": "starmie_mega",
+        "fastMove": "PSYWAVE",
+        "chargedMoves": [
+            "AQUA_JET",
+            "POWER_GEM"
+        ]
+    },
+    {
+        "speciesId": "primarina",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "HYDRO_CANNON",
+            "MOONBLAST"
+        ]
+    },
+    {
+        "speciesId": "aggron_mega",
+        "fastMove": "METAL_SOUND",
+        "chargedMoves": [
+            "BRICK_BREAK",
+            "METEOR_BEAM"
+        ]
+    },
+    {
+        "speciesId": "gholdengo",
+        "fastMove": "HEX",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "POWER_GEM"
+        ]
+    },
+    {
+        "speciesId": "kyurem_white",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "FUSION_FLARE",
+            "ICE_BURN"
+        ]
+    },
+    {
+        "speciesId": "zacian_hero",
+        "fastMove": "QUICK_ATTACK",
+        "chargedMoves": [
+            "CLOSE_COMBAT",
+            "WILD_CHARGE"
+        ]
+    },
+    {
+        "speciesId": "jirachi",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "DOOM_DESIRE",
+            "AURA_SPHERE"
+        ]
+    },
+    {
+        "speciesId": "meloetta_aria",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "PSYSHOCK",
+            "DAZZLING_GLEAM"
+        ]
+    },
+    {
+        "speciesId": "scizor_mega",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "X_SCISSOR",
+            "NIGHT_SLASH"
+        ]
+    },
+    {
+        "speciesId": "golisopod",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "AQUA_JET",
+            "X_SCISSOR"
+        ]
+    },
+    {
+        "speciesId": "mewtwo_armored",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "DYNAMIC_PUNCH",
+            "PSYSTRIKE"
+        ]
+    },
+    {
+        "speciesId": "heatran_shadow",
+        "fastMove": "FIRE_SPIN",
+        "chargedMoves": [
+            "MAGMA_STORM",
+            "EARTH_POWER"
+        ]
+    },
+    {
+        "speciesId": "malamar_mega",
+        "fastMove": "PSYWAVE",
+        "chargedMoves": [
+            "FOUL_PLAY",
+            "SUPER_POWER"
+        ]
+    },
+    {
+        "speciesId": "keldeo_ordinary",
+        "fastMove": "LOW_KICK",
+        "chargedMoves": [
+            "SACRED_SWORD",
+            "CLOSE_COMBAT"
+        ]
+    },
+    {
+        "speciesId": "dialga_origin",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "IRON_HEAD",
+            "ROAR_OF_TIME"
+        ]
+    },
+    {
+        "speciesId": "goodra",
+        "fastMove": "DRAGON_BREATH",
+        "chargedMoves": [
+            "AQUA_TAIL",
+            "THUNDER_PUNCH"
+        ]
+    },
+    {
+        "speciesId": "urshifu_rapid_strike",
+        "fastMove": "WATERFALL",
+        "chargedMoves": [
+            "CLOSE_COMBAT",
+            "AQUA_JET"
+        ]
+    },
+    {
+        "speciesId": "genesect_burn",
+        "fastMove": "FURY_CUTTER",
+        "chargedMoves": [
+            "MAGNET_BOMB",
+            "TECHNO_BLAST_BURN"
+        ]
+    },
+    {
+        "speciesId": "gardevoir_mega",
+        "fastMove": "CONFUSION",
+        "chargedMoves": [
+            "SHADOW_BALL",
+            "DAZZLING_GLEAM"
+        ]
+    },
+    {
+        "speciesId": "zamazenta_crowned_shield",
+        "fastMove": "METAL_CLAW",
+        "chargedMoves": [
+            "CLOSE_COMBAT",
+            "BEHEMOTH_BASH"
+        ]
+    },
+    {
+        "speciesId": "falinks_mega",
+        "fastMove": "COUNTER",
+        "chargedMoves": [
+            "SUPER_POWER",
+            "MEGAHORN"
+        ]
+    }
+]

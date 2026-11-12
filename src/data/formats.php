@@ -127,6 +127,53 @@ $formats = array (
   ),
   8 => 
   array (
+    'title' => 'Haymaker',
+    'cup' => 'haymaker',
+    'cp' => 10000,
+    'meta' => 'haymaker',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+      1 => 'Only Bug, Fairy, Fighting, Ice, Normal, Psychic, and Steel types are eligible; Articuno, Goodra, and Gyarados are airdrops.',
+      2 => 'All Flying types are banned except the airdrops.',
+      3 => 'Banned: Mega Chesnaught, Mega Delphox, Mega Heracross, Mega Latias, Mega Latios, Mega Metagross, Mega Mewtwo X, Mega Mewtwo Y, Latias, Latios, Lunala, Marshadow, Mewtwo, Necrozma Dawn Wings, Xerneas, and Zacian (Crowned Sword).',
+    ),
+  ),
+  9 => 
+  array (
+    'title' => '2026 Untapped',
+    'cup' => 'untapped_2026',
+    'cp' => 10000,
+    'meta' => 'untapped_2026',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+    ),
+  ),
+  10 => 
+  array (
+    'title' => 'Ericcsonns Meta',
+    'cup' => 'ericcsonns_meta',
+    'cp' => 10000,
+    'meta' => 'ericcsonns_meta',
+    'showCup' => true,
+    'showFormat' => true,
+    'showMeta' => true,
+    'rules' => 
+    array (
+      0 => 'No CP limit.',
+      1 => 'Banned: Necrozma Dusk Mane, Necrozma Dawn Wings, Mega Gyarados, Mega Garchomp, Mega Metagross, Mega Dragonite, Mega Tyranitar, Mega Salamence, Mega Greninja, Mega Chesnaught, Mega Delphox, Mega Swampert, Mega Heracross, and Mega Charizard Y.',
+      2 => 'Airdrops: Regigigas, Latios, Heatran, Darkrai, Terrakion, Origin Forme Giratina, Therian Forme Thundurus, Volcanion, Rapid Strike and Single Strike Urshifu, Melmetal, Kyurem, Galarian Articuno, Incarnate Forme Landorus, Galarian Zapdos, Zapdos, Latias, Tapu Lele, Entei, Moltres, Raikou, Incarnate Forme Enamorus, Tapu Bulu, Zeraora, Therian Forme Enamorus, Altered Forme Giratina, Genesect, Mew, Celebi, Jirachi, Victini, Armored Mewtwo, and Galarian Moltres.',
+    ),
+  ),
+  11 => 
+  array (
     'title' => 'Little Cup',
     'cup' => 'little',
     'cp' => 500,
@@ -135,7 +182,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  9 => 
+  12 => 
   array (
     'title' => 'Catch Cup',
     'cup' => 'catch',
@@ -145,7 +192,7 @@ $formats = array (
     'showFormat' => false,
     'showMeta' => false,
   ),
-  10 => 
+  13 => 
   array (
     'title' => 'Custom',
     'cup' => 'custom',

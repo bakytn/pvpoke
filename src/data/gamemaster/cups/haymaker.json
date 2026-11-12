@@ -1,0 +1,39 @@
+{
+    "name": "haymaker",
+    "title": "Haymaker",
+    "include": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": ["bug", "fairy", "fighting", "ice", "normal", "psychic", "steel"]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": ["articuno", "goodra", "gyarados"]
+        }
+    ],
+    "exclude": [
+        {
+            "filterType": "type",
+            "name": "Type",
+            "values": ["flying"]
+        },
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "chesnaught_mega", "delphox_mega", "heracross_mega", "latias_mega",
+                "latios_mega", "metagross_mega", "mewtwo_mega_x", "mewtwo_mega_y",
+                "latias", "latios", "lunala", "marshadow", "mewtwo", "necrozma_dawn_wings",
+                "xerneas", "zacian_crowned_sword"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 10000,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}

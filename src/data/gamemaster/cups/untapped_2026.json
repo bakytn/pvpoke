@@ -1,0 +1,20 @@
+{
+    "name": "untapped_2026",
+    "title": "2026 Untapped",
+    "include": [],
+    "exclude": [
+        {
+            "filterType": "id",
+            "name": "Species",
+            "values": [
+                "steelix_mega", "meloetta_aria", "chandelure_mega", "kyogre_primal", "mewtwo_mega_x", "mewtwo_mega_y", "gyarados_mega", "dragonite_mega", "garchomp_mega", "rayquaza_mega", "groudon_primal", "metagross_mega", "tyranitar_mega", "latias_mega", "latios_mega", "delphox_mega", "chesnaught_mega", "heracross_mega", "swampert_mega", "salamence_mega", "aggron_mega", "dialga", "dialga_origin", "palkia_origin", "palkia", "scizor_mega", "charizard_mega_y", "ursaluna", "zygarde", "zygarde_complete", "xerneas", "gallade_mega", "gengar_mega", "melmetal", "keldeo_resolute", "keldeo_ordinary", "kyurem_white", "kyurem_black", "lugia", "metagross", "zekrom", "reshiram", "necrozma_dusk_mane", "necrozma_dawn_wings", "marshadow", "zacian_crowned_sword", "zacian_hero", "zamazenta_crowned_shield", "florges", "yveltal", "kyogre", "blastoise_mega", "lunala", "garchomp", "eternatus", "gardevoir_mega", "groudon", "landorus_therian", "giratina_altered", "blaziken_mega"
+            ]
+        }
+    ],
+    "overrides": [],
+    "league": 10000,
+    "useDefaultMovesets": 1,
+    "levelCap": 50,
+    "excludeLowPokemon": 1,
+    "custom": true
+}
