@@ -1,15 +1,17 @@
 const API = 'api.php';
 const state = { history: null, selected: 0, view: 'tournament', refreshing: false };
 let dexById = null;
+let formSpriteIds = null;
 const $ = (selector) => document.querySelector(selector);
 const escapeHTML = (value) => String(value == null ? '' : value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
 
 async function loadDexMap() {
-    if (dexById) return dexById;
+    if (dexById && formSpriteIds) return dexById;
     try {
-        const response = await fetch('sprites/dex-map.json?v=1');
-        dexById = response.ok ? await response.json() : {};
-    } catch (_) { dexById = {}; }
+        const responses = await Promise.all([fetch('sprites/dex-map.json?v=1'), fetch('sprites/forms/index.json?v=1')]);
+        dexById = responses[0].ok ? await responses[0].json() : {};
+        formSpriteIds = responses[1].ok ? await responses[1].json() : {};
+    } catch (_) { dexById = {}; formSpriteIds = {}; }
     return dexById;
 }
 
@@ -103,8 +105,7 @@ async function historyFor(name) {
     return { trainer: trainer.name, generated_at: new Date().toISOString(), tournaments: tournamentsOut };
 }
 function baseSprite(pokemon) { return 'sprites/' + (Number(pokemon.dex_number) || 0) + '.png'; }
-function isMega(pokemon) { return /^[a-z0-9_]+_mega(?:_[a-z0-9]+)*$/.test(String(pokemon.id || '')); }
-function spritePath(pokemon) { return isMega(pokemon) ? 'sprites/forms/' + pokemon.id + '.png' : baseSprite(pokemon); }
+function spritePath(pokemon) { return formSpriteIds && formSpriteIds[pokemon.id] ? 'sprites/forms/' + pokemon.id + '.png' : baseSprite(pokemon); }
 function spriteFallback(pokemon, dimParent = false) { return "this.onerror=null;this.src='" + baseSprite(pokemon) + "'" + (dimParent ? ";this.parentElement.style.opacity='.35'" : ''); }
 function sprite(pokemon) { return `<span class="sprite ${pokemon.is_shadow ? 'shadow' : ''}" data-name="${escapeHTML(pokemon.name)}"><img loading="lazy" src="${spritePath(pokemon)}" alt="${escapeHTML(pokemon.name)}" onerror="${spriteFallback(pokemon, true)}"></span>`; }
 function card(battle, context = '') { return `<article class="battle"><div class="round">Round<b>${battle.round}</b>${context ? `<div class="context">${escapeHTML(context)}</div>` : ''}</div><div class="team"><div class="name">${escapeHTML(state.history.trainer)}</div><div class="sprites">${battle.trainer_team_details.map(sprite).join('')}</div></div><div class="score">${escapeHTML(battle.score || '—')}<small>final score</small></div><div class="team right"><div class="name">${escapeHTML(battle.opponent || 'Unknown opponent')}</div><div class="sprites">${battle.opponent_team_details.map(sprite).join('')}</div></div></article>`; }
@@ -125,7 +126,7 @@ function render() {
     if (state.view === 'silph') { $('#content').innerHTML = `<div class="tournament-title"><h2>All Battles – Silph Style</h2><span class="date">${all.length} bouts</span></div><div class="silph-feed">${all.map(silphCard).join('')}</div>`; return; }
     const tournament = tournamentsList[state.selected]; $('#content').innerHTML = `<div class="tournament-title"><h2>${escapeHTML(tournament.name)}</h2><span class="date">${escapeHTML(tournament.date)}</span></div><div class="battles">${tournament.battles.length ? tournament.battles.map((battle) => card(battle)).join('') : '<div class="empty">No completed battles were recorded for this tournament.</div>'}</div>`;
 }
-function cacheKey(name) { return `zygarden-history:v3:${name.trim().toLowerCase()}`; }
+function cacheKey(name) { return `zygarden-history:v4:${name.trim().toLowerCase()}`; }
 function cachedHistory(name) { try { return JSON.parse(localStorage.getItem(cacheKey(name)) || 'null'); } catch (_) { return null; } }
 function saveHistory(name, history) { try { localStorage.setItem(cacheKey(name), JSON.stringify(history)); } catch (_) { /* The viewer still works if storage is unavailable. */ } }
 async function loadHistory(forceRefresh) {
