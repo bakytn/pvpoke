@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 // Same-origin, allowlisted relay for Zygarden's public history endpoints.
 const ZYGARDEN_API = 'https://api.zygarden.gg';
+const CACHE_DIR = __DIR__ . '/cache';
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: public, max-age=60');
@@ -23,6 +24,24 @@ function uuid(string $key): string {
         fail(400, "Invalid {$key}.");
     }
     return $id;
+}
+
+function cacheFile(string $path): string {
+    return CACHE_DIR . '/' . hash('sha256', $path) . '.json';
+}
+
+function cachedResponse(string $path): ?string {
+    $file = cacheFile($path);
+    if (!is_file($file) || !is_readable($file)) return null;
+    $body = @file_get_contents($file);
+    return $body === false ? null : $body;
+}
+
+function storeResponse(string $path, string $body): void {
+    if (!is_dir(CACHE_DIR) && !@mkdir(CACHE_DIR, 0750, true)) return;
+    $target = cacheFile($path);
+    $temporary = $target . '.' . uniqid('', true) . '.tmp';
+    if (@file_put_contents($temporary, $body, LOCK_EX) !== false) @rename($temporary, $target);
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -58,6 +77,13 @@ switch ($action) {
 }
 
 $url = ZYGARDEN_API . $path;
+$refresh = value('refresh') === '1';
+if (!$refresh && ($cached = cachedResponse($path)) !== null) {
+    header('X-Zygarden-Cache: HIT');
+    echo $cached;
+    exit;
+}
+
 $headers = array('Accept: application/json', 'Accept-Language: en-US', 'User-Agent: PvPoke-Zygarden-History/1.0');
 if (function_exists('curl_init')) {
     $curl = curl_init($url);
@@ -75,5 +101,7 @@ if (function_exists('curl_init')) {
 }
 
 if ($body === false || $body === null) fail(502, $error ?: 'Unable to reach Zygarden.');
+if ($status >= 200 && $status < 300 && json_decode($body) !== null) storeResponse($path, $body);
+header('X-Zygarden-Cache: ' . ($refresh ? 'REFRESH' : 'MISS'));
 http_response_code($status >= 200 && $status < 600 ? $status : 502);
 echo $body;

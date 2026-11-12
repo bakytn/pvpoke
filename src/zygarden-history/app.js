@@ -1,10 +1,10 @@
 const API = 'api.php';
-const state = { history: null, selected: 0, view: 'tournament' };
+const state = { history: null, selected: 0, view: 'tournament', refreshing: false };
 const $ = (selector) => document.querySelector(selector);
 const escapeHTML = (value) => String(value == null ? '' : value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
 
 async function api(action, params = {}) {
-    const query = new URLSearchParams(Object.assign({ action }, params));
+    const query = new URLSearchParams(Object.assign({ action }, state.refreshing ? { refresh: '1' } : {}, params));
     const response = await fetch(`${API}?${query}`);
     const body = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(body.error || `Zygarden request failed (${response.status})`);
@@ -111,9 +111,10 @@ async function loadHistory(forceRefresh) {
             state.history = cached; state.selected = 0; state.view = 'tournament'; $('#app').hidden = false; $('#status').textContent = 'Loaded from this browser’s cache. Use Refresh data to fetch the latest results.'; render(); return;
         }
         $('#status').textContent = forceRefresh ? 'Refreshing from Zygarden…' : 'Finding trainer…';
+        state.refreshing = forceRefresh;
         state.history = await historyFor(name); saveHistory(name, state.history); state.selected = 0; state.view = 'tournament'; $('#app').hidden = false; $('#status').textContent = forceRefresh ? 'Fresh history loaded and cached.' : 'History loaded and cached.'; render();
     } catch (error) { $('#app').hidden = true; $('#status').textContent = error.message; }
-    finally { submit.disabled = false; refresh.disabled = false; }
+    finally { state.refreshing = false; submit.disabled = false; refresh.disabled = false; }
 }
 $('#search').onsubmit = (event) => { event.preventDefault(); loadHistory(false); };
 document.querySelectorAll('[data-view]').forEach((button) => { button.onclick = () => { state.view = button.dataset.view; render(); }; });
