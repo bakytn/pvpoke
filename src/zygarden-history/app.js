@@ -98,6 +98,24 @@ function render() {
     if (state.view === 'all') { $('#content').innerHTML = `<div class="tournament-title"><h2>All completed battles</h2><span class="date">${all.length} battles</span></div><div class="insights">${chart(picks)}<div class="insight"><h3>Archive overview</h3><p class="lede">One continuous, newest-first feed across every tournament. Pick counts are roster appearances, not wins.</p></div></div><div class="battles">${all.map((battle) => card(battle, battle.source)).join('')}</div>`; return; }
     const tournament = tournamentsList[state.selected]; $('#content').innerHTML = `<div class="tournament-title"><h2>${escapeHTML(tournament.name)}</h2><span class="date">${escapeHTML(tournament.date)}</span></div><div class="battles">${tournament.battles.length ? tournament.battles.map((battle) => card(battle)).join('') : '<div class="empty">No completed battles were recorded for this tournament.</div>'}</div>`;
 }
-$('#search').onsubmit = async (event) => { event.preventDefault(); const submit = $('#search button'); submit.disabled = true; $('#status').textContent = 'Finding trainer…'; try { state.history = await historyFor($('#trainer-name').value.trim()); state.selected = 0; state.view = 'tournament'; $('#app').hidden = false; $('#status').textContent = 'History loaded.'; render(); } catch (error) { $('#app').hidden = true; $('#status').textContent = error.message; } finally { submit.disabled = false; } };
+function cacheKey(name) { return `zygarden-history:v1:${name.trim().toLowerCase()}`; }
+function cachedHistory(name) { try { return JSON.parse(localStorage.getItem(cacheKey(name)) || 'null'); } catch (_) { return null; } }
+function saveHistory(name, history) { try { localStorage.setItem(cacheKey(name), JSON.stringify(history)); } catch (_) { /* The viewer still works if storage is unavailable. */ } }
+async function loadHistory(forceRefresh) {
+    const name = $('#trainer-name').value.trim();
+    if (!name) return;
+    const submit = $('#search button'); const refresh = $('#refresh'); submit.disabled = true; refresh.disabled = true;
+    try {
+        const cached = forceRefresh ? null : cachedHistory(name);
+        if (cached && Array.isArray(cached.tournaments)) {
+            state.history = cached; state.selected = 0; state.view = 'tournament'; $('#app').hidden = false; $('#status').textContent = 'Loaded from this browser’s cache. Use Refresh data to fetch the latest results.'; render(); return;
+        }
+        $('#status').textContent = forceRefresh ? 'Refreshing from Zygarden…' : 'Finding trainer…';
+        state.history = await historyFor(name); saveHistory(name, state.history); state.selected = 0; state.view = 'tournament'; $('#app').hidden = false; $('#status').textContent = forceRefresh ? 'Fresh history loaded and cached.' : 'History loaded and cached.'; render();
+    } catch (error) { $('#app').hidden = true; $('#status').textContent = error.message; }
+    finally { submit.disabled = false; refresh.disabled = false; }
+}
+$('#search').onsubmit = (event) => { event.preventDefault(); loadHistory(false); };
 document.querySelectorAll('[data-view]').forEach((button) => { button.onclick = () => { state.view = button.dataset.view; render(); }; });
+$('#refresh').onclick = () => loadHistory(true);
 $('#download').onclick = () => { const blob = new Blob([JSON.stringify(state.history, null, 2)], { type: 'application/json' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `${state.history.trainer}-zygarden-history.json`; link.click(); URL.revokeObjectURL(link.href); };
