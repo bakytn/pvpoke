@@ -14,7 +14,7 @@ async function api(action, params = {}) {
 async function exactTrainer(name) {
     try {
         const result = await api('search', { name });
-        const trainer = (result.items || []).find((item) => item.name.toLowerCase() === name.toLowerCase());
+        const trainer = (result.items || []).find((item) => item && item.name && item.name.toLowerCase() === name.toLowerCase());
         if (trainer) return trainer;
     } catch (_) {
         // Zygarden's filtered endpoint can intermittently return 500. Its
@@ -27,11 +27,15 @@ async function exactTrainer(name) {
         const middle = low + Math.floor((high - low) / 2);
         const page = middle === 1 ? first : await api('directory', { page: middle });
         const items = page.items || [];
-        const found = items.find((item) => item.name.toLowerCase() === needle);
+        const found = items.find((item) => item && item.name && item.name.toLowerCase() === needle);
         if (found) return found;
         if (!items.length) break;
-        if (needle < items[0].name.toLowerCase()) high = middle - 1;
-        else if (needle > items[items.length - 1].name.toLowerCase()) low = middle + 1;
+        const firstName = items[0] && items[0].name ? items[0].name.toLowerCase() : '';
+        const lastItem = items[items.length - 1];
+        const lastName = lastItem && lastItem.name ? lastItem.name.toLowerCase() : '';
+        if (!firstName || !lastName) break;
+        if (needle < firstName) high = middle - 1;
+        else if (needle > lastName) low = middle + 1;
         else break;
     }
     throw new Error(`No trainer exactly named “${name}” was found.`);
@@ -46,7 +50,7 @@ async function tournaments(trainerId) {
     }
 }
 
-function detail(pokemon) {
+function detail(pokemon = {}) {
     const dex = Number(pokemon.dexNumber || pokemon.dexEntry || 0);
     return { name: `${pokemon.isShadow ? 'Shadow ' : ''}${pokemon.name || 'Unknown'}`, dex_number: dex, is_shadow: Boolean(pokemon.isShadow) };
 }
@@ -58,9 +62,13 @@ function collect(matchup, round, trainerId, parties, battles, seen) {
     if (matchup.status === 'completed' && (selfIsOne || selfIsTwo) && !seen.has(matchup.matchupId)) {
         const self = selfIsOne ? matchup.participant1 : matchup.participant2;
         const opponent = selfIsOne ? matchup.participant2 : matchup.participant1;
-        const selfTeam = names(self.roster && self.roster.length ? self.roster : parties.get(round) || []);
-        battles.push({ round, matchup_id: matchup.matchupId, status: matchup.status, trainer_team_details: selfTeam, opponent: opponent.name, opponent_team_details: names(opponent.roster), score: score(selfIsOne ? matchup.score1 : matchup.score2, selfIsOne ? matchup.score2 : matchup.score1) });
-        seen.add(matchup.matchupId);
+        // Completed bye and malformed bracket records can have only one side.
+        // They are not battles, but nested matchups still need to be checked.
+        if (self && opponent) {
+            const selfTeam = names(self.roster && self.roster.length ? self.roster : parties.get(round) || []);
+            battles.push({ round, matchup_id: matchup.matchupId, status: matchup.status, trainer_team_details: selfTeam, opponent: opponent.name, opponent_team_details: names(opponent.roster), score: score(selfIsOne ? matchup.score1 : matchup.score2, selfIsOne ? matchup.score2 : matchup.score1) });
+            seen.add(matchup.matchupId);
+        }
     }
     (matchup.subMatchups || []).forEach((child) => collect(child, round, trainerId, parties, battles, seen));
 }
