@@ -8,7 +8,7 @@ const escapeHTML = (value) => String(value == null ? '' : value).replace(/[&<>'"
 async function loadDexMap() {
     if (dexById && formSpriteIds) return dexById;
     try {
-        const responses = await Promise.all([fetch('sprites/dex-map.json?v=1'), fetch('sprites/forms/index.json?v=2')]);
+        const responses = await Promise.all([fetch('sprites/dex-map.json?v=1'), fetch('sprites/forms/index.json?v=3')]);
         dexById = responses[0].ok ? await responses[0].json() : {};
         formSpriteIds = responses[1].ok ? await responses[1].json() : {};
     } catch (_) { dexById = {}; formSpriteIds = {}; }
